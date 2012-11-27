@@ -1,0 +1,41 @@
+name = Project issue tracking
+description = Provides issue tracking, an issue node type and issue queue views.
+package = Project
+core = 7.x
+dependencies[] = project
+dependencies[] = views
+dependencies[] = list
+dependencies[] = file
+dependencies[] = conflict
+dependencies[] = entityreference
+dependencies[] = dereference_list
+dependencies[] = nodechanges
+
+; @see http://drupal.org/project/module_supports
+recommends[] = flag_tracker
+
+stylesheets[all][] = project_issue.css
+
+files[] = includes/project_issue.migrate.inc
+
+files[] = tests/project_issue.test
+files[] = tests/integration/issue_creation.test
+files[] = tests/integration/maintainers.test
+
+files[] = views/plugins/project_issue_table_plugin_style.inc
+files[] = views/plugins/project_issue_plugin_access_per_user_queue.inc
+files[] = views/plugins/project_issue_plugin_argument_validate_project_nid.inc
+files[] = views/handlers/project_issue_handler_field_issue_priority.inc
+files[] = views/handlers/project_issue_handler_field_issue_queue_link.inc
+files[] = views/handlers/project_issue_handler_filter_dereference_list.inc
+files[] = views/handlers/project_issue_handler_filter_issue_project.inc
+files[] = views/handlers/project_issue_handler_filter_issue_status.inc
+files[] = views/handlers/project_issue_handler_filter_issue_version.inc
+files[] = views/handlers/project_issue_handler_sort_issue_priority_weight.inc
+
+; Information added by drupal.org packaging script on 2012-11-05
+version = "7.x-2.x-dev"
+core = "7.x"
+project = "project_issue"
+datestamp = "1352121890"
+

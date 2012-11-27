@@ -1,0 +1,9 @@
+
+7.x-1.0-alpha
+=============
+Port from D6 version 6.x-1.1
+
+7.x-1.0
+=======
+[#1234930]: Moved configuration link to "Seach & metadata" section of the Configuration page.
+Updated README.text

@@ -1,0 +1,13 @@
+name = Project usage
+description = "Provides data about installed usage of projects (requires update_status.module clients connecting to this site -- most sites should NOT enable this module)."
+package = Project
+dependencies[] = project
+dependencies[] = project_release
+core = 7.x
+
+; Information added by drupal.org packaging script on 2012-11-05
+version = "7.x-2.x-dev"
+core = "7.x"
+project = "project"
+datestamp = "1352121880"
+

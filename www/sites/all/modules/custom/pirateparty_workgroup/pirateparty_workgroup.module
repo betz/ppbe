@@ -1,0 +1,260 @@
+<?php
+/**
+ * @file
+ * Code for the PirateParty: Workgroup feature.
+ */
+
+include_once 'pirateparty_workgroup.features.inc';
+
+
+/**
+ * Implements hook_menu().
+ */
+function pirateparty_workgroup_menu() {
+  $items['node/%node/blog'] = array(
+    'title' => t('Blog'),
+    'type' => MENU_LOCAL_TASK,
+    'access callback' => 'pirateparty_workgroup_blogmenu_access',
+    'access arguments' => array(1),
+    'weight' => 1,
+  );
+  /*$items['node/%node/projects'] = array(
+    'title' => t('Projects'),
+    'type' => MENU_LOCAL_TASK,
+    'access callback' => 'pirateparty_workgroup_blogmenu_access',
+    'access arguments' => array(1),
+    'weight' => 2,
+  );*/
+  $items['node/%node/events'] = array(
+    'title' => t('Events'),
+    'type' => MENU_LOCAL_TASK,
+    'access callback' => 'pirateparty_workgroup_blogmenu_access',
+    'access arguments' => array(1),
+    'weight' => 2,
+  );
+  $items['node/%node/events_past'] = array(
+    'title' => t('Past Events'),
+    'type' => MENU_LOCAL_TASK,
+    'access callback' => 'pirateparty_workgroup_blogmenu_access',
+    'access arguments' => array(1),
+    'weight' => 2,
+  );
+  $items['node/%node/discussion_lists'] = array(
+    'title' => t('Discussion lists'),
+    'type' => MENU_LOCAL_TASK,
+    'access callback' => 'pirateparty_workgroup_blogmenu_access',
+    'access arguments' => array(1),
+    'weight' => 2,
+  );
+  $items['wgs'] = array(
+    'title' => t('Wgs'),
+    'type' => MENU_LOCAL_TASK,
+    'access arguments' => TRUE,
+    'page callback' => 'pirateparty_workgroup_wgs',
+    'weight' => 2,
+  );
+  /*$items['group/%/%/admin/blog_posts'] = array(
+    'page callback' => 'views_embed_view',
+    'title' => 'Workgroup blog posts',
+    'page arguments' => array('og_nodes', 'panel_pane_6', 2),
+    'type' => MENU_CALLBACK,
+    'access callback' => 'og_ui_user_access_group',
+    'access arguments' => array('update any blog_post content', 1, 2),
+  );
+  $items['group/%/%/admin/events'] = array(
+    'page callback' => 'views_embed_view',
+    'title' => 'Workgroup events',
+    'page arguments' => array('og_nodes', 'panel_pane_7', 2),
+    'type' => MENU_CALLBACK,
+    'access callback' => 'og_ui_user_access_group',
+    'access arguments' => array('update any event content', 1, 2),
+  );
+  $items['group/%/%/admin/blog_post_importers'] = array(
+    'page callback' => 'views_embed_view',
+    'title' => 'Workgroup events',
+    'page arguments' => array('og_nodes', 'panel_pane_8', 2),
+    'type' => MENU_CALLBACK,
+    'access callback' => 'og_ui_user_access_group',
+    'access arguments' => array('update any event content', 1, 2),
+  );*/
+
+  return $items;
+}
+
+
+function pirateparty_workgroup_wgs() {
+
+  $results = db_query("SELECT * FROM {node} WHERE type = 'workgroup'");
+
+  foreach($results as $workgroup) {
+    dsm($workgroup);
+    menu_save(array(
+      'menu_name' => 'menu-og-' . $workgroup->nid,
+      'title' => $workgroup->title,
+      'description' => t('OG Menu for') . ' ' . check_plain($workgroup->title),
+    ));
+    og_menu_update_menu('menu-og-' . $workgroup->nid, $workgroup->nid);
+  }
+
+  return 'hello worlf';
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function pirateparty_workgroup_menu_alter(&$items) {
+  $items['user/register']['modal'] = TRUE;
+  $items['node/%node/view']['title callback'] = 'pirateparty_workgroup_viewnode_title';
+  $items['node/%node/view']['title arguments'] = array(1);
+  //$items['node/%node/group']['access callback'] = 'pirateparty_workgroup_group_access';
+  //$items['node/%node/group']['access arguments'] = array(1);
+}
+
+function pirateparty_workgroup_group_access($node) {
+  dd('he');
+  return TRUE;
+  if($node->type == 'workgroup') {
+    return TRUE;
+  }
+}
+
+/**
+ * Implements template_preprocess_node().
+ */
+function pirateparty_workgroup_preprocess_node(&$variables) {
+  if(empty($variables['node']->type)) {
+    return FALSE;
+  }
+  switch($variables['node']->type) {
+    default:
+      $account = user_load($variables['node']->uid);
+      $node = $variables['node']->nid;
+      $variables['node_author_name'] = theme('node_title_with_author', array('node' => $variables['node']));
+      break;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function pirateparty_workgroup_theme() {
+  return array(
+    'node_title_with_author' => array(
+      'variables' => array('node' => NULL),
+      'template' => 'node_title_with_author',
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function pirateparty_workgroup_form_alter(&$form, &$form_state, $form_id) {
+  //dsm($form_id);
+  switch($form_id) {
+    case 'user_login_block':
+      $links[] = l(t('Become a Pirate!'), 'user/register');
+      $links[] = l(t('Forgot your password?'), 'user/password');
+      $form['links']['#markup'] = theme('item_list', array('items' => $links));
+      $form['links']['#weight'] = 100;
+      break;
+
+    case 'user_register_form':
+      drupal_set_title(t('Become a Pirate!'));
+      break;
+
+    case 'user_login':
+      drupal_set_title(t('Log in'));
+      break;
+
+    case 'user_pass':
+      drupal_set_title(t('Request a new password'));
+      break;
+  }
+}
+
+/**
+ * Checks if current node is a workgroup.
+ */
+function pirateparty_workgroup_blogmenu_access($node) {
+  if(!empty($node->type) && $node->type == 'workgroup') {
+    return TRUE;
+  }
+}
+
+/**
+ * Generates a title for the 'view' node menu item.
+ */
+function pirateparty_workgroup_viewnode_title($node) {
+  if(!empty($node->type) && $node->type == 'workgroup') {
+    return 'About us';
+  }
+  else {
+    return 'View';
+  }
+}
+
+/**
+ * Implements hook_og_ui_get_group_admin()
+ */
+function BACKUP_pirateparty_workgroup_og_ui_get_group_admin($group_type, $gid) {
+  $items = array();
+  $default_access = og_is_group_default_access($group_type, $gid);
+
+    $items['blog_posts'] = array(
+      'title' => t('Blog posts'),
+      'description' => t('Administer workgroup blog posts.'),
+      // The final URL will be "group/$group_type/$gid/admin/people/add-user".
+      // @see og_ui_group_admin_overview().
+      'href' => 'admin/blog_posts',
+    );
+    /*$items['blog_posts_new'] = array(
+      'title' => t('Add blog post'),
+      'description' => t('Add a new blog post.'),
+      // The final URL will be "group/$group_type/$gid/admin/people/add-user".
+      // @see og_ui_group_admin_overview().
+      'href' => 'admin/blog_posts',
+      'localized_options' => array('query' => array('og_group_ref' => $gid)),
+    );*/
+
+    $items['events'] = array(
+      'title' => t('Events'),
+      'description' => t('Administer workgroup events.'),
+      // The final URL will be "group/$group_type/$gid/admin/people/add-user".
+      // @see og_ui_group_admin_overview().
+      'href' => 'admin/events',
+    );
+    /*$items['events_new'] = array(
+      'title' => t('Add event'),
+      'description' => t('Add a new event.'),
+      // The final URL will be "group/$group_type/$gid/admin/people/add-user".
+      // @see og_ui_group_admin_overview().
+      'href' => 'node/add/event',
+      'localized_options' => array('query' => array('og_group_ref' => $gid)),
+    );*/
+
+    $items['blog_post_importers'] = array(
+      'title' => t('Blog posts importers'),
+      'description' => t('Administer workgroup blog post importers.'),
+      // The final URL will be "group/$group_type/$gid/admin/people/add-user".
+      // @see og_ui_group_admin_overview().
+      'href' => 'admin/blog_post_importers',
+    );
+    /*$items['blog_post_importers_new'] = array(
+      'title' => t('Add blog post importer'),
+      'description' => t('Add a new blog post importer.'),
+      // The final URL will be "group/$group_type/$gid/admin/people/add-user".
+      // @see og_ui_group_admin_overview().
+      'href' => 'node/add/blog_post_importers',
+      'localized_options' => array('query' => array('og_group_ref' => $gid)),
+    );*/
+
+  return $items;
+}
+
+
+
+
+
+
+

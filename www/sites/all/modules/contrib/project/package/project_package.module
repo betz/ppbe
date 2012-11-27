@@ -1,0 +1,272 @@
+<?php
+
+/**
+ * @file project_package.module
+ * Provides packages made up of releases of other projects.
+ */
+
+/**
+ * Implement hook_views_api().
+ */
+function project_package_views_api() {
+  return array(
+    'api' => 2,
+    'path' => drupal_get_path('module', 'project_package') .'/views',
+  );
+}
+
+/**
+ * Implement hook_nodeapi().
+ */
+function project_package_nodeapi(&$node, $op, $arg) {
+  switch ($node->type) {
+    case 'project_release':
+      project_package_release_nodeapi($node, $op, $arg);
+      break;
+
+  }
+}
+
+/**
+ * hook_nodeapi implementation specific to "project_release" nodes.
+ *
+ * @see project_package_nodeapi().
+ */
+function project_package_release_nodeapi(&$node, $op, $arg) {
+  switch ($op) {
+    case 'insert':
+    case 'update':
+      // We can't rely on $node->project_package since nodeapi() doesn't have
+      // a fully loaded $node object. :(
+      $count = db_result(db_query("SELECT COUNT(*) FROM {project_package_local_release_item} WHERE package_nid = %d", $node->nid));
+      if (!empty($count)) {
+        project_package_set_update_status($node->nid);
+      }
+      break;
+
+    case 'load':
+      $count = db_result(db_query("SELECT COUNT(*) FROM {project_package_local_release_item} WHERE package_nid = %d", $node->nid));
+      if (!empty($count)) {
+        $node->project_package['count'] = $count;
+      }
+      break;
+
+    case 'delete':
+      project_package_clear_release_items($node->nid);
+      break;
+
+    case 'view':
+      // If this release has any packaged local items, embed the view of those.
+      $output = '';
+      if (!empty($node->project_package['count'])) {
+        $view_info = variable_get('project_package_release_items_view', 'project_package_local_items:default');
+        list($view_name, $display_name) = split(':', $view_info);
+        $output .= '<h3>' . t('In this package') . '</h3>';
+        $output .= views_embed_view($view_name, $display_name, $node->nid);
+      }
+      if (!empty($output)) {
+        $node->content['release_package_items'] = array(
+          '#value' => '<div class="project-release-package-items">'. $output .'</div>',
+          '#weight' => 2,
+        );
+      }
+
+      // Embed a view into the release node output for local patches.
+      $output = '';
+      $has_local_patches = db_result(db_query("SELECT item_nid FROM {project_package_local_patch} WHERE package_nid = %d LIMIT 1", $node->nid));
+      if (!empty($has_local_patches)) {
+        $view_info = variable_get('project_package_local_patches_view', 'project_package_local_patches:default');
+        list($view_name, $display_name) = split(':', $view_info);
+        $output .= '<h3>' . t('Patches applied in this package') . '</h3>';
+        $output .= views_embed_view($view_name, $display_name, $node->nid);
+        $node->content['release_package_local_patches'] = array(
+          '#value' => '<div class="project-release-package-local-patches">'. $output .'</div>',
+          '#weight' => 3,
+        );
+      }
+
+      // Embed a view into the release node output for remote items.
+      $output = '';
+      $has_remote_items = db_result(db_query("SELECT id FROM {project_package_remote_item} WHERE package_nid = %d LIMIT 1", $node->nid));
+      if (!empty($has_remote_items)) {
+        $view_info = variable_get('project_package_remote_items_view', 'project_package_remote_items:default');
+        list($view_name, $display_name) = split(':', $view_info);
+        $output .= '<h3>' . t('External code in this package') . '</h3>';
+        $output .= views_embed_view($view_name, $display_name, $node->nid);
+        $node->content['release_package_remote_items'] = array(
+          '#value' => '<div class="project-release-package-remote-items">'. $output .'</div>',
+          '#weight' => 4,
+        );
+      }
+
+      // Embed a view into the release node output for remote patches.
+      $output = '';
+      $has_remote_patches = db_result(db_query("SELECT remote_id FROM {project_package_remote_patch} WHERE package_nid = %d LIMIT 1", $node->nid));
+      if (!empty($has_remote_patches)) {
+        $view_info = variable_get('project_package_remote_patches_view', 'project_package_remote_patches:default');
+        list($view_name, $display_name) = split(':', $view_info);
+        $output .= '<h3>' . t('Patches applied to external code in this package') . '</h3>';
+        $output .= views_embed_view($view_name, $display_name, $node->nid);
+        $node->content['release_package_remote_patches'] = array(
+          '#value' => '<div class="project-release-package-remote-patches">'. $output .'</div>',
+          '#weight' => 5,
+        );
+      }
+      break;
+
+  }
+}
+
+/**
+ * Set the {prn}.update_status for a package based on its included items.
+ */
+function project_package_set_update_status($package_nid) {
+  $max = db_result(db_query("SELECT MAX(prn.update_status) FROM {project_release_nodes} prn INNER JOIN {project_package_local_release_item} pp ON prn.nid = pp.item_nid WHERE pp.package_nid = %d", $package_nid));
+  db_query("UPDATE {project_release_nodes} SET update_status = %d WHERE nid = %d", $max, $package_nid);
+}
+
+/**
+ * Fix the {prn}.update_status column whenever the status changes on items.
+ */
+function project_package_check_update_status($item_nids) {
+  $affected_packages = array();
+  $placeholders = db_placeholders($item_nids);
+  $query = db_query("SELECT * FROM {project_package_local_release_item} WHERE item_nid IN ($placeholders) GROUP BY package_nid", $item_nids);
+  while ($package = db_fetch_object($query)) {
+    $affected_packages[] = $package->package_nid;
+  }
+  if (!empty($affected_packages)) {
+    $placeholders = db_placeholders($affected_packages);
+    db_query("UPDATE {project_release_nodes} SET update_status = %d WHERE nid IN ($placeholders)", array_merge(array(PROJECT_RELEASE_UPDATE_STATUS_NOT_SECURE), $affected_packages));
+  }
+}
+
+/**
+ * Record a set of local items included in a given packaged release.
+ *
+ * @param integer $package_nid
+ *   The release node ID of the package to record the remote item for.
+ * @param aray $local_item_nids
+ *   An array of node IDs for the local item(s).
+ *
+ * @return boolean
+ *   TRUE if all items were successfully recorded, otherwise FALSE.
+ */
+function project_package_record_local_items($package_nid, $local_item_nids) {
+  $success = TRUE;
+  foreach ($local_item_nids as $item_nid) {
+    if (!db_query("INSERT INTO {project_package_local_release_item} (package_nid, item_nid) VALUES (%d, %d)", $package_nid, $item_nid)) {
+      $success = FALSE;
+    }
+  }
+  return $success;
+}
+
+/**
+ * Record a remote item (or library) included in a given release.
+ *
+ * @param integer $package_nid
+ *   The release node ID of the package to record the remote item for.
+ *
+ * @param string $item_url
+ *   The fully qualified URL where the remote item lives.
+ *
+ * @param string $name
+ *   A human readable name to be associated with the item.
+ */
+function project_package_record_remote_item($package_nid, $item_url, $name) {
+  // Try to update an existing record, if any.
+  $record = (object) array(
+    'package_nid' => $package_nid,
+    'url' => $item_url,
+    'name' => $name,
+  );
+
+  $id = db_result(db_query("SELECT id FROM {project_package_remote_item} WHERE package_nid = %d AND url = '%s'", $record->package_nid, $record->url));
+  if ($id) {
+    $record->id = $id;
+    $update = array('id');
+  }
+  else {
+    $update = array();
+  }
+
+  drupal_write_record('project_package_remote_item', $record, $update);
+
+  return $record->id;
+}
+
+/**
+ * Record a patch file included in a given release package.
+ *
+ * @param integer $package_nid
+ *   The release node ID of the package to record the patch information for.
+ *
+ * @param string $patch_url
+ *   The fully qualified URL where the patch file lives.
+ *
+ * @param integer $item_id
+ *   The local release item ID, or remote item ID to which the patch applies.
+ *
+ *   This id references either {project_package_local_release_item}.item_nid or
+ *   {project_package_remote_item}.id.
+ *
+ * @param string $item_type
+ *   The type of item to which the patch is applied. Either 'local' or 'remote'.
+ *
+ *   Items marked 'local', correspond to items recorded in
+ *   {project_package_local_release_item} and items marked as 'remote'
+ *   correspond with items recorded in {project_package_remote_item}.
+ */
+function project_package_record_patch($package_nid, $patch_url, $item_id, $item_type) {
+  global $base_url;
+
+  // See if the patch URL is a local patch
+  $url = parse_url($patch_url);
+  $local_url = parse_url($base_url);
+  $local = ($url['host'] == $local_url['host']);
+
+  // If it is local, see if the patch is attached to a node or comment.
+  $patch_issue = array();
+  if ($local) {
+    $filepath = substr($url['path'], 1);
+    // Check if the file is attached to an issue with comment_upload.
+    $related_issue = db_fetch_object(db_query("SELECT n.nid as nid, n.title as title, cu.cid as cid FROM {files} f LEFT JOIN {comment_upload} cu ON f.fid = cu.fid LEFT JOIN {node} n ON cu.nid = n.nid WHERE filepath = '%s' LIMIT 1", $filepath));
+
+    if ($related_issue) {
+      $patch_issue['nid'] = $related_issue->nid;
+      $patch_issue['cid'] = $related_issue->cid;
+      $patch_issue['description'] = $related_issue->title;
+    }
+
+    // Check if the file is attached to a regular node with upload module.
+    if (!isset($patch_issue['nid'])) {
+      $node = db_fetch_object(db_query("SELECT n.nid as nid, n.title as title FROM files f LEFT JOIN upload u ON f.fid = u.fid LEFT JOIN node n ON u.nid = n.nid WHERE filepath = '%s'", $filepath));
+      if ($node) {
+        $patch_issue['nid'] = $node->nid;
+        $patch_issue['description'] = $node->title;
+      }
+    }
+  }
+
+  // Finally, save a record into {project_package_(remote|local)_patch}.
+  $table = "project_package_{$item_type}_patch";
+  $item_column = ($item_type == 'local') ? 'item_nid' : 'remote_id';
+
+  // Try to update an existing record, if any.
+  db_query("UPDATE {%s} SET %s = %d, patch_description_url = '%s', patch_nid = %d, patch_comment_id = %d WHERE package_nid = %d AND patch_file_url = '%s'", $table, $item_column, $item_id, $patch_issue['description'], $patch_issue['nid'], $patch_issue['cid'], $package_nid, $patch_url);
+  if (!db_affected_rows()) {
+    // Didn't update anything, add this as a record, instead.
+    @db_query("INSERT INTO {%s} (package_nid, %s, patch_file_url, patch_description_url, patch_nid, patch_comment_id) VALUES (%d, %d, '%s', '%s', %d, %d)", $table, $item_column, $package_nid, $item_id, $patch_url, $patch_issue['description'], $patch_issue['nid'], $patch_issue['cid']);
+  }
+}
+
+/**
+ * Remove all records containing package contents for a release node.
+ */
+function project_package_clear_release_items($nid) {
+  db_query("DELETE FROM project_package_local_release_item WHERE package_nid = %d", $nid);
+  db_query("DELETE FROM project_package_remote_item WHERE package_nid = %d", $nid);
+  db_query("DELETE FROM project_package_local_patch WHERE package_nid = %d", $nid);
+  db_query("DELETE FROM project_package_remote_patch WHERE package_nid = %d", $nid);
+}

@@ -1,0 +1,13 @@
+name = Extended Path Aliases
+description = Automatically extend path aliases to include tabs, like "about-us/edit" for "node/123/edit". Allow these aliases to be entered in page specification wild-cards ("about-us*"), e.g for block visibility.
+core = 7.x
+; While you will need to enable the core Path module to enter aliases,
+; programmatically path_alias_xt has no dependency on it. Existing aliases
+; will continue to be auto-extended, even if Path is disabled later on.
+
+; Information added by drupal.org packaging script on 2011-08-09
+version = "7.x-1.0"
+core = "7.x"
+project = "path_alias_xt"
+datestamp = "1312875734"
+

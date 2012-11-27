@@ -1,0 +1,124 @@
+body {
+  background-color: #522E91;
+  background-image: none;
+}
+
+#section-header {
+  margin-top: 0;
+}
+
+#section-content {
+  background-color: #fff;
+  background-image: none;
+}
+
+.view-frontpage-blog header {
+  margin: 25px 0 10px;
+}
+
+#region-sidebar-first {
+  background-color: #522E91 !important;
+  padding-top: 18px;
+}
+
+#region-sidebar-first .content a {
+  padding: 10px;
+}
+
+#block-block-14,
+#block-block-9,
+#block-twitter-db-0,
+#block-block-8,
+#block-block-6,
+#block-views-abd1f7fa19e295f3662cc9c96232913a {
+  display: none;
+}
+
+.block .block-title {
+  padding: 0 0 10px !important;
+}
+
+.topmenu-wiki,
+.topmenu-lqfb,
+.topmenu-forum {
+  display: none;
+}
+
+.feed-icon {
+  display: none !important;
+}
+
+#region-footer-first-right div.region-inner,
+#region-footer-first-left div.region-inner {
+  background: none;
+}
+
+.other-pirate-parties-links a, 
+.ppnl-info-links a {
+  color: #fff;
+}
+
+.other-pirate-parties-title, 
+.ppnl-info-title {
+  margin-top: 18px;
+}
+
+.item-list .pager,
+.node-links,
+.more-link {
+  display: none;
+}
+
+div.region-content-inner {
+  margin: 5px 40px 5px 5px;
+}
+
+.block-aggregator .content .item-list li {
+  margin: 10px 10px 15px;
+}
+
+.view-Kalender .item-list ul li {
+  margin-left: 11px;
+}
+
+.block-simplenews .content {
+  padding: 16px !important;
+}
+.block-simplenews #edit-mail {
+  width: 200px;
+  float: left;
+}
+.block-simplenews #edit-submit--2 {
+  margin-top: -24px;
+  margin-left: 5px;
+}
+.block-simplenews label {
+  color: #fff;
+}
+.block-simplenews .form-required {
+  display: none;
+}
+
+.test-topmenu {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+  padding: 5px 0 7px;
+}
+.test-topmenu ul {
+  margin: 0 10px;
+  float: right;
+}
+.test-topmenu ul li {
+  float: right;
+  margin-left: 15px;
+}
+.test-topmenu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 12px;
+  /*text-transform: uppercase;*/
+}
+
+

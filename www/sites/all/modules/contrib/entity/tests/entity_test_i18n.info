@@ -1,0 +1,13 @@
+name = Entity-test type translation
+description = Allows translating entity-test types.
+dependencies[] = entity_test
+dependencies[] = i18n_string
+package = Multilingual - Internationalization
+core = 7.x
+hidden = TRUE
+; Information added by drupal.org packaging script on 2012-10-24
+version = "7.x-1.0-rc3+11-dev"
+core = "7.x"
+project = "entity"
+datestamp = "1351039945"
+

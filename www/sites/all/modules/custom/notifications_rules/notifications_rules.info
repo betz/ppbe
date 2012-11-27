@@ -1,0 +1,6 @@
+name = Notifications Rules
+description = Notifications integration with rules.
+core = 7.x
+package = Notifications
+dependencies[] = notifications
+dependencies[] = rules

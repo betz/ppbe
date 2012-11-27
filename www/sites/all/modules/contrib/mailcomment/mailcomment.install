@@ -1,0 +1,44 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the Mailhandler module.
+ */
+
+/**
+ * Set the new mailcomment_mailboxes variable with the mailcomment_mailbox variable by default.
+ */
+function mailcomment_update_6001() {
+  $mailbox = variable_get('mailcomment_mailbox', '');
+  variable_set('mailcomment_mailboxes', array($mailbox));
+  return t('Set the mailcomment_mailboxes variable.');
+}
+
+/**
+ * Add filtering modes: To mimic old behavior, use basic filtering when mailcomment_reply_text was set by user.
+ */
+function mailcomment_update_6201() {
+  if (variable_get('mailcomment_reply_text', t('((( Reply ABOVE this LINE to POST a COMMENT )))'))) {
+    variable_set('mailcomment_import_filter_mode', MAILCOMMENT_FILTER_BASIC);
+    $query = 'Set mailcomment_import_filter_mode variable to use basic filtering.';
+  }
+  else {
+    variable_set('mailcomment_import_filter_mode', MAILCOMMENT_FILTER_NONE);
+    $query = 'Set mailcomment_import_filter_mode variable to use no filtering.';
+  }
+  return t($query);
+}
+
+/**
+ * Add filtering modes: To mimic old behavior, use basic filtering when mailcomment_reply_text was set by user.
+ */
+function mailcomment_update_7201() {
+  if (variable_get('mailcomment_reply_text', t('((( Reply ABOVE this LINE to POST a COMMENT )))'))) {
+    variable_set('mailcomment_import_filter_mode', MAILCOMMENT_FILTER_BASIC);
+    $query = 'Set mailcomment_import_filter_mode variable to use basic filtering.';
+  }
+  else {
+    variable_set('mailcomment_import_filter_mode', MAILCOMMENT_FILTER_NONE);
+    $query = 'Set mailcomment_import_filter_mode variable to use no filtering.';
+  }
+  return t($query);
+}

@@ -1,0 +1,12 @@
+name = Project Legacy Paths
+description = Provides redirection from project browsing paths in the Drupal 5 version of the project module to equivalent paths in the Drupal 6 version.
+package = Project
+dependencies[] = project
+core = 6.x
+
+; Information added by drupal.org packaging script on 2012-11-05
+version = "7.x-2.x-dev"
+core = "7.x"
+project = "project"
+datestamp = "1352121880"
+

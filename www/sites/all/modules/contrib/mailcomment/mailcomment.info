@@ -1,0 +1,17 @@
+name = Mail Comment
+description = Gateway module for responding to posts via mail
+package = "Mailhandler"
+dependencies[] = notifications
+dependencies[] = mailhandler (>1.99)
+core = 7.x
+
+files[] = mailcomment.install
+files[] = mailcomment.module
+files[] = plugins/MailcommentAuthenticate.inc
+files[] = tests/mailcomment.test
+; Information added by drupal.org packaging script on 2012-04-06
+version = "7.x-2.2"
+core = "7.x"
+project = "mailcomment"
+datestamp = "1333724146"
+

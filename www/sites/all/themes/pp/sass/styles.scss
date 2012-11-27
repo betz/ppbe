@@ -1,0 +1,868 @@
+/**
+ * @file
+ * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
+ *
+ * When you turn on CSS aggregation at admin/config/development/performance, all
+ * of these @include files will be combined into a single file.
+ */
+
+@import "base"; /* Import Sass mixins, variables, Compass modules, etc. */
+
+
+/* Base rules */
+@import "normalize";
+
+/* Layout rules */
+@import "layouts/responsive-sidebars";
+
+/* Formalize */
+@import "formalize";
+
+// Optionally, add your own modular stylesheets here.
+@import "print";
+
+/* Global state rules */
+@import "global-states";
+
+/* Theme rules */
+/* @import "theme-A"; */
+/* @import "theme-B"; */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  font-size: 15px;
+  line-height: 1.5em;
+}
+
+a {
+  text-decoration: none;
+  color: #551A8B;
+}
+
+p {
+  margin: 0 0 1.1em;
+}
+h2 {
+  margin-top: 0;
+}
+
+
+
+
+
+
+table{
+  width:100%;
+  height:100%;
+  margin: 10p 0 20pxx;
+  padding:0px;
+  border:1px solid #000000;
+}
+tbody tr:nth-child(even){ 
+  background-color:#EEE;
+}
+tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+td {
+  vertical-align:middle;
+  border:1px solid #000000;
+  border-width:0px 1px 1px 0px;
+  text-align:left;
+  padding:7px;
+  font-weight:normal;
+  color:#000000;
+}
+thead tr th {
+  background-color: #522E91;
+  border:0px solid #000000;
+  text-align: left;
+  border-width:0px 0px 1px 1px;
+  font-weight:bold;
+  padding: 7px;
+  color:#ffffff;
+  a {
+    color: #fff;
+    &.active img {
+      padding-left: 5px;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sidebar-second #content {
+  width: 75%;
+}
+.sidebar-second .region-sidebar-second {
+  width: 25%;
+  margin-left: 75%;
+}
+
+#main {
+  padding-top: 0;
+  padding-bottom: 50px;
+  #page-title {
+    font-size: 28px;
+    letter-spacing: -1px;
+    color: #522E91;
+    margin-bottom: 20px;
+  }
+}
+
+
+#header {
+  background: #EEE;
+  background-image: url("../images/darkwave.png"), url("../images/boat.png");
+  background-position: -20% bottom, 56% bottom;
+  background-repeat: repeat-x, no-repeat;
+  border-bottom: 8px solid #000;
+  min-height: 150px;
+  .inner {
+    position: relative;
+  }
+  #logo_name_slogan {
+    margin: 30px 0;
+    #logo {
+      float: left;
+      margin-right: 20px;
+    }
+    #name-and-slogan {
+      h1,
+      h2 {
+        margin: 0;
+      }
+    }
+    #site-name {
+      line-height: 48px;
+      font-family: Arial;
+      a {
+        font-family: Arial;
+        font-size: 35px;
+        text-decoration: none;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        color: #551A8B;
+        span {
+          font-family: Arial;
+        }
+      }
+    }
+    #site-slogan {
+      font-weight: normal;
+      color: #551A8B;
+      font-size: 19px;
+      line-height: 20px;
+    }
+  }
+}
+
+.region-header {
+  position: absolute;
+  top: 15px;
+  right: 0;
+}
+
+
+#bottom {
+  background: #522E91 url(../images/pirate_party_flag.png) no-repeat bottom right;
+  min-height: 250px;
+  color: #fff;
+  .region-bottom {
+    padding: 0 10px;
+  }
+  ul {
+    margin: 0;
+  }
+  a {
+    color: #fff;
+  }
+}
+
+
+#block-system-main-menu,
+#tabs {
+  li {
+    list-style: none outside none;
+    a {
+      text-decoration: none;
+    }
+  }
+  & > ul.menu,
+  & > ul.tabs {
+    border-radius: 3px 3px 0 0;
+    float: left;
+    margin: 0;
+    padding: 0;
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
+    & > li {
+      float: left;
+      margin: 0;
+      padding: 0;
+      & a {
+        display: block;
+        border-bottom: 0 none;
+        border-radius: 3px 3px 0 0;
+        color: black;
+        font-family: "Unica One", Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: -1px;
+        text-transform: uppercase;
+        padding: 12px 10px 10px;
+        line-height: 18px;
+        border-width: 0;
+        &:hover {
+          color: #FF8800;
+        }
+      }
+      & li a {
+          font-family: Gudea !important;
+        }
+      &.first {
+        background: url("../images/home.gif") no-repeat scroll center 10px transparent !important;
+        text-indent: -999em;
+        & a {
+          padding-left: 25px;
+          padding-right: 25px;
+        }
+        &:hover {
+          background: url("../images/home.gif") no-repeat scroll center 10px white;
+        }
+        & a.active {
+          background: url("../images/home.gif") no-repeat scroll center -107px #111111;
+          &:hover {
+            background: url("../images/home.gif") no-repeat scroll center 10px #111111;
+          }
+        }
+      }
+      &.expanded,
+      &.collapsed {
+        ul.menu {
+          position: absolute;
+          top: -999em;
+          z-index: 999;
+          li {
+            a {
+              font-size: 16px;
+              padding: 2px 10px;
+              font-weight: normal;
+              text-transform: none;
+            }
+          }
+        }
+        &:hover {
+          position: relative;
+          top: 0;
+          background: none repeat scroll 0 0 white;
+          ul.menu {
+            background: none repeat scroll 0 0 white;
+            border-radius: 0 3px 3px 3px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 5px 0;
+            top: 40px;
+            width: 200px;
+            li {
+              & > a.active {
+                background: none repeat scroll 0 0 white;
+                color: black;
+              }
+            }
+          }
+        }
+      }
+    }
+    & li > a.active {
+      background: none repeat scroll 0 0 black;
+      color: white;
+      &:hover {
+        color: #FF8800;
+      }
+    }
+  }
+}
+
+ul.tabs {
+  border-bottom: 5px solid #000;
+  margin-bottom: 15px !important;
+  display: inline-block;
+  float: none !important;
+  a {
+    font-size: 18px !important;
+    padding: 5px 10px 3px !important;
+    background: #eee;
+  }
+  li {
+    margin-right: 7px !important;
+      &:last-child {
+      margin-right: 0 !important;
+    }
+  }
+}
+
+
+.view-pirateparty-workgroups {
+  h3 {
+    margin-bottom: 7px;
+    background: #522E90;
+    padding: 3px 5px 3px 5px;
+    color: #fff;
+    font-size: 15px;
+    display: inline-block;
+  }
+  .item-list {
+    width: 175px;
+    float: left;
+    ul {
+      margin: 0;
+    }
+  }
+}
+
+
+#gazette {
+  .panel-separator {
+    margin-bottom: 9px;
+  }
+  &.panel-3col-stacked .panel-col-last .inside {
+    margin: 0;
+  }
+  .pane-views-panes,
+  .pane-views {
+    background: #FAF8F8;
+    padding: 9px;
+    border: 1px solid #ccc;
+    .pane-title {
+      background: #551A8B;
+      padding: 0px 5px 0px 5px;
+      color: #fff;
+      font-size: 15px;
+      display: block;
+      margin: 0;
+    }
+    ul {
+      margin: 10px 0;
+      padding: 0 0 0 25px;
+      li {
+        margin: 0 0 10px;
+      }
+    }
+    .view-gazette-category {
+      li {
+        list-style: initial;
+      }
+      &.view-display-id-panel_pane_3 {
+        .view-content {
+          overflow: hidden;
+        }
+        .views-row {
+          display: inline-block;
+          margin: 5px 4px 5px 0;
+        }
+      }
+    }
+  }
+}
+
+
+.region-bottom .block {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.2);
+  min-height: 160px;
+  padding: 30px 20px;
+  display: inline-block;
+  h2 {
+    margin-top: 0;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+  .other-pirate-parties-links {
+    padding: 0;
+    li {
+      float: left;
+      list-style-type: none;
+      a {
+        text-decoration: none;
+        vertical-align: baseline;
+        position: relative;
+        background: none repeat scroll 0 0 black;
+        color: #2D7DC5;
+        display: block;
+        margin: 0 2px 2px 0;
+        padding: 0 5px;
+        &:hover {
+          -moz-transition: all 0.2s ease-in-out 0s;
+          background: none repeat scroll 0 0 #2D7DC5;
+          color: white;
+        }
+      }
+    }
+    &:after {
+      content: ".";
+      display: block;
+      clear: both;
+      visibility: hidden;
+      line-height: 0;
+      height: 0;
+    }
+  }
+  &#block-block-2 {
+    max-width: 600px;
+  }
+  &#block-views-pirateparty-workgroups-block-1 {
+    .item-list {
+      width: 200px;
+      h3 {
+        background: #000;
+        margin-top: 0;
+      }
+      ul {
+        list-style: none;
+        padding-left: 13px;
+        li {
+
+        }
+      }
+    }
+  }
+}
+
+
+.node-blog-post {
+  &.view-mode-teaser {
+    margin: 10px 0 0!important;
+    .field-name-ds-user-picture {
+      float: left;
+      width: 40px;
+    }
+    .field-name-node_author_name {
+      float: left;
+      width: 85%;
+    }
+    .field-name-ds-user-picture img {
+      padding: 3px 10px 5px 0;
+    }
+    .field-name-body {
+      padding-top: 23px;
+      padding-left: 40px;
+    }
+    .field-name-title h2,
+    .field-name-node_author_name h2 {
+      margin: 0;
+      line-height: 16px;
+      margin-bottom: 1px;
+      font-size: 16px;
+      a {
+        font-size: 16px;
+      }
+      .title,
+      .author {
+          display: inline-block;
+      }
+      .author,
+      .author a {
+        font-size: 12px;
+        color: #888 !important;
+        font-style: italic;
+      }
+    }
+  }
+  &.view-mode-teaser_2 {
+    .field-name-title {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: #522E91;
+      padding: 15px 15px;
+      h2 {
+        margin: 0;
+        color: #fff;
+        font-size: 15px;
+        line-height: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      a {
+        color: #fff;
+      }
+    }
+    .group-left {
+      width: 30%;
+    }
+    .group-right {
+      width: 30%;
+    }
+  }
+  &.view-mode-full {
+    .group-left {
+      width: 25%;
+    }
+    .group-right {
+      width: 73%;
+    }
+  }
+}
+
+
+
+
+.region-sidebar-first,
+.region-sidebar-second {
+  background: #000;
+  margin-left: 0;
+  margin-bottom: 40px;
+  padding: 54px 25px 25px;
+  -webkit-border-bottom-right-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  color: #fff;
+}
+
+
+
+
+.forum-details {
+  padding: 10px;
+  .forum-description {
+    font-style: italic;
+  }
+}
+
+
+
+
+
+.node-meeting-report {
+  &.view-mode-full {
+    .group-right,
+    .group-left {
+      & > .field {
+        margin-bottom: 15px;
+      }
+    }
+    .group-right {
+      width: 52%;
+      h2, h3 {
+        margin-top: 0;
+      }
+    }
+    .group-left {
+      width: 45%;
+    }
+    table {
+      margin: 5px 0 20px;
+    }
+  }
+}
+
+
+#event {
+  .panel-col-first,
+  .panel-col-last {
+    & > .field {
+      margin-bottom: 15px;
+    }
+  }
+  .panel-col-last {
+    width: 52%;
+    h2, h3 {
+      margin-top: 0;
+    }
+  }
+  .panel-col-first {
+    width: 45%;
+  }
+  table {
+    margin: 5px 0 20px;
+  }
+  .pane-node-field-event-dates {
+    .pane-title {
+      display: none;
+    }
+  }
+}
+
+ul.pager {
+  list-style: none;
+  padding: 0;
+  li {
+    display: inline-block;
+    background: #522e91;
+    padding: 2px 5px;
+    color: #fff;
+    &.pager-current {
+      background: #000;
+    }
+    a {
+      color: #fff;
+    }
+  }
+}
+
+
+#discussion-list-topic {
+  .comment,
+  .node-discussion-list-topic {
+    &.view-mode-full {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 15px;
+      margin-top: 5px;
+      .group-left {
+        width: 30%;
+      }
+      .group-right {
+        width: 70%;
+      }
+    }
+    .permalink {
+      font-size: 14px;
+      text-transform: lowercase;
+    }
+    ul.links {
+      list-style: none;
+      padding: 0;
+      li {
+        display: inline-block;
+        a {
+          background: #522E91;
+          color: #fff;
+          padding: 2px 5px;
+        }
+      }
+    }
+  }
+}
+
+
+.info-crews,
+.info-squads {
+  width: 45%;
+  float: left;
+  padding: 0 2%;
+  margin-bottom: 20px;
+}
+.info-crews {
+  border-right: 1px solid #ccc;
+}
+
+
+.page-node-127 {
+  #content {
+    background: url('http://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Piratpartiet.svg/220px-Piratpartiet.svg.png') no-repeat 550px 290px;
+  }
+}
+
+
+.view-gazette-media-large {
+  .video-embed-description {
+    font-size: 13px;
+    font-style: italic;
+    color: #838383;
+  }
+  .views-field-title a {
+    background: #551A8B;
+    padding: 5px;
+    color: white;
+    font-size: 15px;
+    display: block;
+    margin: 0 0 5px;
+    font-weight: bold;
+  }
+}
+
+
+.sidebars .block {
+  margin-bottom: 20px;
+  h2 {
+    margin: 0;
+  }
+  ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    li {
+      a {
+        background: #551A8B;
+        padding: 5px 10px;
+        color: white;
+        display: block;
+        margin: 0 0 5px;
+        text-transform: lowercase;
+        margin: 0 0 3px;
+      }
+    }
+  }
+  &.last {
+    margin: 0;
+  }
+}
+
+.sidebars .block-menu {
+  h2 {
+    margin: 0;
+  }
+  ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    li {
+      a {
+        background: #551A8B;
+        padding: 5px 10px;
+        color: white;
+        display: block;
+        margin: 0 0 5px;
+        text-transform: lowercase;
+        margin: 0 0 3px;
+      }
+    }
+  }
+}
+
+#block-user-login {
+  background: #522e91;
+  padding: 5px 10px 10px;
+  .form-item {
+    margin: 8px 0;
+  }
+  .form-actions {
+    margin-top: 20px;
+  }
+  h2 {
+    margin: 0;
+  }
+  a {
+    color: #fff;
+  }
+  input {
+    width: 100%;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    li {
+      background: #000;
+      display: inline-block;
+      margin-top: 10px;
+      padding: 3px 10px;
+      &.first {
+        a {
+          font-size: 20px;
+          font-weight: bold;
+          color: #F80;
+          background: none;
+          padding: 0;
+        }
+      }
+      &.last {
+        a {
+         font-size: 13px;
+          font-weight: bold;
+          text-transform: lowercase;
+          background: none;
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+#block-og-extras-group-info {
+  background: #F80;
+  padding: 10px;
+  color: #000;
+  font-size: 0.9em;
+  a {
+    color: #000;
+    font-size: 17px;
+    font-weight: bold;
+  }
+}
+
+
+#block-search-form {
+  .form-type-textfield {
+    input {
+      width: 230px;
+    }
+  }
+}
+
+
+form {
+  .form-item {
+    margin: 10px 0;
+  }
+  .form-type-radio {
+    &.form-item {
+      margin: 0;
+    }
+    input,
+    label {
+      display: inline-block;
+    }
+    input {
+      margin-right: 3px;
+    }
+    label {
+      font-weight: normal;
+    }
+  }
+  .form-type-textfield {
+    input {
+      width: 100%;
+    }
+  }
+  .description,
+  .fieldset-description {
+    font-size: 13px;
+    font-style: italic;
+    color: #838383;
+  }
+  .form-actions {
+    margin-top: 20px;
+  }
+  fieldset {
+    border: 1px solid #838383;
+  }
+}
+
+#user-register-form {
+  .group-left,
+  .group-right {
+    
+  }
+  .group-left fielset {
+    border: 1px solid #838383;
+  }
+  .group-right fielset {
+    width: 48%;
+    background: #ccc;
+  }
+}
+
+
+
+

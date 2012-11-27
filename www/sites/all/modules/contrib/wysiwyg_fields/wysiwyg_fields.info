@@ -1,0 +1,16 @@
+name = Wysiwyg Fields
+description = Field support for the WYSIWYG module
+package = User interface
+dependencies[] = field_ui
+dependencies[] = filter
+dependencies[] = wysiwyg
+core = 7.x
+
+files[] = includes/field_ui.inc
+
+; Information added by drupal.org packaging script on 2012-10-01
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "wysiwyg_fields"
+datestamp = "1349096680"
+

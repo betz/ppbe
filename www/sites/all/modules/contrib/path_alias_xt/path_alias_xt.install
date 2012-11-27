@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall hooks for path_alias_xt module.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function path_alias_xt_requirements($phase) {
+  $t = get_t();
+  $has_runkit = function_exists('runkit_function_redefine');
+  $requirements['path_alias_xt'] = array(
+    'title' => $t('PECL runkit (for Extended Path Aliases)'),
+    'value' => $has_runkit ? $t('Installed') : $t('Not installed'),
+  );
+  if (!$has_runkit) {
+    $requirements['path_alias_xt']['severity'] = REQUIREMENT_INFO;
+    $requirements['path_alias_xt']['description'] = $t('Reminder: the PECL runkit is not installed. If, in addition to the already enabled basic functions, you want this module\'s advanced features to be operational, please edit file %path-inc, if you have not done so already. See the !README file for details.',
+      array('%path-inc' => 'include/path.inc',
+            '!README' => '<a href=/' . drupal_get_path('module', 'path_alias_xt') . '/README.txt>README</a>'));
+  }
+  return $requirements;
+}
+
+/**
+ * Implements hook_install().
+ */
+function path_alias_xt_install() {
+  return;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function path_alias_xt_uninstall() {
+  variable_del('path_alias_xt_regex_pattern');
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Any saved existing version of 'path_alias_xt_regex_pattern' will not work
+ * with the updated source code. So delete it.
+ */
+function path_alias_xt_update_7001() {
+  variable_del('path_alias_xt_regex_pattern');
+}

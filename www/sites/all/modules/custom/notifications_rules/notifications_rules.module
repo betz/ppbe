@@ -1,0 +1,128 @@
+<?php
+
+/**
+ * Implementation of hook_rules_action_info() on behalf of the notifications module.
+ */
+function notifications_rules_rules_action_info() {
+  $defaults = array(
+    'parameter' => array(
+      'node' => array(
+        'type' => 'node',
+        'label' => t('Content'),
+      ),
+      'account' => array(
+        'type' => 'user',
+        'label' => t('User'),
+      ),
+    ),
+    'group' => t('Notifications'),
+    'access callback' => 'notifications_rules_integration_access'
+  );
+
+  $items['notifications_rules_subscribe_user'] = $defaults + array(
+    'label' => t('Subscribe a user to content notifications'),
+    'base' => 'notifications_rules_subscribe_user_action',
+  );
+  $items['notifications_rules_subscribe_user']['parameter']['interval'] = array(
+    'type' => 'text',
+    'label' => t('Interval'),
+    'options list' => 'notifications_send_intervals',
+    'description' => t('Select the send interval.'),
+    'default value' => 'notifications_rules_default_send_interval',
+  );
+  $items['notifications_rules_subscribe_user']['parameter']['method'] = array(
+    'type' => 'text',
+    'label' => t('Method'),
+    'options list' => 'notifications_rules_messaging_method_info',
+    'description' => t('Select the send method.'),
+    'default value' => 'notifications_rules_default_send_method',
+  );
+
+  $items['notifications_rules_unsubscribe_user'] = $defaults + array(
+    'label' => t('Unsubscribe a user from content notifications'),
+    'base' => 'notifications_rules_unsubscribe_user_action',
+  );
+
+  $items['notifications_rules_node_post'] = $defaults + array(
+    'label' => t('Send content notificaitons for new content.'),
+    'base' => 'notifications_rules_node_post_action',
+  );
+  unset($items['notifications_rules_node_post']['parameter']['account']);
+
+  $items['notifications_rules_node_update'] = $defaults + array(
+    'label' => t('Send content notificaitons for existing content.'),
+    'base' => 'notifications_rules_node_update_action',
+  );
+  unset($items['notifications_rules_node_update']['parameter']['account']);
+
+  return $items;
+}
+
+/**
+ * Wrapper around messaging_method_info().
+ */
+function notifications_rules_messaging_method_info() {
+  return messaging_method_info(NULL, 'name');
+}
+
+/**
+ * Default send interval.
+ */
+function notifications_rules_default_send_interval() {
+  return notifications_user_setting('send_interval');
+}
+
+/**
+ * Default send method.
+ */
+function notifications_rules_default_send_method() {
+  return notifications_user_setting('send_interval');
+}
+
+/**
+ * TODO: Implement access check,
+ */
+function notifications_rules_integration_access() {
+  return TRUE;
+}
+
+/**
+ * Action: Subscribe a user to content notifications
+ */
+function notifications_rules_subscribe_user_action($node, $account, $interval, $method) {
+  $subscription = notifications_subscription('content_thread')
+    ->instance()
+    ->set_node($node)
+    ->set_user($account)
+    ->set_interval($interval)
+    ->set_method($method);
+
+  notifications_save_subscription($subscription);
+}
+
+/**
+ * Action: Unsubscribe a user from content notifications
+ */
+function notifications_rules_unsubscribe_user_action($node, $account) {
+  Notifications_Subscription::delete_multiple(array('uid' => $account->uid), array('node:nid' => $node->nid), FALSE);
+}
+
+/**
+ * Action: Trigger content notifications.
+ */
+function notifications_rules_node_post_action($node) {
+  // Just for new nodes that are published and updated nodes that change status
+  if (!empty($node->status) && empty($node->notifications_content_disable)) {
+    _notifications_content_trigger_node($node, 'post');
+  }
+}
+
+/**
+ * Action: Trigger content notifications.
+ */
+function notifications_rules_node_update_action($node) {
+  // Content that was previously published has been updated.
+  if (!empty($node->status) && !empty($node->notifications_status) && empty($node->notifications_content_disable)) {
+    _notifications_content_trigger_node($node, 'update');
+  }
+}

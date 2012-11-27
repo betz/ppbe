@@ -1,0 +1,4 @@
+Wysiwyg Fields 7.x-1.x-dev, xxxx-xx-xx (Development release)
+----------------------------------
+
+- Initial 7.x release.

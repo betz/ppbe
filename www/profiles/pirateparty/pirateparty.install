@@ -1,0 +1,411 @@
+<?php
+
+function pirateparty_install() {
+
+  pirateparty_enable_admin_theme();
+  pirateparty_setup_content_types();
+  pirateparty_create_home_link();
+  pirateparty_setup_roles_formats_permissions();
+  pirateparty_setup_wysiwyg();
+
+  // File paths
+  variable_set('file_temporary_path', '/tmp');
+  variable_set('file_public_path', 'sites/default/files');
+
+  // Image quality
+  variable_set('image_jpeg_quality', '100');
+
+  // date and time
+  variable_set('configurable_timezones', '0');
+
+  // Allow visitor account creation with administrative approval.
+  variable_set('user_register', USER_REGISTER_ADMINISTRATORS_ONLY);
+
+  // Disable error reporting to display
+  variable_set('error_level', 0);
+
+  // Set all pathauto patterns to empty
+  variable_set('pathauto_node_pattern', '');
+  variable_set('pathauto_blog_pattern', '');
+  variable_set('pathauto_node_page_pattern', '');
+  variable_set('pathauto_forum_pattern', '');
+  variable_set('pathauto_taxonomy_term_pattern', '');
+  variable_set('pathauto_user_pattern', '');
+  variable_set('pathauto_transliterate', '1');
+
+  // Set administrator role
+  variable_set('user_admin_role', '4');  
+
+  // Update the menu router information.
+  menu_rebuild();
+}
+
+/**
+* Setup roles, formats and permissions
+*/
+function pirateparty_setup_roles_formats_permissions() {
+  // Add text formats.
+  $raw_format = array(
+    'format' => 'raw',
+    'name' => 'Raw',
+    'weight' => 5,
+    'filters' => array(),
+  );
+  $raw_format = (object) $raw_format;
+  filter_format_save($raw_format);
+  $raw_permission = filter_permission_name($raw_format);
+
+  $filtered_html_format = array(
+    'format' => 'filtered_html',
+    'name' => 'Filtered HTML',
+    'weight' => 2,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // HTML filter.
+      'filter_html' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 2,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+      // SpamSpan filter.
+      'spamspan' => array(
+        'weight' => 11,
+        'status' => 1,
+      ),
+      // Pathologic filter.
+      'pathologic' => array(
+        'weight' => 11,
+        'status' => 1,
+        'settings' => array('absolute' => FALSE),
+      ),
+      // SpamSpan filter.
+      'image_resize_filter' => array(
+        'weight' => 11,
+        'status' => 1,
+      ),
+      // Video embed field filter
+      'video_embed_field' => array(
+        'weight' => 11,
+        'status' => 1,
+      ),
+    ),
+  );
+  $filtered_html_format = (object) $filtered_html_format;
+  filter_format_save($filtered_html_format);
+  $filtered_html_permission = filter_permission_name($filtered_html_format);
+
+  $full_html_format = array(
+    'format' => 'full_html',
+    'name' => 'Full HTML',
+    'weight' => 1,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+      // SpamSpan filter.
+      'spamspan' => array(
+        'weight' => 11,
+        'status' => 1,
+      ),
+      // Pathologic filter.
+      'pathologic' => array(
+        'weight' => 11,
+        'status' => 1,
+        'settings' => array('absolute' => FALSE),
+      ),
+      // Image resize filter.
+      'image_resize_filter' => array(
+        'weight' => 11,
+        'status' => 1,
+      ),
+      // Video embed field filter
+      'video_embed_field' => array(
+        'weight' => 11,
+        'status' => 1,
+      ),
+    ),
+  );
+  $full_html_format = (object) $full_html_format;
+  filter_format_save($full_html_format);
+  $full_html_permission = filter_permission_name($full_html_format);
+
+
+  $texteditor_format = array(
+    'format' => 'texteditor',
+    'name' => 'Text Editor',
+    'weight' => 0,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 1,
+        'status' => 0,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+      // SpamSpan filter.
+      'spamspan' => array(
+        'weight' => 11,
+        'status' => 1,
+      ),
+      // Pathologic filter.
+      'pathologic' => array(
+        'weight' => 11,
+        'status' => 1,
+        'settings' => array('absolute' => FALSE),
+      ),
+      // Image resize filter.
+      'image_resize_filter' => array(
+        'weight' => 11,
+        'status' => 1,
+      ),
+      // Video embed field filter
+      'video_embed_field' => array(
+        'weight' => 11,
+        'status' => 1,
+      ),
+      // WYSIWYG filter
+      'wysiwyg_filter' => array(
+        'weight' => 11,
+        'status' => 1,
+      ),
+    ),
+  );
+  $texteditor_format = (object) $texteditor_format;
+  filter_format_save($texteditor_format);
+  $texteditor_permission = filter_permission_name($texteditor_format);
+
+
+  // Create a role for editors.
+  $editor_role = new stdClass();
+  $editor_role->name = 'Editor';
+  $editor_role->weight = 3;
+  user_role_save($editor_role);
+
+  // Create a role for site administrators.
+  $admin_role = new stdClass();
+  $admin_role->name = 'Administrator';
+  $admin_role->weight = 4;
+  user_role_save($admin_role);
+
+  // Set anonymous user permissions
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content', $filtered_html_permission));
+
+  // Set authenticated user permissions
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content', $filtered_html_permission));
+
+  // Set editor permissions
+  $editor_permissions = array(
+    'access administration pages',
+    'access content',
+    'access content overview',
+    'administer nodes',
+    'create page content',
+    'delete any page content',
+    'delete own page content',
+    'delete revisions',
+    'edit any page content',
+    'edit own page content',
+    'revert revisions',
+    'view own unpublished content',
+    'view revisions',
+    'view the administration theme',
+    $filtered_html_permission,
+    $full_html_permission,
+    $texteditor_permission,
+  );
+  user_role_grant_permissions($editor_role->rid, $editor_permissions);
+
+
+  // Set administrator permissions
+  $admin_permissions = array(
+    'access administration pages',
+    'access content',
+    'access content overview',
+    'access site in maintenance mode',
+    'access site reports',
+    'access user profiles',
+    'administer blocks',
+    'administer menu',
+    'administer nodes',
+    'administer redirects',
+    'administer url aliases',
+    'administer users',
+    'bypass node access',
+    'create page content',
+    'create url aliases',
+    'delete any page content',
+    'delete own page content',
+    'delete revisions',
+    'edit any page content',
+    'edit own page content',
+    'revert revisions',
+    'view own unpublished content',
+    'view revisions',
+    'view the administration theme',
+    $filtered_html_permission,
+    $full_html_permission,
+    $raw_permission,
+    $texteditor_permission,
+  );
+  user_role_grant_permissions($admin_role->rid, $admin_permissions);
+
+  // Assign user 1 the "administrator" role.
+  db_insert('users_roles')
+    ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
+    ->execute();
+}
+
+/**
+* Set up content types
+*/
+function pirateparty_setup_content_types() {
+  // Create page content type
+  $types = array(
+    array(
+      'type' => 'page',
+      'name' => st('Basic page'),
+      'base' => 'node_content',
+      'description' => st("Use <em>basic pages</em> for your static content, such as an 'About us' page."),
+      'custom' => 1,
+      'modified' => 1,
+      'locked' => 0,
+    ),
+  );
+
+  foreach ($types as $type) {
+    $type = node_type_set_defaults($type);
+    node_type_save($type);
+    node_add_body_field($type);
+  }
+
+  // Default "Basic page" to not be promoted and have comments disabled.
+  variable_set('node_options_page', array('status'));
+
+  // Don't display date and author information for "Basic page" nodes by default.
+  variable_set('node_submitted_page', FALSE);
+}
+
+/**
+* Set Rubik as the Admin Theme
+*/
+function pirateparty_enable_admin_theme () {
+  // Enable the admin theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', 'seven')
+    ->execute();
+  variable_set('admin_theme', 'seven');
+  variable_set('node_admin_theme', '1');
+}
+
+function pirateparty_create_home_link() {
+  $item = array(
+    'link_title' => st('Home'),
+    'link_path' => '<front>',
+    'menu_name' => 'main-menu',
+  );
+  menu_link_save($item);
+}
+
+function pirateparty_setup_wysiwyg() {
+  $settings = array(
+    'default' => 1,
+    'user_choose' => 0,
+    'show_toggle' => 1,
+    'theme' => 'advanced',
+    'language' => 'en',
+    'buttons' => array(
+      'default' => array(
+        'bold' => 1,
+        'italic' => 1,
+        'bullist' => 1,
+        'numlist' => 1,
+        'outdent' => 1,
+        'indent' => 1,
+        'undo' => 1,
+        'redo' => 1,
+        'link' => 1,
+        'unlink' => 1,
+        'image' => 1,
+        'cut' => 1,
+        'copy' => 1,
+        'paste' => 1,
+      ),
+      'font' => array(
+        'formatselect' => 1,
+      ),
+      'table' => array(
+        'tablecontrols' => 1,
+        ),
+      'linkit' => array(
+        'linkit' => 1,
+      ),
+    ),
+    'toolbar_loc' => 'top',
+    'toolbar_align' => 'left',
+    'path_loc' => 'bottom',
+    'resizing' => 1,
+    'verify_html' => 1,
+    'preformatted' => 0,
+    'convert_fonts_to_spans' => 1,
+    'remove_linebreaks' => 1,
+    'apply_source_formatting' => 0,
+    'paste_auto_cleanup_on_paste' => 0,
+    'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
+    'css_setting' => 'theme',
+    'css_path' => '',
+    'css_classes' => '',
+  );
+
+  db_insert('wysiwyg')
+    ->fields(array('format' => 'filtered_html', 'editor' => '', 'settings' => ''))
+    ->execute();
+  db_insert('wysiwyg')
+    ->fields(array('format' => 'full_html', 'editor' => '', 'settings' => ''))
+    ->execute();
+  db_insert('wysiwyg')
+    ->fields(array('format' => 'texteditor', 'editor' => 'tinymce', 'settings' => serialize($settings)))
+    ->execute();
+  db_insert('wysiwyg')
+    ->fields(array('format' => 'plain_text', 'editor' => '', 'settings' => ''))
+    ->execute();
+  db_insert('wysiwyg')
+    ->fields(array('format' => 'raw', 'editor' => '', 'settings' => ''))
+    ->execute();
+}
+
+

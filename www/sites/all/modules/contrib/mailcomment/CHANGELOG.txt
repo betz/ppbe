@@ -1,0 +1,34 @@
+Mail Comment 7.x-2.x, 2012-01-19
+--------------------------------
+#1409678 by jjemmett, pereljon: 'Origbody' source no longer used by Mailhandler.
+
+Mail Comment 7.x-2.0, 2011-12-04
+--------------------------------
+#1355106 by pereljon: Fixed message headers not added when node is posted.
+#1336582 by Dane Powell: Fixed comments being imported even on disallowed node types.
+#1352980 by pereljon: Fixed broken link to original comment in notification messages.
+#1352940 by pereljon: Fixed minor code style errors.
+#1350072 by pereljon: Fixed recoverable fatal error on comment import.
+Fixed bad version dependency.
+Added version requirements.
+
+Mail Comment 7.x-2.0-rc1, 2011-10-19
+------------------------------------
+Coder (code formatting) cleanup before next release.
+#1188584 by davideads: Improved message cleaning/filtering options.
+Fixed hook_feeds_after_parse (again).
+Fixed hook_feeds_after_parse definition.
+
+Mail Comment 7.x-2.0-beta2, 2011-08-30
+--------------------------------------
+#1244224 by davideads: Fixed Mail Comment redirect showing up in menu.
+#1188584 by arvinsingla, Dane Powell: Fixed reply text not being stripped from message body.
+Removed hook_mailcomment_alter() - the same functionality can be achieved with existing Feeds hooks.
+Updated for compatibility with Mailhandler 7.x-2.0-beta2
+#1248182 by Dane Powell: Fixed WSOD on configuration page (again)
+#1248182 by Dane Powell: Fixed WSOD on configuration page
+
+Mail Comment 7.x-2.0-beta1, 2011-05-18
+--------------------------------------
+#1158562 by Dane Powell: Cleaned up code (Coder review and documentation)
+Added CHANGELOG.txt
