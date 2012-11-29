@@ -207,7 +207,7 @@ thead tr th {
     }
   }
   & > ul.menu,
-  & > ul.tabs {
+  & > ul.tabs.primary {
     border-radius: 3px 3px 0 0;
     float: left;
     margin: 0;
@@ -295,6 +295,38 @@ thead tr th {
       color: white;
       &:hover {
         color: #FF8800;
+      }
+    }
+  }
+  & > ul.tabs.secondary {
+    width: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    li {
+      float: left;
+      padding: 0;
+      margin: 0;
+      margin-right: 0 !important;
+      a {
+        margin: 0;
+        margin-right: 0 !important;
+        font-size: 13px;
+        background: none;
+        text-transform: lowercase;
+        padding: 0 10px !important;
+        color: #838383;
+        border-right: 1px solid #ccc;
+      }
+    }
+    li:first-child {
+      a {
+        padding-left: 0 !important;
+      }
+    }
+    li:last-child {
+      a {
+        border-right: 0;
       }
     }
   }

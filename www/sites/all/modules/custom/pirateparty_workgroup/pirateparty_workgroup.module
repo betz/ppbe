@@ -150,7 +150,7 @@ function pirateparty_workgroup_theme() {
  * Implements hook_form_alter().
  */
 function pirateparty_workgroup_form_alter(&$form, &$form_state, $form_id) {
-  //dsm($form_id);
+  //var_dump($form_id);
   switch($form_id) {
     case 'user_login_block':
       $links[] = l(t('Become a Pirate!'), 'user/register');
@@ -169,6 +169,10 @@ function pirateparty_workgroup_form_alter(&$form, &$form_state, $form_id) {
 
     case 'user_pass':
       drupal_set_title(t('Request a new password'));
+      break;
+
+    case 'event_node_form':
+      
       break;
   }
 }

@@ -10,3 +10,6 @@ www/sites/*/private
 
 # Ignore OS hidden files that shouldn't be in the repo
 .DS_Store
+
+# ignore tmp files of sass
+.sass-cache
