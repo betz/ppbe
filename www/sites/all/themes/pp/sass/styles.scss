@@ -652,41 +652,6 @@ ul.pager {
 }
 
 
-#discussion-list-topic {
-  .comment,
-  .node-discussion-list-topic {
-    &.view-mode-full {
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 15px;
-      margin-top: 5px;
-      .group-left {
-        width: 30%;
-      }
-      .group-right {
-        width: 70%;
-      }
-    }
-    .permalink {
-      font-size: 14px;
-      text-transform: lowercase;
-    }
-    ul.links {
-      list-style: none;
-      padding: 0;
-      li {
-        display: inline-block;
-        a {
-          background: #522E91;
-          color: #fff;
-          padding: 2px 5px;
-        }
-      }
-    }
-  }
-}
-
-
 .info-crews,
 .info-squads {
   width: 45%;
@@ -893,8 +858,99 @@ form {
     width: 48%;
     background: #ccc;
   }
+  #edit-field-profile-first-name {
+    width: 49%;
+    margin-right: 2%;
+    display: inline-block;
+  }
+  #edit-field-profile-last-name {
+    display: inline-block;
+    width: 49%; 
+  }
 }
 
 
+#comments {
+  & > h2 {
+    background: #838383;
+    color: #fff;
+    padding: 0 15px;
+  }
+  .comment {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    .group-left {
+      width: 30%;
+      font-size: 13px;
+      a {
+        font-size: 13px;
+      }
+    }
+    .group-right {
+      width: 70%;
+    }
+  }
+  .permalink {
+    font-size: 14px;
+    text-transform: lowercase;
+  }
+  ul.links {
+    list-style: none;
+    padding: 0;
+    li {
+      display: inline-block;
+      a {
+        background: #522E91;
+        color: #fff;
+        padding: 2px 5px;
+      }
+    }
+  }
+  .comment-thread-expand {
+    font-size: 13px;
+    background: #F80;
+    color: #fff;
+    padding: 2px 5px;
+  }
+  .comment_forbidden {
+    display: none !important;
+  }
+}
+
+#discussion-list-topic {
+  .comment,
+  .node-discussion-list-topic {
+    &.view-mode-full {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 15px;
+      margin-top: 5px;
+      .group-left {
+        width: 30%;
+      }
+      .group-right {
+        width: 70%;
+      }
+    }
+    .permalink {
+      font-size: 14px;
+      text-transform: lowercase;
+    }
+    ul.links {
+      list-style: none;
+      padding: 0;
+      li {
+        display: inline-block;
+        a {
+          background: #522E91;
+          color: #fff;
+          padding: 2px 5px;
+        }
+      }
+    }
+  }
+}
 
 

@@ -2098,50 +2098,7 @@ ul.pager li a {
   color: #fff;
 }
 
-/* line 658, ../sass/styles.scss */
-#discussion-list-topic .comment.view-mode-full,
-#discussion-list-topic .node-discussion-list-topic.view-mode-full {
-  border: 1px solid #ccc;
-  padding: 15px;
-  margin-bottom: 15px;
-  margin-top: 5px;
-}
-/* line 663, ../sass/styles.scss */
-#discussion-list-topic .comment.view-mode-full .group-left,
-#discussion-list-topic .node-discussion-list-topic.view-mode-full .group-left {
-  width: 30%;
-}
-/* line 666, ../sass/styles.scss */
-#discussion-list-topic .comment.view-mode-full .group-right,
-#discussion-list-topic .node-discussion-list-topic.view-mode-full .group-right {
-  width: 70%;
-}
-/* line 670, ../sass/styles.scss */
-#discussion-list-topic .comment .permalink,
-#discussion-list-topic .node-discussion-list-topic .permalink {
-  font-size: 14px;
-  text-transform: lowercase;
-}
-/* line 674, ../sass/styles.scss */
-#discussion-list-topic .comment ul.links,
-#discussion-list-topic .node-discussion-list-topic ul.links {
-  list-style: none;
-  padding: 0;
-}
-/* line 677, ../sass/styles.scss */
-#discussion-list-topic .comment ul.links li,
-#discussion-list-topic .node-discussion-list-topic ul.links li {
-  display: inline-block;
-}
-/* line 679, ../sass/styles.scss */
-#discussion-list-topic .comment ul.links li a,
-#discussion-list-topic .node-discussion-list-topic ul.links li a {
-  background: #522E91;
-  color: #fff;
-  padding: 2px 5px;
-}
-
-/* line 691, ../sass/styles.scss */
+/* line 656, ../sass/styles.scss */
 .info-crews,
 .info-squads {
   width: 45%;
@@ -2150,23 +2107,23 @@ ul.pager li a {
   margin-bottom: 20px;
 }
 
-/* line 697, ../sass/styles.scss */
+/* line 662, ../sass/styles.scss */
 .info-crews {
   border-right: 1px solid #ccc;
 }
 
-/* line 703, ../sass/styles.scss */
+/* line 668, ../sass/styles.scss */
 .page-node-127 #content {
   background: url("http://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Piratpartiet.svg/220px-Piratpartiet.svg.png") no-repeat 550px 290px;
 }
 
-/* line 710, ../sass/styles.scss */
+/* line 675, ../sass/styles.scss */
 .view-gazette-media-large .video-embed-description {
   font-size: 13px;
   font-style: italic;
   color: #838383;
 }
-/* line 715, ../sass/styles.scss */
+/* line 680, ../sass/styles.scss */
 .view-gazette-media-large .views-field-title a {
   background: #551A8B;
   padding: 5px;
@@ -2177,21 +2134,21 @@ ul.pager li a {
   font-weight: bold;
 }
 
-/* line 727, ../sass/styles.scss */
+/* line 692, ../sass/styles.scss */
 .sidebars .block {
   margin-bottom: 20px;
 }
-/* line 729, ../sass/styles.scss */
+/* line 694, ../sass/styles.scss */
 .sidebars .block h2 {
   margin: 0;
 }
-/* line 732, ../sass/styles.scss */
+/* line 697, ../sass/styles.scss */
 .sidebars .block ul {
   padding: 0;
   list-style: none;
   margin: 0;
 }
-/* line 737, ../sass/styles.scss */
+/* line 702, ../sass/styles.scss */
 .sidebars .block ul li a {
   background: #551A8B;
   padding: 5px 10px;
@@ -2201,22 +2158,22 @@ ul.pager li a {
   text-transform: lowercase;
   margin: 0 0 3px;
 }
-/* line 748, ../sass/styles.scss */
+/* line 713, ../sass/styles.scss */
 .sidebars .block.last {
   margin: 0;
 }
 
-/* line 754, ../sass/styles.scss */
+/* line 719, ../sass/styles.scss */
 .sidebars .block-menu h2 {
   margin: 0;
 }
-/* line 757, ../sass/styles.scss */
+/* line 722, ../sass/styles.scss */
 .sidebars .block-menu ul {
   padding: 0;
   list-style: none;
   margin: 0;
 }
-/* line 762, ../sass/styles.scss */
+/* line 727, ../sass/styles.scss */
 .sidebars .block-menu ul li a {
   background: #551A8B;
   padding: 5px 10px;
@@ -2227,45 +2184,45 @@ ul.pager li a {
   margin: 0 0 3px;
 }
 
-/* line 775, ../sass/styles.scss */
+/* line 740, ../sass/styles.scss */
 #block-user-login {
   background: #522e91;
   padding: 5px 10px 10px;
 }
-/* line 778, ../sass/styles.scss */
+/* line 743, ../sass/styles.scss */
 #block-user-login .form-item {
   margin: 8px 0;
 }
-/* line 781, ../sass/styles.scss */
+/* line 746, ../sass/styles.scss */
 #block-user-login .form-actions {
   margin-top: 20px;
 }
-/* line 784, ../sass/styles.scss */
+/* line 749, ../sass/styles.scss */
 #block-user-login h2 {
   margin: 0;
 }
-/* line 787, ../sass/styles.scss */
+/* line 752, ../sass/styles.scss */
 #block-user-login a {
   color: #fff;
 }
-/* line 790, ../sass/styles.scss */
+/* line 755, ../sass/styles.scss */
 #block-user-login input {
   width: 100%;
 }
-/* line 793, ../sass/styles.scss */
+/* line 758, ../sass/styles.scss */
 #block-user-login ul {
   list-style: none;
   padding: 0;
   margin: 10px 0 0;
 }
-/* line 797, ../sass/styles.scss */
+/* line 762, ../sass/styles.scss */
 #block-user-login ul li {
   background: #000;
   display: inline-block;
   margin-top: 10px;
   padding: 3px 10px;
 }
-/* line 803, ../sass/styles.scss */
+/* line 768, ../sass/styles.scss */
 #block-user-login ul li.first a {
   font-size: 20px;
   font-weight: bold;
@@ -2273,7 +2230,7 @@ ul.pager li a {
   background: none;
   padding: 0;
 }
-/* line 812, ../sass/styles.scss */
+/* line 777, ../sass/styles.scss */
 #block-user-login ul li.last a {
   font-size: 13px;
   font-weight: bold;
@@ -2282,72 +2239,184 @@ ul.pager li a {
   padding: 0;
 }
 
-/* line 824, ../sass/styles.scss */
+/* line 789, ../sass/styles.scss */
 #block-og-extras-group-info {
   background: #F80;
   padding: 10px;
   color: #000;
   font-size: 0.9em;
 }
-/* line 829, ../sass/styles.scss */
+/* line 794, ../sass/styles.scss */
 #block-og-extras-group-info a {
   color: #000;
   font-size: 17px;
   font-weight: bold;
 }
 
-/* line 839, ../sass/styles.scss */
+/* line 804, ../sass/styles.scss */
 #block-search-form .form-type-textfield input {
   width: 230px;
 }
 
-/* line 847, ../sass/styles.scss */
+/* line 812, ../sass/styles.scss */
 form .form-item {
   margin: 10px 0;
 }
-/* line 851, ../sass/styles.scss */
+/* line 816, ../sass/styles.scss */
 form .form-type-radio.form-item {
   margin: 0;
 }
-/* line 855, ../sass/styles.scss */
+/* line 820, ../sass/styles.scss */
 form .form-type-radio input,
 form .form-type-radio label {
   display: inline-block;
 }
-/* line 858, ../sass/styles.scss */
+/* line 823, ../sass/styles.scss */
 form .form-type-radio input {
   margin-right: 3px;
 }
-/* line 861, ../sass/styles.scss */
+/* line 826, ../sass/styles.scss */
 form .form-type-radio label {
   font-weight: normal;
 }
-/* line 866, ../sass/styles.scss */
+/* line 831, ../sass/styles.scss */
 form .form-type-textfield input {
   width: 100%;
 }
-/* line 871, ../sass/styles.scss */
+/* line 836, ../sass/styles.scss */
 form .description,
 form .fieldset-description {
   font-size: 13px;
   font-style: italic;
   color: #838383;
 }
-/* line 876, ../sass/styles.scss */
+/* line 841, ../sass/styles.scss */
 form .form-actions {
   margin-top: 20px;
 }
-/* line 879, ../sass/styles.scss */
+/* line 844, ../sass/styles.scss */
 form fieldset {
   border: 1px solid #838383;
 }
 
-/* line 889, ../sass/styles.scss */
+/* line 854, ../sass/styles.scss */
 #user-register-form .group-left fielset {
   border: 1px solid #838383;
 }
-/* line 892, ../sass/styles.scss */
+/* line 857, ../sass/styles.scss */
 #user-register-form .group-right fielset {
   width: 48%;
   background: #ccc;
+}
+/* line 861, ../sass/styles.scss */
+#user-register-form #edit-field-profile-first-name {
+  width: 49%;
+  margin-right: 2%;
+  display: inline-block;
+}
+/* line 866, ../sass/styles.scss */
+#user-register-form #edit-field-profile-last-name {
+  display: inline-block;
+  width: 49%;
+}
+
+/* line 874, ../sass/styles.scss */
+#comments > h2 {
+  background: #838383;
+  color: #fff;
+  padding: 0 15px;
+}
+/* line 879, ../sass/styles.scss */
+#comments .comment {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+/* line 884, ../sass/styles.scss */
+#comments .comment .group-left {
+  width: 30%;
+  font-size: 13px;
+}
+/* line 887, ../sass/styles.scss */
+#comments .comment .group-left a {
+  font-size: 13px;
+}
+/* line 891, ../sass/styles.scss */
+#comments .comment .group-right {
+  width: 70%;
+}
+/* line 895, ../sass/styles.scss */
+#comments .permalink {
+  font-size: 14px;
+  text-transform: lowercase;
+}
+/* line 899, ../sass/styles.scss */
+#comments ul.links {
+  list-style: none;
+  padding: 0;
+}
+/* line 902, ../sass/styles.scss */
+#comments ul.links li {
+  display: inline-block;
+}
+/* line 904, ../sass/styles.scss */
+#comments ul.links li a {
+  background: #522E91;
+  color: #fff;
+  padding: 2px 5px;
+}
+/* line 911, ../sass/styles.scss */
+#comments .comment-thread-expand {
+  font-size: 13px;
+  background: #F80;
+  color: #fff;
+  padding: 2px 5px;
+}
+/* line 917, ../sass/styles.scss */
+#comments .comment_forbidden {
+  display: none !important;
+}
+
+/* line 925, ../sass/styles.scss */
+#discussion-list-topic .comment.view-mode-full,
+#discussion-list-topic .node-discussion-list-topic.view-mode-full {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+/* line 930, ../sass/styles.scss */
+#discussion-list-topic .comment.view-mode-full .group-left,
+#discussion-list-topic .node-discussion-list-topic.view-mode-full .group-left {
+  width: 30%;
+}
+/* line 933, ../sass/styles.scss */
+#discussion-list-topic .comment.view-mode-full .group-right,
+#discussion-list-topic .node-discussion-list-topic.view-mode-full .group-right {
+  width: 70%;
+}
+/* line 937, ../sass/styles.scss */
+#discussion-list-topic .comment .permalink,
+#discussion-list-topic .node-discussion-list-topic .permalink {
+  font-size: 14px;
+  text-transform: lowercase;
+}
+/* line 941, ../sass/styles.scss */
+#discussion-list-topic .comment ul.links,
+#discussion-list-topic .node-discussion-list-topic ul.links {
+  list-style: none;
+  padding: 0;
+}
+/* line 944, ../sass/styles.scss */
+#discussion-list-topic .comment ul.links li,
+#discussion-list-topic .node-discussion-list-topic ul.links li {
+  display: inline-block;
+}
+/* line 946, ../sass/styles.scss */
+#discussion-list-topic .comment ul.links li a,
+#discussion-list-topic .node-discussion-list-topic ul.links li a {
+  background: #522E91;
+  color: #fff;
+  padding: 2px 5px;
 }
