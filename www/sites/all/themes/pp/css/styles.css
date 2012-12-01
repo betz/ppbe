@@ -2420,3 +2420,12 @@ form fieldset {
   color: #fff;
   padding: 2px 5px;
 }
+
+/* line 956, ../sass/styles.scss */
+#sliding-popup {
+  background: #F80;
+}
+/* line 958, ../sass/styles.scss */
+#sliding-popup #popup-buttons {
+  margin-top: 25px;
+}
