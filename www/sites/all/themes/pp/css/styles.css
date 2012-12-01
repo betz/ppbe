@@ -2425,7 +2425,7 @@ form fieldset {
 #sliding-popup {
   background: #F80;
 }
-/* line 958, ../sass/styles.scss */
-#sliding-popup #popup-buttons {
+/* line 959, ../sass/styles.scss */
+#sliding-popup .popup-content #popup-buttons {
   margin-top: 25px;
 }
