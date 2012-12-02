@@ -849,7 +849,10 @@ form {
 #user-register-form {
   .group-left,
   .group-right {
-    
+    & > fieldset {
+      margin: 0 4px;
+      min-width: 400px;
+    }
   }
   .group-left fielset {
     border: 1px solid #838383;
@@ -866,6 +869,21 @@ form {
   #edit-field-profile-last-name {
     display: inline-block;
     width: 49%; 
+  }
+  .form-item-pass {
+    .password-strength {
+      display: none;
+    }
+    .confirm-parent, 
+    .password-parent {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+    .password-suggestions {
+      width: auto;
+    }
   }
 }
 

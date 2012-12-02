@@ -2299,86 +2299,110 @@ form fieldset {
   border: 1px solid #838383;
 }
 
-/* line 854, ../sass/styles.scss */
+/* line 852, ../sass/styles.scss */
+#user-register-form .group-left > fieldset,
+#user-register-form .group-right > fieldset {
+  margin: 0 4px;
+  min-width: 400px;
+}
+/* line 857, ../sass/styles.scss */
 #user-register-form .group-left fielset {
   border: 1px solid #838383;
 }
-/* line 857, ../sass/styles.scss */
+/* line 860, ../sass/styles.scss */
 #user-register-form .group-right fielset {
   width: 48%;
   background: #ccc;
 }
-/* line 861, ../sass/styles.scss */
+/* line 864, ../sass/styles.scss */
 #user-register-form #edit-field-profile-first-name {
   width: 49%;
   margin-right: 2%;
   display: inline-block;
 }
-/* line 866, ../sass/styles.scss */
+/* line 869, ../sass/styles.scss */
 #user-register-form #edit-field-profile-last-name {
   display: inline-block;
   width: 49%;
 }
-
 /* line 874, ../sass/styles.scss */
+#user-register-form .form-item-pass .password-strength {
+  display: none;
+}
+/* line 878, ../sass/styles.scss */
+#user-register-form .form-item-pass .confirm-parent,
+#user-register-form .form-item-pass .password-parent {
+  width: 100%;
+}
+/* line 880, ../sass/styles.scss */
+#user-register-form .form-item-pass .confirm-parent input,
+#user-register-form .form-item-pass .password-parent input {
+  width: 100%;
+}
+/* line 884, ../sass/styles.scss */
+#user-register-form .form-item-pass .password-suggestions {
+  width: auto;
+}
+
+/* line 892, ../sass/styles.scss */
 #comments > h2 {
   background: #838383;
   color: #fff;
   padding: 0 15px;
 }
-/* line 879, ../sass/styles.scss */
+/* line 897, ../sass/styles.scss */
 #comments .comment {
   border: 1px solid #ccc;
   padding: 15px;
   margin-bottom: 15px;
   margin-top: 5px;
 }
-/* line 884, ../sass/styles.scss */
+/* line 902, ../sass/styles.scss */
 #comments .comment .group-left {
   width: 30%;
   font-size: 13px;
 }
-/* line 887, ../sass/styles.scss */
+/* line 905, ../sass/styles.scss */
 #comments .comment .group-left a {
   font-size: 13px;
 }
-/* line 891, ../sass/styles.scss */
+/* line 909, ../sass/styles.scss */
 #comments .comment .group-right {
   width: 70%;
 }
-/* line 895, ../sass/styles.scss */
+/* line 913, ../sass/styles.scss */
 #comments .permalink {
   font-size: 14px;
   text-transform: lowercase;
 }
-/* line 899, ../sass/styles.scss */
+/* line 917, ../sass/styles.scss */
 #comments ul.links {
   list-style: none;
   padding: 0;
 }
-/* line 902, ../sass/styles.scss */
+/* line 920, ../sass/styles.scss */
 #comments ul.links li {
   display: inline-block;
 }
-/* line 904, ../sass/styles.scss */
+/* line 922, ../sass/styles.scss */
 #comments ul.links li a {
   background: #522E91;
   color: #fff;
   padding: 2px 5px;
 }
-/* line 911, ../sass/styles.scss */
+/* line 929, ../sass/styles.scss */
 #comments .comment-thread-expand {
   font-size: 13px;
   background: #F80;
   color: #fff;
   padding: 2px 5px;
 }
-/* line 917, ../sass/styles.scss */
+/* line 935, ../sass/styles.scss */
 #comments .comment_forbidden {
   display: none !important;
 }
 
-/* line 925, ../sass/styles.scss */
+/* line 943, ../sass/styles.scss */
 #discussion-list-topic .comment.view-mode-full,
 #discussion-list-topic .node-discussion-list-topic.view-mode-full {
   border: 1px solid #ccc;
@@ -2386,34 +2410,34 @@ form fieldset {
   margin-bottom: 15px;
   margin-top: 5px;
 }
-/* line 930, ../sass/styles.scss */
+/* line 948, ../sass/styles.scss */
 #discussion-list-topic .comment.view-mode-full .group-left,
 #discussion-list-topic .node-discussion-list-topic.view-mode-full .group-left {
   width: 30%;
 }
-/* line 933, ../sass/styles.scss */
+/* line 951, ../sass/styles.scss */
 #discussion-list-topic .comment.view-mode-full .group-right,
 #discussion-list-topic .node-discussion-list-topic.view-mode-full .group-right {
   width: 70%;
 }
-/* line 937, ../sass/styles.scss */
+/* line 955, ../sass/styles.scss */
 #discussion-list-topic .comment .permalink,
 #discussion-list-topic .node-discussion-list-topic .permalink {
   font-size: 14px;
   text-transform: lowercase;
 }
-/* line 941, ../sass/styles.scss */
+/* line 959, ../sass/styles.scss */
 #discussion-list-topic .comment ul.links,
 #discussion-list-topic .node-discussion-list-topic ul.links {
   list-style: none;
   padding: 0;
 }
-/* line 944, ../sass/styles.scss */
+/* line 962, ../sass/styles.scss */
 #discussion-list-topic .comment ul.links li,
 #discussion-list-topic .node-discussion-list-topic ul.links li {
   display: inline-block;
 }
-/* line 946, ../sass/styles.scss */
+/* line 964, ../sass/styles.scss */
 #discussion-list-topic .comment ul.links li a,
 #discussion-list-topic .node-discussion-list-topic ul.links li a {
   background: #522E91;
@@ -2421,11 +2445,11 @@ form fieldset {
   padding: 2px 5px;
 }
 
-/* line 956, ../sass/styles.scss */
+/* line 974, ../sass/styles.scss */
 #sliding-popup {
   background: #F80;
 }
-/* line 959, ../sass/styles.scss */
+/* line 977, ../sass/styles.scss */
 #sliding-popup .popup-content #popup-buttons {
   margin-top: 25px;
 }
