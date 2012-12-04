@@ -110,11 +110,10 @@ thead tr th {
 
 
 .sidebar-second #content {
-  width: 75%;
+  
 }
 .sidebar-second .region-sidebar-second {
-  width: 25%;
-  margin-left: 75%;
+
 }
 
 #main {
@@ -361,10 +360,18 @@ ul.tabs {
     display: inline-block;
   }
   .item-list {
-    width: 175px;
+    @include zen-grid-flow-item(3);
     float: left;
     ul {
       margin: 0;
+    }
+  }
+}
+
+@media all and (min-width: 480px) {
+  .view-pirateparty-workgroups {
+    .item-list {
+      @include zen-grid-flow-item(4);
     }
   }
 }
@@ -851,7 +858,6 @@ form {
   .group-right {
     & > fieldset {
       margin: 0 4px;
-      min-width: 400px;
     }
   }
   .group-left fielset {
