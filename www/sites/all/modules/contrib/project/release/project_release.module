@@ -515,7 +515,7 @@ function project_release_field_widget_form_alter(&$element, &$form_state, $conte
     switch ($element['#field_name']) {
       case 'field_release_version_format':
         // Add dynamic description to custom version format string.
-        // todo this just uses the first release node type. What to do if there are
+        // todo this uses the first release node type. What to do if there are
         // multiple?
         $types = project_release_release_node_types();
         $element['value']['#description'] = '<p>' . t('Optionally override default <code>@string</code>', array('@string' => variable_get('project_release_version_format_' . reset($types), ''))) . '</p>' . PROJECT_RELEASE_VERSION_FORMAT_HELP;
@@ -846,8 +846,11 @@ function project_release_node_view($node, $view_mode, $langcode) {
         ),
       );
       if (project_user_access($node->nid, 'administer releases')) {
+        $types = project_release_release_node_types();
+        // todo this uses the first release node type. What to do if there are
+        // multiple?
         $node->content['project_release_downloads']['links']['#links']['add_new_release'] = array(
-          'title' => t('Add new release'), 'href' => 'node/add/project_release/' . $node->nid,
+          'title' => t('Add new release'), 'href' => 'node/add/' . str_replace('_', '-', reset($types)) . '/' . $node->nid,
         );
         $node->content['project_release_downloads']['links']['#links']['administer_releases'] = array(
           'title' => t('Administer releases'), 'href' => 'node/' . $node->nid . '/edit/releases',
@@ -879,12 +882,10 @@ function project_release_node_view($node, $view_mode, $langcode) {
       }
     }
 
-    /* todo d7
-    $rebuild_version = db_result(db_query("SELECT rebuild_version FROM {project_release_node_rebuild_metadata} WHERE nid = %d", $node->nid));
+    $rebuild_version = db_query("SELECT rebuild_version FROM {project_release_node_rebuild_metadata} WHERE nid = :nid", array(':nid' => $node->nid))->fetchField();
     if (!empty($rebuild_version)) {
-      $output .= '<div class="rebuild-version">' . t('Last packaged version: @rebuild_version', array('@rebuild_version' => $rebuild_version)) . '</div>';
+      $node->content['field_release_files']['#suffix'] .= '<div class="rebuild-version">' . t('Last packaged version: @rebuild_version', array('@rebuild_version' => $rebuild_version)) . '</div>';
     }
-    */
 
     // VCS info.
     if (!empty($node->content['field_release_vcs_label'])) {
@@ -1614,5 +1615,34 @@ function project_release_node_type_update($info) {
 function _project_release_validate_format_string($element) {
   if (!preg_match('/^[a-zA-Z0-9_\-.!%#]*$/', $element['#value'])) {
     form_error($element, PROJECT_RELEASE_VERSION_FORMAT_VALID_MSG);
+  }
+}
+
+/**
+ * API for populating the metadata about releases that are rebuilt.
+ *
+ * @param integer $nid
+ *   The {project_release_nodes}.nid of the release to record a rebuild
+ *   version string for.
+ * @param string $rebuild_version
+ *   The rebuild version string to record for the given release.
+ *
+ */
+function project_release_record_rebuild_metadata($nid, $rebuild_version) {
+  if (db_select('project_release_node_rebuild_metadata')->condition('nid', $nid)->countQuery()->execute()->fetchField()) {
+    $query = db_update('project_release_node_rebuild_metadata')
+      ->fields(array(
+        'rebuild_version' => $rebuild_version,
+      ))
+      ->condition('nid', $nid)
+      ->execute();
+  }
+  else {
+    $query = db_insert('project_release_node_rebuild_metadata')
+      ->fields(array(
+        'nid' => $nid,
+        'rebuild_version' => $rebuild_version,
+      ))
+      ->execute();
   }
 }

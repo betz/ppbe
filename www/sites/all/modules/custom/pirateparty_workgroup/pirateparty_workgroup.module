@@ -18,13 +18,13 @@ function pirateparty_workgroup_menu() {
     'access arguments' => array(1),
     'weight' => 1,
   );
-  /*$items['node/%node/projects'] = array(
-    'title' => t('Projects'),
+  $items['node/%node/projects'] = array(
+    'title' => t('Issue  tracker'),
     'type' => MENU_LOCAL_TASK,
     'access callback' => 'pirateparty_workgroup_blogmenu_access',
     'access arguments' => array(1),
     'weight' => 2,
-  );*/
+  );
   $items['node/%node/events'] = array(
     'title' => t('Events'),
     'type' => MENU_LOCAL_TASK,

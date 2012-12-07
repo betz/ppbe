@@ -22,9 +22,10 @@ class ProjectIssueMetric extends SamplerMetric {
   }
 
   public function trackObjectIDs() {
+    $types = project_project_node_types();
     $nids = array();
-    $projects = db_query("SELECT nid FROM {project_projects}");
-    while ($project = db_fetch_object($projects)) {
+    $projects = db_query('SELECT nid FROM {node} WHERE type IN (:types)', array(':types' => $types));
+    foreach ($projects as $project) {
       $nids[] = $project->nid;
     }
     return $nids;

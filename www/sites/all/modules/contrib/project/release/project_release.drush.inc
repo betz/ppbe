@@ -92,7 +92,7 @@ function drush_project_release_release_package($type, $project_id) {
     }
     // If published and file is not empty, a branch release is already
     // packaged. Published releases may be repackaged.
-    if ($type === 'branch' && $release_node->status == NODE_PUBLISHED && !empty($release_node->field_release_files)) {
+    if ($type === 'branch' && $release_node->status != NODE_PUBLISHED && empty($release_node->field_release_files)) {
       continue;
     }
 

@@ -19,7 +19,6 @@ class ProjectReleaseMetricNewReleases extends ProjectReleaseMetric {
 
     $sample = $this->currentSample;
     $options = $sample->options;
-    $args = array($sample->sample_startstamp, $sample->sample_endstamp);
 
     // Initialize the projects array.
     $data_types = array(
@@ -27,18 +26,24 @@ class ProjectReleaseMetricNewReleases extends ProjectReleaseMetric {
     );
     $this->projectReleaseMetricInitProjects($data_types);
 
+    $query = db_select('node', 'n', array('target' => 'slave'));
+    $query->innerJoin('field_data_field_release_project', 'p', "n.nid = p.entity_id AND p.entity_type = 'node'");
+    // Ignore releases from non-existent projects.
+    $query->innerJoin('node', 'nn', 'p.field_release_project_target_id = nn.nid');
+    $query->condition('n.created', $sample->sample_startstamp, '>=');
+    $query->condition('n.created', $sample->sample_endstamp, '<');
+    $query->groupBy('p.field_release_project_target_id');
+    $query->addField('p', 'field_release_project_target_id', 'pid');
+    $query->addExpression('COUNT(n.nid)', 'releases');
+
     // Restrict to only the passed project nids.
     if (!empty($options['object_ids'])) {
-      $where = " WHERE prn.pid IN (". db_placeholders($options['object_ids']) .")";
-      $args = array_merge($args, $options['object_ids']);
-    }
-    else {
-      $where = '';
+      $query->condition('p', 'field_release_project_target_id', $options['object_ids']);
     }
 
     // Pull all release nodes created during the specified time.
-    $nodes = db_query_slave("SELECT prn.pid, COUNT(nr.nid) AS releases FROM {project_release_nodes} prn INNER JOIN {node} nr ON prn.nid = nr.nid AND nr.created >= %d AND nr.created < %d$where GROUP BY prn.pid", $args);
-    while ($node = db_fetch_object($nodes)) {
+    $nodes = $query->execute();
+    foreach ($nodes as $node) {
       $this->currentSample->values[$node->pid]['releases'] = (int)$node->releases;
     }
   }

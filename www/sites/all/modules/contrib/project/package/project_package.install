@@ -9,17 +9,7 @@
  * Implement hook_install().
  */
 function project_package_install() {
-  // Create the database tables.
-  drupal_install_schema('project_package');
-  db_query("UPDATE {system} SET weight = %d WHERE name = '%s'", 3, 'project_package');
-}
-
-/**
- * Implement hook_uninstall().
- */
-function project_package_uninstall() {
-  // Drop database tables.
-  drupal_uninstall_schema('project_package');
+  db_query("UPDATE {system} SET weight = 3 WHERE name = 'project_package'");
 }
 
 /**
@@ -103,7 +93,6 @@ function project_package_schema() {
         'description' => 'The URL where a given patch file applied to a package can be found.',
         'type' => 'text',
         'not null' => TRUE,
-        'default' => '',
       ),
       'patch_description_url' => array(
         'description' => 'The (optional) URL where a patch file applied to a package is described.',
@@ -147,7 +136,6 @@ function project_package_schema() {
         'description' => 'The URL where a given patch file applied to a package can be found.',
         'type' => 'text',
         'not null' => TRUE,
-        'default' => '',
       ),
       'patch_description_url' => array(
         'description' => 'The (optional) URL where a patch file applied to a package is described.',
@@ -173,146 +161,6 @@ function project_package_schema() {
   return $schema;
 }
 
-/**
- * Add table for remote items.
- */
-function project_package_update_6001() {
-  $ret = array();
-
-  $remote_item_schema = array(
-    'description' => 'Keeps track of what remote items (or libraries) are included in a release of a given package project.',
-    'fields' => array(
-      'id' => array(
-        'description' => 'The primary identifier for a remote item.',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE
-      ),
-      'package_nid' => array(
-        'description' => 'Primary Key: The {node}.nid of the package release node.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'name' => array(
-        'description' => 'A name to describe this remote item.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'url' => array(
-        'description' => 'The URL of a remote item (or library) included as an item in the package.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-    ),
-    'primary key' => array('id'),
-    'indexes' => array('project_package_remote_item_package_nid' => array('package_nid')),
-  );
-  db_create_table($ret, 'project_package_remote_item', $remote_item_schema);
-
-  return $ret;
-}
-
-/**
- * Add tables for patches.
- */
-function project_package_update_6002() {
-  $ret = array();
-
-  $local_patch_schema = array(
-    'description' => 'Keeps track of any patches that are applied to local items in a release of a packaged project.',
-    'fields' => array(
-      'package_nid' => array(
-        'description' => 'Primary Key: The {node}.nid of the package release node.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'item_nid' => array(
-        'description' => 'The {node}.nid of a local release node item (from the same site) that was patched.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'patch_file_url' => array(
-        'description' => 'The URL where a given patch file applied to a package can be found.',
-        'type' => 'text',
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'patch_description_url' => array(
-        'description' => 'The (optional) URL where a patch file applied to a package is described.',
-        'type' => 'text',
-        'not null' => FALSE,
-      ),
-      'patch_nid' => array(
-        'description' => 'The (optional) {node}.nid of a node on this site that describes a patch file applied to a package.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => FALSE,
-      ),
-      'patch_comment_id' => array(
-        'description' => 'The (optional) {comment}.cid of a comment on this site that describes a patch file applied to a package.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => FALSE,
-      ),
-    ),
-    'primary key' => array('package_nid', array('patch_file_url', 255)),
-  );
-  db_create_table($ret, 'project_package_local_patch', $local_patch_schema);
-
-  $remote_patch_schema = array(
-    'description' => 'Keeps track of any patches that are applied to remote items in a release of a packaged project.',
-    'fields' => array(
-      'package_nid' => array(
-        'description' => 'Primary Key: The {node}.nid of the package release node.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'remote_id' => array(
-        'description' => 'The {project_package_remote_item}.id of a remote item (or library) that was patched.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'patch_file_url' => array(
-        'description' => 'The URL where a given patch file applied to a package can be found.',
-        'type' => 'text',
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'patch_description_url' => array(
-        'description' => 'The (optional) URL where a patch file applied to a package is described.',
-        'type' => 'text',
-        'not null' => FALSE,
-      ),
-      'patch_nid' => array(
-        'description' => 'The (optional) {node}.nid of a node on this site that describes a patch file applied to a package.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => FALSE,
-      ),
-      'patch_comment_id' => array(
-        'description' => 'The (optional) {comment}.cid of a comment on this site that describes a patch file applied to a package.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => FALSE,
-      ),
-    ),
-    'primary key' => array('package_nid', array('patch_file_url', 255)),
-  );
-  db_create_table($ret, 'project_package_remote_patch', $remote_patch_schema);
-
-  return $ret;
+function project_package_update_last_removed() {
+  return 6002;
 }

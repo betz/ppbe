@@ -15,45 +15,29 @@ class ProjectIssueOpenedVsClosedByCategory extends ProjectIssueMetric {
     $data_types = $this->newProjectOpenedVsClosed();
     $this->projectIssueMetricInitProjects($data_types);
 
-    $where_pieces = array();
-    $args = array();
-    $where_args = array();
-
     // The initial arguments are the 'open' project issue status options.
-    $open_states = project_issue_state(0, FALSE, FALSE, 0, TRUE);
+    $open_states = project_issue_open_states();
 
-    // TODO: Until http://drupal.org/node/214347 is resolved, we don't want
+    // @todo Until http://drupal.org/node/214347 is resolved, we don't want
     // the 'fixed' status in the list of open statuses, so unset it here.
-    unset($open_states[PROJECT_ISSUE_STATE_FIXED]);
-
-    $open_states = array_keys($open_states);
-
-    $args = array_merge($args, $open_states);
+    $open_states = array_diff($open_states, array(PROJECT_ISSUE_STATE_FIXED));
 
     // Restrict to only the passed nids.
+    $ids = array();
     if (!empty($options['object_ids'])) {
-      $where_pieces[] = "pid IN (". db_placeholders($options['object_ids']) .")";
-      $where_args = array_merge($where_args, $options['object_ids']);
-    }
-
-    if (empty($where_pieces)) {
-      $where = '';
-    }
-    else {
-      $where = ' AND ' . implode(' AND ', $where_pieces);
-      $args = array_merge($args, $where_args);
+      $ids = $options['object_ids'];
     }
 
     // Use the historical calculation if requested.
     if (isset($options['historical']) && $options['historical'] == '1') {
-      $this->buildSampleResultsHistorical($open_states, $where, $where_args);
+      $this->buildSampleResultsHistorical($open_states, $ids);
     }
     // Otherwise, use the more efficient 'current' calculation.
     else {
       // Build total open issues counts.
-      $this->buildSampleResultsCurrent('open', $open_states, $where, $args);
+      $this->buildSampleResultsCurrent('open', $open_states, $ids);
       // Build total closed issues counts.
-      $this->buildSampleResultsCurrent('closed', $open_states, $where, $args);
+      $this->buildSampleResultsCurrent('closed', $open_states, $ids);
     }
 
     // Add in total counts across all categories.
@@ -75,22 +59,44 @@ class ProjectIssueOpenedVsClosedByCategory extends ProjectIssueMetric {
    * @param $args
    *   Query arguments.
    */
-  protected function buildSampleResultsCurrent($state, $open_states, $where, $args) {
-
+  protected function buildSampleResultsCurrent($state, $open_states, $ids) {
     // Determine IN or NOT IN based on the state we're querying for.
     $in = $state == 'open' ? 'IN' : 'NOT IN';
 
     // Pull all issues grouped by project/category -- this query will miss any
     // projects that don't have issues, but we wouldn't want to show any data
     // for them, anyways.
-    $result = db_query("SELECT pid, category, COUNT(nid) AS count FROM {project_issues} WHERE sid $in (" . db_placeholders($open_states) . ")$where GROUP BY pid, category", $args);
-    // TODO: When http://drupal.org/node/115553 lands, this hard-coded list of
+    $query = db_select('node', 'n')
+      ->condition('n.type', project_issue_issue_node_types());
+
+    $query->innerJoin('field_data_field_project', 'p', "n.nid = p.entity_id AND p.entity_type = 'node'");
+    $query->innerJoin('field_data_field_issue_status', 's', "n.nid = s.entity_id AND s.entity_type = 'node'");
+    $query->innerJoin('field_data_field_issue_category', 'c', "n.nid = c.entity_id AND c.entity_type = 'node'");
+
+    // Work around a data glitch -- some issues are currently pointing at invalid projects.
+    $query->innerJoin('node', 'nn', 'p.field_project_target_id = nn.nid');
+
+    $query->addField('p', 'field_project_target_id', 'pid');
+    $query->addField('c', 'field_issue_category_value', 'category');
+    $query->addExpression('COUNT(n.nid)', 'count');
+    $query->groupBy('p.field_project_target_id');
+    $query->groupBy('c.field_issue_category_value');
+
+    $query->condition('s.field_issue_status_value', $open_states, $in);
+
+    // Restrict to only the passed projects.
+    if (!empty($ids)) {
+      $query->condition('p.field_project_target_id', $ids);
+    }
+
+    $result = $query->execute();
+    // @todo When http://drupal.org/node/115553 lands, this hard-coded list of
     // categories will need to be handled differently.
-    $categories = array('bug', 'feature', 'task', 'support');
-    while ($row = db_fetch_object($result)) {
+    $categories = array(1 => 'bug', 3 => 'feature', 2 => 'task', 4 => 'support');
+    foreach ($result as $row) {
       // Add the total count for the category to the values array.
-      if (in_array($row->category, $categories)) {
-        $this->currentSample->values[$row->pid]["{$row->category}_{$state}"] = (int)$row->count;
+      if (isset($categories[$row->category])) {
+        $this->currentSample->values[$row->pid][$categories[$row->category] . "_{$state}"] = (int)$row->count;
       }
     }
   }
@@ -105,54 +111,57 @@ class ProjectIssueOpenedVsClosedByCategory extends ProjectIssueMetric {
    * @param $args
    *   Query arguments.
    */
-  protected function buildSampleResultsHistorical($open_states, $where, $args) {
-
+  protected function buildSampleResultsHistorical($open_states, $ids) {
     // Load current sample.
     $sample = $this->currentSample;
 
     $endstamp = $sample->sample_endstamp;
 
     // Pull last possible issue nid for the end of the period being measured.
-    $max_nid = db_result(db_query("SELECT MAX(nid) FROM {node} WHERE created <= %d", $endstamp));
+    $max_nid = db_query('SELECT MAX(nid) FROM {node} WHERE created <= :created', array(':created' => $endstamp))->fetchField();
 
     if (!empty($max_nid)) {
+      // Subquery to calculate the timestamp of the applicable revision
+      $tsquery = db_select('node_revision', 'sv');
+      $tsquery->condition('sv.timestamp', $endstamp, '<=');
+      $tsquery->addField('sv', 'nid', 'nid');
+      $tsquery->addExpression('MAX(sv.timestamp)', 'timestamp');
 
-      // Build a map of the last comment numbers for all issue nodes prior to
-      // the end of the period being measured.
-      $last_comment_map = array();
-      $query_args = array_merge(array($max_nid, $endstamp), $args);
-      $comments = db_query("SELECT nid, pid, MAX(comment_number) AS last FROM {project_issue_comments} WHERE nid <= %d AND timestamp <= %d$where GROUP BY nid, pid", $query_args);
-      while ($comment = db_fetch_object($comments)) {
-        $last_comment_map[$comment->pid][$comment->nid] = $comment->last;
+      $query = db_select($tsquery, 'sq');
+      $query->innerJoin('node_revision', 'r', 'sq.nid = r.nid AND sq.timestamp = r.timestamp');
+      $query->innerJoin('field_revision_field_project',        'p', "r.nid = p.entity_id AND r.vid = p.revision_id AND p.entity_type = 'node'");
+      $query->innerJoin('field_revision_field_issue_status',   's', "r.nid = s.entity_id AND r.vid = s.revision_id AND s.entity_type = 'node'");
+      $query->innerJoin('field_revision_field_issue_category', 'c', "r.nid = c.entity_id AND r.vid = c.revision_id AND c.entity_type = 'node'");
+      $query->innerJoin('node', 'n', 'n.nid = r.nid');
+      $query->condition('n.type', project_issue_issue_node_types());
+      $query->condition('n.nid', $max_nid, '<=');
+      $query->groupBy('n.nid');
+      $query->groupBy('p.field_project_target_id');
+      $query->addField('n', 'nid', 'nid');
+      $query->addField('p', 'field_project_target_id', 'pid');
+      $query->addField('s', 'field_issue_status_value', 'sid');
+      $query->addField('c', 'field_issue_category_value', 'category');
+
+      // Restrict to only the passed projects.
+      if (!empty($ids)) {
+        $query->condition('p.field_project_target_id', $ids);
       }
-      // Get all issues created before the end of the period being measured.
-      $query_args = array_merge(array($max_nid), $args);
-      $issues = db_query("SELECT nid, pid, original_issue_data FROM {project_issues} WHERE nid <= %d$where", $query_args);
-      // TODO: When http://drupal.org/node/115553 lands, this hard-coded list of
-      // categories will need to be handled differently.
-      $categories = array('bug', 'feature', 'task', 'support');
-      while ($issue = db_fetch_object($issues)) {
-        // Determine if the issue in question has any comments associated with
-        // it.  If so, use the data from the last comment map to pull the state
-        // of the issue at the end of the sample period.
-        if (isset($last_comment_map[$issue->pid][$issue->nid])) {
-          $issue_data = db_fetch_object(db_query("SELECT * FROM {project_issue_comments} WHERE pid = %d AND nid = %d AND comment_number = %d", $issue->pid, $issue->nid, $last_comment_map[$issue->pid][$issue->nid]));
-        }
-        // No comments on the issue, so use the original issue data.
-        else {
-          $issue_data = (object) unserialize($issue->original_issue_data);
-        }
 
-        $state = in_array($issue_data->sid, $open_states) ? 'open' : 'closed';
+      $issues = $query->execute();
+      // @todo When http://drupal.org/node/115553 lands, this hard-coded list of
+      // categories will need to be handled differently.
+      $categories = array(1 => 'bug', 3 => 'feature', 2 => 'task', 4 => 'support');
+      foreach ($issues as $issue) {
+        $state = in_array($issue->sid, $open_states) ? 'open' : 'closed';
 
         // Add to the total count for the category in the values array.
-        if (in_array($issue_data->category, $categories)) {
-          $this->currentSample->values[$issue->pid]["{$issue_data->category}_{$state}"]++;
+        if (isset($categories[$issue->category])) {
+          $this->currentSample->values[$issue->pid][$categories[$issue->category] . "_{$state}"]++;
         }
       }
 
       // Clean up potentially huge arrays that are sucking memory.
-      unset ($last_comment_map, $issues);
+      unset ($issues);
     }
     // The end of the sample is so early there aren't even any nodes created --
     // just bail on the entire sample.

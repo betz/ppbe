@@ -13,9 +13,9 @@ project = "project_issue"
 datestamp = "1335213840"
 
 
-; Information added by drupal.org packaging script on 2012-11-05
+; Information added by drupal.org packaging script on 2012-11-30
 version = "7.x-2.x-dev"
 core = "7.x"
 project = "project_issue"
-datestamp = "1352121890"
+datestamp = "1354316240"
 

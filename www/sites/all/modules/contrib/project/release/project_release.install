@@ -164,6 +164,27 @@ function project_release_schema() {
     'primary key' => array('nid', 'uid'),
   );
 
+  $schema['project_release_node_rebuild_metadata'] = array(
+    'description' => t('Tracks metadata about releases that are periodically rebuilt.'),
+    'fields' => array(
+      'nid' => array(
+        'description' => t('Foreign key: {project_release_node}.nid of the project release.'),
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'rebuild_version' => array(
+        'description' => t('The current version string for this release based on the last time it was rebuilt.'),
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('nid'),
+  );
+
   return $schema;
 }
 
@@ -1277,7 +1298,7 @@ function project_release_update_7006(&$sandbox) {
     // Initialize batch update information.
     $sandbox['progress'] = 0;
     $sandbox['last_nid_processed'] = -1;
-    $sandbox['max'] = db_query("SELECT COUNT(DISTINCT r.nid) FROM {project_release_nodes} r INNER JOIN {node} n ON r.nid = n.nid")->fetchField();
+    $sandbox['max'] = db_query("SELECT COUNT(DISTINCT r.nid) FROM {project_release_nodes} r INNER JOIN {node} n ON r.nid = n.nid INNER JOIN {node} nn ON r.pid = nn.nid")->fetchField();
   }
 
   $limit = variable_get('upload_update_batch_size', 100);
@@ -1286,7 +1307,7 @@ function project_release_update_7006(&$sandbox) {
 
   // Determine releases to process this batch.
   // We will process all files on these releases.
-  $result = db_query_range("SELECT r.* FROM {project_release_nodes} r INNER JOIN {node} n ON r.nid = n.nid WHERE r.nid > :lastnid ORDER BY r.nid", 0, $limit, array(':lastnid' => $sandbox['last_nid_processed']));
+  $result = db_query_range("SELECT r.* FROM {project_release_nodes} r INNER JOIN {node} n ON r.nid = n.nid INNER JOIN {node} nn ON r.pid = nn.nid WHERE r.nid > :lastnid ORDER BY r.nid", 0, $limit, array(':lastnid' => $sandbox['last_nid_processed']));
 
   foreach ($result as $release) {
 
@@ -1345,7 +1366,7 @@ function project_release_update_7007() {
   // Create entities 1:1 with project release files.
   // The clever bit is that we're temporarily using the revision_id to store our fid.
   // This means we can do everything in the aggregate.
-  db_query("INSERT INTO {field_collection_item} (revision_id, field_name, archived) (SELECT fid, 'field_release_files', 0 FROM {project_release_file})");
+  db_query("INSERT INTO {field_collection_item} (revision_id, field_name, archived) (SELECT f.fid, 'field_release_files', 0 FROM {project_release_file} f INNER JOIN {files} ff ON f.fid = ff.fid INNER JOIN {project_release_nodes} r ON f.nid = r.nid INNER JOIN {node} n ON r.nid = n.nid)");
   // Generate revisions 1:1 with the freshly created entities.
   db_query("INSERT INTO {field_collection_item_revision} (item_id) (SELECT item_id FROM {field_collection_item} WHERE field_name = 'field_release_files')");
 

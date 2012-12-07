@@ -293,8 +293,15 @@ $handler->display->display_options['filters']['status_extra']['expose']['operato
 $handler->display->display_options['filters']['project_type']['id'] = 'project_type';
 $handler->display->display_options['filters']['project_type']['table'] = 'node';
 $handler->display->display_options['filters']['project_type']['field'] = 'project_type';
+$handler->display->display_options['filters']['project_type']['relationship'] = 'field_project_target_id';
 $handler->display->display_options['filters']['project_type']['value'] = 'project';
 $handler->display->display_options['filters']['project_type']['group'] = 1;
+/* Filter criterion: Project: Project system behavior */
+$handler->display->display_options['filters']['project_type_1']['id'] = 'project_type_1';
+$handler->display->display_options['filters']['project_type_1']['table'] = 'node';
+$handler->display->display_options['filters']['project_type_1']['field'] = 'project_type';
+$handler->display->display_options['filters']['project_type_1']['value'] = 'project_issue';
+$handler->display->display_options['filters']['project_type_1']['group'] = 1;
 /* Filter criterion: Search: Search Terms */
 $handler->display->display_options['filters']['keys']['id'] = 'keys';
 $handler->display->display_options['filters']['keys']['table'] = 'search_index';
@@ -370,6 +377,15 @@ $handler->display->display_options['filters']['field_issue_category_value']['exp
 /* Display: Page */
 $handler = $view->new_display('page', 'Page', 'page_1');
 $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+$handler->display->display_options['defaults']['header'] = FALSE;
+/* Header: Global: View (Views field view) */
+$handler->display->display_options['header']['view_field']['id'] = 'view_field';
+$handler->display->display_options['header']['view_field']['table'] = 'views';
+$handler->display->display_options['header']['view_field']['field'] = 'view_field';
+$handler->display->display_options['header']['view_field']['label'] = 'My Projects';
+$handler->display->display_options['header']['view_field']['element_label_colon'] = FALSE;
+$handler->display->display_options['header']['view_field']['view'] = 'project_issue_user_projects';
+$handler->display->display_options['header']['view_field']['display'] = 'attachment_1';
 $handler->display->display_options['path'] = 'project/user';
 $handler->display->display_options['menu']['type'] = 'normal';
 $handler->display->display_options['menu']['title'] = 'My projects';
@@ -392,4 +408,284 @@ $handler->display->display_options['path'] = 'project/user/%/feed';
 $handler->display->display_options['displays'] = array(
   'page_1' => 'page_1',
   'default' => 0,
+);
+
+/* Display: My Projects header */
+$handler = $view->new_display('attachment', 'My Projects header', 'my_projects_list');
+$handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+$handler->display->display_options['defaults']['group_by'] = FALSE;
+$handler->display->display_options['group_by'] = TRUE;
+$handler->display->display_options['pager']['type'] = 'some';
+$handler->display->display_options['defaults']['style_plugin'] = FALSE;
+$handler->display->display_options['style_plugin'] = 'table';
+$handler->display->display_options['style_options']['columns'] = array(
+  'field_project_machine_name' => 'field_project_machine_name',
+  'nid_1' => 'nid_1',
+  'title' => 'title',
+  'last_comment_timestamp' => 'last_comment_timestamp',
+  'nid' => 'nid',
+  'nothing' => 'nothing',
+  'nothing_1' => 'nothing_1',
+  'nothing_2' => 'nothing_2',
+  'nothing_3' => 'nothing_3',
+  'edit_node' => 'edit_node',
+  'nothing_4' => 'nothing_4',
+  'nothing_5' => 'nothing_5',
+);
+$handler->display->display_options['style_options']['default'] = 'title';
+$handler->display->display_options['style_options']['info'] = array(
+  'field_project_machine_name' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'nid_1' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'title' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'last_comment_timestamp' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'desc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'nid' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'nothing' => array(
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'nothing_1' => array(
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'nothing_2' => array(
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'nothing_3' => array(
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'edit_node' => array(
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'nothing_4' => array(
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'nothing_5' => array(
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+);
+$handler->display->display_options['defaults']['style_options'] = FALSE;
+$handler->display->display_options['defaults']['row_plugin'] = FALSE;
+$handler->display->display_options['defaults']['row_options'] = FALSE;
+$handler->display->display_options['defaults']['relationships'] = FALSE;
+/* Relationship: Content: Author */
+$handler->display->display_options['relationships']['uid']['id'] = 'uid';
+$handler->display->display_options['relationships']['uid']['table'] = 'node';
+$handler->display->display_options['relationships']['uid']['field'] = 'uid';
+$handler->display->display_options['relationships']['uid']['label'] = 'Project author';
+/* Relationship: Issues */
+$handler->display->display_options['relationships']['reverse_field_project_node']['id'] = 'reverse_field_project_node';
+$handler->display->display_options['relationships']['reverse_field_project_node']['table'] = 'node';
+$handler->display->display_options['relationships']['reverse_field_project_node']['field'] = 'reverse_field_project_node';
+$handler->display->display_options['relationships']['reverse_field_project_node']['ui_name'] = 'Issues';
+$handler->display->display_options['relationships']['reverse_field_project_node']['label'] = 'Issues';
+$handler->display->display_options['defaults']['fields'] = FALSE;
+/* Field: Content: Short name */
+$handler->display->display_options['fields']['field_project_machine_name']['id'] = 'field_project_machine_name';
+$handler->display->display_options['fields']['field_project_machine_name']['table'] = 'field_data_field_project_machine_name';
+$handler->display->display_options['fields']['field_project_machine_name']['field'] = 'field_project_machine_name';
+$handler->display->display_options['fields']['field_project_machine_name']['label'] = '';
+$handler->display->display_options['fields']['field_project_machine_name']['exclude'] = TRUE;
+$handler->display->display_options['fields']['field_project_machine_name']['element_label_colon'] = FALSE;
+/* Field: Content: Nid */
+$handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
+$handler->display->display_options['fields']['nid_1']['table'] = 'node';
+$handler->display->display_options['fields']['nid_1']['field'] = 'nid';
+$handler->display->display_options['fields']['nid_1']['label'] = '';
+$handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
+$handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
+/* Field: Content: Title */
+$handler->display->display_options['fields']['title']['id'] = 'title';
+$handler->display->display_options['fields']['title']['table'] = 'node';
+$handler->display->display_options['fields']['title']['field'] = 'title';
+$handler->display->display_options['fields']['title']['label'] = 'Project';
+$handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+/* Field: Content: Last comment time */
+$handler->display->display_options['fields']['last_comment_timestamp']['id'] = 'last_comment_timestamp';
+$handler->display->display_options['fields']['last_comment_timestamp']['table'] = 'node_comment_statistics';
+$handler->display->display_options['fields']['last_comment_timestamp']['field'] = 'last_comment_timestamp';
+$handler->display->display_options['fields']['last_comment_timestamp']['relationship'] = 'reverse_field_project_node';
+$handler->display->display_options['fields']['last_comment_timestamp']['group_type'] = 'max';
+$handler->display->display_options['fields']['last_comment_timestamp']['label'] = 'Last issue update';
+$handler->display->display_options['fields']['last_comment_timestamp']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['last_comment_timestamp']['date_format'] = 'raw time ago';
+/* Field: Content: Nid */
+$handler->display->display_options['fields']['nid']['id'] = 'nid';
+$handler->display->display_options['fields']['nid']['table'] = 'node';
+$handler->display->display_options['fields']['nid']['field'] = 'nid';
+$handler->display->display_options['fields']['nid']['relationship'] = 'reverse_field_project_node';
+$handler->display->display_options['fields']['nid']['group_type'] = 'count';
+$handler->display->display_options['fields']['nid']['label'] = 'Open Issues';
+$handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+/* Field: Queue view link */
+$handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+$handler->display->display_options['fields']['nothing']['table'] = 'views';
+$handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+$handler->display->display_options['fields']['nothing']['ui_name'] = 'Queue view link';
+$handler->display->display_options['fields']['nothing']['label'] = '';
+$handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
+$handler->display->display_options['fields']['nothing']['alter']['text'] = 'View';
+$handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['nothing']['alter']['path'] = 'project/issues/[field_project_machine_name]';
+$handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+/* Field: Queue search link */
+$handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+$handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+$handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+$handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Queue search link';
+$handler->display->display_options['fields']['nothing_1']['label'] = '';
+$handler->display->display_options['fields']['nothing_1']['exclude'] = TRUE;
+$handler->display->display_options['fields']['nothing_1']['alter']['text'] = 'Search';
+$handler->display->display_options['fields']['nothing_1']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['nothing_1']['alter']['path'] = 'project/issues/search/[field_project_machine_name]';
+$handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+/* Field: Create issue link */
+$handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
+$handler->display->display_options['fields']['nothing_2']['table'] = 'views';
+$handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
+$handler->display->display_options['fields']['nothing_2']['ui_name'] = 'Create issue link';
+$handler->display->display_options['fields']['nothing_2']['label'] = '';
+$handler->display->display_options['fields']['nothing_2']['exclude'] = TRUE;
+$handler->display->display_options['fields']['nothing_2']['alter']['text'] = 'Create';
+$handler->display->display_options['fields']['nothing_2']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['nothing_2']['alter']['path'] = 'node/add/project_issue/[field_project_machine_name]';
+$handler->display->display_options['fields']['nothing_2']['element_label_colon'] = FALSE;
+/* Field: Issue links */
+$handler->display->display_options['fields']['nothing_3']['id'] = 'nothing_3';
+$handler->display->display_options['fields']['nothing_3']['table'] = 'views';
+$handler->display->display_options['fields']['nothing_3']['field'] = 'nothing';
+$handler->display->display_options['fields']['nothing_3']['ui_name'] = 'Issue links';
+$handler->display->display_options['fields']['nothing_3']['label'] = 'Issue links';
+$handler->display->display_options['fields']['nothing_3']['alter']['text'] = '[nothing] &nbsp; [nothing_1] &nbsp; [nothing_2]';
+$handler->display->display_options['fields']['nothing_3']['element_label_colon'] = FALSE;
+/* Field: Project edit link */
+$handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+$handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+$handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+$handler->display->display_options['fields']['edit_node']['ui_name'] = 'Project edit link';
+$handler->display->display_options['fields']['edit_node']['label'] = '';
+$handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
+$handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['edit_node']['text'] = 'Edit';
+/* Field: Add release link */
+$handler->display->display_options['fields']['nothing_4']['id'] = 'nothing_4';
+$handler->display->display_options['fields']['nothing_4']['table'] = 'views';
+$handler->display->display_options['fields']['nothing_4']['field'] = 'nothing';
+$handler->display->display_options['fields']['nothing_4']['ui_name'] = 'Add release link';
+$handler->display->display_options['fields']['nothing_4']['label'] = '';
+$handler->display->display_options['fields']['nothing_4']['exclude'] = TRUE;
+$handler->display->display_options['fields']['nothing_4']['alter']['text'] = 'Add release';
+$handler->display->display_options['fields']['nothing_4']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['nothing_4']['alter']['path'] = 'node/add/project_release/[nid_1]';
+$handler->display->display_options['fields']['nothing_4']['element_label_colon'] = FALSE;
+/* Field: Project links */
+$handler->display->display_options['fields']['nothing_5']['id'] = 'nothing_5';
+$handler->display->display_options['fields']['nothing_5']['table'] = 'views';
+$handler->display->display_options['fields']['nothing_5']['field'] = 'nothing';
+$handler->display->display_options['fields']['nothing_5']['ui_name'] = 'Project links';
+$handler->display->display_options['fields']['nothing_5']['label'] = 'Project links';
+$handler->display->display_options['fields']['nothing_5']['alter']['text'] = '[edit_node] &nbsp; [nothing_4]';
+$handler->display->display_options['fields']['nothing_5']['element_label_colon'] = FALSE;
+$handler->display->display_options['defaults']['sorts'] = FALSE;
+/* Sort criterion: Content: Short name (field_project_machine_name) */
+$handler->display->display_options['sorts']['field_project_machine_name_value']['id'] = 'field_project_machine_name_value';
+$handler->display->display_options['sorts']['field_project_machine_name_value']['table'] = 'field_data_field_project_machine_name';
+$handler->display->display_options['sorts']['field_project_machine_name_value']['field'] = 'field_project_machine_name_value';
+$handler->display->display_options['defaults']['arguments'] = FALSE;
+/* Contextual filter: User: Uid */
+$handler->display->display_options['arguments']['uid']['id'] = 'uid';
+$handler->display->display_options['arguments']['uid']['table'] = 'users';
+$handler->display->display_options['arguments']['uid']['field'] = 'uid';
+$handler->display->display_options['arguments']['uid']['relationship'] = 'uid';
+$handler->display->display_options['arguments']['uid']['default_action'] = 'default';
+$handler->display->display_options['arguments']['uid']['exception']['title_enable'] = TRUE;
+$handler->display->display_options['arguments']['uid']['title_enable'] = TRUE;
+$handler->display->display_options['arguments']['uid']['title'] = 'Projects by %1';
+$handler->display->display_options['arguments']['uid']['default_argument_type'] = 'current_user';
+$handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
+$handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
+$handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
+$handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
+$handler->display->display_options['arguments']['uid']['validate']['type'] = 'user';
+$handler->display->display_options['arguments']['uid']['validate_options']['type'] = 'either';
+$handler->display->display_options['arguments']['uid']['validate_options']['restrict_roles'] = TRUE;
+$handler->display->display_options['arguments']['uid']['validate_options']['roles'] = array(
+  2 => '2',
+);
+$handler->display->display_options['defaults']['filter_groups'] = FALSE;
+$handler->display->display_options['defaults']['filters'] = FALSE;
+/* Filter criterion: Content: Published or admin */
+$handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+$handler->display->display_options['filters']['status_extra']['table'] = 'node';
+$handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+$handler->display->display_options['filters']['status_extra']['group'] = 1;
+$handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+/* Filter criterion: Project: Project system behavior */
+$handler->display->display_options['filters']['project_type']['id'] = 'project_type';
+$handler->display->display_options['filters']['project_type']['table'] = 'node';
+$handler->display->display_options['filters']['project_type']['field'] = 'project_type';
+$handler->display->display_options['filters']['project_type']['value'] = 'project';
+$handler->display->display_options['filters']['project_type']['group'] = 1;
+/* Filter criterion: Project */
+$handler->display->display_options['filters']['field_project_target_id']['id'] = 'field_project_target_id';
+$handler->display->display_options['filters']['field_project_target_id']['table'] = 'field_data_field_project';
+$handler->display->display_options['filters']['field_project_target_id']['field'] = 'field_project_target_id';
+$handler->display->display_options['filters']['field_project_target_id']['ui_name'] = 'Project';
+$handler->display->display_options['filters']['field_project_target_id']['group'] = 1;
+$handler->display->display_options['filters']['field_project_target_id']['exposed'] = TRUE;
+$handler->display->display_options['filters']['field_project_target_id']['expose']['operator_id'] = 'field_project_target_id_op';
+$handler->display->display_options['filters']['field_project_target_id']['expose']['label'] = 'Project';
+$handler->display->display_options['filters']['field_project_target_id']['expose']['operator'] = 'field_project_target_id_op';
+$handler->display->display_options['filters']['field_project_target_id']['expose']['identifier'] = 'projects';
+$handler->display->display_options['filters']['field_project_target_id']['expose']['multiple'] = TRUE;
+$handler->display->display_options['filters']['field_project_target_id']['expose']['remember_roles'] = array(
+  2 => '2',
+);
+$handler->display->display_options['filters']['field_project_target_id']['widget'] = 'select';
+$handler->display->display_options['filters']['field_project_target_id']['project_source'] = 'owner';
+$handler->display->display_options['filters']['field_project_target_id']['project_uid_argument'] = 'uid';
+$handler->display->display_options['displays'] = array(
+  'default' => 0,
+  'page_1' => 0,
 );

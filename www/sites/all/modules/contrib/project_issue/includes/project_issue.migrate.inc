@@ -31,8 +31,8 @@ class ProjectIssueFixInitFilesMigration extends MigrationBase {
   /**
    * General initialization of a ProjectIssueTimelineMigration object.
    */
-  public function __construct($group = NULL) {
-    parent::__construct($group);
+  public function __construct() {
+    parent::__construct();
     $this->description = t('WIP: USE AT YOUR OWN RISK! Move uploaded files to the correct field.');
   }
 
@@ -64,8 +64,8 @@ class ProjectIssueFixGenericCorruptionMigration extends MigrationBase {
   /**
    * General initialization of a ProjectIssueTimelineMigration object.
    */
-  public function __construct($group = NULL) {
-    parent::__construct($group);
+  public function __construct() {
+    parent::__construct();
     $this->description = t('Fix general drupal.org data problems.');
     $this->dependencies = array('ProjectIssueRethreadIssueFollowups');
   }
@@ -87,8 +87,8 @@ class ProjectIssueFixGenericCorruptionMigration extends MigrationBase {
  * Rethread project_issue comments to match comment_number.
  */
 class ProjectIssueRethreadIssueFollowupsMigration extends MigrationBase {
-  public function __construct($group = NULL) {
-    parent::__construct($group);
+  public function __construct() {
+    parent::__construct();
     $this->description = t('WIP: USE AT YOUR OWN RISK! Rethread existing issue comments to match comment_number.');
     //$this->dependencies = array('ProjectIssuePhaseTwo');
   }
@@ -130,8 +130,8 @@ class ProjectIssueRethreadIssueFollowupsMigration extends MigrationBase {
  */
 class ProjectIssueTimelinePhaseOneMigration extends MigrationBase {
 
-  public function __construct($group = NULL) {
-    parent::__construct($group);
+  public function __construct() {
+    parent::__construct();
     $this->description = t('Project issue timeline generator phase 1');
     $this->dependencies = array('ProjectIssueFixInitFiles');
   }
@@ -275,8 +275,8 @@ class ProjectIssueTimelinePhaseOneMigration extends MigrationBase {
  */
 class ProjectIssueTimelinePhaseTwoMigration extends MigrationBase {
 
-  public function __construct($group = NULL) {
-    parent::__construct($group);
+  public function __construct() {
+    parent::__construct();
     $this->description = t('WIP: USE AT YOUR OWN RISK! Project issue timeline generator phase 2');
     $this->dependencies = array('ProjectIssueTimelinePhaseOne');
   }
@@ -480,6 +480,7 @@ class ProjectIssueTimelinePhaseTwoMigration extends MigrationBase {
 
         'cur_attachments' => array(
           'type' => 'text',
+          'size' => 'medium',
           'description' => 'CURRENT attachments (fid,display,description. triple pipe delimited.)',
         ),
         'prev_attachments' => array(
@@ -658,8 +659,8 @@ class ProjectIssueTimelinePhaseTwoMigration extends MigrationBase {
  */
 class ProjectIssueTimelinePhaseThreeMigration extends MigrationBase {
 
-  public function __construct($group = NULL) {
-    parent::__construct($group);
+  public function __construct() {
+    parent::__construct();
     $this->description = t('WIP: USE AT YOUR OWN RISK! Project issue timeline generator phase 3');
     $this->dependencies = array('ProjectIssueTimelinePhaseTwo');
   }
@@ -717,8 +718,8 @@ BEGIN
   DECLARE c_tags TEXT CHARACTER SET utf8;
   DECLARE p_tags TEXT CHARACTER SET utf8;
   DECLARE x_tags TEXT CHARACTER SET utf8;
-  DECLARE c_attachments TEXT CHARACTER SET utf8;
-  DECLARE p_attachments TEXT CHARACTER SET utf8;
+  DECLARE c_attachments MEDIUMTEXT CHARACTER SET utf8;
+  DECLARE p_attachments MEDIUMTEXT CHARACTER SET utf8;
 
   DECLARE tl_cur CURSOR FOR
     SELECT nid, genid, cid, tl, cur_body_value, cur_body_summary, cur_body_format, cur_pid, cur_component, cur_category, cur_priority, cur_assigned, cur_sid, cur_rid, cur_title, cur_tags, cur_attachments
@@ -887,8 +888,8 @@ END");
  * Generate stub node revisions.
  */
 class ProjectIssueAllocateVidsMigration extends MigrationBase {
-  public function __construct($group = NULL) {
-    parent::__construct($group);
+  public function __construct() {
+    parent::__construct();
     $this->description = t('WIP: USE AT YOUR OWN RISK! Bulk allocate node revisions for timeline.');
     $this->dependencies = array('ProjectIssueTimelinePhaseThree');
   }
@@ -919,8 +920,8 @@ class ProjectIssueAllocateVidsMigration extends MigrationBase {
  * Generate comments for changed node revisions.
  */
 class ProjectIssueAllocateCidsMigration extends MigrationBase {
-  public function __construct($group = NULL) {
-    parent::__construct($group);
+  public function __construct() {
+    parent::__construct();
     $this->description = t('WIP: USE AT YOUR OWN RISK! Bulk allocate comments for timeline.');
     $this->dependencies = array('ProjectIssueTimelinePhaseThree', 'ProjectIssueRethreadIssueFollowups');
   }
@@ -983,8 +984,8 @@ class ProjectIssueAllocateCidsMigration extends MigrationBase {
  * Rebuild comment fields.
  */
 class ProjectIssueRebuildCommentFieldsMigration extends MigrationBase {
-  public function __construct($group = NULL) {
-    parent::__construct($group);
+  public function __construct() {
+    parent::__construct();
     $this->description = t('WIP: USE AT YOUR OWN RISK! Inject fields for comments.');
     $this->dependencies = array('ProjectIssueAllocateCids');
   }
@@ -1185,8 +1186,8 @@ class ProjectIssueRebuildCommentFieldsMigration extends MigrationBase {
  * Rebuild field tables for issue node revisions.
  */
 class ProjectIssueRebuildNodeFieldsMigration extends MigrationBase {
-  public function __construct($group = NULL) {
-    parent::__construct($group);
+  public function __construct() {
+    parent::__construct();
     $this->description = t('WIP: USE AT YOUR OWN RISK! Inject fields for node revisions.');
     $this->dependencies = array('ProjectIssueAllocateVids');
   }

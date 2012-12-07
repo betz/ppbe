@@ -2349,11 +2349,42 @@ form fieldset {
   padding: 2px 5px;
 }
 
-/* line 980, ../sass/styles.scss */
+/* line 981, ../sass/styles.scss */
+.pane-node-content .node.view-mode-full {
+  border: 1px solid #ccc;
+  padding: 15px !important;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+/* line 986, ../sass/styles.scss */
+.pane-node-content .node.view-mode-full .group-left {
+  width: 30%;
+}
+/* line 989, ../sass/styles.scss */
+.pane-node-content .node.view-mode-full .group-right {
+  width: 70%;
+}
+/* line 992, ../sass/styles.scss */
+.pane-node-content .node.view-mode-full ul.links {
+  list-style: none;
+  padding: 0;
+}
+/* line 995, ../sass/styles.scss */
+.pane-node-content .node.view-mode-full ul.links li {
+  display: inline-block;
+}
+/* line 997, ../sass/styles.scss */
+.pane-node-content .node.view-mode-full ul.links li a {
+  background: #522E91;
+  color: #fff;
+  padding: 2px 5px;
+}
+
+/* line 1007, ../sass/styles.scss */
 #sliding-popup {
   background: #F80;
 }
-/* line 983, ../sass/styles.scss */
+/* line 1010, ../sass/styles.scss */
 #sliding-popup .popup-content #popup-buttons {
   margin-top: 25px;
 }

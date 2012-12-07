@@ -18,36 +18,44 @@ class  ProjectIssueNewIssuesCommentsByProject extends ProjectIssueMetric {
     // Load options.
     $sample = $this->currentSample;
 
-    $where_pieces = array();
-    $args = array();
+    $query = db_select('node', 'n')
+      ->condition('n.created', $sample->sample_startstamp, '>=')
+      ->condition('n.created', $sample->sample_endstamp, '<')
+      ->condition('n.type', project_issue_issue_node_types());
 
-    $args = array_merge($args, array($sample->sample_startstamp, $sample->sample_endstamp));
+    $query->innerJoin('field_data_field_project', 'p', "n.nid = p.entity_id AND p.entity_type = 'node'");
+
+    $query->addField('p', 'field_project_target_id', 'pid');
+    $query->addExpression('COUNT(n.nid)', 'count');
+    $query->groupBy('p.field_project_target_id');
 
     // Restrict to only the passed projects.
     if (!empty($sample->options['object_ids'])) {
-      $where_pieces[] = "pi.pid IN (". db_placeholders($sample->options['object_ids']) .")";
-      $args = array_merge($args, $sample->options['object_ids']);
-    }
-
-    if (empty($where_pieces)) {
-      $where = '';
-    }
-    else {
-      $where = ' AND ' . implode(' AND ', $where_pieces);
+      $query->condition('p.field_project_target_id', $sample->options['object_ids']);
     }
 
     // Pull the count of new issues per project.
-    $projects = db_query("SELECT pi.pid, COUNT(pi.nid) AS count FROM {project_issues} pi INNER JOIN {node} n ON pi.nid = n.nid WHERE n.created >= %d AND n.created < %d$where GROUP BY pi.pid", $args);
+    $projects = $query->execute();
 
-    while ($project = db_fetch_object($projects)) {
+    foreach ($projects as $project) {
       $this->currentSample->values[$project->pid]['new_issues'] = (int)$project->count;
       $this->currentSample->values[$project->pid]['new_total'] = (int)$project->count;
     }
 
     // Pull the count of new issue comments per project.
-    $projects = db_query("SELECT pi.pid, COUNT(pi.cid) AS count FROM {project_issue_comments} pi WHERE pi.timestamp >= %d AND pi.timestamp < %d$where GROUP BY pi.pid", $args);
+    $query = db_select('comment', 'c')
+      ->condition('c.created', $sample->sample_startstamp, '>=')
+      ->condition('c.created', $sample->sample_endstamp, '<');
 
-    while ($project = db_fetch_object($projects)) {
+    $query->innerJoin('field_data_field_project', 'p', "c.nid = p.entity_id AND p.entity_type = 'node'");
+
+    $query->addField('p', 'field_project_target_id', 'pid');
+    $query->addExpression('COUNT(c.cid)', 'count');
+    $query->groupBy('p.field_project_target_id');
+
+    $projects = $query->execute();
+
+    foreach ($projects as $project) {
       $this->currentSample->values[$project->pid]['new_comments'] = (int)$project->count;
       // Add the comment count to the total.
       $this->currentSample->values[$project->pid]['new_total'] = $this->currentSample->values[$project->pid]['new_total'] + (int)$project->count;

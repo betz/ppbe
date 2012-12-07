@@ -1,6 +1,18 @@
 <?php
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function project_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'sampler') {
+    switch ($plugin) {
+      case 'metric':
+        return 'metrics';
+    }
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  *
  * Project adjustments to the field edit form.

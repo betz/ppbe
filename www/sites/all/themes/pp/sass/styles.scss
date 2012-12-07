@@ -977,6 +977,33 @@ form {
   }
 }
 
+.pane-node-content .node {
+  &.view-mode-full {
+    border: 1px solid #ccc;
+    padding: 15px !important;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    .group-left {
+      width: 30%;
+    }
+    .group-right {
+      width: 70%;
+    }
+    ul.links {
+      list-style: none;
+      padding: 0;
+      li {
+        display: inline-block;
+        a {
+          background: #522E91;
+          color: #fff;
+          padding: 2px 5px;
+        }
+      }
+    }
+  }
+}
+
 #sliding-popup {
   background: #F80;
   .popup-content {
@@ -985,4 +1012,10 @@ form {
     }
   }
 }
+
+
+
+
+
+
 

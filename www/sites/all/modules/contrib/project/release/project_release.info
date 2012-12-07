@@ -15,9 +15,9 @@ stylesheets[all][] = project_release.css
 
 files[] = views/handlers/project_release_handler_filter_version.inc
 
-; Information added by drupal.org packaging script on 2012-11-05
+; Information added by drupal.org packaging script on 2012-12-01
 version = "7.x-2.x-dev"
 core = "7.x"
 project = "project"
-datestamp = "1352121880"
+datestamp = "1354324342"
 
