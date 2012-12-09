@@ -18,13 +18,13 @@ function pirateparty_workgroup_menu() {
     'access arguments' => array(1),
     'weight' => 1,
   );
-  $items['node/%node/projects'] = array(
+  /*$items['node/%node/projects'] = array(
     'title' => t('Issue  tracker'),
     'type' => MENU_LOCAL_TASK,
     'access callback' => 'pirateparty_workgroup_blogmenu_access',
     'access arguments' => array(1),
     'weight' => 2,
-  );
+  );*/
   $items['node/%node/events'] = array(
     'title' => t('Events'),
     'type' => MENU_LOCAL_TASK,
@@ -46,13 +46,13 @@ function pirateparty_workgroup_menu() {
     'access arguments' => array(1),
     'weight' => 2,
   );
-  $items['wgs'] = array(
+  /*$items['wgs'] = array(
     'title' => t('Wgs'),
     'type' => MENU_LOCAL_TASK,
     'access arguments' => TRUE,
     'page callback' => 'pirateparty_workgroup_wgs',
     'weight' => 2,
-  );
+  );*/
   /*$items['group/%/%/admin/blog_posts'] = array(
     'page callback' => 'views_embed_view',
     'title' => 'Workgroup blog posts',
@@ -82,10 +82,12 @@ function pirateparty_workgroup_menu() {
 }
 
 
+/**
+ * temporary callback for generating the workgroup menus in bulk.
+ * Should be removed after site launch.
+ */
 function pirateparty_workgroup_wgs() {
-
   $results = db_query("SELECT * FROM {node} WHERE type = 'workgroup'");
-
   foreach($results as $workgroup) {
     dsm($workgroup);
     menu_save(array(
@@ -95,8 +97,7 @@ function pirateparty_workgroup_wgs() {
     ));
     og_menu_update_menu('menu-og-' . $workgroup->nid, $workgroup->nid);
   }
-
-  return 'hello worlf';
+  return '';
 }
 
 /**
