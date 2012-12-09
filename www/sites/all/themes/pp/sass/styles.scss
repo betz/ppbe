@@ -360,7 +360,7 @@ ul.tabs {
     display: inline-block;
   }
   .item-list {
-    @include zen-grid-flow-item(3);
+    width: 170px;
     float: left;
     ul {
       margin: 0;
@@ -371,7 +371,7 @@ ul.tabs {
 @media all and (min-width: 480px) {
   .view-pirateparty-workgroups {
     .item-list {
-      @include zen-grid-flow-item(4);
+      width: 170px;
     }
   }
 }

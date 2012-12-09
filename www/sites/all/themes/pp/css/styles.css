@@ -1665,17 +1665,7 @@ ul.tabs li:last-child {
 }
 /* line 362, ../sass/styles.scss */
 .view-pirateparty-workgroups .item-list {
-  width: 12.5%;
-  padding-left: 10px;
-  padding-right: 10px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  word-wrap: break-word;
-  padding-left: 0;
-  padding-right: 17.5px;
-  margin-right: 2.5px;
+  width: 170px;
   float: left;
 }
 /* line 365, ../sass/styles.scss */
@@ -1686,17 +1676,7 @@ ul.tabs li:last-child {
 @media all and (min-width: 480px) {
   /* line 373, ../sass/styles.scss */
   .view-pirateparty-workgroups .item-list {
-    width: 16.667%;
-    padding-left: 10px;
-    padding-right: 10px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    word-wrap: break-word;
-    padding-left: 0;
-    padding-right: 16.667px;
-    margin-right: 3.333px;
+    width: 170px;
   }
 }
 /* line 381, ../sass/styles.scss */
