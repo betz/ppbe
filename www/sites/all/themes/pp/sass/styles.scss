@@ -806,13 +806,6 @@ ul.pager {
 }
 
 
-#block-search-form {
-  .form-type-textfield {
-    input {
-      width: 230px;
-    }
-  }
-}
 
 
 form {
@@ -1014,8 +1007,26 @@ form {
 }
 
 
+#block-search-form {
+  text-align: right;
+  .form-type-textfield {
+    input {
+      width: 230px;
+    }
+  }
+}
 
 
+#block-locale-language {
+  margin-bottom: 10px;
+  ul {
+    padding: 0;
+    li {
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+}
 
 
 
