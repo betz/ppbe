@@ -28,6 +28,16 @@
 /* @import "theme-A"; */
 /* @import "theme-B"; */
 
+
+h2 {
+  margin-bottom: 10px;
+  line-height: 1.5em;
+}
+h3 {
+  margin: 10px 0 10px;
+}
+
+
 html {
   overflow-y: scroll;
 }
@@ -671,11 +681,6 @@ ul.pager {
 }
 
 
-.page-node-127 {
-  #content {
-    background: url('http://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Piratpartiet.svg/220px-Piratpartiet.svg.png') no-repeat 550px 290px;
-  }
-}
 
 
 .view-gazette-media-large {
