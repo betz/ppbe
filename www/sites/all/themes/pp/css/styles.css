@@ -1818,20 +1818,20 @@ ul.tabs li:last-child {
 .node-blog-post.view-mode-teaser .field-name-ds-user-picture {
   float: left;
   width: 40px;
+  display: none;
 }
-/* line 504, ../sass/styles.scss */
+/* line 505, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-node_author_name {
   float: left;
   width: 85%;
 }
-/* line 508, ../sass/styles.scss */
+/* line 509, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-ds-user-picture img {
   padding: 3px 10px 5px 0;
 }
-/* line 511, ../sass/styles.scss */
+/* line 512, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-body {
-  padding-top: 23px;
-  padding-left: 40px;
+  padding-top: 5px;
 }
 /* line 516, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-title h2,

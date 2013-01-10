@@ -1,0 +1,275 @@
+diff --git a/panels.install b/panels.install
+index 6e83d44..d686d5a 100644
+--- a/panels.install
++++ b/panels.install
+@@ -47,7 +47,23 @@ function panels_requirements_install() {
+ function panels_schema() {
+   // This should always point to our 'current' schema. This makes it relatively easy
+   // to keep a record of schema as we make changes to it.
+-  return panels_schema_4();
++  return panels_schema_5();
++}
++
++function panels_schema_5() {
++  $schema = panels_schema_3();
++
++  $schema['panels_pane']['fields']['uuid'] = array(
++    'type' => 'char',
++    'length' => '40',
++  );
++
++  $schema['panels_display']['fields']['uuid'] = array(
++    'type' => 'char',
++    'length' => '40',
++  );
++
++  return $schema;
+ }
+ 
+ function panels_schema_4() {
+@@ -375,3 +391,59 @@ function panels_update_7301() {
+ 
+   return t('panels_pane.lock field already existed, update skipped.');
+ }
++
++/**
++ * Add uuid field to panels_pane table.
++ */
++function panels_update_7302() {
++  // Load the schema.
++  $schema = panels_schema_5();
++  $msg = array();
++
++  $table = 'panels_pane';
++  $field = 'uuid';
++  // Due to a previous failure, the field may already exist:
++  if (!db_field_exists($table, $field)) {
++    $spec = $schema[$table]['fields'][$field];
++
++    // Re-define the column.
++    db_add_field($table, $field, $spec);
++    $msg[] = t('Added panels_pane.uuid field.');
++  }
++
++  $table = 'panels_display';
++  $field = 'uuid';
++  // Due to a previous failure, the field may already exist:
++  if (!db_field_exists($table, $field)) {
++    $spec = $schema[$table]['fields'][$field];
++
++    // Re-define the column.
++    db_add_field($table, $field, $spec);
++    $msg[] = t('Added panels_display.uuid field.');
++  }
++
++  // Update all db based panes / displays to contain an uuid.
++  $dids = db_select('panels_display')
++    ->fields('panels_display', array('did'))
++    ->condition(db_or()
++      ->condition('uuid', '')
++      ->isNull('uuid')
++    )
++    ->execute()
++    ->fetchCol();
++  $displays = panels_load_displays($dids);
++  foreach ($displays as $display) {
++    // A display save also triggers pane saves.
++    panels_save_display($display);
++  }
++  if (count($displays)) {
++    $msg[] = t('Added uuids to displays and panes stored in the db.');
++  }
++
++  if (empty($msg)) {
++    return t('Panels uuid support already available, update skipped.');
++  }
++  else {
++    return implode("\n", $msg);
++  }
++}
+diff --git a/panels.module b/panels.module
+index ad0cb70..0abe31c 100644
+--- a/panels.module
++++ b/panels.module
+@@ -633,8 +633,10 @@ class panels_display {
+       $pane->panel = $location;
+     }
+ 
+-    // Get a temporary pid for this pane.
+-    $pane->pid = "new-" . $this->next_new_pid();
++    // Generate a permanent uuid for this pane, and use
++    // it as a temporary pid.
++    $pane->uuid = panels_uuid_generate();
++    $pane->pid = 'new-' . $pane->uuid;
+ 
+     // Add the pane to the approprate spots.
+     $this->content[$pane->pid] = &$pane;
+@@ -651,20 +653,6 @@ class panels_display {
+     return $pane;
+   }
+ 
+-  function next_new_pid() {
+-    // We don't use static vars to record the next new pid because
+-    // temporary pids can last for years in exports and in caching
+-    // during editing.
+-    $id = array(0);
+-    foreach (array_keys($this->content) as $pid) {
+-      if (!is_numeric($pid)) {
+-        $id[] = substr($pid, 4);
+-      }
+-    }
+-    $next_id = max($id);
+-    return ++$next_id;
+-  }
+-
+   /**
+    * Get the title from a display.
+    *
+@@ -847,10 +835,13 @@ function panels_load_display($did) {
+  *
+  * @ingroup mainapi
+  *
+- * Note a new $display only receives a real did once it is run through this function.
+- * Until then, it uses a string placeholder, 'new', in place of a real did. The same
+- * applies to all new panes (whether on a new $display or not); in addition,
+- * panes have sequential numbers appended, of the form 'new-1', 'new-2', etc.
++ * Note that a new $display only receives a real did once it is run through
++ * this function, and likewise for the pid of any new pane.
++ *
++ * Until then, a new display uses a string placeholder, 'new', in place of
++ * a real did, and a new pane (whether on a new $display or not) appends a
++ * universally-unique identifier (which is stored permanently in the 'uuid'
++ * field, and used in place of the real pid for exports).
+  *
+  * @param object $display instanceof panels_display \n
+  *  The display object to be saved. Passed by reference so the caller need not use
+@@ -860,6 +851,9 @@ function panels_load_display($did) {
+  */
+ function panels_save_display(&$display) {
+   $update = (isset($display->did) && is_numeric($display->did)) ? array('did') : array();
++  if (empty($display->uuid) || !panels_uuid_is_valid($display->uuid)) {
++    $display->uuid = panels_uuid_generate();
++  }
+   drupal_write_record('panels_display', $display, $update);
+ 
+   $pids = array();
+@@ -890,6 +884,11 @@ function panels_save_display(&$display) {
+       $pane->did = $display->did;
+ 
+       $old_pid = $pane->pid;
++
++      if (empty($pane->uuid) || !panels_uuid_is_valid($pane->uuid)) {
++        $pane->uuid = panels_uuid_generate();
++      }
++
+       drupal_write_record('panels_pane', $pane, is_numeric($pid) ? array('pid') : array());
+ 
+       if ($pane->pid != $old_pid) {
+@@ -967,9 +966,11 @@ function panels_delete_display($display) {
+  *
+  * This function is primarily intended as a mechanism for cloning displays.
+  * It generates an exact replica (in code) of the provided $display, with
+- * the exception that it replaces all ids (dids and pids) with 'new-*' values.
+- * Only once panels_save_display() is called on the code version of $display will
+- * the exported display written to the database and permanently saved.
++ * the exception that it replaces all ids (dids and pids) with place-holder
++ * values ('new-*' for each did, and the pane's UUID for each pid).
++ *
++ * Only once panels_save_display() is called on the code version of $display
++ * will the exported display be written to the database and permanently saved.
+  *
+  * @see panels_page_export() or _panels_page_fetch_display() for sample implementations.
+  *
+@@ -991,10 +992,12 @@ function panels_delete_display($display) {
+  */
+ function panels_export_display($display, $prefix = '') {
+   ctools_include('export');
++  if (empty($display->uuid) || !panels_uuid_is_valid($display->uuid)) {
++    $display->uuid = panels_uuid_generate();
++  }
++  $display->did = 'new-' . $display->uuid;
+   $output = ctools_export_object('panels_display', $display, $prefix);
+ 
+-  $pid_counter = &drupal_static(__FUNCTION__, 0);
+-
+   // Initialize empty properties.
+   $output .= $prefix . '$display->content = array()' . ";\n";
+   $output .= $prefix . '$display->panels = array()' . ";\n";
+@@ -1004,7 +1007,12 @@ function panels_export_display($display, $prefix = '') {
+   if (!empty($display->content)) {
+     $region_counters = array();
+     foreach ($display->content as $pane) {
+-      $pid = 'new-' . ++$pid_counter;
++
++      if (empty($pane->uuid) || !panels_uuid_is_valid($pane->uuid)) {
++        $pane->uuid = panels_uuid_generate();
++      }
++      $pid = 'new-' . $pane->uuid;
++
+       if ($pane->pid == $display->title_pane) {
+         $title_pid = $pid;
+       }
+@@ -1697,6 +1705,63 @@ function panels_print_layout($layout, $content, $meta = 'standard') {
+   return $renderer->render();
+ }
+ 
++/**
++ * Generates a Universally Unique IDentifier, version 4.
++ * @see http://php.net/uniqid#65879
++ *
++ * RFC 4122 (http://www.ietf.org/rfc/rfc4122.txt) defines a special type of Globally
++ * Unique IDentifiers (GUID), as well as several methods for producing them. One
++ * such method, described in section 4.4, is based on truly random or pseudo-random
++ * number generators, and is therefore implementable in a language like PHP.
++ *
++ * We choose to produce pseudo-random numbers with the Mersenne Twister, and to always
++ * limit single generated numbers to 16 bits (ie. the decimal value 65535). That is
++ * because, even on 32-bit systems, PHP's RAND_MAX will often be the maximum *signed*
++ * value, with only the equivalent of 31 significant bits. Producing two 16-bit random
++ * numbers to make up a 32-bit one is less efficient, but guarantees that all 32 bits
++ * are random.
++ *
++ * The algorithm for version 4 UUIDs (ie. those based on random number generators)
++ * states that all 128 bits separated into the various fields (32 bits, 16 bits, 16 bits,
++ * 8 bits and 8 bits, 48 bits) should be random, except : (a) the version number should
++ * be the last 4 bits in the 3rd field, and (b) bits 6 and 7 of the 4th field should
++ * be 01. We try to conform to that definition as efficiently as possible, generating
++ * smaller values where possible, and minimizing the number of base conversions.
++ *
++ * @copyright   Copyright (c) CFD Labs, 2006. This function may be used freely for
++ *              any purpose ; it is distributed without any form of warranty whatsoever.
++ * @author      David Holmes <dholmes@cfdsoftware.net>
++ *
++ * @return  string  A UUID, made up of 32 hex digits and 4 hyphens.
++ */
++function panels_uuid_generate() {
++  // The field names refer to RFC 4122 section 4.1.2
++  return sprintf('%04x%04x-%04x-%03x4-%04x-%04x%04x%04x',
++    mt_rand(0, 65535), mt_rand(0, 65535), // 32 bits for "time_low"
++    mt_rand(0, 65535), // 16 bits for "time_mid"
++    mt_rand(0, 4095),  // 12 bits before the 0100 of (version) 4 for "time_hi_and_version"
++    bindec(substr_replace(sprintf('%016b', mt_rand(0, 65535)), '01', 6, 2)),
++    // 8 bits, the last two of which (positions 6 and 7) are 01, for "clk_seq_hi_res"
++    // (hence, the 2nd hex digit after the 3rd hyphen can only be 1, 5, 9 or d)
++    // 8 bits for "clk_seq_low"
++    mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535) // 48 bits for "node"
++  );
++}
++
++/**
++ * Check that a string appears to be in the format of a UUID.
++ * @see http://drupal.org/project/uuid
++ *
++ * @param $uuid
++ *  The string to test.
++ *
++ * @return
++ *   TRUE if the string is well formed.
++ */
++function panels_uuid_is_valid($uuid) {
++  return preg_match("/^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$/", $uuid);
++}
++
+ // --------------------------------------------------------------------------
+ // Deprecated functions
+ //

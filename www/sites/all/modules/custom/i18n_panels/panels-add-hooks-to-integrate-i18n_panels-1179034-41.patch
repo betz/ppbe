@@ -1,0 +1,319 @@
+diff --git a/panels.api.php b/panels.api.php
+new file mode 100644
+index 0000000..1aa1c6a
+--- /dev/null
++++ b/panels.api.php
+@@ -0,0 +1,264 @@
++<?php
++
++/**
++ * @file
++ * Hooks provided by Panels.
++ */
++
++/**
++ * Allow modules to provide their own caching mechanism for the display editor.
++ *
++ * @param string $argument
++ *   The second half of the cache key. Full key module:TASK_NAME:HANDLER_NAME
++ *   passed part: TASK_NAME:HANDLER_NAME
++ * @param stdClass $cache
++ *   The display to cache.
++ */
++function hook_panels_cache_set($argument, $cache) {
++  list($handler, $item) = _panels_mini_panels_cache_get($argument);
++  $item->mini_panels_display_cache = $cache;
++  $handler->edit_cache_set_key($item, $argument);
++}
++
++/**
++ * Allow modules to provide their own caching mechanism for the display editor.
++ *
++ * @param string $argument
++ *   The second half of the cache key. Full key module:TASK_NAME:HANDLER_NAME
++ *   passed part: TASK_NAME:HANDLER_NAME
++ *
++ * @return stdClass|NULL
++ *   The cached display or NULL if the cache wasn't hit.
++ */
++function hook_panels_cache_get($argument) {
++  ctools_include('common', 'panels');
++  list($handler, $item) = _panels_mini_panels_cache_get($argument);
++  if (isset($item->mini_panels_display_cache)) {
++    return $item->mini_panels_display_cache;
++  }
++
++  $cache = new stdClass();
++  $cache->display = $item->display;
++  $cache->display->context = ctools_context_load_contexts($item);
++  $cache->display->cache_key = 'panels_mini:' . $argument;
++  $cache->content_types = panels_common_get_allowed_types('panels_mini', $cache->display->context);
++  $cache->display_title = TRUE;
++
++  // @TODO support locking.
++  $cache->locked = FALSE;
++
++  return $cache;
++}
++
++/**
++ * Allow modules to provide their own caching mechanism for the display editor.
++ *
++ * @param string $argument
++ *   The second half of the cache key. Full key module:TASK_NAME:HANDLER_NAME
++ *   passed part: TASK_NAME:HANDLER_NAME
++ * @param stdClass $cache
++ *   The display to cache.
++ *
++ * @return stdClass
++ *   The cached display.
++ */
++function hook_panels_cache_save($argument, $cache) {
++  list($handler, $item) = _panels_mini_panels_cache_get($argument);
++  $item->display = $cache->display;
++  panels_mini_save($item);
++
++  $handler->edit_cache_clear($item);
++
++  return $item;
++}
++
++/**
++ * Allow modules to provide their own caching mechanism for the display editor.
++ *
++ * @param string $argument
++ *   The second half of the cache key. Full key module:TASK_NAME:HANDLER_NAME
++ *   passed part: TASK_NAME:HANDLER_NAME
++ * @param stdClass $cache
++ *   The cached display.
++ */
++function hook_panels_cache_clear($argument, $cache) {
++  list($handler, $item) = _panels_mini_panels_cache_get($argument);
++  $handler->edit_cache_clear($item);
++}
++
++/**
++ * Allow modules to adjust the rendering array of the panels dashboard.
++ *
++ * @param array $vars
++ *   The output variables.
++ */
++function hook_panels_dashboard_blocks(&$vars) {
++  $vars['links']['panels_node'] = array(
++    'title' => l(t('Panel node'), 'node/add/panel'),
++    'description' => t('Panel nodes are node content and appear in your searches, but are more limited than panel pages.'),
++    'weight' => -1,
++  );
++}
++
++/**
++ * Allow to alter the pane content to render.
++ *
++ * This happens after the keyword substitution.
++ *
++ * @param stdClass $content
++ *   The content block to render.
++ * @param stdClass $pane
++ *   The pane object.
++ * @param array $args
++ *   The display arguments.
++ * @param array $contexts
++ *   Array with the used contexts.
++ */
++function hook_panels_pane_content_alter($content, $pane, $args, $contexts) {
++  // Don't display titles.
++  unset($content->title);
++}
++
++/**
++ * Allow modules to provide a mechanism to break locks.
++ *
++ * @param string $argument
++ *   The second half of the cache key. Full key module:TASK_NAME:HANDLER_NAME
++ *   passed part: TASK_NAME:HANDLER_NAME
++ * @param stdClass $cache
++ *   The cached display.
++ */
++function hook_panels_edit_cache_break_lock($argument, $cache) {
++  $cache->locked = FALSE;
++}
++
++/**
++ * Fired before a panels display is rendered.
++ *
++ * Last chance to modify the panels display or add output before the keyword
++ * substitution runs and the panels display is rendered.
++ *
++ * @param panels_display $panels_display
++ *   The panels display that will be rendered.
++ * @param stdClass $renderer
++ *   The renderer object that will be used to render.
++ *
++ * @return string
++ *   Additional output to add before the panels display.
++ */
++function hook_panels_pre_render($panels_display, $renderer) {
++  $translation = i18n_string_object_translate('panels_display_configuration', $panels_display);
++  $panels_display->title = $translation->title;
++}
++
++/**
++ * Fired after a panels display is rendered.
++ *
++ * Allow to add additional output after the output of the panels display.
++ *
++ * @param panels_display $panels_display
++ *   The rendered panels display.
++ * @param stdClass $renderer
++ *   The used renderer object.
++ *
++ * @return string
++ *   Additional output to add after the panels display.
++ */
++function hook_panels_post_render($panels_display, $renderer) {
++  return t('Output proudly sponsored by panels.');
++}
++
++/**
++ * Fired before a new pane is inserted in the storage.
++ *
++ * @param stdClass $pane
++ *   Pane that will be rendered.
++ */
++function hook_panels_pane_insert($pane) {
++  // Check if this pane has a custom title enabled.
++  if (!empty($pane->configuration['override_title'])) {
++    $translation_object = (object) array(
++      'pid' => $pane->pid,
++      'title' => $pane->configuration['override_title_text'],
++    );
++    $status = i18n_string_object_update('panels_pane_configuration', $translation_object);
++  }
++}
++
++/**
++ * Fired before a changed pane is updated in the storage.
++ *
++ * @param stdClass $pane
++ *   Pane that will be rendered.
++ */
++function hook_panels_pane_update($pane) {
++  // Check if this pane has a custom title enabled.
++  if (!empty($pane->configuration['override_title'])) {
++    $translation_object = (object) array(
++      'pid' => $pane->pid,
++      'title' => $pane->configuration['override_title_text'],
++    );
++    $status = i18n_string_object_update('panels_pane_configuration', $translation_object);
++  }
++}
++
++/**
++ * Fired before a panel is rendered.
++ *
++ * Last chance to modify the pane before the keyword substitution runs and the
++ * pane is rendered.
++ *
++ * @param stdClass $pane
++ *   Pane that will be rendered.
++ */
++function hook_panels_pane_prerender($pane) {
++  // Check if this pane has a custom title enabled.
++  if (!empty($pane->configuration['override_title'])) {
++    $translation_object = (object) array(
++      'pid' => $pane->pid,
++      'title' => $pane->configuration['override_title_text'],
++    );
++    $translation_object = i18n_string_object_translate('panels_pane_configuration', $translation_object);
++    $pane->configuration['override_title_text'] = $translation_object->title;
++  }
++}
++
++/**
++ * Fired before panes are deleted.
++ *
++ * @param array $pids
++ *   Array with the panel id's to delete.
++ */
++function hook_panels_pane_delete($pids) {
++  foreach ($pids as $pid) {
++    // Create dummy pane with pid as property.
++    $pane = (object) array('pid' => $pid);
++    i18n_string_object_remove('panels_pane_configuration', $pane);
++  }
++}
++
++/**
++ * Fired after a display is saved.
++ *
++ * @param panels_display $display
++ *   The display to save.
++ */
++function hook_panels_display_save($display) {
++  i18n_string_object_update('display_configuration', $display);
++}
++
++/**
++ * Fired before a display is deleted.
++ *
++ * @param integer $did
++ *   Id of the display to delete.
++ */
++function hook_panels_delete_display($did) {
++  $uuid = db_select('panels_display')
++    ->fields('panels_display', array('uuid'))
++    ->condition('did', $did)
++    ->execute()
++    ->fetchColumn();
++  $display = (object) array('uuid' => $uuid);
++  i18n_string_object_remove('display_configuration', $display);
++}
+diff --git a/panels.module b/panels.module
+index ad0cb70..41f0ab6 100644
+--- a/panels.module
++++ b/panels.module
+@@ -892,6 +892,14 @@ function panels_save_display(&$display) {
+       $old_pid = $pane->pid;
+       drupal_write_record('panels_pane', $pane, is_numeric($pid) ? array('pid') : array());
+ 
++      // Allow other modules to take action after a pane is saved.
++      if ($pane->pid == $old_pid) {
++        module_invoke_all('panels_pane_update', $pane);
++      }
++      else {
++        module_invoke_all('panels_pane_insert', $pane);
++      }
++
+       if ($pane->pid != $old_pid) {
+         // and put it back so our pids and positions can be used
+         unset($display->content[$id]);
+@@ -925,6 +933,8 @@ function panels_save_display(&$display) {
+     $display->panels[$id] = $new_panes;
+   }
+   if (!empty($pids)) {
++    // Allow other modules to take action before a panes are deleted.
++    module_invoke_all('panels_pane_delete', $pids);
+     db_delete('panels_pane')->condition('pid', $pids)->execute();
+   }
+ 
+@@ -958,6 +968,7 @@ function panels_delete_display($display) {
+   else {
+     $did = $display;
+   }
++  module_invoke_all('panels_delete_display', $did);
+   db_delete('panels_display')->condition('did', $did)->execute();
+   db_delete('panels_pane')->condition('did', $did)->execute();
+ }
+diff --git a/plugins/display_renderers/panels_renderer_standard.class.php b/plugins/display_renderers/panels_renderer_standard.class.php
+index 471c0e0..d382ceb 100644
+--- a/plugins/display_renderers/panels_renderer_standard.class.php
++++ b/plugins/display_renderers/panels_renderer_standard.class.php
+@@ -473,6 +473,8 @@ class panels_renderer_standard {
+    *  A Panels pane object, as loaded from the database.
+    */
+   function render_pane(&$pane) {
++    module_invoke_all('panels_pane_prerender', $pane);
++
+     $content = $this->render_pane_content($pane);
+     if ($this->display->hide_title == PANELS_TITLE_PANE && !empty($this->display->title_pane) && $this->display->title_pane == $pane->pid) {
+ 
