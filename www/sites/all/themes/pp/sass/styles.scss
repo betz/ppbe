@@ -1034,4 +1034,24 @@ form {
 }
 
 
+.user-profile {
+  &.view-mode-teaser {
+    background: #e2e2e2;
+    padding: 10px;
+    .group-right {
+      width: 68% !important;
+      margin-left: 2%;
+    }
+    .field-name-field-profile-first-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+
+
+
+
 
