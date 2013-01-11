@@ -2392,18 +2392,23 @@ form fieldset {
   display: inline-block;
   margin-left: 10px;
 }
+/* line 1032, ../sass/styles.scss */
+#block-locale-language ul li.active {
+  font-weight: bold;
+  font-size: 1.1em;
+}
 
-/* line 1038, ../sass/styles.scss */
+/* line 1042, ../sass/styles.scss */
 .user-profile.view-mode-teaser {
   background: #e2e2e2;
   padding: 10px;
 }
-/* line 1041, ../sass/styles.scss */
+/* line 1045, ../sass/styles.scss */
 .user-profile.view-mode-teaser .group-right {
   width: 68% !important;
   margin-left: 2%;
 }
-/* line 1045, ../sass/styles.scss */
+/* line 1049, ../sass/styles.scss */
 .user-profile.view-mode-teaser .field-name-field-profile-first-name {
   font-size: 18px;
   font-weight: bold;

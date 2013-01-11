@@ -1029,6 +1029,10 @@ form {
     li {
       display: inline-block;
       margin-left: 10px;
+      &.active {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
     }
   }
 }
