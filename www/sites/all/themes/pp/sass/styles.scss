@@ -28,6 +28,16 @@
 /* @import "theme-A"; */
 /* @import "theme-B"; */
 
+
+h2 {
+  margin-bottom: 10px;
+  line-height: 1.5em;
+}
+h3 {
+  margin: 10px 0 10px;
+}
+
+
 html {
   overflow-y: scroll;
 }
@@ -490,6 +500,7 @@ ul.tabs {
     .field-name-ds-user-picture {
       float: left;
       width: 40px;
+      display: none;
     }
     .field-name-node_author_name {
       float: left;
@@ -499,8 +510,7 @@ ul.tabs {
       padding: 3px 10px 5px 0;
     }
     .field-name-body {
-      padding-top: 23px;
-      padding-left: 40px;
+      padding-top: 5px;
     }
     .field-name-title h2,
     .field-name-node_author_name h2 {
@@ -671,11 +681,6 @@ ul.pager {
 }
 
 
-.page-node-127 {
-  #content {
-    background: url('http://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Piratpartiet.svg/220px-Piratpartiet.svg.png') no-repeat 550px 290px;
-  }
-}
 
 
 .view-gazette-media-large {
@@ -1024,9 +1029,33 @@ form {
     li {
       display: inline-block;
       margin-left: 10px;
+      &.active {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
     }
   }
 }
+
+
+.user-profile {
+  &.view-mode-teaser {
+    background: #e2e2e2;
+    padding: 10px;
+    .group-right {
+      width: 68% !important;
+      margin-left: 2%;
+    }
+    .field-name-field-profile-first-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+
+
 
 
 

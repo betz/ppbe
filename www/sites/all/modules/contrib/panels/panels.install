@@ -47,7 +47,23 @@ function panels_requirements_install() {
 function panels_schema() {
   // This should always point to our 'current' schema. This makes it relatively easy
   // to keep a record of schema as we make changes to it.
-  return panels_schema_4();
+  return panels_schema_5();
+}
+
+function panels_schema_5() {
+  $schema = panels_schema_3();
+
+  $schema['panels_pane']['fields']['uuid'] = array(
+    'type' => 'char',
+    'length' => '40',
+  );
+
+  $schema['panels_display']['fields']['uuid'] = array(
+    'type' => 'char',
+    'length' => '40',
+  );
+
+  return $schema;
 }
 
 function panels_schema_4() {
@@ -374,4 +390,60 @@ function panels_update_7301() {
   }
 
   return t('panels_pane.lock field already existed, update skipped.');
+}
+
+/**
+ * Add uuid field to panels_pane table.
+ */
+function panels_update_7302() {
+  // Load the schema.
+  $schema = panels_schema_5();
+  $msg = array();
+
+  $table = 'panels_pane';
+  $field = 'uuid';
+  // Due to a previous failure, the field may already exist:
+  if (!db_field_exists($table, $field)) {
+    $spec = $schema[$table]['fields'][$field];
+
+    // Re-define the column.
+    db_add_field($table, $field, $spec);
+    $msg[] = t('Added panels_pane.uuid field.');
+  }
+
+  $table = 'panels_display';
+  $field = 'uuid';
+  // Due to a previous failure, the field may already exist:
+  if (!db_field_exists($table, $field)) {
+    $spec = $schema[$table]['fields'][$field];
+
+    // Re-define the column.
+    db_add_field($table, $field, $spec);
+    $msg[] = t('Added panels_display.uuid field.');
+  }
+
+  // Update all db based panes / displays to contain an uuid.
+  $dids = db_select('panels_display')
+    ->fields('panels_display', array('did'))
+    ->condition(db_or()
+      ->condition('uuid', '')
+      ->isNull('uuid')
+    )
+    ->execute()
+    ->fetchCol();
+  $displays = panels_load_displays($dids);
+  foreach ($displays as $display) {
+    // A display save also triggers pane saves.
+    panels_save_display($display);
+  }
+  if (count($displays)) {
+    $msg[] = t('Added uuids to displays and panes stored in the db.');
+  }
+
+  if (empty($msg)) {
+    return t('Panels uuid support already available, update skipped.');
+  }
+  else {
+    return implode("\n", $msg);
+  }
 }

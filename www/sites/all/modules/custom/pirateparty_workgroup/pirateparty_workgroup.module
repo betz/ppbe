@@ -131,6 +131,7 @@ function pirateparty_workgroup_preprocess_node(&$variables) {
       $account = user_load($variables['node']->uid);
       $node = $variables['node']->nid;
       $variables['node_author_name'] = theme('node_title_with_author', array('node' => $variables['node']));
+      $variables['author_rendered'] = drupal_render(user_view($account, 'teaser'));
       break;
   }
 }
