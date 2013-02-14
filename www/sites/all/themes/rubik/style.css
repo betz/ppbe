@@ -397,10 +397,10 @@ div.node .column-side .column-wrapper {
   width: 48%;
 }
 
-.node-form .ds-form fieldset,
+/*.node-form .ds-form fieldset,
 .node-form .ds-form .form-item {
   margin-bottom: 20px;
-}
+}*/
 
 .field-type-image .form-type-managed-file {
   margin-top: 20px;
@@ -410,10 +410,29 @@ div.node .column-side .column-wrapper {
   margin-top: 15px;
 }
 
-
-
-
-
-
-
-
+.form-item-og-group-ref-und-0-admin,
+.field-name-group-content-access {
+  display: none;
+}
+#edit-field-blog-post-images-und-table thead {
+  display: none;
+}
+.image-widget > .image-widget-data .file {
+  display: none;
+}
+.tabledrag-toggle-weight-wrapper {
+  display: none;
+}
+#field-video-values thead {
+  display: none;
+}
+#field-video-values legend {
+  display: none;
+}
+#field-video-values .fieldset-content {
+  padding: 0;
+  border: 0;
+}
+#field-video-values .form-wrapper {
+  border: 0;
+}
