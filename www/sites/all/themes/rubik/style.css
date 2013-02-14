@@ -403,7 +403,7 @@ div.node .column-side .column-wrapper {
 }*/
 
 .field-type-image .form-type-managed-file {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .field-type-image .form-type-managed-file .form-submit {
@@ -435,4 +435,18 @@ div.node .column-side .column-wrapper {
 }
 #field-video-values .form-wrapper {
   border: 0;
+}
+.image-widget-data .form-file {
+  float: left;
+  width: 250px;
+}
+.image-widget-data .form-submit {
+  float: left;
+  margin: 0 !important;
+}
+#edit-og-group-ref-und select {
+  min-height: 200px;
+}
+.field-name-og-group-ref legend {
+  display: none;
 }
