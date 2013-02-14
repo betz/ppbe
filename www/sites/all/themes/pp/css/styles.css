@@ -2337,83 +2337,81 @@ form fieldset {
 
 /* line 983, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full {
-  border: 1px solid #cccccc;
-  padding: 15px !important;
   margin-bottom: 15px;
   margin-top: 5px;
 }
-/* line 988, ../sass/styles.scss */
+/* line 986, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full .group-left {
   width: 30%;
 }
-/* line 991, ../sass/styles.scss */
+/* line 989, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full .group-right {
   width: 70%;
 }
-/* line 994, ../sass/styles.scss */
+/* line 992, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full ul.links {
   list-style: none;
   padding: 0;
 }
-/* line 997, ../sass/styles.scss */
+/* line 995, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full ul.links li {
   display: inline-block;
 }
-/* line 999, ../sass/styles.scss */
+/* line 997, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full ul.links li a {
   background: #522E91;
   color: #fff;
   padding: 2px 5px;
 }
 
-/* line 1009, ../sass/styles.scss */
+/* line 1007, ../sass/styles.scss */
 #sliding-popup {
   background: #F80;
 }
-/* line 1012, ../sass/styles.scss */
+/* line 1010, ../sass/styles.scss */
 #sliding-popup .popup-content #popup-buttons {
   margin-top: 25px;
 }
 
-/* line 1019, ../sass/styles.scss */
+/* line 1017, ../sass/styles.scss */
 #block-search-form {
   text-align: right;
 }
-/* line 1022, ../sass/styles.scss */
+/* line 1020, ../sass/styles.scss */
 #block-search-form .form-type-textfield input {
   width: 230px;
 }
 
-/* line 1029, ../sass/styles.scss */
+/* line 1027, ../sass/styles.scss */
 #block-locale-language {
   margin-bottom: 10px;
 }
-/* line 1031, ../sass/styles.scss */
+/* line 1029, ../sass/styles.scss */
 #block-locale-language ul {
   padding: 0;
 }
-/* line 1033, ../sass/styles.scss */
+/* line 1031, ../sass/styles.scss */
 #block-locale-language ul li {
   display: inline-block;
   margin-left: 10px;
 }
-/* line 1036, ../sass/styles.scss */
+/* line 1034, ../sass/styles.scss */
 #block-locale-language ul li.active {
   font-weight: bold;
   font-size: 1.1em;
 }
 
-/* line 1046, ../sass/styles.scss */
+/* line 1044, ../sass/styles.scss */
 .user-profile.view-mode-teaser {
   background: #e2e2e2;
   padding: 10px;
 }
-/* line 1049, ../sass/styles.scss */
+/* line 1047, ../sass/styles.scss */
 .user-profile.view-mode-teaser .group-right {
   width: 68% !important;
   margin-left: 2%;
 }
-/* line 1053, ../sass/styles.scss */
+/* line 1051, ../sass/styles.scss */
 .user-profile.view-mode-teaser .field-name-field-profile-first-name {
   font-size: 18px;
   font-weight: bold;
