@@ -1059,8 +1059,34 @@ form {
   }
 }
 
+.panel-2col-bricks {
+  .panel-col-first {
+    .inside {
+      margin: 0 0 .5em 0;
+    }
+  }
+}
 
+@media screen and (max-width: 900px) {
+  .class {
+    background: #ccc;
+  }
+  .region-header {
+    top: 120px;
+  }
+  #header #logo_name_slogan {
+    margin: 50px 0 130px;
+  }
+  .language-switcher-locale-url {
+    a {
 
-
-
+    }
+  }
+  .region-header {
+    left: 0;
+  }
+  #block-search-form {
+    text-align: left;
+  }
+}
 

@@ -2421,3 +2421,35 @@ form fieldset {
   font-weight: bold;
   margin-bottom: 5px;
 }
+
+/* line 1064, ../sass/styles.scss */
+.panel-2col-bricks .panel-col-first .inside {
+  margin: 0 0 0.5em 0;
+}
+
+@media screen and (max-width: 900px) {
+  /* line 1071, ../sass/styles.scss */
+  .class {
+    background: #ccc;
+  }
+
+  /* line 1074, ../sass/styles.scss */
+  .region-header {
+    top: 120px;
+  }
+
+  /* line 1077, ../sass/styles.scss */
+  #header #logo_name_slogan {
+    margin: 50px 0 130px;
+  }
+
+  /* line 1085, ../sass/styles.scss */
+  .region-header {
+    left: 0;
+  }
+
+  /* line 1088, ../sass/styles.scss */
+  #block-search-form {
+    text-align: left;
+  }
+}
