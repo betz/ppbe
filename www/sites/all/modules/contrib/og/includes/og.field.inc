@@ -42,7 +42,7 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
   list($id,, $bundle) = entity_extract_ids($entity_type, $entity);
   $field_name = $field['field_name'];
 
-  $identifier = $field_name . ':' . $entity_type . ':' . $id;
+  $identifier = $field_name . ':' . $entity_type . ':' . $bundle . ':' . $id;
   if (isset($cache[$identifier])) {
     return array();
   }
@@ -63,18 +63,26 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
     $field_modes[] = 'admin';
   }
 
-  // Get the "Other group" group IDs.
-  $target_type = $field['settings']['target_type'];
-  $other_groups_ids = array();
-  if ($id) {
-    $entity_gids = og_get_entity_groups($entity_type, $entity);
-    $entity_gids = !empty($entity_gids[$target_type]) ? $entity_gids[$target_type] : array();
-
-    $user_gids = og_get_entity_groups();
-    $user_gids = !empty($user_gids[$target_type]) ? $user_gids[$target_type] : array();
-
-    $other_groups_ids = array_diff($entity_gids, $user_gids);
+  // Build an array of entity IDs. Field's $items are loaded
+  // in OgBehaviorHandler::load().
+  $entity_gids = array();
+  foreach ($items as $item) {
+    $entity_gids[] = $item['target_id'];
   }
+
+  $mocked_instance = og_get_mocked_instance($instance, 'default');
+  // Get the group ids available for selection in the audience field.
+  $field_gids = array();
+  $ids = entityreference_get_selection_handler($field, $mocked_instance)->getReferencableEntities();
+  if (!empty($ids)) {
+    foreach ($ids as $key => $values) {
+      $field_gids += $values;
+    }
+    $field_gids = array_keys($field_gids);
+  }
+
+  // Entity groups not shown in the audience field.
+  $other_groups_ids = array_diff($entity_gids, $field_gids);
 
   foreach ($field_modes as $field_mode) {
     $mocked_instance = og_get_mocked_instance($instance, $field_mode);
@@ -82,7 +90,14 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
 
     if ($has_admin) {
       $mocked_instance['required'] = FALSE;
-      $mocked_instance['label'] = $field_mode == 'default' ? t('Default') : t('Administrator');
+      if ($field_mode == 'default') {
+        $mocked_instance['label'] = t('Your groups');
+        $mocked_instance['description'] = t('Associate this content with groups you belong to.');
+      }
+      else {
+        $mocked_instance['label'] = t('Other groups');
+        $mocked_instance['description'] = t('As groups administrator, associate this content with groups you do <em>not</em> belong to.');
+      }
 
       if ($id) {
         // The field might be required, and it will throw an exception
@@ -99,7 +114,7 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
         }
         else {
           // Keep only the groups that belong to the user and to the entity.
-          $my_group_ids = array_values(array_intersect($user_gids, $entity_gids));
+          $my_group_ids = array_values(array_intersect($field_gids, $entity_gids));
           $valid_ids = $my_group_ids ? entityreference_get_selection_handler($field, $mocked_instance, $entity_type, $dummy_entity)->validateReferencableEntities($my_group_ids) : array();
 
           $valid_ids = $field['cardinality'] == 1 ? reset($valid_ids) : $valid_ids;
@@ -128,7 +143,6 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
 
     $new_element = ctools_field_invoke_field($mocked_instance, 'form', $entity_type, $dummy_entity, $form, $dummy_form_state, array('default' => TRUE));
     $element[$field_mode] = $new_element[$field_name][LANGUAGE_NONE];
-
     if (in_array($mocked_instance['widget']['type'], array('entityreference_autocomplete', 'entityreference_autocomplete_tags'))) {
       // Change the "Add more" button name so it adds only the needed
       // element.
@@ -136,29 +150,20 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
         $element[$field_mode]['add_more']['#name'] .= '__' . $field_mode;
       }
 
-      foreach (array_keys($element[$field_mode]) as $delta) {
-        if (!is_numeric($delta)) {
-          continue;
+      if ($mocked_instance['widget']['type'] == 'entityreference_autocomplete') {
+        foreach (array_keys($element[$field_mode]) as $delta) {
+          if (!is_numeric($delta)) {
+            continue;
+          }
+
+          $sub_element = &$element[$field_mode][$delta]['target_id'];
+          _og_field_widget_replace_autocomplete_path($sub_element, $field_mode);
+
         }
-
-        $sub_element = &$element[$field_mode][$delta]['target_id'];
-
-        // Rebuild the autocomplete path.
-        $path = explode('/', $sub_element['#autocomplete_path']);
-        $sub_element['#autocomplete_path'] = 'og/autocomplete';
-
-        // Add autocomplete type
-        $sub_element['#autocomplete_path'] .= "/$path[2]/$path[3]/$path[4]/$path[5]";
-
-        // Add field mode.
-        $sub_element['#autocomplete_path'] .= "/$field_mode";
-
-        // Add the entity ID.
-        $sub_element['#autocomplete_path'] .= "/$path[6]";
-        if (!empty($path[7])) {
-          // Add the text.
-          $sub_element['#autocomplete_path'] .= "/$path[7]";
-        }
+      }
+      else {
+        // Tags widget, there's no delta, we can pass the element itself.
+        _og_field_widget_replace_autocomplete_path($element[$field_mode], $field_mode);
       }
     }
   }
@@ -166,6 +171,34 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
   $form['#after_build']['og'] = 'og_complex_widget_after_build';
 
   return $element;
+}
+
+/**
+ * Replace Entity-reference's autocomplete path with our own.
+ *
+ * @param $element
+ *   The form element, passed by reference.
+ * @param $field_mode
+ *   The field mode.
+ *
+ */
+function _og_field_widget_replace_autocomplete_path(&$element, $field_mode) {
+  // Rebuild the autocomplete path.
+  $path = explode('/', $element['#autocomplete_path']);
+  $element['#autocomplete_path'] = 'og/autocomplete';
+
+  // Add autocomplete type
+  $element['#autocomplete_path'] .= "/$path[2]/$path[3]/$path[4]/$path[5]";
+
+  // Add field mode.
+  $element['#autocomplete_path'] .= "/$field_mode";
+
+  // Add the entity ID.
+  $element['#autocomplete_path'] .= "/$path[6]";
+  if (!empty($path[7])) {
+    // Add the text.
+    $element['#autocomplete_path'] .= "/$path[7]";
+  }
 }
 
 /**

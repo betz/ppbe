@@ -48,16 +48,14 @@ files[] = includes/migrate/7000/og_user.inc
 ; Migrate from 7.x-1.x to 7.x-2.x
 files[] = includes/migrate/og.migrate.inc
 files[] = includes/migrate/7200/og_og_membership.migrate.inc
-files[] = includes/migrate/7200/og_ogur_permissions.migrate.inc
-files[] = includes/migrate/7200/og_ogur.migrate.inc
 files[] = includes/migrate/7200/og_roles.migrate.inc
 files[] = includes/migrate/7200/og_user_roles.migrate.inc
 
 
 
-; Information added by drupal.org packaging script on 2012-11-18
-version = "7.x-2.0-beta3"
+; Information added by drupal.org packaging script on 2013-02-10
+version = "7.x-2.0-rc4"
 core = "7.x"
 project = "og"
-datestamp = "1353231456"
+datestamp = "1360499327"
 

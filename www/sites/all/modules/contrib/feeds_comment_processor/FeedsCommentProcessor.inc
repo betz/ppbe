@@ -47,6 +47,7 @@ class FeedsCommentProcessor extends FeedsProcessor {
     $comment->name = $account->name;
     $comment->hostname = '127.0.0.1';
     $comment->created = FEEDS_REQUEST_TIME;
+    $comment->date = FEEDS_REQUEST_TIME;
     $comment->is_anonymous = 0;
     $comment->status = 0;
     $comment->language = LANGUAGE_NONE;
@@ -79,6 +80,7 @@ class FeedsCommentProcessor extends FeedsProcessor {
    * Save a comment.
    */
   public function entitySave($comment) {
+    $comment->date = date('r', $comment->created);
     comment_submit($comment);
     comment_save($comment);
   }

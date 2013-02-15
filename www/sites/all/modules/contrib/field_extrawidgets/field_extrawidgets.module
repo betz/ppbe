@@ -17,15 +17,9 @@
  */
 
 /**
- * Implements hook_field_widget_info_alter().
- *
- * Since we always want our (advanced) widgets to be the last choices, instead
- * of using hook_field_widget_info() (which gives you no control over the
- * order of the widgets presented in the UI), we use the alter hook and add
- * widgets to the end of the list. It's evil and ugly, but Field API gives us
- * no clean alternative.
+ * Implements hook_field_widget_info().
  */
-function field_extrawidgets_field_widget_info_alter(&$widgets) {
+function field_extrawidgets_field_widget_info() {
   $widgets['field_extrawidgets_hidden'] = array(
     'label' => t('Hidden'),
     'description' => t('A widget that is completely hidden.'),
@@ -34,6 +28,7 @@ function field_extrawidgets_field_widget_info_alter(&$widgets) {
     'behaviors' => array(
       'multiple values' => FIELD_BEHAVIOR_CUSTOM,
     ),
+    'weight' => 10,
   );
 
   $widgets['field_extrawidgets_read_only'] = array(
@@ -48,6 +43,7 @@ function field_extrawidgets_field_widget_info_alter(&$widgets) {
     'behaviors' => array(
       'multiple values' => FIELD_BEHAVIOR_CUSTOM,
     ),
+    'weight' => 11,
   );
 
   return $widgets;
@@ -71,10 +67,12 @@ function field_extrawidgets_widget_settings($field, $instance) {
  * Implements hook_field_widget_settings_form().
  */
 function field_extrawidgets_field_widget_settings_form($field, $instance) {
-  $widget = $instance['widget'];
-  $settings = field_extrawidgets_widget_settings($field, $instance);
+  // The Hidden widget doesn't have any settings.
+  if ($instance['widget']['type'] != 'field_extrawidgets_read_only') {
+    return array();
+  }
 
-  $form = array();
+  $settings = field_extrawidgets_widget_settings($field, $instance);
 
   // Include the field_ui admin form.
   module_load_include('inc', 'field_ui', 'field_ui.admin');

@@ -2431,7 +2431,7 @@ form fieldset {
   margin: 0 0 0.5em 0;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
   /* line 1074, ../sass/styles.scss */
   .class {
     background: #ccc;

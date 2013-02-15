@@ -3,8 +3,38 @@
 		// Lets find our class name and change our URL to
 		// our defined menu path to open in a colorbox modal.
 		attach : function(context, settings) {
-			$('a.colorbox-node', context).once('colorboxNode').each(function() {
-				var href = $(this).attr('href');
+			$.urlParams = function (url) {
+		      var p = {},
+		          e,
+		          a = /\+/g,  // Regex for replacing addition symbol with a space
+		          r = /([^&=]+)=?([^&]*)/g,
+		          d = function (s) { return decodeURIComponent(s.replace(a, ' ')); },
+		          q = url.split('?');
+		      while (e = r.exec(q[1])) {
+		        e[1] = d(e[1]);
+		        e[2] = d(e[2]);
+		        switch (e[2].toLowerCase()) {
+		          case 'true':
+		          case 'yes':
+		            e[2] = true;
+		            break;
+		          case 'false':
+		          case 'no':
+		            e[2] = false;
+		            break;
+		        }
+		        if (e[1] == 'width') { e[1] = 'innerWidth'; }
+		        if (e[1] == 'height') { e[1] = 'innerHeight'; }
+		        p[e[1]] = e[2];
+		      }
+		      return p;
+		    };
+		
+		    $('.colorbox-node', context).once('init-colorbox-node-processed', function() {
+		    	var href = $(this).attr('data-href');
+		    	if(typeof href == 'undefined' || href == false) {
+		    		href = $(this).attr('href');
+		    	}
 				// Create an element so we can parse our a URL no matter if its internal or external.
 				var parse = document.createElement('a');
 				parse.href = href;
@@ -19,22 +49,27 @@
 				}
 				
 				if(base_path != '/') {
-					var link = pathname.replace(base_path, base_path + 'colorbox/');
+					var link = pathname.replace(base_path, base_path + 'colorbox/') + parse.search;
 				} else {
-					var link = base_path + 'colorbox' + pathname;
+					var link = base_path + 'colorbox' + pathname + parse.search;
 				}
-				// Update our href to the link containing colorbox.
-				$(this).attr('href', link + parse.search);
 				
 				// Bind Ajax behaviors to all items showing the class.
 			    var element_settings = {};
-			    // Clicked links look better with the throbber than the progress bar.
-			    element_settings.progress = { 'type': 'throbber' };
+				
+			    // This removes any loading/progress bar on the clicked link
+				// and displays the colorbox loading screen instead.
+				element_settings.progress = { 'type': 'none' };
+				$(this).click(function() {
+					var params = $.urlParams($(this).attr('href'));
+					params.html = '<div id="colorboxNodeLoading"></div>';
+			        $.colorbox($.extend({}, settings.colorbox, params));
+				});
 	
 			    // For anchor tags, these will go to the target of the anchor rather
 			    // than the usual location.
 			    if ($(this).attr('href')) {
-			    	element_settings.url = $(this).attr('href');
+			    	element_settings.url = link;
 			    	element_settings.event = 'click';
 			    }
 			    var base = $(this).attr('id');

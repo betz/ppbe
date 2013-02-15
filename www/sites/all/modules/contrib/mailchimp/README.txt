@@ -3,8 +3,8 @@ While tools for sending email from your own server, like SimpleNews, are great,
 they lack the sophistication and ease of use of dedicated email providers like
 MailChimp. Other players in the field are Constant Contact and Campaign Monitor.
 
-mailchimp.module provides provides basic configuration and API integration. 
-Specific functionality is provided by a set of submodules that depend upon 
+mailchimp.module provides provides basic configuration and API integration.
+Specific functionality is provided by a set of submodules that depend upon
 mailchimp.module. See their respective README's for more details.
 
 ## Features
@@ -21,28 +21,39 @@ mailchimp.module. See their respective README's for more details.
   * Individual blocks for each newsletter
   * Create campaigns containing any Drupal entity as content, send them, and
     view statisitcs.
+  * Campaign activity for any entity with an email address.
 
 ## Installation Notes
   * You need to have a MailChimp API Key.
   * You need to have at least one list created in MailChimp to use the
     mailchimp_list module.
+  * For versions 7.x-2.8 and greater, the MCAPI library must be downloaded into
+    your libraries folder. It's available at http://apidocs.mailchimp.com/api/downloads/mailchimp-api-class.zip
+    or by using the included example drush make file. Proper libraries structure:
+    - libraries
+      - mailchimp
+        - MCAPI.class.php
+        - README
+    The only required files are MCAPI.class.php and README. (You can delete the 'examples' folder with impunity)
+  * For versions 7.x-2.8 and greater, you must have at least version 7.x-2.0 of the libraries module installed.
+
 
 ## Configuration
-  1. Direct your browser to http://example.com/admin/config/services/mailchimp 
+  1. Direct your browser to http://example.com/admin/config/services/mailchimp
   to configure the module.
 
   2. You will need to put in your Mailchimp API key for your Mailchimp account.
-  If you do not have a Mailchimp account, go to 
-  [http://www.mailchimp.com]([http://www.mailchimp.com) and sign up for a new 
-  account. Once you have set up your account and are logged into your account, 
+  If you do not have a Mailchimp account, go to
+  [http://www.mailchimp.com]([http://www.mailchimp.com) and sign up for a new
+  account. Once you have set up your account and are logged into your account,
   Select "API keys and Authorized Apps" from the Account dropdown menu.
 
   3. Click Add a Key.
-  Copy your newly create API key and go to the 
-  [Mailchimp config](http://example.com/admin/config/services/mailchimp) page in 
-  your Drupal site and paste it into the Mailchimp API Key field. 
-  Batch limit - Maximum number of users to process in a single cron run. 
-  Mailchimp suggest keeping this below 5000-10000. Use Secure Connection - 
+  Copy your newly create API key and go to the
+  [Mailchimp config](http://example.com/admin/config/services/mailchimp) page in
+  your Drupal site and paste it into the Mailchimp API Key field.
+  Batch limit - Maximum number of users to process in a single cron run.
+  Mailchimp suggest keeping this below 5000-10000. Use Secure Connection -
   Communicate with the MailChimp API over a secure connection.
 
 ## Submodules
@@ -50,6 +61,8 @@ mailchimp.module. See their respective README's for more details.
     users to subscribe, unsubscribe, and update member information.
   * mailchimp_campaigns: Create newsletters with Drupal content, send the
     campaigns, and view statistics.
+  * mailchimp_activity: View campaign activity for any entity with an email
+    address.
 
 ## Related Modules
 ### Mandrill

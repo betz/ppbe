@@ -1,0 +1,4 @@
+name = Peer review
+description = Peer review nodes before publishing
+core = 7.x
+package = PirateParty
