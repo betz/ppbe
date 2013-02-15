@@ -2367,88 +2367,92 @@ form fieldset {
   color: #fff;
   padding: 2px 5px;
 }
+/* line 1008, ../sass/styles.scss */
+.pane-node-content .node .field-name-body {
+  font-family: "Tienne";
+}
 
-/* line 1010, ../sass/styles.scss */
+/* line 1013, ../sass/styles.scss */
 #sliding-popup {
   background: #F80;
 }
-/* line 1013, ../sass/styles.scss */
+/* line 1016, ../sass/styles.scss */
 #sliding-popup .popup-content #popup-buttons {
   margin-top: 25px;
 }
 
-/* line 1020, ../sass/styles.scss */
+/* line 1023, ../sass/styles.scss */
 #block-search-form {
   text-align: right;
 }
-/* line 1023, ../sass/styles.scss */
+/* line 1026, ../sass/styles.scss */
 #block-search-form .form-type-textfield input {
   width: 230px;
 }
 
-/* line 1030, ../sass/styles.scss */
+/* line 1033, ../sass/styles.scss */
 #block-locale-language {
   margin-bottom: 10px;
 }
-/* line 1032, ../sass/styles.scss */
+/* line 1035, ../sass/styles.scss */
 #block-locale-language ul {
   padding: 0;
 }
-/* line 1034, ../sass/styles.scss */
+/* line 1037, ../sass/styles.scss */
 #block-locale-language ul li {
   display: inline-block;
   margin-left: 10px;
 }
-/* line 1037, ../sass/styles.scss */
+/* line 1040, ../sass/styles.scss */
 #block-locale-language ul li.active {
   font-weight: bold;
   font-size: 1.1em;
 }
 
-/* line 1047, ../sass/styles.scss */
+/* line 1050, ../sass/styles.scss */
 .user-profile.view-mode-teaser {
   background: #e2e2e2;
   padding: 10px;
 }
-/* line 1050, ../sass/styles.scss */
+/* line 1053, ../sass/styles.scss */
 .user-profile.view-mode-teaser .group-right {
   width: 68% !important;
   margin-left: 2%;
 }
-/* line 1054, ../sass/styles.scss */
+/* line 1057, ../sass/styles.scss */
 .user-profile.view-mode-teaser .field-name-field-profile-first-name {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-/* line 1064, ../sass/styles.scss */
+/* line 1067, ../sass/styles.scss */
 .panel-2col-bricks .panel-col-first .inside {
   margin: 0 0 0.5em 0;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1071, ../sass/styles.scss */
+  /* line 1074, ../sass/styles.scss */
   .class {
     background: #ccc;
   }
 
-  /* line 1074, ../sass/styles.scss */
+  /* line 1077, ../sass/styles.scss */
   .region-header {
     top: 120px;
   }
 
-  /* line 1077, ../sass/styles.scss */
+  /* line 1080, ../sass/styles.scss */
   #header #logo_name_slogan {
     margin: 50px 0 130px;
   }
 
-  /* line 1085, ../sass/styles.scss */
+  /* line 1088, ../sass/styles.scss */
   .region-header {
     left: 0;
   }
 
-  /* line 1088, ../sass/styles.scss */
+  /* line 1091, ../sass/styles.scss */
   #block-search-form {
     text-align: left;
   }
