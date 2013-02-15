@@ -2439,21 +2439,28 @@ form fieldset {
 
   /* line 1077, ../sass/styles.scss */
   .region-header {
-    top: 120px;
+    position: inherit;
+    margin: 0 0 50px;
   }
 
-  /* line 1080, ../sass/styles.scss */
+  /* line 1081, ../sass/styles.scss */
   #header #logo_name_slogan {
-    margin: 50px 0 130px;
+    margin: 10px 0 10px;
   }
 
-  /* line 1088, ../sass/styles.scss */
+  /* line 1089, ../sass/styles.scss */
   .region-header {
     left: 0;
   }
 
-  /* line 1091, ../sass/styles.scss */
+  /* line 1092, ../sass/styles.scss */
   #block-search-form {
     text-align: left;
+  }
+}
+@media screen and (max-width: 300px) {
+  /* line 1098, ../sass/styles.scss */
+  .region-header {
+    top: 80px;
   }
 }
