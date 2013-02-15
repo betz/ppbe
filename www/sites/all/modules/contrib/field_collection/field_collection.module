@@ -31,6 +31,9 @@ function field_collection_entity_info() {
     'base table' => 'field_collection_item',
     'revision table' => 'field_collection_item_revision',
     'fieldable' => TRUE,
+    // For integration with Redirect module.
+    // @see http://drupal.org/node/1263884
+    'redirect' => FALSE,
     'entity keys' => array(
       'id' => 'item_id',
       'revision' => 'revision_id',
@@ -288,7 +291,7 @@ class FieldCollectionItemEntity extends Entity {
    */
   public function setHostEntity($entity_type, $entity, $langcode = LANGUAGE_NONE, $create_link = TRUE) {
     if (!empty($this->is_new)) {
-      $this->hostEntityType = $entity_type;;
+      $this->hostEntityType = $entity_type;
       $this->hostEntity = $entity;
       $this->langcode = $langcode;
 

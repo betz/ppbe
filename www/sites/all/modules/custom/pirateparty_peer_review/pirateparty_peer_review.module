@@ -1,0 +1,53 @@
+<?php
+
+
+/**
+ * Implements hook_permission().
+ */
+function pirateparty_peer_review_permission() {
+  return array(
+    'administer peer review' => array(
+      'title' => t('Administer peer review settings'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function pirateparty_peer_review_menu() {
+  $menu['admin/config/content/peer-review'] = array(
+    'title' => t('Peer review settings'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pirateparty_peer_review_settings'),
+    'access arguments' => array('administer peer review'),
+  );
+  return $menu;
+}
+
+/**
+ * Settings page callback.
+ */
+function pirateparty_peer_review_settings() {
+  $form['pirateparty_peer_review_status'] = array(
+    '#type' => 'select',
+    '#title' => t('Peer review status'),
+    '#options' => array(0 => t('Disabled'), 1 => t('Enabled')),
+    '#default_value' => variable_get('pirateparty_peer_review_status', 1),
+    '#required' => TRUE,
+  );
+  $form['pirateparty_peer_review_min_persons_total'] = array(
+    '#type' => 'textfield',
+    '#title' => t('How many members in total need to review positive?'),
+    '#default_value' => variable_get('pirateparty_peer_review_min_persons_total', 1),
+    '#required' => TRUE,
+  );
+  $form['pirateparty_peer_review_comment_required'] = array(
+    '#type' => 'select',
+    '#title' => t('Review comment required?'),
+    '#options' => array(0 => t('Not required'), 1 => t('Required')),
+    '#default_value' => variable_get('pirateparty_peer_review_comment_required', 1),
+    '#required' => TRUE,
+  );
+  return system_settings_form($form);
+}

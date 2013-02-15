@@ -14,7 +14,7 @@ function mailchimp_lists_overview_page() {
       l(t('Edit'), 'admin/config/services/mailchimp/lists/' . $list->id . '/edit'),
       l(t('Delete'), 'admin/config/services/mailchimp/lists/' . $list->id . '/delete')
     );
-    if ($list->list_type === MAILCHIMP_LISTTYPE_REQUIRED && isset($list->settings['cron']) && $list->settings['cron']) {
+    if ($list->list_type !== MAILCHIMP_LISTTYPE_FREEFORM && isset($list->settings['cron']) && $list->settings['cron']) {
       $actions[] = l(t('Queue existing'), 'mailchimp/lists/' . $list->id . '/queue_existing');
     }
     $rows[] = array(
@@ -46,11 +46,11 @@ function mailchimp_lists_overview_page() {
 
 function mailchimp_lists_refresh_page() {
   cache_clear_all('mailchimp_lists', 'cache');
-
+  drupal_set_message(t('Mailchimp Lists refreshed'), 'status');
   // return render array.
   return array(
-    '#markup' => t('!link have been refreshed.',
-      array('!link' => l('MailChimp lists', 'admin/config/services/mailchimp/lists')))
+    '#markup' => t('Back to !link.',
+      array('!link' => l('my lists', 'admin/config/services/mailchimp/lists')))
   );
 }
 
@@ -112,7 +112,7 @@ function mailchimp_lists_list_form($form, &$form_state, $list = NULL) {
     '#type' => 'select',
     '#title' => t('Type of list'),
     '#multiple' => FALSE,
-    '#description' => t('Required lists are automatically syncronized with the
+    '#description' => t('Required and optional lists are automatically syncronized with the
       sites users. Optional lists provide a checkbox allowing users to
       subscribe during registration or when updating their account. Free form
       lists, the only type allowed for the Anonymous role, present a signup form
@@ -152,6 +152,18 @@ function mailchimp_lists_list_form($form, &$form_state, $list = NULL) {
     '#title' => t('Show subscription options on the user registration form.'),
     '#description' => t('This will only apply for lists granted to an authenticated role.'),
     '#default_value' => isset($list->settings['show_register_form']) ? $list->settings['show_register_form'] : FALSE,
+    '#states' => array(
+      // only show for optional lists
+      'visible' => array(
+        ':input[name="list_type"]' => array('value' => MAILCHIMP_LISTTYPE_OPTIONAL),
+      ),
+    ),
+  );
+  $form['list_settings']['settings']['default_register_form_optin'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Default to opt-in on registration form.'),
+    '#description' => t('This will only apply for lists appearing on the register form.'),
+    '#default_value' => isset($list->settings['default_register_form_optin']) ? $list->settings['default_register_form_optin'] : FALSE,
     '#states' => array(
       // only show for optional lists
       'visible' => array(
@@ -207,9 +219,9 @@ function mailchimp_lists_list_form($form, &$form_state, $list = NULL) {
     '#description' => t('If this is set, users will be subscribed to the
       required list during cron runs. Otherwise subscription will take place when a user is added/edited.'),
     '#states' => array(
-      // Hide this option for required lists
-      'visible' => array(
-        ':input[name="list_type"]' => array('value' => MAILCHIMP_LISTTYPE_REQUIRED),
+      // Hide this option for freeform lists.
+      'invisible' => array(
+        ':input[name="list_type"]' => array('value' => MAILCHIMP_LISTTYPE_FREEFORM),
       ),
     ),
   );
@@ -442,6 +454,7 @@ function mailchimp_lists_list_form_submit($form, &$form_state) {
       $form_state['values']['mergefields'] : NULL,
     'doublein' => $form_state['values']['doublein'],
     'show_register_form' => $form_state['values']['show_register_form'],
+    'default_register_form_optin' => $form_state['values']['default_register_form_optin'],
     'show_account_form' => $form_state['values']['show_account_form'],
     'include_interest_groups' => $form_state['values']['include_interest_groups'],
     'interest_groups_label' => $form_state['values']['interest_groups_label'],

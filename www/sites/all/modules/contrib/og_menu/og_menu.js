@@ -1,6 +1,7 @@
 /**
  * @file
  * Javascript magic. Shows the eligible menu options when switching groups.
+ * 
  */
 (function ($) {
   Drupal.behaviors.og_menu = {

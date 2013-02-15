@@ -13,6 +13,7 @@ INSTALLATION
 - Enable the module.
 - Give "administer og menu" permission to the desired roles.
 - Visit the og menu configuration page to configure at will.
+- Enable group content types for use with OG Menu.
 
 USAGE
 -----
@@ -20,10 +21,12 @@ USAGE
   admin/structure/menu/add. Choose a group to associate with the menu.
 - Organic group members with the "administer og menu" permission can also manage
   menus at node/[nid]/og_menu.
-- For content types that can be published in groups, users can add a menu link
-  directly from the node creation form.
-- For groups content types, users can create an associated menu by checking
-  "Enable menu for this group".
+- "administer og menu" permission can be granted on global or group level.
+- Group content types can be enabled for use with OG Menu. Once enabled, users
+  can add a menu link directly from the node creation form to any of the menu's
+  they have access to.
+- For group types, users can create an associated menu by checking
+  "Enable menu for this group" on the node edit/creation form.
 - You can enable the "OG Menu : single" and the "OG Menu : multiple" blocks at
   admin/build/block.
   - "OG Menu : single" will display the first available menu for the first
@@ -32,7 +35,8 @@ USAGE
     groups in the context.
 - OG menus won't show on the regular menu interface. They show up on
   admin/structure/og_menu.
-- Ability to hide OG Menu's from the block admin interface.
+- Ability to hide OG Menu's from the block admin interface and on other places
+  for some contrib modules.
 
 NOTES
 -----
@@ -49,21 +53,31 @@ TODO/BUGS/FEATURE REQUESTS
 - Please test the D7 release and report any bugs or suggestions you might find.
 
 UPGRADING FROM 6.x TO 7.x
--------------------------
+&
+UPGRADING FROM 7.x-2.x TO 7.x-3.x
+---------------------------------
 - There currently is no upgrade path! If you need an upgrade path, please file
   an issue.
 
 CREDITS
 -------
 Originally authored and maintained by Scott Ash (ashsc).
-New maintainer for 6.2.x version : Julien De Luca (jide).
 
-7.x port contributors:
+7.x-3.x port contributors (sorry if anyone was forgotten):
+  - bulldozer2003
+  - zipymonkey
+  - jgraham
+  - Jackinloadup
+  - Wim Vanheste (rv0) (http://www.coworks.net)
+
+7.x initial port contributors:
   - Stefan Vaduva (http://vamist.ro)
   - Nick Santamaria (http://www.itomic.com.au)
   - Frederik Grunta (Aeternum)
   - Wim Vanheste (rv0) (http://www.coworks.net)
 
 7.x maintainers
-  - Frederik Grunta (Aeternum)
   - Wim Vanheste (rv0) (http://www.coworks.net)
+
+6.x-2.x maintainer
+  - Julien De Luca (jide)
