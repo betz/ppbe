@@ -1075,10 +1075,11 @@ form {
     background: #ccc;
   }
   .region-header {
-    top: 120px;
+    position: inherit;
+    margin: 0 0 50px;
   }
   #header #logo_name_slogan {
-    margin: 50px 0 130px;
+    margin: 10px 0 10px;
   }
   .language-switcher-locale-url {
     a {
@@ -1090,6 +1091,12 @@ form {
   }
   #block-search-form {
     text-align: left;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .region-header {
+    top: 80px;
   }
 }
 
