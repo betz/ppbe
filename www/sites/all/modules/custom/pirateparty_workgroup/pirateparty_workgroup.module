@@ -32,20 +32,20 @@ function pirateparty_workgroup_menu() {
     'access arguments' => array(1),
     'weight' => 2,
   );
-  $items['node/%node/events_past'] = array(
+  /*$items['node/%node/events_past'] = array(
     'title' => t('Past Events'),
     'type' => MENU_LOCAL_TASK,
     'access callback' => 'pirateparty_workgroup_blogmenu_access',
     'access arguments' => array(1),
     'weight' => 2,
-  );
-  $items['node/%node/discussion_lists'] = array(
+  );*/
+  /*$items['node/%node/discussion_lists'] = array(
     'title' => t('Discussion lists'),
     'type' => MENU_LOCAL_TASK,
     'access callback' => 'pirateparty_workgroup_blogmenu_access',
     'access arguments' => array(1),
     'weight' => 2,
-  );
+  );*/
   /*$items['group/%/%/admin/blog_posts'] = array(
     'page callback' => 'views_embed_view',
     'title' => 'Workgroup blog posts',
@@ -109,18 +109,27 @@ function pirateparty_workgroup_preprocess_node(&$variables) {
       $variables['author_rendered'] = drupal_render(user_view($account, 'teaser'));
 
       $languages = language_list();
+      /*if($node = $variables['node']->nid == 361) {
+        dsm($variables);
+        $handler = entity_translation_get_handler('node', $variables['node']);
+        dsm($handler);
+        $translations = $handler->getTranslations()->data;
+        dsm($translations);
+        global $language_content;
+        dsm($language_content);
+      }*/
+      
+      global $language_content;
+      
       $variables['title_with_flag'] = '<div class="field field-name-title field-type-ds field-label-hidden"><h2>' . l($variables['node']->title, 'node/' . $variables['node']->nid) . '</h2></div>';
       if($variables['node']->language != 'und') {
         $flag_icon = theme('languageicons_icon', array(
           'language' => $languages[$variables['node']->language],
           'title' => $variables['node']->title,
         ));
-
         $variables['title_with_flag'] = '<div class="field field-name-title field-type-ds field-label-hidden"><h2>' . l($variables['node']->title, 'node/' . $variables['node']->nid) . '</h2></div>' . $flag_icon;
 
-
       }
-
       break;
   }
 }
