@@ -160,6 +160,16 @@ function pirateparty_workgroup_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
+ * Implements hook_views_pre_render().
+ */
+function pirateparty_workgroup_views_pre_render(&$view) {
+  if(!empty($view->exposed_data['field_category_tid'])) {
+    $term = taxonomy_term_load($view->exposed_data['field_category_tid']);
+    $view->build_info['title'] = $term->name;
+  }
+}
+
+/**
  * Checks if current node is a workgroup.
  */
 function pirateparty_workgroup_blogmenu_access($node) {
