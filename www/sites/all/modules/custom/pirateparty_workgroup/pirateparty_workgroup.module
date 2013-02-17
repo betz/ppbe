@@ -46,13 +46,6 @@ function pirateparty_workgroup_menu() {
     'access arguments' => array(1),
     'weight' => 2,
   );
-  /*$items['wgs'] = array(
-    'title' => t('Wgs'),
-    'type' => MENU_LOCAL_TASK,
-    'access arguments' => TRUE,
-    'page callback' => 'pirateparty_workgroup_wgs',
-    'weight' => 2,
-  );*/
   /*$items['group/%/%/admin/blog_posts'] = array(
     'page callback' => 'views_embed_view',
     'title' => 'Workgroup blog posts',
@@ -81,24 +74,6 @@ function pirateparty_workgroup_menu() {
   return $items;
 }
 
-
-/**
- * temporary callback for generating the workgroup menus in bulk.
- * Should be removed after site launch.
- */
-function pirateparty_workgroup_wgs() {
-  $results = db_query("SELECT * FROM {node} WHERE type = 'workgroup'");
-  foreach($results as $workgroup) {
-    dsm($workgroup);
-    menu_save(array(
-      'menu_name' => 'menu-og-' . $workgroup->nid,
-      'title' => $workgroup->title,
-      'description' => t('OG Menu for') . ' ' . check_plain($workgroup->title),
-    ));
-    og_menu_update_menu('menu-og-' . $workgroup->nid, $workgroup->nid);
-  }
-  return '';
-}
 
 /**
  * Implements hook_menu_alter().
@@ -181,6 +156,16 @@ function pirateparty_workgroup_form_alter(&$form, &$form_state, $form_id) {
     case 'user_profile_form':
 
       break;
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function pirateparty_workgroup_views_pre_render(&$view) {
+  if(!empty($view->exposed_data['field_category_tid'])) {
+    $term = taxonomy_term_load($view->exposed_data['field_category_tid']);
+    $view->build_info['title'] = $term->name;
   }
 }
 
