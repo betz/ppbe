@@ -516,9 +516,18 @@ ul.tabs {
     .field-name-body {
       padding-top: 5px;
     }
-    .field-name-title,
     .language-icon {
       display: inline-block;
+      margin-right: 4px;
+    }
+    .flags {
+      /*border: 1px dashed #000;
+      padding: 1px 0 1px 4px;*/
+      margin-left: 3px;
+      img {
+        width: 20px;
+        height: 13px;
+      }
     }
     .field-name-title {
       margin-right: 6px;

@@ -108,15 +108,20 @@ function pirateparty_workgroup_preprocess_node(&$variables) {
       $variables['node_author_name'] = theme('node_title_with_author', array('node' => $variables['node']));
       $variables['author_rendered'] = drupal_render(user_view($account, 'teaser'));
 
-      $variables['title_with_flag'] = '<div class="field field-name-title field-type-ds field-label-hidden"><h2>' . l($variables['node']->title, 'node/' . $variables['node']->nid) . '</h2></div>';
-      $field_language = field_language('node', $variables['node'], 'title_field');
-      if($field_language != 'und') {
-        $languages = language_list();
-        $flag_icon = theme('languageicons_icon', array(
-          'language' => $languages[$field_language],
-          'title' => $variables['node']->title,
+      $languages = language_list();
+      $flag_icons = '';
+      $variables['title_with_flag'] = '<div class="field field-name-title field-type-ds field-label-hidden">
+      <h2>' . l($variables['node']->title, 'node/' . $variables['node']->nid) . '</h2></div>';
+      foreach($variables['node']->translations->data as $key => $lang) {
+        if($key == 'und') { break; }
+        $flag_icons .= theme('languageicons_icon', array(
+          'language' => $languages[$key],
+          'title' => t('This article is available in !lang', array('!lang' => $languages[$key]->name)),
         ));
-        $variables['title_with_flag'] = '<div class="field field-name-title field-type-ds field-label-hidden"><h2>' . l($variables['node']->title, 'node/' . $variables['node']->nid) . '</h2></div>' . $flag_icon;
+      }
+      if(!empty($flag_icons)) {
+        $variables['title_with_flag'] = '<div class="field field-name-title field-type-ds field-label-hidden">
+        <h2>' . l($variables['node']->title, 'node/' . $variables['node']->nid) . ' <span class="flags">' . $flag_icons . '</span></h2></div>';
       }
       break;
   }
