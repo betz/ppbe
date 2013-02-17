@@ -107,6 +107,20 @@ function pirateparty_workgroup_preprocess_node(&$variables) {
       $node = $variables['node']->nid;
       $variables['node_author_name'] = theme('node_title_with_author', array('node' => $variables['node']));
       $variables['author_rendered'] = drupal_render(user_view($account, 'teaser'));
+
+      $languages = language_list();
+      $variables['title_with_flag'] = '<div class="field field-name-title field-type-ds field-label-hidden"><h2>' . l($variables['node']->title, 'node/' . $variables['node']->nid) . '</h2></div>';
+      if($variables['node']->language != 'und') {
+        $flag_icon = theme('languageicons_icon', array(
+          'language' => $languages[$variables['node']->language],
+          'title' => $variables['node']->title,
+        ));
+
+        $variables['title_with_flag'] = '<div class="field field-name-title field-type-ds field-label-hidden"><h2>' . l($variables['node']->title, 'node/' . $variables['node']->nid) . '</h2></div>' . $flag_icon;
+
+
+      }
+
       break;
   }
 }

@@ -516,6 +516,13 @@ ul.tabs {
     .field-name-body {
       padding-top: 5px;
     }
+    .field-name-title,
+    .language-icon {
+      display: inline-block;
+    }
+    .field-name-title {
+      margin-right: 6px;
+    }
     .field-name-title h2,
     .field-name-node_author_name h2 {
       margin: 0;
