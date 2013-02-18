@@ -1110,9 +1110,22 @@ form {
   }
 }
 
+.view-agenda {
+  caption {
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 10px 10px 0;
+  }
+}
+
+
+
 @media screen and (max-width: 300px) {
   .region-header {
     top: 80px;
   }
 }
+
+
 
