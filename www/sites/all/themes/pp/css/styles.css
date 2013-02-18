@@ -2478,8 +2478,16 @@ form fieldset {
     text-align: left;
   }
 }
+/* line 1114, ../sass/styles.scss */
+.view-agenda caption {
+  text-align: left;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 10px 10px 0;
+}
+
 @media screen and (max-width: 300px) {
-  /* line 1114, ../sass/styles.scss */
+  /* line 1125, ../sass/styles.scss */
   .region-header {
     top: 80px;
   }
