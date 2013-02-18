@@ -120,7 +120,7 @@ function pirateparty_workgroup_preprocess_node(&$variables) {
         ));
       }
       if(!empty($flag_icons)) {
-        $variables['title_with_flag'] = '<div class="field field-name-title field-type-ds field-label-hidden">
+        $variables['title_with_flag'] = '<div class="field field-name-title flagged field-type-ds field-label-hidden">
         <h2>' . l($variables['node']->title, 'node/' . $variables['node']->nid) . ' <span class="flags">' . $flag_icons . '</span></h2></div>';
       }
       break;

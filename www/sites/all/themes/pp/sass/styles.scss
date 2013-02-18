@@ -493,6 +493,35 @@ ul.tabs {
   }
 }
 
+.node-blog-post {
+  .field-name-title.flagged {
+    margin: 0;    
+    line-height: 16px;
+    margin-bottom: 1px;
+    margin-right: 6px;
+    font-size: 16px;
+    a {
+      font-size: 16px;
+    }
+    .title,
+    .author {
+        display: inline-block;
+    }
+    .author,
+    .author a {
+      font-size: 12px;
+      color: #888 !important;
+      font-style: italic;
+    }
+  }
+  .flags {
+    margin-left: 3px;
+    img {
+      width: 20px;
+      height: 13px;
+    }
+  }
+}
 
 .node-blog-post {
   &.view-mode-teaser {
