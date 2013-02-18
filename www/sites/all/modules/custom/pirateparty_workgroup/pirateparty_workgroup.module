@@ -84,6 +84,7 @@ function pirateparty_workgroup_menu_alter(&$items) {
   $items['node/%node/view']['title arguments'] = array(1);
   //$items['node/%node/group']['access callback'] = 'pirateparty_workgroup_group_access';
   //$items['node/%node/group']['access arguments'] = array(1);
+  unset($items['node']);
 }
 
 function pirateparty_workgroup_group_access($node) {
