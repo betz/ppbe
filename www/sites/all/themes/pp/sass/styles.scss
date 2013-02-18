@@ -500,8 +500,9 @@ ul.tabs {
     margin-bottom: 1px;
     margin-right: 6px;
     font-size: 16px;
-    a {
+    a, h2 {
       font-size: 16px;
+      margin: 0;
     }
     .title,
     .author {
@@ -519,6 +520,17 @@ ul.tabs {
     img {
       width: 20px;
       height: 13px;
+    }
+  }
+  .language-icon {
+    display: inline-block;
+    margin-right: 4px;
+  }
+  &.view-mode-title {
+    .field-name-title.flagged {
+      a, h2 {
+        font-weight: normal;
+      }
     }
   }
 }
@@ -545,23 +557,9 @@ ul.tabs {
     .field-name-body {
       padding-top: 5px;
     }
-    .language-icon {
-      display: inline-block;
-      margin-right: 4px;
-    }
-    .flags {
-      /*border: 1px dashed #000;
-      padding: 1px 0 1px 4px;*/
-      margin-left: 3px;
-      img {
-        width: 20px;
-        height: 13px;
-      }
-    }
     .field-name-title {
       margin-right: 6px;
     }
-    .field-name-title h2,
     .field-name-node_author_name h2 {
       margin: 0;
       line-height: 16px;
