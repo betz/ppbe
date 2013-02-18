@@ -25,8 +25,8 @@ function pirateparty_workgroup_menu() {
     'access arguments' => array(1),
     'weight' => 2,
   );*/
-  $items['node/%node/events'] = array(
-    'title' => t('Events'),
+  $items['node/%node/agenda'] = array(
+    'title' => t('Agenda'),
     'type' => MENU_LOCAL_TASK,
     'access callback' => 'pirateparty_workgroup_blogmenu_access',
     'access arguments' => array(1),
