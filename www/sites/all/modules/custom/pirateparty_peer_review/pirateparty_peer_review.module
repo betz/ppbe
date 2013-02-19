@@ -36,18 +36,86 @@ function pirateparty_peer_review_settings() {
     '#default_value' => variable_get('pirateparty_peer_review_status', 1),
     '#required' => TRUE,
   );
-  $form['pirateparty_peer_review_min_persons_total'] = array(
+  $form['pirateparty_peer_review_blog_min_members_total'] = array(
     '#type' => 'textfield',
-    '#title' => t('How many members in total need to review positive?'),
-    '#default_value' => variable_get('pirateparty_peer_review_min_persons_total', 1),
+    '#title' => t('How many members in total need to back this blog post?'),
+    '#default_value' => variable_get('pirateparty_peer_review_blog_min_members_total', 3),
     '#required' => TRUE,
   );
-  $form['pirateparty_peer_review_comment_required'] = array(
-    '#type' => 'select',
-    '#title' => t('Review comment required?'),
-    '#options' => array(0 => t('Not required'), 1 => t('Required')),
-    '#default_value' => variable_get('pirateparty_peer_review_comment_required', 1),
+  $form['pirateparty_peer_review_blog_min_moderators_total'] = array(
+    '#type' => 'textfield',
+    '#title' => t('How many moderators in total need to back this blog post?'),
+    '#default_value' => variable_get('pirateparty_peer_review_blog_min_moderators_total', 1),
     '#required' => TRUE,
   );
+
   return system_settings_form($form);
 }
+
+/**
+ * Implements hook_flag().
+ */
+function pirateparty_peer_review_flag($action, $flag, $content_id, $account) {
+  if ($flag->name == 'backup') {
+    
+    $moderators = db_query("SELECT COUNT(*) FROM {flag_content} fg 
+      INNER JOIN {users_roles} ur 
+      ON fg.uid = ur.uid 
+      WHERE fg.fid = 6 
+      AND ur.rid = 3 
+      AND fg.content_id = :nid 
+      AND fg.content_type = 'node'", array(':nid' => $content_id))->fetchField();
+
+    $members = db_query("SELECT COUNT(*) FROM {flag_content} fg 
+      INNER JOIN {users_roles} ur 
+      ON fg.uid = ur.uid 
+      WHERE fg.fid = 6 
+      AND ur.rid = 8 
+      AND fg.content_id = :nid 
+      AND fg.content_type = 'node'", array(':nid' => $content_id))->fetchField();
+
+    if(($moderators >= variable_get('pirateparty_peer_review_blog_min_moderators_total', 1)) 
+    && ($members >= variable_get('pirateparty_peer_review_blog_min_members_total', 3))) {
+      $flag = flag_get_flag('gazette');
+      $flag->flag('flag', $content_id); 
+
+    }
+    else {
+      $flag = flag_get_flag('gazette');
+      $flag->flag('unflag', $content_id); 
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_node().
+ */
+function pirateparty_peer_review_preprocess_node(&$variables) {
+
+  switch($variables['node']->type) {
+    case 'blog_post':
+      $moderators = db_query("SELECT fg.uid FROM {flag_content} fg 
+          INNER JOIN {users_roles} ur 
+          ON fg.uid = ur.uid 
+          WHERE fg.fid = 6 
+          AND ur.rid = 3 
+          AND fg.content_id = :nid 
+          AND fg.content_type = 'node'", array(':nid' => $variables['node']->nid));
+
+      $members = db_query("SELECT fg.uid FROM {flag_content} fg 
+          INNER JOIN {users_roles} ur 
+          ON fg.uid = ur.uid 
+          WHERE fg.fid = 6 
+          AND ur.rid = 8 
+          AND fg.content_id = :nid 
+          AND fg.content_type = 'node'", array(':nid' => $variables['node']->nid));
+
+      $variables['peer_review_backers'] = 'hello world';
+      break;
+  }
+}
+
+
+
+
+
