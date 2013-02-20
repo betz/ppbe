@@ -38,8 +38,9 @@ function nodechanges_node_update($node) {
 
   foreach (field_info_instances('node', $node->type) as $field_name => $instance) {
     $field = field_info_field($field_name);
-    $old_value = empty($unchanged->{$field_name}[$unchanged->language]) ? NULL : $unchanged->{$field_name}[$unchanged->language];
-    $new_value = empty($node->{$field_name}[$node->language]) ? NULL : $node->{$field_name}[$node->language];
+    $field_language = field_language('node', $node, $field_name);
+    $old_value = empty($unchanged->{$field_name}[$field_language]) ? NULL : $unchanged->{$field_name}[$field_language];
+    $new_value = empty($node->{$field_name}[$field_language]) ? NULL : $node->{$field_name}[$field_language];
     $same = empty($old_value) == empty($new_value);
     if ($same && !empty($old_value)) {
       $old_deltas = array_keys($old_value);
@@ -77,7 +78,7 @@ function nodechanges_node_update($node) {
       $comment = entity_load_unchanged('comment', $node->nodechanges_cid);
     }
     else {
-      $comment = isset($node->nodechanges_comment) ? $node->nodechanges_comment : new stdClass;
+      $comment = comment_load($node->original->cid);
       $comment->node_type = 'comment_node_' . $node->type;
       if (isset($node->nodechanges_body)) {
         $comment->comment_body[LANGUAGE_NONE][0]['value'] = $node->nodechanges_body;
