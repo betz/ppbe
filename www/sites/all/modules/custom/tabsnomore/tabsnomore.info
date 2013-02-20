@@ -1,0 +1,4 @@
+name = Tabs No More
+description = Converts tabs to contextual links
+package = Administration
+core = 7.x
