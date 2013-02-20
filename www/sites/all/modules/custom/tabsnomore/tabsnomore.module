@@ -1,0 +1,136 @@
+<?php
+
+function tabsnomore_active() {
+  if (!user_access('access contextual links')) {
+    return FALSE;
+  }
+  global $theme;
+  // By default is active for default website theme
+  $a = array_keys(array_filter(variable_get('tabsnomore_themes', array(variable_get('theme_default', '') => 1))));
+  return in_array($theme, array_keys(array_filter(variable_get('tabsnomore_themes', array(variable_get('theme_default', '') => 1)))));
+}
+
+function tabsnomore_menu() {
+  $items['admin/config/system/tabsnomore'] = array(
+    'title' => 'Tabs No More',
+    'description' => 'Tabs No More configuration.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tabsnomore_settings'),
+    'access arguments' => array('administer site configuration'));
+  return $items;
+}
+ 
+function tabsnomore_preprocess_menu_local_tasks(&$variables, $hook) {
+  if (tabsnomore_active()) {
+    $variables['primary'] = array();
+    $variables['secondary'] = array();
+  }
+}
+
+function tabsnomore_node_view_alter(&$build) {
+  if (tabsnomore_active()) {
+    $node = $build['#node'];
+    // Add contextual links for this node when it is page
+    if (!empty($node->nid) && ($build['#view_mode'] == 'full' || node_is_page($node))) {
+      $build['#contextual_links']['node'] = array('node', array($node->nid));
+    }
+  }
+}
+
+/* Local storage for local tasks */
+
+function _tabsnomore_tabs_links($new_tabs_links = array()) {
+  static $tabs_links = NULL;
+  if (!isset($tabs_links)) {
+    $local_tasks = menu_local_tasks();
+    $tabs_links = array();
+    foreach($local_tasks['tabs']['output'] as $link) {
+      $tabs_links[] = $link['#link'];
+    }
+  }
+  if (count($new_tabs_links)) {
+    $tabs_links = $new_tabs_links;
+  }
+  return $tabs_links;
+}
+
+function tabsnomore_preprocess_region(&$variables, $hook) {
+  if (tabsnomore_active()) {
+    if ($variables['region'] == 'content') {
+      $tabs_links = _tabsnomore_tabs_links();
+      $links = array();
+      foreach($tabs_links as $id => $link) {
+        $class = 'link-' . $id; 
+        $links[$class] = array(
+          'title' => $link['title'],
+          'href' => $link['href'],
+        );
+        $link['localized_options'] += array('query' => array());
+        $link['localized_options']['query'] += drupal_get_destination();
+        $links[$class] += $link['localized_options'];
+      }
+
+      if (count($links)) {
+        $build = array(
+          '#prefix' => '<div class="contextual-links-wrapper">',
+          '#suffix' => '</div>',
+          '#theme' => 'links__contextual',
+          '#links' => $links,
+          '#attributes' => array('class' => array('contextual-links')),
+          '#attached' => array(
+            'library' => array(array('contextual', 'contextual-links')),
+          ),
+        );
+        $variables['classes_array'][] = 'contextual-links-region';
+        $variables['content'] = drupal_render($build).$variables['content'];
+      }
+    }
+  }
+}
+
+/*
+ * Implementing hook_contextual_links_view_alter()
+ *
+ * Removing current links from global contextual links array.
+ *
+ */
+
+function tabsnomore_contextual_links_view_alter(&$element, $items) {
+  $tabs_links = _tabsnomore_tabs_links();
+  $hrefs = array();
+  foreach ($items as $item) {
+    $hrefs[] = $item['href'];
+  }
+  foreach ($tabs_links as $id => $link) {
+    if (in_array($link['href'], $hrefs)) {
+      unset($tabs_links[$id]);
+    }
+  }
+  _tabsnomore_tabs_links($tabs_links);
+}
+
+function _tabsnomore_themes() {
+  $options = array();
+  $themes = list_themes();
+  foreach ($themes as $name => $theme) {
+    if ($theme->status) {
+      $options[$name] = $theme->info['name'];
+    }
+  }
+  return $options;
+}
+
+/* Configuration */
+
+function tabsnomore_settings() {
+  $form['tabsnomore_themes'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Apply to themes'),
+    '#options' => _tabsnomore_themes(),
+    '#default_value' => drupal_map_assoc(variable_get('tabsnomore_themes', array(variable_get('theme_default', '')))),
+    '#required' => FALSE
+  );
+
+  return system_settings_form($form);
+}
+
