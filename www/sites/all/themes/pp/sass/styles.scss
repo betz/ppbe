@@ -1144,7 +1144,11 @@ form {
   }
 }
 
-
+table.diff {
+  td.diff-links {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 300px) {
   .region-header {

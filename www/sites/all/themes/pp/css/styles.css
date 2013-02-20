@@ -2506,8 +2506,13 @@ form fieldset {
   margin: 10px 10px 10px 0;
 }
 
+/* line 1148, ../sass/styles.scss */
+table.diff td.diff-links {
+  display: none;
+}
+
 @media screen and (max-width: 300px) {
-  /* line 1150, ../sass/styles.scss */
+  /* line 1154, ../sass/styles.scss */
   .region-header {
     top: 80px;
   }
