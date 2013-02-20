@@ -533,6 +533,12 @@ ul.tabs {
       }
     }
   }
+  &.view-mode-full {
+    .group-left,
+    .group-right {
+      margin-bottom: 20px;
+    }
+  }
 }
 
 .node-blog-post {
