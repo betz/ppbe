@@ -1158,16 +1158,41 @@ table.diff {
 
 .node-issue {
   &.view-mode-full {
-    .issue_form {
-      width: 30%;
-      float: left;
+    .group-left {
+      width: 24% !important;
+      font-size: 13px;
+      margin: 0 0 30px;
+      background: #000;
+      color: #FFF;
+      padding: 15px;
+      a {
+        font-size: 13px;
+        color: #fff;
+      }
     }
-    .comment_form {
-      width: 68%;
-      margin-left: 2%;
-      float: left;
-  
+    .group-right {
+      width: 70% !important;
+      margin: 0 0 30px;
     }
+  }
+  .field-name-submitted-by {
+    font-size: 13px;
+  }
+}
+
+#issue_comment {
+  .issue_form {
+    width: 28%;
+    float: left;
+  }
+  .comment_form {
+    width: 68%;
+    margin-left: 2%;
+    float: left;  
+  }
+  .form-item-language,
+  .redirect-list {
+    display: none;
   }
 }
 
@@ -1190,6 +1215,18 @@ table.diff {
       }
     }
   }
+}
+
+.filter-wrapper,
+.wysiwyg-toggle-wrapper {
+  font-size: 13px;
+  a {
+    font-size: 13px;
+  }
+}
+
+html.js input.form-autocomplete {
+  background-position: 99% 4px;
 }
 
 
