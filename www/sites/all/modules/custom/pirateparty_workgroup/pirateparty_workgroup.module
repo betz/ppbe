@@ -181,7 +181,6 @@ function pirateparty_workgroup_form_alter(&$form, &$form_state, $form_id) {
       $form['author']['#prefix'] = '<div class="comment_form">';
       $form['comment_body']['#suffix'] = '</div>';
       $form['actions']['submit']['#value'] = t('Update issue');
-      dsm($form);
       break;
   }
 }

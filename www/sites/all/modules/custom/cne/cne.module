@@ -63,9 +63,7 @@ function cne_form_validate($form, &$form_state) {
  * Submiuts and saves added fields 
 	*/
 function  cne_form_submit($form, &$form_state) {
-  //field_attach_submit('node', $form['#node'], $form, $form_state);
-  //dsm($form);
-  //dsm($form_state);
+  field_attach_submit('node', $form['#node'], $form, $form_state);
   node_save($form['#node']);
 	drupal_set_message($form['#node']->title . " updated by " . $form['author']['_author']['#markup'] . " via comment");
 }

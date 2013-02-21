@@ -79,8 +79,6 @@ function nodechanges_node_update($node) {
     }
     else {
       $comment = comment_load($node->original->cid);
-      dsm($node);
-      dsm($comment);
       $comment->node_type = 'comment_node_' . $node->type;
       if (isset($node->nodechanges_body)) {
         $comment->comment_body[LANGUAGE_NONE][0]['value'] = $node->nodechanges_body;
