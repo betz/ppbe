@@ -175,11 +175,13 @@ function pirateparty_workgroup_form_alter(&$form, &$form_state, $form_id) {
       break;
 
     case 'comment_node_issue_form':
-      $form['title_field']['#prefix'] = '<div class="issue_form">';
-      $form['field_issue_type']['#suffix'] = '</div>';
+      $form['field_assigned_to']['#prefix'] = '<div class="issue_form">';
+      $form['og_group_ref']['#suffix'] = '</div>';
 
       $form['author']['#prefix'] = '<div class="comment_form">';
       $form['comment_body']['#suffix'] = '</div>';
+      $form['actions']['submit']['#value'] = t('Update issue');
+      dsm($form);
       break;
   }
 }
