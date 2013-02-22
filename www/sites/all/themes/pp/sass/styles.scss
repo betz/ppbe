@@ -1107,6 +1107,15 @@ form {
       margin-bottom: 5px;
     }
   }
+  &.view-mode-full {
+    .group-left {
+      width: 70%;
+      float: left;
+    }
+    .group-right {
+      width: 30%;
+    }
+  }
 }
 
 .panel-2col-bricks {
