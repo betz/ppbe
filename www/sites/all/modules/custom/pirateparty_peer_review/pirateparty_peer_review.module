@@ -97,8 +97,6 @@ function pirateparty_peer_review_preprocess_node(&$variables) {
     case 'blog_post':
 
       $results = db_query("SELECT DISTINCT fg.uid FROM {flag_content} fg 
-          INNER JOIN {users_roles} ur 
-          ON fg.uid = ur.uid 
           WHERE fg.fid = 6 
           AND fg.content_id = :nid 
           AND fg.content_type = 'node'", array(':nid' => $variables['node']->nid));
@@ -124,7 +122,7 @@ function pirateparty_peer_review_preprocess_node(&$variables) {
         $moderators[] = l($moderator->name, 'user/' . $moderator->uid);
       }
       if(!count($moderators)){ $moderators[] = t('None.'); }
-      $output[] = '<div class="backers moderators"><span class="label">'. t('Moderator') . ':</span> ' . implode(', ', $moderators) . '</div>';
+      $output[] = '<div class="backers moderators"><span class="label">'. t('Moderators') . ':</span> ' . implode(', ', $moderators) . '</div>';
 
       $variables['peer_review_backers'] = '<div class="peer_review_backers field">' . implode('', $output) . '</div>';
       break;
