@@ -96,7 +96,24 @@ function pirateparty_peer_review_preprocess_node(&$variables) {
 
   switch($variables['node']->type) {
     case 'blog_post':
-      $moderators = db_query("SELECT fg.uid FROM {flag_content} fg 
+
+      $results = db_query("SELECT fg.uid FROM {flag_content} fg 
+          INNER JOIN {users_roles} ur 
+          ON fg.uid = ur.uid 
+          WHERE fg.fid = 6 
+          AND ur.rid != 3
+          AND fg.content_id = :nid 
+          AND fg.content_type = 'node'", array(':nid' => $variables['node']->nid));
+
+      foreach($results as $member) {
+        $member = user_load($member->uid);
+        $members[] = l($member->name, 'user/' . $member->uid);
+      }
+      if(!count($members)){ $members[] = t('None.'); }
+      $output[] = '<div class="backers members"><span class="label">'. t('Backers') . ':</span> ' . implode(', ', $members) . '</div>'; 
+
+
+      $results = db_query("SELECT fg.uid FROM {flag_content} fg 
           INNER JOIN {users_roles} ur 
           ON fg.uid = ur.uid 
           WHERE fg.fid = 6 
@@ -104,15 +121,14 @@ function pirateparty_peer_review_preprocess_node(&$variables) {
           AND fg.content_id = :nid 
           AND fg.content_type = 'node'", array(':nid' => $variables['node']->nid));
 
-      $members = db_query("SELECT fg.uid FROM {flag_content} fg 
-          INNER JOIN {users_roles} ur 
-          ON fg.uid = ur.uid 
-          WHERE fg.fid = 6 
-          AND ur.rid = 8 
-          AND fg.content_id = :nid 
-          AND fg.content_type = 'node'", array(':nid' => $variables['node']->nid));
+      foreach($results as $moderator) {
+        $moderator = user_load($moderator->uid);
+        $moderators[] = l($moderator->name, 'user/' . $moderator->uid);
+      }
+      if(!count($moderators)){ $moderators[] = t('None.'); }
+      $output[] = '<div class="backers moderators"><span class="label">'. t('Moderator') . ':</span> ' . implode(', ', $moderators) . '</div>';
 
-      $variables['peer_review_backers'] = 'hello world';
+      $variables['peer_review_backers'] = '<div class="peer_review_backers field">' . implode('', $output) . '</div>';
       break;
   }
 }
