@@ -2476,6 +2476,10 @@ form fieldset {
   float: left;
   margin-right: 10px;
 }
+/* line 1116, ../sass/styles.scss */
+.user-profile.view-mode-full .group-right {
+  text-align: right;
+}
 
 /* line 1124, ../sass/styles.scss */
 .panel-2col-bricks .panel-col-first .inside {
