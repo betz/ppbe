@@ -526,6 +526,25 @@ ul.tabs {
     display: inline-block;
     margin-right: 4px;
   }
+  .peer_review_backers {
+    font-size: 14px;
+    a {
+      font-size: 14px;
+    }
+  }
+  .label {
+    font-weight: bold;
+  }
+  .field-name-ds-flag-backup {
+    margin: 5px 0;
+    background: #551A8B;
+    color: #fff;
+    display: inline-block;
+    a {
+      color: #fff;
+      padding: 5px;
+    }
+  }
   &.view-mode-title {
     .field-name-title.flagged {
       a, h2 {
@@ -537,6 +556,10 @@ ul.tabs {
     .group-left,
     .group-right {
       margin-bottom: 20px;
+      font-size: 14px;
+      a {
+        font-size: 14px;
+      }
     }
   }
 }
@@ -1233,6 +1256,10 @@ table.diff {
   a {
     font-size: 13px;
   }
+}
+
+.peer_review_backers {
+
 }
 
 html.js input.form-autocomplete {
