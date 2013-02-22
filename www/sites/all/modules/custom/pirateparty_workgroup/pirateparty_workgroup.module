@@ -137,7 +137,7 @@ function pirateparty_workgroup_preprocess_node(&$variables) {
       }
 
       if(!count($translators)){ $translators[] = t('None.'); }
-      $variables['translators'] = '<div class="translators field"><span class="label">' . t('Translations') . '</span>: ' . implode(', ', $translators) . '</div>';
+      $variables['translators'] = '<div class="translators field"><span class="label">' . t('Translators') . '</span>: ' . implode(', ', $translators) . '</div>';
       break;
   }
 }
