@@ -32,6 +32,13 @@ function pirateparty_workgroup_menu() {
     'access arguments' => array(1),
     'weight' => 2,
   );
+  $items['node/%node/issues'] = array(
+    'title' => t('Issue tracker'),
+    'type' => MENU_LOCAL_TASK,
+    'access callback' => 'pirateparty_workgroup_blogmenu_access',
+    'access arguments' => array(1),
+    'weight' => 2,
+  );
   /*$items['node/%node/events_past'] = array(
     'title' => t('Past Events'),
     'type' => MENU_LOCAL_TASK,
