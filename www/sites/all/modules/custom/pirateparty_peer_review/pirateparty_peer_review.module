@@ -96,11 +96,10 @@ function pirateparty_peer_review_preprocess_node(&$variables) {
   switch($variables['node']->type) {
     case 'blog_post':
 
-      $results = db_query("SELECT fg.uid FROM {flag_content} fg 
+      $results = db_query("SELECT DISTINCT fg.uid FROM {flag_content} fg 
           INNER JOIN {users_roles} ur 
           ON fg.uid = ur.uid 
           WHERE fg.fid = 6 
-          AND ur.rid != 3
           AND fg.content_id = :nid 
           AND fg.content_type = 'node'", array(':nid' => $variables['node']->nid));
 
@@ -112,7 +111,7 @@ function pirateparty_peer_review_preprocess_node(&$variables) {
       $output[] = '<div class="backers members"><span class="label">'. t('Backers') . ':</span> ' . implode(', ', $members) . '</div>'; 
 
 
-      $results = db_query("SELECT fg.uid FROM {flag_content} fg 
+      $results = db_query("SELECT DISTINCT fg.uid FROM {flag_content} fg 
           INNER JOIN {users_roles} ur 
           ON fg.uid = ur.uid 
           WHERE fg.fid = 6 
