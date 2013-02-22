@@ -108,6 +108,7 @@ function nodechanges_node_update($node) {
       }
     }
     $comment->{$diff_field_name}[LANGUAGE_NONE] = $items;
+    comment_delete($node->original->cid);
     comment_save($comment);
     // Copy the cid back to the node so migration code can capture it.
     $node->nodechanges_cid = $comment->cid;
