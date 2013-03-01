@@ -107,8 +107,7 @@ class Notifications_Message_Template extends Messaging_Message_Template {
   protected function text_header($options) {
     return array(
       '#tokens' => TRUE,
-      //'#markup' => t("Greetings [user:name],", array(), $options),
-      '#markup' => '',
+      '#markup' => t("Greetings [user:name],", array(), $options),
     );
   }
   /**
@@ -125,14 +124,14 @@ class Notifications_Message_Template extends Messaging_Message_Template {
       '#tokens' => TRUE,
       //'from' => t('This is an automatic message from !site_name', array('!site_name' => variable_get('site_name', 'Drupal')), $options),
       // For links add markup and plaintext alternatives
-      /*'from' => array(
+      'from' => array(
         '#type' => 'messaging_link',
         '#text' => t('This is an automatic message from [site:name],', array(), $options),
         '#url' => '[site:url]',
-      ),*/
+      ),
       'unsubscribe' => array(
         '#type' => 'messaging_link',
-        '#text' => t('You can manage your subscriptions here', array(), $options),
+        '#text' => t('You can unsubscribe at', array(), $options),
         '#url' => '[user:unsubscribe-url]',
       ),
     );
