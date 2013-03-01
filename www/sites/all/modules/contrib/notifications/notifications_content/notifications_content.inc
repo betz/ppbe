@@ -227,13 +227,13 @@ class Notifications_Node_Event_Template extends Notifications_Message_Template {
       case 'content':
         return array(
           '#type' => 'messaging_template_text', '#tokens' => TRUE,
-          /*'header' => t('Update for [node:type-name]: [node:title]', array(), $options),*/
-          'teaser' => '[node:body]',
-          /*'more' => array(
+          'header' => t('Update for [node:type-name]: [node:title]', array(), $options),
+          'teaser' => '[node:summary]',
+          'more' => array(
             '#type' => 'messaging_link',
             '#text' => t('Read more', array(), $options),
             '#url' => '[node:url]',
-          ),*/
+          ),
         );
       case 'digest':
         return array(
@@ -276,7 +276,7 @@ class Notifications_Node_Insert_Template extends Notifications_Node_Event_Templa
       case 'subject':
         return array(
           '#tokens' => TRUE,
-          '#markup' => t('[node:title]', array(), $options),
+          '#markup' => t('New [node:type-name]: [node:title]', array(), $options),
         );
       default:
         return parent::default_text($type, $options);
@@ -335,15 +335,15 @@ class Notifications_Node_Comment_Template extends Notifications_Node_Event_Templ
       case 'content':
         return array(
           '#tokens' => TRUE,
-          //'header' => t('Comment by [comment:name]: [comment:title]', array(), $options),
+          'header' => t('Comment by [comment:name]: [comment:title]', array(), $options),
           'content' => '[comment:body]',
-          'footer' => t('Read the full discussion here [node:url]', array(), $options),
+          'footer' => t('Read more [comment:url]', array(), $options),
         );
       case 'digest':
         return array(
           '#tokens' => TRUE,
           'title' => '[node:title]',
-          'more' => t('Read the full discussion here [node:url]', array(), $options),
+          'more' => t('Read more [node:url]', array(), $options),
         );
       default:
         return parent::default_text($type, $options);

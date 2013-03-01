@@ -169,7 +169,7 @@ function notifications_notifications_templates($op = 'info', $type = 'all', $lan
         case 'notifications-event':
           return array(
             'subject' => t('Event notification for [user] from [site-name]', array(), $language->language),
-            //'header' => t("Greetings [user],", array(), $language->language),
+            'header' => t("Greetings [user],", array(), $language->language),
             'main' => t("A item to which you are subscribed has been updated", array(), $language->language),
             'footer' => array(
                 t('This is an automatic message from [site-name]', array(), $language->language),
@@ -180,7 +180,7 @@ function notifications_notifications_templates($op = 'info', $type = 'all', $lan
         case 'notifications-message':
           return array(
             'subject' => t('This is a message for [user] from [site-name]', array(), $language->language),
-            //'header' => t("Greetings [user],", array(), $language->language),
+            'header' => t("Greetings [user],", array(), $language->language),
             'footer' => array(
                 t('This is an automatic message from [site-name]', array(), $language->language),
             ),

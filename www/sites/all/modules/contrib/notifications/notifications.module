@@ -1320,17 +1320,12 @@ function notifications_subscription_list_form_submit($form, &$form_state) {
  * Implements hook_token_info().
  */
 function notifications_token_info() {
-  $types['subscription'] = array(
-    'name' => t('Subscriptions'),
-    'description' => t('Tokens related to notifications subscriptions.'),
-    'needs-data' => 'subscription',
-  );
-  $tokens['subscription'] = array();
-  $tokens['user']['unsubscribe-url'] = array(
+  $info['tokens']['user']['unsubscribe-url'] = array(
     'name' => t("Unsubscribe URL"),
     'description' => t("Signed URL for cancelling all user subscriptions."),
   );
-  return array('types' => $types, 'tokens' => $tokens);
+
+  return $info;
 }
 
 /**
@@ -1347,7 +1342,7 @@ function notifications_tokens($type, $tokens, array $data = array(), array $opti
           $url_options = array('absolute' => TRUE);
           if ($user->uid) {
             $url_options['signed'] = TRUE;
-            $path = 'user/' . $user->uid . '/notifications/subscription';
+            $path = 'notifications/unsubscribe/user/' . $user->uid;
             $url_options = notifications_url_options($path, $url_options);
           }
           else {

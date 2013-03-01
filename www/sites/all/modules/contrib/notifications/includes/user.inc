@@ -21,7 +21,7 @@ function notifications_user_name_callback($uid, $subs_type = '') {
 }
 
 function notifications_user_name2uid($name, $field = NULL) {
-  if ($account = user_load(array('name' => $name))) {
+  if ($account = user_load_by_name($name)) {
     return $account->uid;
   }
   elseif ($field) {
