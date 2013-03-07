@@ -2591,48 +2591,52 @@ table.diff td.diff-links {
   margin-left: 2%;
   float: left;
 }
-/* line 1227, ../sass/styles.scss */
+/* line 1225, ../sass/styles.scss */
+#issue_comment .comment_form #edit-author--4 {
+  display: none;
+}
+/* line 1230, ../sass/styles.scss */
 #issue_comment .form-item-language,
 #issue_comment .redirect-list {
   display: none;
 }
 
-/* line 1235, ../sass/styles.scss */
+/* line 1238, ../sass/styles.scss */
 .comment .group-right .item-list h3 {
   font-size: 14px;
   margin: 0;
 }
-/* line 1240, ../sass/styles.scss */
+/* line 1243, ../sass/styles.scss */
 .comment .group-right .item-list ul,
 .comment .group-right .item-list a {
   font-size: 12px;
   color: #333;
 }
-/* line 1244, ../sass/styles.scss */
+/* line 1247, ../sass/styles.scss */
 .comment .group-right .item-list ul {
   margin: 5px 0;
   padding-bottom: 10px;
   border-bottom: 1px dashed #cccccc;
 }
 
-/* line 1254, ../sass/styles.scss */
+/* line 1257, ../sass/styles.scss */
 .filter-wrapper,
 .wysiwyg-toggle-wrapper {
   font-size: 13px;
 }
-/* line 1256, ../sass/styles.scss */
+/* line 1259, ../sass/styles.scss */
 .filter-wrapper a,
 .wysiwyg-toggle-wrapper a {
   font-size: 13px;
 }
 
-/* line 1265, ../sass/styles.scss */
+/* line 1268, ../sass/styles.scss */
 html.js input.form-autocomplete {
   background-position: 99% 4px;
 }
 
 @media screen and (max-width: 300px) {
-  /* line 1271, ../sass/styles.scss */
+  /* line 1274, ../sass/styles.scss */
   .region-header {
     top: 80px;
   }
