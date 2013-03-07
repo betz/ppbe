@@ -1221,7 +1221,10 @@ table.diff {
   .comment_form {
     width: 68%;
     margin-left: 2%;
-    float: left;  
+    float: left;
+    #edit-author--4 {
+      display: none;
+    }
   }
   .form-item-language,
   .redirect-list {
