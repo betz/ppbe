@@ -68,8 +68,6 @@ function pirateparty_peer_review_flag($action, $flag, $content_id, $account) {
         AND fg.content_type = 'node'", array(':nid' => $content_id))->fetchField();
 
       $members = db_query("SELECT COUNT(*) FROM {flag_content} fg 
-        INNER JOIN {users_roles} ur 
-        ON fg.uid = ur.uid 
         WHERE fg.fid = 6 
         AND fg.content_id = :nid 
         AND fg.content_type = 'node'", array(':nid' => $content_id))->fetchField();
@@ -77,7 +75,7 @@ function pirateparty_peer_review_flag($action, $flag, $content_id, $account) {
       if(($moderators >= variable_get('pirateparty_peer_review_blog_min_moderators_total', 1)) 
       && ($members >= variable_get('pirateparty_peer_review_blog_min_members_total', 3))) {
         $flag = flag_get_flag('gazette');
-        $flag->flag('flag', $content_id); 
+        $flag->flag('flag', $content_id, NULL, TRUE); 
 
       }
       else {
@@ -101,6 +99,7 @@ function pirateparty_peer_review_preprocess_node(&$variables) {
           AND fg.content_id = :nid 
           AND fg.content_type = 'node'", array(':nid' => $variables['node']->nid));
 
+      $members = array();
       foreach($results as $member) {
         $member = user_load($member->uid);
         $members[] = l($member->name, 'user/' . $member->uid);
@@ -117,6 +116,7 @@ function pirateparty_peer_review_preprocess_node(&$variables) {
           AND fg.content_id = :nid 
           AND fg.content_type = 'node'", array(':nid' => $variables['node']->nid));
 
+      $moderators = array();
       foreach($results as $moderator) {
         $moderator = user_load($moderator->uid);
         $moderators[] = l($moderator->name, 'user/' . $moderator->uid);
