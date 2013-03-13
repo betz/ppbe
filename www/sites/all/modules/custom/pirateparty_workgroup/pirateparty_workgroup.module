@@ -300,9 +300,25 @@ function BACKUP_pirateparty_workgroup_og_ui_get_group_admin($group_type, $gid) {
   return $items;
 }
 
+/**
+ * Implements hook_help().
+ */
+function pirateparty_workgroup_help($path, $arg) {
+  switch($path) {
 
+    case 'reports':
+      $output = '<div>' . t('Follow activity in the pirateparty with these meeting reports.') . '</div>';
+      $output .= '<div>' . l(t('Add a new meeting report'), 'node/add/meeting-report') . '</div>';
+      return $output;
+      break;
 
-
+    case 'agenda':
+      $output = '<div>' . t('Come to a pirate event, meeting, beer meeting or online meeting.') . '</div>';
+      $output .= '<div>' . l(t('Add a new event'), 'node/add/meeting-report') . '</div>';
+      return $output;
+      break;
+  }
+}
 
 
 

@@ -2629,13 +2629,32 @@ table.diff td.diff-links {
   font-size: 13px;
 }
 
+/* line 1264, ../sass/styles.scss */
+#become_member ul {
+  list-style: none;
+  padding: 0;
+}
 /* line 1267, ../sass/styles.scss */
+#become_member ul li {
+  float: left;
+  margin-right: 20px;
+  padding: 20px;
+  color: #fff;
+  background: #551A8B;
+}
+/* line 1273, ../sass/styles.scss */
+#become_member ul li a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* line 1281, ../sass/styles.scss */
 html.js input.form-autocomplete {
   background-position: 99% 4px;
 }
 
 @media screen and (max-width: 300px) {
-  /* line 1273, ../sass/styles.scss */
+  /* line 1287, ../sass/styles.scss */
   .region-header {
     top: 80px;
   }

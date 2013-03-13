@@ -1260,8 +1260,22 @@ table.diff {
   }
 }
 
-.peer_review_backers {
-
+#become_member {
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      float: left;
+      margin-right: 20px;
+      padding: 20px;
+      color: #fff;
+      background: #551A8B;
+      a {
+        color: #fff;
+        text-decoration: underline;
+      }
+    }
+  } 
 }
 
 html.js input.form-autocomplete {
@@ -1274,6 +1288,14 @@ html.js input.form-autocomplete {
     top: 80px;
   }
 }
+
+
+
+
+
+
+
+
 
 
 
