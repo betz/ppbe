@@ -168,7 +168,7 @@ function pirateparty_workgroup_form_alter(&$form, &$form_state, $form_id) {
   //var_dump($form_id);
   switch($form_id) {
     case 'user_login_block':
-      $links[] = l(t('Become a Pirate!'), 'user/register');
+      $links[] = l(t('Become a Pirate!'), 'node/697');
       $links[] = l(t('Forgot your password?'), 'user/password');
       $form['links']['#markup'] = theme('item_list', array('items' => $links));
       $form['links']['#weight'] = 100;
