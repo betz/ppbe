@@ -1207,6 +1207,25 @@ table.diff {
       margin: 0 0 30px;
     }
   }
+  &.view-mode-teaser {
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+    background: #F9F9F9;
+    &.issue_status_34,
+    &.issue_status_35,
+    &.issue_status_38 {
+      background: #ffe7dd;
+    }
+    &.issue_status_36 {
+      background: #ffd;
+    }
+    &.issue_status_37 {
+      background: #e7ffdd;
+    }
+    &.issue_status_39 {
+      background: #ffc9c9;
+    }
+  }
   .field-name-submitted-by {
     font-size: 13px;
   }
