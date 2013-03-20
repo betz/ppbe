@@ -332,6 +332,13 @@ function pirateparty_workgroup_help($path, $arg) {
       $output .= '<div>' . l(t('Add a new event'), 'node/add/meeting-report') . '</div>';
       return $output;
       break;
+
+    case 'issues':
+      $output = '<div>' . t("This is the general overview of all issues of all groups and meeting reports.") . '</div>';
+      $output .= '<div>' . t("Also, if you have a general question, you've come to the right place") . '</div>';
+      $output .= '<div>' . l(t('Add a new issue'), 'node/add/issue') . '</div>';
+      return $output;
+      break;
   }
 }
 
