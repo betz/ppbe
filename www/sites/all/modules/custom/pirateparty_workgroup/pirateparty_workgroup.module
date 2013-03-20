@@ -203,6 +203,11 @@ function pirateparty_workgroup_form_alter(&$form, &$form_state, $form_id) {
       $form['comment_body']['#suffix'] = '</div>';
       $form['actions']['submit']['#value'] = t('Update issue');
       break;
+
+    case 'issue_node_form':
+      unset($form['revision_information']);
+      $form['actions']['submit']['#value'] = t('Save issue');
+      break;
   }
 }
 
