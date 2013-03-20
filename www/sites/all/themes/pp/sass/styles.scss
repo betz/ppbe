@@ -1239,8 +1239,19 @@ table.diff {
     width: 68%;
     margin-left: 2%;
   }
+  #edit-og-group-ref-und {
+    width: 100%;
+    height: 150px;
+  }
+  .form-item-language {
+    display: none;
+  }
 }
 
+.filter-wrapper .form-item {
+  margin: 0 15px;
+  padding: 0;
+}
 
 .comment {
   .group-right {
