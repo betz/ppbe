@@ -146,6 +146,14 @@ function pirateparty_workgroup_preprocess_node(&$variables) {
       if(!count($translators)){ $translators[] = t('None.'); }
       $variables['translators'] = '<div class="translators field"><span class="label">' . t('Translators') . '</span>: ' . implode(', ', $translators) . '</div>';
       break;
+
+    case 'issue':
+      $node = $variables['node'];
+      if(!empty($node->field_issue_status['und'][0]['target_id'])) {
+        $status_id = $node->field_issue_status['und'][0]['target_id'];
+        $variables['classes_array'][] = 'issue_status_' . $status_id;
+      }
+      break;
   }
 }
 
@@ -304,6 +312,8 @@ function BACKUP_pirateparty_workgroup_og_ui_get_group_admin($group_type, $gid) {
 
   return $items;
 }
+
+
 
 /**
  * Implements hook_help().
