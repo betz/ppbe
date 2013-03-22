@@ -140,7 +140,7 @@ function pirateparty_workgroup_preprocess_node(&$variables) {
       if(!empty($flag_icons)) {
         $variables['title_with_flag'] = '<div class="field field-name-title flagged field-type-ds field-label-hidden">
         <h2>' . l($variables['node']->title, 'node/' . $variables['node']->nid) . ' <span class="flags">' . $flag_icons . '</span></h2></div>';
-        $variables['flags'] = '<div class="flags field"><span class="label">' . t('Available translations') . '</span>: ' . $flag_icons . '</div>';
+        $variables['flags'] = '<div class="flags field label"><span class="label">' . t('Available translations') . '</span>: ' . $flag_icons . '</div>';
       }
 
       if(!count($translators)){ $translators[] = t('None.'); }

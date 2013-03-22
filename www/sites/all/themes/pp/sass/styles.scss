@@ -503,6 +503,9 @@ ul.tabs {
       font-size: 16px;
       margin: 0;
     }
+    h2 {
+      line-height: 20px;
+    }
     .title,
     .author {
         display: inline-block;
@@ -516,6 +519,9 @@ ul.tabs {
   }
   .flags {
     margin-left: 3px;
+    &.label {
+      margin: 0;
+    }
     img {
       width: 20px;
       height: 13px;
