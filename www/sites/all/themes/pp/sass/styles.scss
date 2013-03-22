@@ -1137,12 +1137,16 @@ form {
   }
   &.view-mode-full {
     .group-left {
-      width: 70%;
+      width: 50%;
       float: left;
-      margin-right: 10px;
+      margin-right: 1%;
+      .field {
+        margin-bottom: 12px;
+      }
     }
     .group-right {
       text-align: right;
+      width: 49%;
     }
   }
 }
