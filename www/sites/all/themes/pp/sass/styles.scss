@@ -1137,7 +1137,7 @@ form {
   }
   &.view-mode-full {
     .group-left {
-      width: 70%;
+      width: 50%;
       float: left;
       margin-right: 1%;
       .field {
@@ -1146,7 +1146,7 @@ form {
     }
     .group-right {
       text-align: right;
-      width: 29%;
+      width: 49%;
     }
   }
 }

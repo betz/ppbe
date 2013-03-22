@@ -2509,7 +2509,7 @@ form fieldset {
 }
 /* line 1139, ../sass/styles.scss */
 .user-profile.view-mode-full .group-left {
-  width: 70%;
+  width: 50%;
   float: left;
   margin-right: 1%;
 }
@@ -2520,7 +2520,7 @@ form fieldset {
 /* line 1147, ../sass/styles.scss */
 .user-profile.view-mode-full .group-right {
   text-align: right;
-  width: 29%;
+  width: 49%;
 }
 
 /* line 1156, ../sass/styles.scss */
