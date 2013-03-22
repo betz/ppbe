@@ -1140,6 +1140,9 @@ form {
       width: 70%;
       float: left;
       margin-right: 1%;
+      .field {
+        margin-bottom: 12px;
+      }
     }
     .group-right {
       text-align: right;
