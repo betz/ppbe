@@ -1021,6 +1021,9 @@ form {
   .comment_forbidden {
     display: none !important;
   }
+  #edit-author--2 {
+    display: none;
+  }
 }
 
 #discussion-list-topic {
@@ -1327,6 +1330,17 @@ table.diff {
       }
     }
   } 
+}
+
+
+.confirmation {
+  .form-actions {
+    a {
+      font-size: 13px;
+      display: block;
+      margin-top: 10px;
+    }
+  }
 }
 
 html.js input.form-autocomplete {
