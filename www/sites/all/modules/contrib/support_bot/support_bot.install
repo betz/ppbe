@@ -1,0 +1,174 @@
+<?php
+
+/**
+ * @file
+ * Support Bot database schema.
+ *
+ * Copyright (c) 2010.
+ *  Jeremy Andrews <jeremy@tag1consulting.com>
+ */
+
+/**
+ * Support Bot database schema.
+ */
+function support_bot_schema() {
+  $schema['support_bot_handle'] = array(
+    'description' => 'Allow the support bot to message users using their IRC handles.',
+    'fields' => array(
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Drupal user id',
+      ),
+      'handle' => array(
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+        'default' => '',
+        'description' => 'User\'s IRC handle.',
+      ),
+    ),
+    'primary key' => array('uid'),
+  );
+  $schema['support_bot_notification_queue'] = array(
+    'fields' => array(
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'cid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'op' => array(
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'type' => array(
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('nid', 'uid', 'cid', 'op', 'type'),
+  );
+  $schema['support_bot_notification'] = array(
+    'fields' => array(
+      'sbnid' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'channel' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+        'description' => 'IRC channel to notify.',
+      ),
+      'active' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('sbnid'),
+  );
+  $schema['support_bot_notification_action'] = array(
+    'fields' => array(
+      'sbnid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'action' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('sbnid', 'action'),
+  );
+  $schema['support_bot_notification_client'] = array(
+    'fields' => array(
+      'sbnid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'clid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('sbnid', 'clid'),
+  );
+  $schema['support_bot_notification_state'] = array(
+    'fields' => array(
+      'sbnid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'state' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('sbnid', 'state'),
+  );
+  $schema['support_bot_notification_priority'] = array(
+    'fields' => array(
+      'sbnid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'priority' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('sbnid', 'priority'),
+  );
+  return $schema;
+}
+
+function support_bot_update_6001() {
+  db_add_field('support_bot_notification', 'channel',
+    array(
+      'type' => 'varchar',
+       'length' => 255,
+       'not null' => FALSE,
+       'default' => '',
+       'description' => 'IRC channel to notify.',
+     ));
+}
