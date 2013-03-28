@@ -1332,6 +1332,13 @@ table.diff {
   } 
 }
 
+.node-upload-form {
+  .form-item-language,
+  .field-type-entityreference {
+    display: none;
+  }
+}
+
 
 .confirmation {
   .form-actions {
