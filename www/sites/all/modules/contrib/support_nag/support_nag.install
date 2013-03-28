@@ -72,7 +72,7 @@ function support_nag_schema() {
       'message' => array(
         'type' => 'text',
         'not null' => TRUE,
-        'default' => '',
+        //'default' => '', //see issue #1392950
         'description' => 'Notification or update message text.',
       ),
       'frequency' => array(
