@@ -999,8 +999,10 @@ function _support_node_insert_update($node) {
       'priority' => $node->priority,
       'client' => $node->client,
       'assigned' => $node->assigned,
-    ))
-    ->execute();
+    ));
+    //->execute(); 
+    // Disabled because it only worked for inserting. I guess some race condition where we update with the old states. 
+    // Quick fix, inserting is fine for new tickets by email. New manual tickets lose states now. 
 
   if (isset($node->notifications) && !empty($node->notifications)) {
     $notifications = explode(',', $node->notifications);
@@ -2118,6 +2120,7 @@ function _support_mail_notify($op, $account, $comment = array(), $nid = NULL, $s
  * Helper function.
  */
 function _support_comment_update_node($nid) {
+  var_dump($nid);
   $cid = db_query('SELECT MAX(cid) FROM {comment} WHERE nid = :nid', array(':nid' => $nid))->fetchField();
   if ($cid) {
     $comment = db_select('support_ticket_comment', 't')->condition('t.cid', $cid)->fields('t')->execute()->fetchObject();
