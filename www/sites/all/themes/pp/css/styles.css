@@ -2712,20 +2712,25 @@ table.diff td.diff-links {
   text-decoration: underline;
 }
 
-/* line 1338, ../sass/styles.scss */
+/* line 1336, ../sass/styles.scss */
+.webform-client-form .form-textarea-wrapper {
+  width: 400px;
+}
+
+/* line 1344, ../sass/styles.scss */
 .confirmation .form-actions a {
   font-size: 13px;
   display: block;
   margin-top: 10px;
 }
 
-/* line 1346, ../sass/styles.scss */
+/* line 1352, ../sass/styles.scss */
 html.js input.form-autocomplete {
   background-position: 99% 4px;
 }
 
 @media screen and (max-width: 300px) {
-  /* line 1352, ../sass/styles.scss */
+  /* line 1358, ../sass/styles.scss */
   .region-header {
     top: 80px;
   }
