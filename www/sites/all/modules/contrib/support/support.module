@@ -976,7 +976,7 @@ function support_node_validate($node, $form, &$form_state) {
 /**
  *  Common code for inserting or updating a support ticket
  */
-function _support_node_insert_update($node) {
+function _support_node_insert($node) {
   $autocomplete = 'subscribed-users';
   if (isset($node->move) && is_numeric($node->move) && $node->move) {
     $destination = node_load($node->move);
@@ -999,10 +999,46 @@ function _support_node_insert_update($node) {
       'priority' => $node->priority,
       'client' => $node->client,
       'assigned' => $node->assigned,
-    ));
-    //->execute(); 
-    // Disabled because it only worked for inserting. I guess some race condition where we update with the old states. 
-    // Quick fix, inserting is fine for new tickets by email. New manual tickets lose states now. 
+    ))
+    ->execute();
+
+  if (isset($node->notifications) && !empty($node->notifications)) {
+    $notifications = explode(',', $node->notifications);
+    foreach ($notifications as $notify) {
+      $enabled = "notify-$notify";
+      support_subscribe_user($node->nid, $notify, $node->$enabled);
+    }
+  }
+  else if (isset($node->$autocomplete)) {
+    $notifications = explode(',', $node->$autocomplete);
+    foreach ($notifications as $notify) {
+      $accounts = user_load_multiple(array(), array('name' => trim($notify)));
+      $account = array_shift($accounts);
+      if (!empty($account)) {
+        support_subscribe_user($node->nid, $account->uid);
+      }
+    }
+  }
+}
+
+/**
+ *  Common code for inserting or updating a support ticket
+ */
+function _support_node_insert_update($node) {
+  $autocomplete = 'subscribed-users';
+  if (isset($node->move) && is_numeric($node->move) && $node->move) {
+    $destination = node_load($node->move);
+    _support_node_move($node, $destination);
+  }
+  if (isset($node->assigned) && !is_numeric($node->assigned)) {
+    $assigned = db_query("SELECT uid FROM {users} WHERE name = :name", array(':name' => $node->assigned))->fetchField();
+    if ($assigned) {
+      $node->assigned = $assigned;
+    }
+    else {
+      $node->assigned = 0;
+    }
+  }
 
   if (isset($node->notifications) && !empty($node->notifications)) {
     $notifications = explode(',', $node->notifications);
@@ -1028,7 +1064,7 @@ function _support_node_insert_update($node) {
  */
 function support_node_insert($node) {
   if ($node->type == 'support_ticket') {
-    _support_node_insert_update($node);
+    _support_node_insert($node);
 
     // auto-subscribe ticket creator
     if (variable_get('support_autosubscribe_creator', FALSE) || isset($node->created_by_email)) {
