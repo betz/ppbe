@@ -1,0 +1,371 @@
+<?php
+
+/**
+ * @file support_bot.module
+ */
+
+/**
+ * Implements hook_help().
+ */
+function support_bot_help($section) {
+  switch ($section) {
+    case 'irc:features':
+      return array(t(''));
+    case 'irc:features#ticket':
+      return t('Provide a link to the requested support ticket, requires the ticket number be preceeded by a "#".');
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function support_bot_permission() {
+  return array(
+    'edit support irc handle' => array(
+      'title' => t('Edit support IRC handle'),
+    ),
+    'administer support bot' => array(
+      'title' => t('Administer support bot'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function support_bot_menu() {
+  $items = array();
+  $items['user/%user/edit/support_bot'] = array(
+    'title' => 'IRC handle',
+    'description' => 'Set an IRC handle for user.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('support_bot_user_handle', 1),
+    'access arguments' => array('edit support irc handle'),
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  $items['admin/support/bot'] = array(
+    'title' => 'Bot',
+    'description' => 'Configure support ticketing bot integration.',
+    'page callback' => 'support_bot_admin_notification',
+    'access arguments' => array('administer support bot'),
+    'file' => 'support_bot.admin.inc',
+  );
+  $items['admin/support/bot/notification'] = array(
+    'title' => 'Notifications',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -1,
+  );
+  $items['admin/support/bot/notification/list'] = array(
+    'title' => 'List',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -1,
+  );
+  $items['admin/support/bot/notification/create'] = array(
+    'title' => 'Create',
+    'type' => MENU_LOCAL_TASK,
+    'description' => 'Create bot notification',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('support_bot_admin_notifications'),
+    'access arguments' => array('administer support bot'),
+    'file' => 'support_bot.admin.inc',
+  );
+  $items['admin/support/bot/notification/%support_bot_notification/edit'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('support_bot_admin_notifications', 4),
+    'access arguments' => array('administer support bot'),
+    'file' => 'support_bot.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function support_bot_node_insert($node) {
+  // Send notification that a ticket was created.
+  if ($node->type == 'support_ticket') {
+    _support_bot_notify($node->nid, $node->uid, 0, 'insert', 'node');
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function support_bot_node_update($node) {
+  // Send notification that a ticket was edited.
+  if ($node->type == 'support_ticket') {
+    _support_bot_notify($node->nid, $node->uid, 0, 'update', 'node');
+  }
+}
+
+/**
+ * Implements hook_comment_insert().
+ */
+function support_bot_comment_insert($comment) {
+  if ($comment->node_type == 'comment_node_support_ticket') {
+    return _support_bot_comment_notify($comment, 'insert');
+  }
+}
+
+/**
+ * Implements hook_comment_update().
+ */
+function support_bot_comment_update($comment) {
+  if ($comment->node_type == 'comment_node_support_ticket') {
+    return _support_bot_comment_notify($comment, 'update');
+  }
+}
+
+function _support_bot_comment_notify($comment, $op) {
+  $node = node_load($comment->nid); // @@@
+  $previous_comment = db_query_range('SELECT cid FROM {comment} WHERE nid = :nid ORDER BY cid DESC', 1, 1, array(':nid' => $node->nid))->fetchField();
+  if ($previous_comment) {
+    $previous = db_query('SELECT * FROM {support_ticket_comment} WHERE cid = :cid', array(':cid' => $previous_comment))->fetch();
+  }
+  elseif (!empty($comment->previous)) {
+    $previous = $comment->previous;
+  }
+  if (is_object($previous)) {
+    if ($previous->state != $node->state) {
+      _support_bot_notify($node->nid, $comment->uid, $comment->cid, 'change state', 'comment');
+    }
+    if ($previous->priority != $node->priority) {
+      _support_bot_notify($node->nid, $comment->uid, $comment->cid, 'change priority', 'comment');
+    }
+    if ($previous->assigned != $node->assigned) {
+      _support_bot_notify($node->nid, $comment->uid, $comment->cid, 'change assigned', 'comment');
+    }
+  }
+  _support_bot_notify($node->nid, $comment->uid, $comment->cid, $op, 'comment');
+}
+
+function _support_bot_notify($nid, $uid, $cid, $op, $type) {
+  db_merge('support_bot_notification_queue')
+    ->key(array(
+      'nid' => $nid,
+      'op' => $op,
+      'type' => $type,
+    ))
+    ->fields(array(
+      'uid' => $uid,
+      'cid' => $cid,
+    ))
+    ->execute();
+}
+
+/**
+ * Listen for conversation directed at the bot.
+ *
+ * @param $data
+ *  The regular $data object prepared by the IRC library.
+ * @param $from_query
+ *  Boolean; whether this was a queried request.
+ */
+function support_bot_irc_msg_channel($data, $from_query = FALSE) {
+  $to = $from_query ? $data->nick : $data->channel;
+
+  // Find #number in comments and if matches ticket, display link
+  if (preg_match("/#([0-9]([0-9])*)+/", $data->message, $matches)) {
+    $ticket = db_query('SELECT t.nid, t.state, t.priority, t.client, t.assigned, n.title FROM {support_ticket} t LEFT JOIN {node} n ON t.nid = n.nid WHERE t.nid = :nid', array(':nid' => $matches[1]))->fetch();
+    if (!empty($ticket)) {
+      $client = support_client_load($ticket->client);
+      $assigned = $ticket->assigned ? support_bot_load_handle($ticket->assigned) : '';
+      bot_message($to, t("\"!title\", !state !priority priority ticket for !client !assigned. !link.\n", array('!state' => _support_state($ticket->state), '!priority' => _support_priorities($ticket->priority), '!client' => $client->name, '!assigned' => $assigned ? t('assigned to !assigned', array('!assigned' => $assigned)) : t('not assigned'), '!title' => $ticket->title, '!link' => url("node/$ticket->nid", array('absolute' => TRUE)))));
+    }
+    else {
+      bot_message($to, t('No matching support ticket.'));
+    }
+  }
+}
+
+function support_bot_irc_bot_cron_fastest() {
+  $queues = db_query_range("SELECT nid, uid, cid, op, type FROM {support_bot_notification_queue} GROUP BY nid ORDER BY nid DESC", 0, 6);
+  foreach ($queues as $queue) {
+    $node = node_load($queue->nid, NULL, TRUE);
+    $handle = support_bot_load_handle($queue->uid);
+    $client = support_client_load($node->client);
+    $assigned = $node->assigned ? support_bot_load_handle($node->assigned) : '';
+    if ($queue->type == 'node') {
+      if ($queue->op == 'insert') {
+        $action = t('created');
+        $result = db_query('SELECT n.sbnid, n.channel, a.action, c.clid, p.priority, s.state FROM {support_bot_notification} n LEFT JOIN {support_bot_notification_action} a ON n.sbnid = a.sbnid LEFT JOIN {support_bot_notification_client} c ON n.sbnid = c.sbnid LEFT JOIN {support_bot_notification_priority} p ON n.sbnid = p.sbnid LEFT JOIN {support_bot_notification_state} s ON n.sbnid = s.sbnid WHERE a.action = :action AND (c.clid = :clid OR isnull(c.clid)) AND (p.priority = :priority OR isnull(p.priority)) AND (s.state = :state OR isnull(s.state))', array(':action' => support_bot_admin_actions(t('Create ticket'), TRUE), ':clid' => $node->client, ':priority' => $node->priority, ':state' => $node->state));
+      }
+      else if ($queue->op == 'update') {
+        $action = t('edited');
+        $result = db_query('SELECT n.sbnid, n.channel, a.action, c.clid, p.priority, s.state FROM {support_bot_notification} n LEFT JOIN {support_bot_notification_action} a ON n.sbnid = a.sbnid LEFT JOIN {support_bot_notification_client} c ON n.sbnid = c.sbnid LEFT JOIN {support_bot_notification_priority} p ON n.sbnid = p.sbnid LEFT JOIN {support_bot_notification_state} s ON n.sbnid = s.sbnid WHERE a.action = :action AND (c.clid = :clid OR isnull(c.clid)) AND (p.priority = :priority OR isnull(p.priority)) AND (s.state = :state OR isnull(s.state))', array(':action' => support_bot_admin_actions(t('Edit ticket'), TRUE), ':clid' => $node->client, ':priority' => $node->priority, ':state' => $node->state));
+      }
+    }
+    else if ($queue->type == 'comment') {
+      if ($queue->op == 'insert' ||
+          substr($queue->op, 0, strlen('change')) == 'change') {
+        $action = t('updated');
+        $result = db_query('SELECT n.sbnid, n.channel, a.action, c.clid, p.priority, s.state FROM {support_bot_notification} n LEFT JOIN {support_bot_notification_action} a ON n.sbnid = a.sbnid LEFT JOIN {support_bot_notification_client} c ON n.sbnid = c.sbnid LEFT JOIN {support_bot_notification_priority} p ON n.sbnid = p.sbnid LEFT JOIN {support_bot_notification_state} s ON n.sbnid = s.sbnid WHERE a.action IN (:actions) AND (c.clid = :clid OR isnull(c.clid)) AND (p.priority = :priority OR isnull(p.priority)) AND (s.state = :state OR isnull(s.state))', array(':actions' => array(support_bot_admin_actions(t('Comment ticket'), TRUE), support_bot_admin_actions(t('Change state'), TRUE), support_bot_admin_actions(t('Change priority'), TRUE), support_bot_admin_actions(t('Change assignment'), TRUE)), ':clid' => $node->client, ':priority' => $node->priority, ':state' => $node->state));
+      }
+    }
+    $modified = FALSE;
+    $send = FALSE;
+    foreach ($result as $message) {
+      if ($queue->op == 'insert' && $queue->type == 'comment') {
+        $previous_comment = db_query_range('SELECT cid FROM {comment} WHERE nid = :nid ORDER BY cid DESC', 1, 1, array(':nid' => $node->nid))->fetchField();
+        if ($previous_comment) {
+          $previous = db_query('SELECT * FROM {support_ticket_comment} WHERE cid = :cid', array(':cid' => $previous_comment))->fetch();
+        }
+        else {
+          $previous = db_query('SELECT * FROM {support_ticket} WHERE nid = :nid', array(':nid' => $node->nid))->fetch();
+        }
+        switch ($message->action) {
+          case support_bot_admin_actions(t('Change state'), TRUE):
+            if ($previous->state != $node->state) {
+              $action .= t(' and changed state from !state', array('!state' => _support_state($previous->state)));
+              $modified = TRUE;
+              $send = TRUE;
+              $channel = $message->channel;
+            }
+            break;
+          case support_bot_admin_actions(t('Change priority'), TRUE):
+            if ($previous->priority != $node->priority) {
+              $action .= t(' and changed priority from !priority', array('!priority' => _support_priorities($previous->priority)));
+              $modified = TRUE;
+              $send = TRUE;
+              $channel = $message->channel;
+            }
+            break;
+          case support_bot_admin_actions(t('Change assignment'), TRUE):
+            if ($previous->assigned != $node->assigned) {
+              $action .= t(' and changed assignment from !assignment', array('!assignment' => support_bot_load_handle($previous->assigned)));
+              $modified = TRUE;
+              $send = TRUE;
+              $channel = $message->channel;
+            }
+            break;
+          case support_bot_admin_actions(t('Comment ticket'), TRUE):
+            $send = TRUE;
+            $channel = $message->channel;
+            break;
+        }
+      }
+      else if (($queue->op == 'change state' ||
+                $queue->op == 'change priority' ||
+                $queue->op == 'change assignment') && $queue->type == 'comment') {
+        $send = TRUE;
+        $channel = $message->channel;
+        $action = t('changed !changed to', array('!changed' => substr($queue->op, strlen('changed'), strlen($queue->op))));
+      }
+      else {
+        $send = TRUE;
+        $channel = $message->channel;
+      }
+    }
+    if ($modified) {
+      $action .= ' to';
+    }
+    if ($send) {
+      // Only report one matching op per nid, delete the rest.
+      db_delete('support_bot_notification_queue')
+        ->condition('nid', $queue->nid)
+        ->execute();
+      bot_message($channel, t("!user !action !state !priority priority ticket in !client queue, \"!title\", !assigned. !link.\n", array('!user' => $handle, '!action' => $action, '!state' => _support_state($node->state), '!priority' => _support_priorities($node->priority), '!client' => $client->name, '!assigned' => $assigned ? t('assigned to !assigned', array('!assigned' => $assigned)) : t('not assigned'), '!title' => $node->title, '!link' => url("node/$node->nid", array('absolute' => TRUE, 'fragment' => $queue->cid ? "comment-$queue->cid" : '')))));
+    }
+    else {
+      // No matching op, delete individual queue item as there may have been
+      // multiple operations that happened on this nid.
+      db_delete('support_bot_notification_queue')
+        ->condition('nid', $queue->nid)
+        ->condition('cid', $queue->cid)
+        ->condition('op', $queue->op)
+        ->execute();
+    }
+  }
+}
+
+/**
+ * Allow users to be assigned IRC handles, which the bot uses when generating
+ * IRC notifications.
+ */
+function support_bot_user_handle(&$form_state, $account) {
+  $form = array();
+  $form['handle'] = array(
+    '#type' => 'textfield',
+    '#title' => t('IRC handle'),
+    '#default_value' => support_bot_load_handle($account->uid),
+    '#description' => t('Optionally set an IRC handle to be used when the support_bot module sends IRC notifications.'),
+  );
+  $form['uid'] = array(
+    '#type' => 'hidden',
+    '#value' => $account->uid,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save handle'),
+  );
+  return $form;
+}
+
+/**
+ * Helper function to load user handle from database.
+ */
+function support_bot_load_handle($uid) {
+  $handle = db_query('SELECT handle FROM {support_bot_handle} WHERE uid = :uid', array(':uid' => $uid))->fetchField();
+  if (empty($handle)) {
+    $account = user_load($uid);
+    $handle = $account->name;
+  }
+  return $handle;
+}
+
+/**
+ * Save updated handle to database.
+ */
+function support_bot_user_handle_submit($form, &$form_state) {
+  $handle = isset($form_state['values']['handle']) ? check_plain($form_state['values']['handle']) : '';
+  $account = user_load(array('uid' => $form_state['values']['uid']));
+  if (!empty($handle)) {
+    drupal_set_message(t('Set handle for %user to %handle.', array('%user' => $account->name, '%handle' => $handle)));
+  }
+  else {
+    drupal_set_message(t('Deleted handle for %user.', array('%user' => $account->name)));
+  }
+  db_merge('support_bot_handle')
+    ->key(array('uid' => $account->uid))
+    ->fields(array('handle' => $handle))
+    ->execute();
+}
+
+function support_bot_notification_load($sbnid) {
+  $notification = db_query('SELECT * FROM {support_bot_notification} WHERE sbnid = :sbnid', array(':sbnid' => $sbnid))->fetch();
+  $result = db_query('SELECT action FROM {support_bot_notification_action} WHERE sbnid = :sbnid', array(':sbnid' => $sbnid));
+  foreach ($result as $action) {
+    $notification->actions[] = $action->action;
+  }
+  $result = db_query('SELECT clid FROM {support_bot_notification_client} WHERE sbnid = :sbnid', array(':sbnid' => $sbnid));
+  foreach ($result as $client) {
+    $notification->clients[] = $client->clid;
+  }
+  $result = db_query('SELECT state FROM {support_bot_notification_state} WHERE sbnid = :sbnid', array(':sbnid' => $sbnid));
+  foreach ($result as $state) {
+    $notification->states[] = $state->state;
+  }
+  $result = db_query('SELECT priority FROM {support_bot_notification_priority} WHERE sbnid = :sbnid', array(':sbnid' => $sbnid));
+  foreach ($result as $priority) {
+    $notification->priorities[] = $priority->priority;
+  }
+  return $notification;
+}
+
+function support_bot_admin_actions($action = NULL, $key = FALSE) {
+  $actions = array(t('Create ticket'), t('Edit ticket'), t('Comment ticket'), t('Change state'), t('Change priority'), t('Change assignment'));
+  if (!is_null($action)) {
+    if ($key) {
+      $flipped = array_flip($actions);
+      return $flipped[$action];
+    }
+    else {
+      return $actions[$action];
+    }
+  }
+  else {
+    return $actions;
+  }
+}
