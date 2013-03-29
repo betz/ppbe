@@ -342,5 +342,26 @@ function pirateparty_workgroup_help($path, $arg) {
   }
 }
 
+/**
+ * Implements hook_feeds_processor_targets_alter().
+ */
+function pirateparty_workgroup_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
+  if ($entity_type == 'node') {
+    $targets['discussion_list'] = array(
+      'name' => t('Discussion list by to email address'),
+      'description' => t('Description of what my second custom node field does.'),
+      'callback' => 'discussion_list_by_to_email_callback',
+    );
+  }
+}
+
+/**
+ * custom feeds target for the discussion lists.
+ */
+function discussion_list_by_to_email_callback($source, $entity, $target, $value, $mapping) {
+  $term = array_shift(taxonomy_get_term_by_name($value));
+  $entity->field_discussion_list[$entity->language][0]['tid'] = $term->tid;
+}
+
 
 
