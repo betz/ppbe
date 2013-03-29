@@ -360,7 +360,10 @@ function pirateparty_workgroup_feeds_processor_targets_alter(&$targets, $entity_
  */
 function discussion_list_by_to_email_callback($source, $entity, $target, $value, $mapping) {
   $term = array_shift(taxonomy_get_term_by_name($value));
-  $entity->field_discussion_list[$entity->language][0]['tid'] = $term->tid;
+  $entity->field_discussion_list[$entity->language][0]['tid'] = 0;
+  if($term->tid) {
+    $entity->field_discussion_list[$entity->language][0]['tid'] = $term->tid;
+  }
 }
 
 
