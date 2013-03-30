@@ -6,7 +6,6 @@
 
 include_once 'pirateparty_workgroup.features.inc';
 
-
 /**
  * Implements hook_menu().
  */
@@ -53,13 +52,13 @@ function pirateparty_workgroup_menu() {
     'access arguments' => array(1),
     'weight' => 2,
   );*/
-  /*$items['node/%node/discussion_lists'] = array(
-    'title' => t('Discussion lists'),
+  $items['node/%node/discussion'] = array(
+    'title' => t('Discussion list'),
     'type' => MENU_LOCAL_TASK,
     'access callback' => 'pirateparty_workgroup_blogmenu_access',
     'access arguments' => array(1),
     'weight' => 2,
-  );*/
+  );
   /*$items['group/%/%/admin/blog_posts'] = array(
     'page callback' => 'views_embed_view',
     'title' => 'Workgroup blog posts',
