@@ -1,0 +1,14 @@
+name = OG Mailinglist OG Forum
+description = "Integrates Og Mailinglist with OG Forum so that incoming emails will be placed in the default group forum."
+dependencies[] = og_mailinglist
+dependencies[] = og_forum (>= 2.x)
+package = "Organic groups"
+core = 7.x
+
+
+; Information added by drupal.org packaging script on 2013-03-14
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "og_mailinglist"
+datestamp = "1363268033"
+

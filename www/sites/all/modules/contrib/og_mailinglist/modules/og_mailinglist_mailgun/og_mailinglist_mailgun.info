@@ -1,0 +1,12 @@
+name = OG Mailinglist Mailgun
+description = "Integrates OG Mailinglist with Mailgun's commercial email service."
+dependencies[] = og_mailinglist
+package = "Organic groups"
+core = 7.x
+
+; Information added by drupal.org packaging script on 2013-03-14
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "og_mailinglist"
+datestamp = "1363268033"
+
