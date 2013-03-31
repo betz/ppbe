@@ -1070,9 +1070,11 @@ form {
     margin-top: 5px;
     .group-left {
       width: 35%;
+      float: left;
     }
     .group-right {
       width: 62%;
+      float: right;
     }
     ul.links {
       list-style: none;
