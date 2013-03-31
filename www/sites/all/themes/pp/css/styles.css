@@ -2405,7 +2405,7 @@ form fieldset {
 #discussion-list-topic .comment.view-mode-full .group-right,
 #discussion-list-topic .node-discussion-list-topic.view-mode-full .group-right {
   width: 70%;
-  group: right;
+  float: right;
 }
 /* line 1051, ../sass/styles.scss */
 #discussion-list-topic .comment .permalink,
