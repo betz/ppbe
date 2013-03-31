@@ -178,7 +178,7 @@ function pirateparty_workgroup_node_insert($node) {
       db_merge('workgroup_postfix_aliases')
         ->key(array('nid' => $node->nid))
         ->fields(array(
-            'forw_addr' => '| /etc/postfix/postfix_og_mailinglist/og_mailinglist_postfix_transport.php ${DOMAIN}',
+            'forw_addr' => '| /etc/postfix/postfix_og_mailinglist/og_mailinglist_postfix_transport.php',
             'alias' => $node->group_email['und'][0]['value'],
         ))
         ->execute();
@@ -195,7 +195,7 @@ function pirateparty_workgroup_node_update($node) {
       db_merge('workgroup_postfix_aliases')
         ->key(array('nid' => $node->nid))
         ->fields(array(
-            'forw_addr' => '| /etc/postfix/postfix_og_mailinglist/og_mailinglist_postfix_transport.php ${DOMAIN}',
+            'forw_addr' => '| /etc/postfix/postfix_og_mailinglist/og_mailinglist_postfix_transport.php',
             'alias' => $node->group_email['und'][0]['value'],
         ))
         ->execute();
