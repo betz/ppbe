@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function pirateparty_workgroup_schema() {
+	$schema['workgroup_postfix_aliases'] = array(
+    'description' => 'Table for storing the postfix group mailinglist aliases.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'The node identifier of a workgroup.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'alias' => array(
+        'description' => 'The email alias to retirect.',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'forw_addr' => array(
+        'description' => 'The forward address for the postfix pipe',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+    ),
+  );
+  return $schema;
+}
+
+/**
+ * Install new postfix redirects table.
+ */
+function pirateparty_workgroup_update_7001() {
+	$schema = pirateparty_workgroup_schema();
+  db_create_table('workgroup_postfix_aliases', $schema['workgroup_postfix_aliases']);
+}
