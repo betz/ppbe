@@ -386,6 +386,14 @@ function pirateparty_workgroup_help($path, $arg) {
       $output .= '<div>' . l(t('Add a new issue'), 'node/add/issue') . '</div>';
       return $output;
       break;
+
+    case 'discussion':
+    case 'discussions':
+      $output = '<div>' . t("This is the overview of all discussions from all groups.") . '</div>';
+      $output .= '<div>' . t("A discussion can be made and replied by mail or on this website..") . '</div>';
+      $output .= '<div>' . l(t('Add a new discussion'), 'node/add/discussion-list-topic') . '</div>';
+      return $output;
+      break;
   }
 }
 
