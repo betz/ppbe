@@ -831,6 +831,9 @@ ul.pager {
         margin: 0 0 5px;
         text-transform: lowercase;
         margin: 0 0 3px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 5px;
       }
     }
   }
@@ -1042,7 +1045,7 @@ form {
       }
       .group-right {
         width: 70%;
-        group: right;
+        float: right;
       }
     }
     .permalink {
@@ -1082,6 +1085,7 @@ form {
   width: 48%;
   float: right;
   margin-left: 2%;
+  margin-bottom: 2%;
 }
 
 .pane-node-content .node {
