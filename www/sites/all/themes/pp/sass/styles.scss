@@ -1078,6 +1078,12 @@ form {
   }
 }
 
+#toc {
+  width: 48%;
+  float: right;
+  margin-left: 2%;
+}
+
 .pane-node-content .node {
   &.view-mode-full {
     margin-bottom: 15px;
