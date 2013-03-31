@@ -988,12 +988,14 @@ form {
     .group-left {
       width: 30%;
       font-size: 13px;
+      float: left;
       a {
         font-size: 13px;
       }
     }
     .group-right {
       width: 70%;
+      float: right;
     }
   }
   .permalink {
