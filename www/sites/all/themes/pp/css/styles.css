@@ -2337,52 +2337,54 @@ form fieldset {
 #comments .comment .group-left {
   width: 30%;
   font-size: 13px;
+  float: left;
 }
-/* line 991, ../sass/styles.scss */
+/* line 992, ../sass/styles.scss */
 #comments .comment .group-left a {
   font-size: 13px;
 }
-/* line 995, ../sass/styles.scss */
+/* line 996, ../sass/styles.scss */
 #comments .comment .group-right {
   width: 70%;
+  float: right;
 }
-/* line 999, ../sass/styles.scss */
+/* line 1001, ../sass/styles.scss */
 #comments .permalink {
   font-size: 14px;
   text-transform: lowercase;
 }
-/* line 1003, ../sass/styles.scss */
+/* line 1005, ../sass/styles.scss */
 #comments ul.links {
   list-style: none;
   padding: 0;
 }
-/* line 1006, ../sass/styles.scss */
+/* line 1008, ../sass/styles.scss */
 #comments ul.links li {
   display: inline-block;
 }
-/* line 1008, ../sass/styles.scss */
+/* line 1010, ../sass/styles.scss */
 #comments ul.links li a {
   background: #522E91;
   color: #fff;
   padding: 2px 5px;
 }
-/* line 1015, ../sass/styles.scss */
+/* line 1017, ../sass/styles.scss */
 #comments .comment-thread-expand {
   font-size: 13px;
   background: #F80;
   color: #fff;
   padding: 2px 5px;
 }
-/* line 1021, ../sass/styles.scss */
+/* line 1023, ../sass/styles.scss */
 #comments .comment_forbidden {
   display: none !important;
 }
-/* line 1024, ../sass/styles.scss */
+/* line 1026, ../sass/styles.scss */
 #comments #edit-author--2 {
   display: none;
 }
 
-/* line 1032, ../sass/styles.scss */
+/* line 1034, ../sass/styles.scss */
 #discussion-list-topic .comment.view-mode-full,
 #discussion-list-topic .node-discussion-list-topic.view-mode-full {
   border: 1px solid #cccccc;
@@ -2390,36 +2392,36 @@ form fieldset {
   margin-bottom: 15px;
   margin-top: 5px;
 }
-/* line 1037, ../sass/styles.scss */
+/* line 1039, ../sass/styles.scss */
 #discussion-list-topic .comment.view-mode-full .group-left,
 #discussion-list-topic .node-discussion-list-topic.view-mode-full .group-left {
   width: 30%;
   float: left;
 }
-/* line 1041, ../sass/styles.scss */
+/* line 1043, ../sass/styles.scss */
 #discussion-list-topic .comment.view-mode-full .group-right,
 #discussion-list-topic .node-discussion-list-topic.view-mode-full .group-right {
   width: 70%;
   group: right;
 }
-/* line 1046, ../sass/styles.scss */
+/* line 1048, ../sass/styles.scss */
 #discussion-list-topic .comment .permalink,
 #discussion-list-topic .node-discussion-list-topic .permalink {
   font-size: 14px;
   text-transform: lowercase;
 }
-/* line 1050, ../sass/styles.scss */
+/* line 1052, ../sass/styles.scss */
 #discussion-list-topic .comment ul.links,
 #discussion-list-topic .node-discussion-list-topic ul.links {
   list-style: none;
   padding: 0;
 }
-/* line 1053, ../sass/styles.scss */
+/* line 1055, ../sass/styles.scss */
 #discussion-list-topic .comment ul.links li,
 #discussion-list-topic .node-discussion-list-topic ul.links li {
   display: inline-block;
 }
-/* line 1055, ../sass/styles.scss */
+/* line 1057, ../sass/styles.scss */
 #discussion-list-topic .comment ul.links li a,
 #discussion-list-topic .node-discussion-list-topic ul.links li a {
   background: #522E91;
@@ -2427,141 +2429,141 @@ form fieldset {
   padding: 2px 5px;
 }
 
-/* line 1066, ../sass/styles.scss */
+/* line 1068, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full {
   margin-bottom: 15px;
   margin-top: 5px;
 }
-/* line 1069, ../sass/styles.scss */
+/* line 1071, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full .group-left {
   width: 35%;
 }
-/* line 1072, ../sass/styles.scss */
+/* line 1074, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full .group-right {
   width: 62%;
 }
-/* line 1075, ../sass/styles.scss */
+/* line 1077, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full ul.links {
   list-style: none;
   padding: 0;
 }
-/* line 1078, ../sass/styles.scss */
+/* line 1080, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full ul.links li {
   display: inline-block;
 }
-/* line 1080, ../sass/styles.scss */
+/* line 1082, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full ul.links li a {
   background: #522E91;
   color: #fff;
   padding: 2px 5px;
 }
-/* line 1088, ../sass/styles.scss */
+/* line 1090, ../sass/styles.scss */
 .pane-node-content .node .field-name-body {
   font-family: "Tienne";
 }
 
-/* line 1093, ../sass/styles.scss */
+/* line 1095, ../sass/styles.scss */
 #sliding-popup {
   background: #F80;
 }
-/* line 1096, ../sass/styles.scss */
+/* line 1098, ../sass/styles.scss */
 #sliding-popup .popup-content #popup-buttons {
   margin-top: 25px;
 }
 
-/* line 1103, ../sass/styles.scss */
+/* line 1105, ../sass/styles.scss */
 #block-search-form {
   text-align: right;
 }
-/* line 1106, ../sass/styles.scss */
+/* line 1108, ../sass/styles.scss */
 #block-search-form .form-type-textfield input {
   width: 230px;
 }
 
-/* line 1113, ../sass/styles.scss */
+/* line 1115, ../sass/styles.scss */
 #block-locale-language {
   margin-bottom: 10px;
 }
-/* line 1115, ../sass/styles.scss */
+/* line 1117, ../sass/styles.scss */
 #block-locale-language ul {
   padding: 0;
 }
-/* line 1117, ../sass/styles.scss */
+/* line 1119, ../sass/styles.scss */
 #block-locale-language ul li {
   display: inline-block;
   margin-left: 10px;
 }
-/* line 1120, ../sass/styles.scss */
+/* line 1122, ../sass/styles.scss */
 #block-locale-language ul li.active {
   font-weight: bold;
   font-size: 1.1em;
 }
 
-/* line 1130, ../sass/styles.scss */
+/* line 1132, ../sass/styles.scss */
 .user-profile.view-mode-teaser {
   background: #e2e2e2;
   padding: 10px;
 }
-/* line 1133, ../sass/styles.scss */
+/* line 1135, ../sass/styles.scss */
 .user-profile.view-mode-teaser .group-right {
   width: 68% !important;
   margin-left: 2%;
 }
-/* line 1137, ../sass/styles.scss */
+/* line 1139, ../sass/styles.scss */
 .user-profile.view-mode-teaser .field-name-field-profile-first-name {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
 }
-/* line 1144, ../sass/styles.scss */
+/* line 1146, ../sass/styles.scss */
 .user-profile.view-mode-full .group-left {
   width: 50%;
   float: left;
   margin-right: 1%;
 }
-/* line 1148, ../sass/styles.scss */
+/* line 1150, ../sass/styles.scss */
 .user-profile.view-mode-full .group-left .field {
   margin-bottom: 12px;
 }
-/* line 1152, ../sass/styles.scss */
+/* line 1154, ../sass/styles.scss */
 .user-profile.view-mode-full .group-right {
   text-align: right;
   width: 49%;
 }
 
-/* line 1161, ../sass/styles.scss */
+/* line 1163, ../sass/styles.scss */
 .panel-2col-bricks .panel-col-first .inside {
   margin: 0 0 0.5em 0;
 }
 
 @media screen and (max-width: 800px) {
-  /* line 1168, ../sass/styles.scss */
+  /* line 1170, ../sass/styles.scss */
   .class {
     background: #ccc;
   }
 
-  /* line 1171, ../sass/styles.scss */
+  /* line 1173, ../sass/styles.scss */
   .region-header {
     position: inherit;
     margin: 0 0 50px;
   }
 
-  /* line 1175, ../sass/styles.scss */
+  /* line 1177, ../sass/styles.scss */
   #header #logo_name_slogan {
     margin: 10px 0 10px;
   }
 
-  /* line 1183, ../sass/styles.scss */
+  /* line 1185, ../sass/styles.scss */
   .region-header {
     left: 0;
   }
 
-  /* line 1186, ../sass/styles.scss */
+  /* line 1188, ../sass/styles.scss */
   #block-search-form {
     text-align: left;
   }
 }
-/* line 1192, ../sass/styles.scss */
+/* line 1194, ../sass/styles.scss */
 .view-agenda caption {
   text-align: left;
   font-size: 24px;
@@ -2569,12 +2571,12 @@ form fieldset {
   margin: 10px 10px 10px 0;
 }
 
-/* line 1201, ../sass/styles.scss */
+/* line 1203, ../sass/styles.scss */
 table.diff td.diff-links {
   display: none;
 }
 
-/* line 1208, ../sass/styles.scss */
+/* line 1210, ../sass/styles.scss */
 .node-issue.view-mode-full .group-left {
   width: 24% !important;
   font-size: 13px;
@@ -2583,124 +2585,124 @@ table.diff td.diff-links {
   color: #FFF;
   padding: 15px;
 }
-/* line 1215, ../sass/styles.scss */
+/* line 1217, ../sass/styles.scss */
 .node-issue.view-mode-full .group-left a {
   font-size: 13px;
   color: #fff;
 }
-/* line 1220, ../sass/styles.scss */
+/* line 1222, ../sass/styles.scss */
 .node-issue.view-mode-full .group-right {
   width: 70% !important;
   margin: 0 0 30px;
 }
-/* line 1225, ../sass/styles.scss */
+/* line 1227, ../sass/styles.scss */
 .node-issue.view-mode-teaser {
   padding: 10px !important;
   margin-bottom: 10px !important;
   background: #F9F9F9;
 }
-/* line 1231, ../sass/styles.scss */
+/* line 1233, ../sass/styles.scss */
 .node-issue.view-mode-teaser.issue_status_34, .node-issue.view-mode-teaser.issue_status_35, .node-issue.view-mode-teaser.issue_status_38 {
   background: #ffe7dd;
 }
-/* line 1234, ../sass/styles.scss */
+/* line 1236, ../sass/styles.scss */
 .node-issue.view-mode-teaser.issue_status_36 {
   background: #ffd;
 }
-/* line 1237, ../sass/styles.scss */
+/* line 1239, ../sass/styles.scss */
 .node-issue.view-mode-teaser.issue_status_37 {
   background: #e7ffdd;
 }
-/* line 1240, ../sass/styles.scss */
+/* line 1242, ../sass/styles.scss */
 .node-issue.view-mode-teaser.issue_status_39 {
   background: #ffc9c9;
 }
-/* line 1244, ../sass/styles.scss */
+/* line 1246, ../sass/styles.scss */
 .node-issue .field-name-submitted-by {
   font-size: 13px;
 }
 
-/* line 1250, ../sass/styles.scss */
+/* line 1252, ../sass/styles.scss */
 #issue_comment .issue_form {
   width: 28%;
   float: left;
 }
-/* line 1254, ../sass/styles.scss */
+/* line 1256, ../sass/styles.scss */
 #issue_comment .comment_form {
   width: 68%;
   margin-left: 2%;
   float: left;
 }
-/* line 1258, ../sass/styles.scss */
+/* line 1260, ../sass/styles.scss */
 #issue_comment .comment_form #edit-author--4 {
   display: none;
 }
-/* line 1263, ../sass/styles.scss */
+/* line 1265, ../sass/styles.scss */
 #issue_comment .form-item-language,
 #issue_comment .redirect-list {
   display: none;
 }
 
-/* line 1269, ../sass/styles.scss */
+/* line 1271, ../sass/styles.scss */
 .page-node-add-issue .group-left {
   width: 28%;
 }
-/* line 1272, ../sass/styles.scss */
+/* line 1274, ../sass/styles.scss */
 .page-node-add-issue .group-right {
   width: 68%;
   margin-left: 2%;
 }
-/* line 1276, ../sass/styles.scss */
+/* line 1278, ../sass/styles.scss */
 .page-node-add-issue #edit-og-group-ref-und {
   width: 100%;
   height: 150px;
 }
-/* line 1280, ../sass/styles.scss */
+/* line 1282, ../sass/styles.scss */
 .page-node-add-issue .form-item-language {
   display: none;
 }
 
-/* line 1285, ../sass/styles.scss */
+/* line 1287, ../sass/styles.scss */
 .filter-wrapper .form-item {
   margin: 0 15px;
   padding: 0;
 }
 
-/* line 1293, ../sass/styles.scss */
+/* line 1295, ../sass/styles.scss */
 .comment .group-right .item-list h3 {
   font-size: 14px;
   margin: 0;
 }
-/* line 1298, ../sass/styles.scss */
+/* line 1300, ../sass/styles.scss */
 .comment .group-right .item-list ul,
 .comment .group-right .item-list a {
   font-size: 12px;
   color: #333;
 }
-/* line 1302, ../sass/styles.scss */
+/* line 1304, ../sass/styles.scss */
 .comment .group-right .item-list ul {
   margin: 5px 0;
   padding-bottom: 10px;
   border-bottom: 1px dashed #cccccc;
 }
 
-/* line 1312, ../sass/styles.scss */
+/* line 1314, ../sass/styles.scss */
 .filter-wrapper,
 .wysiwyg-toggle-wrapper {
   font-size: 13px;
 }
-/* line 1314, ../sass/styles.scss */
+/* line 1316, ../sass/styles.scss */
 .filter-wrapper a,
 .wysiwyg-toggle-wrapper a {
   font-size: 13px;
 }
 
-/* line 1320, ../sass/styles.scss */
+/* line 1322, ../sass/styles.scss */
 #become_member ul {
   list-style: none;
   padding: 0;
 }
-/* line 1323, ../sass/styles.scss */
+/* line 1325, ../sass/styles.scss */
 #become_member ul li {
   float: left;
   margin-right: 20px;
@@ -2708,31 +2710,31 @@ table.diff td.diff-links {
   color: #fff;
   background: #551A8B;
 }
-/* line 1329, ../sass/styles.scss */
+/* line 1331, ../sass/styles.scss */
 #become_member ul li a {
   color: #fff;
   text-decoration: underline;
 }
 
-/* line 1338, ../sass/styles.scss */
+/* line 1340, ../sass/styles.scss */
 .webform-client-form .form-textarea-wrapper {
   width: 400px;
 }
 
-/* line 1346, ../sass/styles.scss */
+/* line 1348, ../sass/styles.scss */
 .confirmation .form-actions a {
   font-size: 13px;
   display: block;
   margin-top: 10px;
 }
 
-/* line 1354, ../sass/styles.scss */
+/* line 1356, ../sass/styles.scss */
 html.js input.form-autocomplete {
   background-position: 99% 4px;
 }
 
 @media screen and (max-width: 300px) {
-  /* line 1360, ../sass/styles.scss */
+  /* line 1362, ../sass/styles.scss */
   .region-header {
     top: 80px;
   }
