@@ -376,7 +376,7 @@ function pirateparty_workgroup_help($path, $arg) {
 
     case 'agenda':
       $output = '<div>' . t('Come to a pirate event, meeting, beer meeting or online meeting.') . '</div>';
-      $output .= '<div>' . l(t('Add a new event'), 'node/add/meeting-report') . '</div>';
+      $output .= '<div>' . l(t('Add a new event'), 'node/add/event') . '</div>';
       return $output;
       break;
 
