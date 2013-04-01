@@ -575,6 +575,7 @@ ul.tabs {
   &.view-mode-teaser {
     margin: 10px 0 0!important;
     height: 90px;
+    overflow: hidden;
     .field-name-ds-user-picture {
       float: left;
       width: 40px;

@@ -1,0 +1,6 @@
+core = "7.x"
+dependencies[] = "uif"
+dependencies[] = "og"
+description = "Extends the User Import Framework (UIF) to support Organic Groups (OG)"
+name = "Organic groups support for user import framework"
+package = "Other"
