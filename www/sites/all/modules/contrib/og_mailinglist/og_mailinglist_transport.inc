@@ -229,7 +229,7 @@ function _og_mailinglist_process_email($raw_email, $group_name = NULL) {
       foreach ($group_nodes as $gid => $group_node) {
         // Note: don't skip alter, but ignore admin (see og_user_access()).
         if (!og_user_access('node', $gid, 'create ' . $node_type . ' content', $author, FALSE, TRUE)) {
-          unset($group_nodes[$gid]);
+          //unset($group_nodes[$gid]);
         }
       }
       if (empty($group_nodes)) {
@@ -986,8 +986,9 @@ function og_mailinglist_parse_nid($email) {
     return $nid;
   }
 
-  $nid = _og_mailinglist_get_nid_from_subject($email['headers']['subject']);
-  return $nid;
+  //$nid = _og_mailinglist_get_nid_from_subject($email['headers']['subject']);
+  //return $nid;
+  return FALSE;
 }
 
 function _og_mailinglist_get_nid_from_subject($subject) {
