@@ -1,0 +1,89 @@
+<?php
+
+/**
+ * Implementation of hook_form_alter().
+ */
+function uif_og_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'uif_import_form') {
+    if ($form_state['storage']['step'] == 1) {
+      
+       $results = db_select('node', 'n')
+        ->fields('n')
+        ->condition('type', 'workgroup','=')
+        ->execute();
+
+      foreach($results as $result) {
+        $options[$result->nid] = $result->title;
+        asort($options);
+      }
+      
+      // add our group select
+      $form['og'] = array(
+        '#type' => 'checkboxes',
+        '#title' => t('Default groups'),
+        '#description' => t('All users in the CSV file will be added to these groups. If you want specific users to be added to additional groups, add a "groups" column like described in the "User import help" above.'),
+        '#options' => $options,
+      );
+
+      // drop the 'Next' button down to the bottom
+      $form['next']['#weight'] = 10;
+
+      // stash our values on the 'storage' when doing a step submit
+      $form['#submit'][] = '_uif_og_import_form_submit';
+    }
+  }
+}
+
+function _uif_og_import_form_submit($form, &$form_state) {
+  // stash the groups in 'storage' for when we do a preview
+  $form_state['storage']['og'] = $form_state['values']['og'];
+}
+
+/**
+ * Implementation of hook_uif_help().
+ */
+function uif_og_uif_help() {
+  $help  = '';
+  $help .= '<p>' . t('Additional column for Organic Groups support:') . '</p>';
+  $help .= '<ul><li>' . t('groups (optional) - a list of group nids or names seperated by commas. For multiple values, it <em>must</em> be enclosed in quotes, for example: "Group 1,Group 2"') . '</li></ul>';
+  return array($help);
+}
+
+function _uif_og_parse_group_list($text) {
+  return array_map('trim', explode(',', $text));
+}
+
+/**
+ * Implementation of hook_uif_user_post_create().
+ */
+function uif_og_uif_post_create($account, $user_data, $form_state) {
+  // grab the default groups from the form
+  $groups = empty($form_state['storage']['og']) ? $form_state['values']['og'] : $form_state['storage']['og'];
+  $groups = array_keys(array_filter($groups));
+
+  // take the groups for this individual user
+  if (!empty($user_data['groups'])) {
+    foreach (_uif_og_parse_group_list($user_data['groups']) as $group) {
+      if (!is_numeric($group)) {
+        $result = db_query("SELECT nid FROM {node} WHERE title = '%s' LIMIT 1", $group);
+        $group = $result->fetchObject();
+      }
+      if ($group && !in_array($group->nid, $groups)) {
+        $groups[] = $group;
+      }
+    }
+  }
+
+  foreach ($groups as $gid) {
+    //og_subscribe_user($gid, $account);
+    og_group('node', $gid, array('entity' => $account));
+  }
+}
+
+/**
+ * Implementation of hook_uif_user_post_update().
+ */
+function uif_og_uif_post_update($account, $user_data, $form_state) {
+  uif_og_uif_post_create($account, $user_data, $form_state);
+}
+
