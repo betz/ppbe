@@ -1233,6 +1233,17 @@ form {
     font-weight: bold;
     margin: 10px 10px 10px 0;
   }
+  table {
+    .views-field-field-event-dates {
+      width: 140px;
+    }
+    .views-field-title {
+      width: 390px;
+    }
+    .views-field-field-event-type {
+      width: 110px;
+    }
+  }
 }
 
 table.diff {
