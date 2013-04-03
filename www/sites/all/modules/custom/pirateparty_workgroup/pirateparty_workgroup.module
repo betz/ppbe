@@ -429,7 +429,7 @@ function pirateparty_workgroup_block_info() {
   return $blocks;
 }
 
-function pirateparty_workgroup_block_views($delta) {
+function pirateparty_workgroup_block_view($delta) {
   $arg0 = arg(0);
   $arg1 = arg(1);
 

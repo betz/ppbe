@@ -396,16 +396,15 @@ ul.tabs {
   .pane-views-panes,
   .pane-views {
     background: #FAF8F8;
-    padding: 9px;
+    padding: 0 9px 9px;
     border: 1px solid #ccc;
     .pane-title {
       background: #551A8B;
       padding: 0px 5px 0px 5px;
       color: #fff;
       font-size: 15px;
-      display: block;
-      margin: 0;
-      border-radius: 3px;
+      display: inline-block;
+      margin: 10px 0 0;
       line-height: 25px;
     }
     ul {
