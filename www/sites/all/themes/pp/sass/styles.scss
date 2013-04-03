@@ -1233,6 +1233,17 @@ form {
     font-weight: bold;
     margin: 10px 10px 10px 0;
   }
+  table {
+    .views-field-field-event-dates {
+      width: 140px;
+    }
+    .views-field-title {
+      width: 390px;
+    }
+    .views-field-field-event-type {
+      width: 110px;
+    }
+  }
 }
 
 table.diff {
@@ -1250,9 +1261,16 @@ table.diff {
       background: #000;
       color: #FFF;
       padding: 15px;
+      text-transform: uppercase;
       a {
         font-size: 13px;
         color: #fff;
+        text-decoration: underline;
+      }
+      .field-name-og-group-ref {
+        .field-items {
+          margin-left: 10px;
+        }
       }
     }
     .group-right {
