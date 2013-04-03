@@ -444,7 +444,7 @@ function pirateparty_workgroup_block_view($delta) {
           ->execute();
         $total_members = $result->rowCount();
         $block['subject'] = t('Group stats');
-        $block['content'] = t('Total members: !amount', array('!amount' => $total_members));
+        $block['content'] = t('Total group subscribers: !amount', array('!amount' => $total_members));
         return $block;
       }
       break;
