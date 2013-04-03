@@ -422,4 +422,46 @@ function discussion_list_by_to_email_callback($source, $entity, $target, $value,
 }
 
 
+function pirateparty_workgroup_block_info() {
+  $blocks['workgroup_stats'] = array(
+    'info' => t('Workgroup stats'),
+  );
+  return $blocks;
+}
+
+function pirateparty_workgroup_block_views($delta) {
+  $arg0 = arg(0);
+  $arg1 = arg(1);
+
+  switch($delta) {
+    case 'workgroup_stats':
+      if($arg0 == 'node' && is_numeric($arg1)) {
+        $result = db_select('og_membership', 'om')
+          ->fields('om', array('etid'))
+          ->condition('om.gid', $og_membership->gid)
+          ->condition('om.group_type', 'node')
+          ->condition('om.entity_type', 'user')
+          ->execute();
+        $total_members = $result->rowCount();
+        $block['subject'] = t('Group stats');
+        $block['content'] = t('Total members: !amount', array('!amount' => $total_members));
+        return $block;
+      }
+      break;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
