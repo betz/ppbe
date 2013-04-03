@@ -1250,9 +1250,16 @@ table.diff {
       background: #000;
       color: #FFF;
       padding: 15px;
+      text-transform: uppercase;
       a {
         font-size: 13px;
         color: #fff;
+        text-decoration: underline;
+      }
+      .field-name-og-group-ref {
+        .field-items {
+          margin-left: 10px;
+        }
       }
     }
     .group-right {
