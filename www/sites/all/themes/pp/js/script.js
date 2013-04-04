@@ -14,11 +14,7 @@
 
 
   $(function(){
-    $('#comments .intended').masonry({
-      // options
-      itemSelector : '.comment',
-      columnWidth : 180,
-    });
+    
   });
 
 

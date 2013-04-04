@@ -158,6 +158,13 @@ function pirateparty_workgroup_preprocess_node(&$variables) {
 }
 
 /**
+ * Implements hook_og_mailinglist_new_node_alter().
+ */
+function pirateparty_workgroup_og_mailinglist_new_node_alter(&$data) {
+  //dsm($data);
+}
+
+/**
  * Implements hook_theme().
  */
 function pirateparty_workgroup_theme() {
