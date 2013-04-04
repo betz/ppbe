@@ -8,4 +8,4 @@
 // wrapping it with an "anonymous closure". See:
 // - http://drupal.org/node/1446420
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
-(function(e){e(function(){e("#comments .intended").masonry({itemSelector:".comment",columnWidth:180})})})(jQuery);
+(function(e){e(function(){})})(jQuery);

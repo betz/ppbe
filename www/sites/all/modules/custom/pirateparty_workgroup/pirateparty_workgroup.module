@@ -158,6 +158,13 @@ function pirateparty_workgroup_preprocess_node(&$variables) {
 }
 
 /**
+ * Implements hook_og_mailinglist_new_node_alter().
+ */
+function pirateparty_workgroup_og_mailinglist_new_node_alter(&$data) {
+  //dsm($data);
+}
+
+/**
  * Implements hook_theme().
  */
 function pirateparty_workgroup_theme() {
@@ -444,7 +451,7 @@ function pirateparty_workgroup_block_view($delta) {
           ->execute();
         $total_members = $result->rowCount();
         $block['subject'] = t('Group stats');
-        $block['content'] = t('Total members: !amount', array('!amount' => $total_members));
+        $block['content'] = t('Total group subscribers: !amount', array('!amount' => $total_members));
         return $block;
       }
       break;
