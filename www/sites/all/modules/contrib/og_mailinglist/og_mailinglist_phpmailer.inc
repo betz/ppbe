@@ -49,12 +49,14 @@ function og_mailinglist_send_comment_email($comment, $node, $gids) {
 
   // Decorate subject.
   $groups_list = _og_mailinglist_build_subject($group_nodes);
-  $headers['subject'] = 'Re: ' . $groups_list . ' ' . $node->title;
+  $headers['subject'] = $groups_list . ' ' . $node->title;
 
   $bundles = node_type_get_names();
   if (!empty($bundles[$node->type])) {
     $headers['subject'] = $bundles[$node->type] . ': ' . $headers['subject'];
   }
+
+  $headers['subject'] = 'Re: ' . $headers['subject'];
 
   // Decorate body.
   $body = field_get_items('comment', $comment, 'comment_body');
