@@ -303,7 +303,7 @@ function og_mailinglist_save_comment(&$email, $group_nodes, $node, $new_gids, $a
     node_save($node);
   }
 
-  $mailbody = $email['text'];
+  $mailbody = preg_replace('#(^\w.+:\n)?(^>.*(\n|$))+#mi', "", $email['text']);
 
   // Create an object representing the comment.
   $comment = new stdClass();
