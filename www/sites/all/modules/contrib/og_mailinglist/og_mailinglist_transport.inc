@@ -562,6 +562,8 @@ function _og_mailinglist_email_comment_email($email, $node, $group_nodes, $comme
   // Check if entire body should be encoded as base64
   $body = _og_mailinglist_check_base64($body, $email['headers']);
 
+  $body = preg_replace('#(^\w.+:\n)?(^>.*(\n|$))+#mi', "", $body);
+
   foreach ($group_nodes as $group_node) {
     $recipients['bcc'] = _og_mailinglist_get_subscribers($node, $group_node, TRUE);
 
