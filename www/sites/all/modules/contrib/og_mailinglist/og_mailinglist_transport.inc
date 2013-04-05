@@ -542,7 +542,11 @@ function _og_mailinglist_email_comment_email($email, $node, $group_nodes, $comme
 
   // Decorate subject.
   $groups_list = _og_mailinglist_build_subject($group_nodes);
-  $email['headers']['subject'] = 'Re: ' . $groups_list . ' ' . $comment->subject;
+  $email['headers']['subject'] = 'Re: ' . $groups_list . ' ' . $node->title;
+  $bundles = node_type_get_names();
+  if (!empty($bundles[$node->type])) {
+    $email['headers']['subject'] = 'Re: ' . $bundles[$node->type] . ': ' . $groups_list . ' ' . $node->title;
+  }
 
   // Set footer.
   $footer = theme('og_mailinglist_attached_files', array('comment' => $comment));
