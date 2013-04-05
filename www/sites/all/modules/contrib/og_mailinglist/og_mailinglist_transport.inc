@@ -476,6 +476,10 @@ function _og_mailinglist_email_node_email(&$email, $node, $group_nodes, $author)
   // Decorate subject.
   $groups_list = _og_mailinglist_build_subject($group_nodes);
   $email['headers']['subject'] = $groups_list . ' ' . $node->title;
+  $bundles = node_type_get_names();
+  if (!empty($bundles[$node->type])) {
+    $email['headers']['subject'] = $bundles[$node->type] . ': ' . $email['headers']['subject'];
+  }
 
   // Set footer.
   $footer = theme('og_mailinglist_attached_files', array('node' => $node));
