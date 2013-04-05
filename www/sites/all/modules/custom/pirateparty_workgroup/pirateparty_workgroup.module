@@ -161,8 +161,13 @@ function pirateparty_workgroup_preprocess_node(&$variables) {
  * Implements hook_og_mailinglist_new_node_alter().
  */
 function pirateparty_workgroup_og_mailinglist_new_node_alter(&$data) {
-  //dsm($data);
+  $node = node_load($data['nid']);
+  $bundles = node_type_get_names();
+  if (!empty($bundles[$node->type])) {
+    $data['subject'] = $bundles[$node->type] . ': ' . $data['subject'];
+  }
 }
+
 
 /**
  * Implements hook_theme().
