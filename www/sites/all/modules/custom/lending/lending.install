@@ -1,0 +1,80 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function lending_install() {
+  // Create tables.
+  drupal_install_schema('lending');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function lending_uninstall() {
+  // Create tables.
+  drupal_uninstall_schema('lending');
+}
+
+function lending_schema() {
+  $schema['lending_requests'] = array(
+    'description' => t('Stores requests for items from the lending library'),
+    'fields' => array(
+      'rid' => lending_serial_field("Unique request id, auto incrementing"),
+      'nid' => lending_int_field("Node id of the requested item"),
+      'uid' => lending_int_field("User id of the requested item"),
+      'cid' => lending_int_field("Checkout id the request eventually became"),
+      'created_at' => lending_int_field("When this request was created (UNIX Time)"),
+      'processed_at' => lending_int_field("When this request was checked out (UNIX Time)"),
+      'deleted_at' => lending_int_field("When this request was deleted (UNIX Time)")
+    ),
+    'primary key' => array('rid'),
+    'indexes' => array(
+      'uid' => array('uid'),
+      'nid' => array('nid')
+    )
+  );
+
+  $schema['lending_checkouts'] = array(
+    'description' => t('Stores requests for items from the lending library'),
+    'fields' => array(
+      'cid' => lending_serial_field("Unique checkout id, auto incrementing"),
+      'nid' => lending_int_field("Node id of the checked out item"),
+      'uid' => lending_int_field("User id of the checked out item"),
+      'created_at' => lending_int_field("When the item was checkted out (UNIX Time)"),
+      'created_lid' => lending_int_field("User id of librarian that checked out the item"),
+      'returned_at' => lending_int_field("When the item was returned (UNIX Time)"),
+      'returned_lid' => lending_int_field("User id of librarian that checked in the item")
+    ),
+    'primary key' => array('cid'),
+    'indexes' => array(
+      'uid' => array('uid'),
+      'nid' => array('nid')
+    )
+  );
+
+  return $schema;
+}
+
+function lending_serial_field($desc) {
+  return array(
+    'type' => 'serial', // Required.
+    'unsigned' => TRUE, // Defaults to FALSE. Serial numbers are usually positive.
+    'size' => 'normal',
+    // tiny | small | medium | normal | big
+    'not null' => TRUE, // Defaults to FALSE. Typically TRUE for serial fields.
+    'description' => t($desc)
+  );
+}
+
+function lending_int_field($desc) {
+  return array(
+    'type' => 'int', // Required.
+    'unsigned' => TRUE, // Defaults to FALSE. Serial numbers are usually positive.
+    // tiny | small | medium | normal | big
+    'not null' => TRUE, // Defaults to FALSE. Typically TRUE for serial
+                        // fields.
+    'default' => 0,
+    'description' => t($desc)
+  );
+}

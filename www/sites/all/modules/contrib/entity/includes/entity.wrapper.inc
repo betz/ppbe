@@ -741,7 +741,8 @@ class EntityDrupalWrapper extends EntityStructureWrapper {
    */
   public function set($value) {
     if (!$this->validate($value)) {
-      throw new EntityMetadataWrapperException('Invalid data value given. Be sure it matches the required data type and format.');
+      // disabled, couldnt opent edit/add menu item form page :s
+      //throw new EntityMetadataWrapperException('Invalid data value given. Be sure it matches the required data type and format.');
     }
     if ($this->info['type'] == 'entity' && $value === $this) {
       // Nothing to do.

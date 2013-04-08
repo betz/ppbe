@@ -1,0 +1,145 @@
+<?php
+
+  /**
+   * @file
+   * This module is designed to provide a simple lending interface for
+   * checking out or requesting nodes.
+   *
+   * @note
+   * The README.txt in the module contains a sample workflow.
+   *
+   */
+
+
+  /**
+   * Implements hook_menu().
+   */
+function lending_menu() {
+  $items['admin/settings/lending'] = array(
+    'title' => 'Lending Library settings',
+    'description' => 'Change how lending behaves.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('lending_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'includes/lending.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function lending_permission() {
+  return array(
+    'access lending library' => array(
+      'title' => t('Access lending library'),
+    ),
+    'administer lending library' => array(
+      'title' => t('Administer lending library'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function lending_node_view($node, $view_mode, $langcode) {
+  _lending_load_api();
+
+  if (lending_not_user_or_admin($user)) {
+    return;
+  }
+
+  if (lending_not_acceptable_type($node)) {
+    return;
+  }
+
+  // We only opperate in page context, so don't display otherwise.
+  if (!$page) {
+    return;
+  }
+
+  _lending_load_all();
+  lending_show_lending_panel(&$node);
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function lending_node_delete($node) {
+  _lending_load_api();
+  lending_cleanup_records(&$node);
+}
+
+/**
+ * Load API calls, which gives us access to DB and permissions checks
+ */
+function _lending_load_api() {
+  require_once('./' . drupal_get_path('module', 'lending') . '/includes/lending.api.inc');
+}
+
+/**
+ * Loads the rest of the files needed for form procressing in the lending workflow.
+ */
+function _lending_load_all() {
+  require_once('./' . drupal_get_path('module', 'lending') . '/includes/lending.checkout.inc');
+  require_once('./' . drupal_get_path('module', 'lending') . '/includes/lending.current.inc');
+  require_once('./' . drupal_get_path('module', 'lending') . '/includes/lending.request.inc');
+  require_once('./' . drupal_get_path('module', 'lending') . '/includes/lending.request-queue.inc');
+}
+
+/**
+ * All the functions here are in include files
+ */
+function lending_show_lending_panel(&$node) {
+  lending_show_current_lender(&$node);
+
+  if (lending_is_admin($user)) {
+    lending_show_checkout_form(&$node);
+  }
+  lending_show_request_queue(&$node);
+  lending_show_request_form(&$node);
+}
+
+/**
+ * Remove all records associated with a node on node removal
+ */
+function lending_cleanup_records(&$node) {
+  lending_delete_requests_by_nid($node->nid);
+  lending_delete_checkouts_by_nid($node->nid);
+}
+
+/**
+ *  Implements hook_theme().
+ */
+function lending_theme() {
+  $path = drupal_get_path('module', 'lending');
+  $base = array(
+    'path' => "$path/theme"
+  );
+
+  // TODO: get forms in here as well, though I was having an issue getting
+  // them to take parameters as well as the form parameters
+  $themes = array(
+    'lending_user' => $base + array(
+      'template' => 'lending-current-lender',
+      'arguments' => array('lendee' => NULL, 'checkout' => NULL)
+    ),
+    'lending_request_queue' => $base + array(
+      'template' => 'lending-request-queue',
+      'arguments' => array('queue' => array(), 'node' => NULL, 'user' => NULL)
+    ),
+  );
+  return $themes;
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function lending_views_api() {
+  return array(
+    'api' => 2,
+    'path' => drupal_get_path('module', 'lending') . '/includes',
+  );
+}

@@ -1,0 +1,11 @@
+== Configuration ==
+
+After installation you will need to configure 2 things to see anything
+with the Lending Library.
+
+First go to the Lending Library administration
+"admin/settings/lending" and mark which content types represent
+lendable items.
+
+Second, there are two permissions, use lending, and admin lending,
+which you should assign to appropriate roles.

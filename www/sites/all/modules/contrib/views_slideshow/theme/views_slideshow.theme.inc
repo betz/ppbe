@@ -24,7 +24,7 @@ function _views_slideshow_preprocess_views_slideshow(&$vars) {
       }
     }
   }
-
+  
   // Make sure the main slideshow settings are defined before building the
   // slideshow.
   if (empty($main_frame_module)) {
@@ -33,7 +33,7 @@ function _views_slideshow_preprocess_views_slideshow(&$vars) {
   elseif (empty($options[$main_frame_module])) {
     drupal_set_message(t('The options for !module does not exists.', array('!module' => $main_frame_module)), 'error');
   }
-  elseif (!empty($vars['rows'])) {
+  else {
     $settings = $options[$main_frame_module];
     $view = $vars['view'];
     $rows = $vars['rows'];
@@ -149,7 +149,7 @@ function _views_slideshow_preprocess_views_slideshow(&$vars) {
       foreach ($order as $order_num => $widgets) {
         if (is_array($widgets)) {
           foreach ($widgets as $widget_id) {
-            $vars[$widget_id . '_' . $location] = theme(views_theme_functions($widget_id . '_widget_render', $view, $view->display[$view->current_display]), array('vss_id' => $vss_id, 'view' => $view, 'settings' => $options['widgets'][$location][$widget_id], 'location' => $location, 'rows' => $rows));
+            $vars[$widget_id . '_' . $location] = theme($widget_id . '_widget_render', array('vss_id' => $vss_id, 'view' => $view, 'settings' => $options['widgets'][$location][$widget_id], 'location' => $location, 'rows' => $rows));
             $vars[$location . '_widget_rendered'] .= $vars[$widget_id . '_' . $location];
           }
         }
@@ -159,8 +159,8 @@ function _views_slideshow_preprocess_views_slideshow(&$vars) {
     /**
      * Process Slideshow
      */
-    $slides = theme(views_theme_functions($main_frame_module . '_main_frame', $view, $view->display[$view->current_display]), array('vss_id' => $vss_id, 'view' => $view, 'settings' => $settings, 'rows' => $rows));
-    $vars['slideshow'] = theme(views_theme_functions('views_slideshow_main_section', $view, $view->display[$view->current_display]), array('vss_id' => $vss_id, 'slides' => $slides, 'plugin' => $main_frame_module));
+    $slides = theme($main_frame_module . '_main_frame', array('vss_id' => $vss_id, 'view' => $view, 'settings' => $settings, 'rows' => $rows));
+    $vars['slideshow'] = theme('views_slideshow_main_section', array('vss_id' => $vss_id, 'slides' => $slides, 'plugin' => $main_frame_module));
   }
 }
 
@@ -195,7 +195,7 @@ function theme_views_slideshow_pager_widget_render($vars) {
   // Create some attributes
   $attributes['class'] = 'widget_pager widget_pager_' . $vars['location'];
   $attributes['id'] = 'widget_pager_' . $vars['location'] . '_' . $vars['vss_id'];
-  return theme(views_theme_functions($vars['settings']['type'], $vars['view'], $vars['view']->display[$vars['view']->current_display]), array('vss_id' => $vars['vss_id'], 'view' => $vars['view'], 'settings' => $vars['settings'], 'location' => $vars['location'], 'attributes' => $attributes));
+  return theme($vars['settings']['type'], array('vss_id' => $vars['vss_id'], 'view' => $vars['view'], 'settings' => $vars['settings'], 'location' => $vars['location'], 'attributes' => $attributes));
 }
 
 /**
@@ -215,7 +215,7 @@ function _views_slideshow_preprocess_views_slideshow_pager_fields(&$vars) {
 
   // Add the settings to the page.
   drupal_add_js($js_vars, 'setting');
-
+  
   // Add hover intent library
   if ($vars['settings']['views_slideshow_pager_fields_hover']) {
     if (module_exists('libraries')) {
@@ -235,15 +235,15 @@ function _views_slideshow_preprocess_views_slideshow_pager_fields(&$vars) {
   // Render all the fields unless there is only 1 slide and the user specified
   // to hide them when there is only one slide.
   $vars['rendered_field_items'] = '';
-  if (empty($vars['settings']['hide_on_single_slide']) || count($vars['view']->result) > 1) {
+  if (empty($vars['settings']['hide_on_single_slide']) && count($vars['view']->result) > 1) {
     foreach ($vars['view']->result as $count => $node) {
       $rendered_fields = '';
       foreach ($vars['settings']['views_slideshow_pager_fields_fields'] as $field => $use) {
         if ($use !== 0 && is_object($vars['view']->field[$field])) {
-          $rendered_fields .= theme(views_theme_functions('views_slideshow_pager_field_field', $vars['view'], $vars['view']->display[$vars['view']->current_display]), array('view' => $vars['view'], 'field' => $field, 'count' => $count));
+          $rendered_fields .= theme('views_slideshow_pager_field_field', array('view' => $vars['view'], 'field' => $field, 'count' => $count));
         }
       }
-      $vars['rendered_field_items'] .= theme(views_theme_functions('views_slideshow_pager_field_item', $vars['view'], $vars['view']->display[$vars['view']->current_display]), array('vss_id' => $vars['vss_id'], 'item' => $rendered_fields, 'count' => $count, 'location' => $vars['location']));
+      $vars['rendered_field_items'] .= theme('views_slideshow_pager_field_item', array('vss_id' => $vars['vss_id'], 'item' => $rendered_fields, 'count' => $count, 'location' => $vars['location']));
     }
   }
 }
@@ -255,6 +255,9 @@ function _views_slideshow_preprocess_views_slideshow_pager_fields(&$vars) {
  */
 function _views_slideshow_preprocess_views_slideshow_pager_field_item(&$vars) {
   $vars['classes_array'][] = 'views_slideshow_pager_field_item';
+  if (!$vars['count']) {
+    $vars['classes_array'][] = 'views_slideshow_active_pager_field_item';
+  }
   $vars['classes_array'][] = ($vars['count'] % 2) ? 'views-row-even' : 'views-row-odd';
 }
 
@@ -279,7 +282,7 @@ function theme_views_slideshow_controls_widget_render($vars) {
 
   $output = '';
   if (empty($vars['settings']['hide_on_single_slide']) && count($vars['rows']) > 1) {
-    $output = theme(views_theme_functions($vars['settings']['type'], $vars['view'], $vars['view']->display[$vars['view']->current_display]), array('vss_id' => $vars['vss_id'], 'view' => $vars['view'], 'settings' => $vars['settings'], 'location' => $vars['location'], 'rows' => $vars['rows']));
+    $output = theme($vars['settings']['type'], array('vss_id' => $vars['vss_id'], 'view' => $vars['view'], 'settings' => $vars['settings'], 'location' => $vars['location'], 'rows' => $vars['rows']));
   }
 
   return $output;
@@ -296,11 +299,11 @@ function _views_slideshow_preprocess_views_slideshow_controls_text(&$vars) {
 
   $vars['classes_array'][] = 'views_slideshow_controls_text';
 
-  $vars['rendered_control_previous'] = theme(views_theme_functions('views_slideshow_controls_text_previous', $vars['view'], $vars['view']->display[$vars['view']->current_display]), array('vss_id' => $vars['vss_id'], 'view' => $vars['view'], 'settings' => $vars['settings']));
+  $vars['rendered_control_previous'] = theme('views_slideshow_controls_text_previous', array('vss_id' => $vars['vss_id'], 'view' => $vars['view'], 'settings' => $vars['settings']));
 
-  $vars['rendered_control_pause'] = theme(views_theme_functions('views_slideshow_controls_text_pause', $vars['view'], $vars['view']->display[$vars['view']->current_display]), array('vss_id' => $vars['vss_id'], 'view' => $vars['view'], 'settings' => $vars['settings']));
+  $vars['rendered_control_pause'] = theme('views_slideshow_controls_text_pause', array('vss_id' => $vars['vss_id'], 'view' => $vars['view'], 'settings' => $vars['settings']));
 
-  $vars['rendered_control_next'] = theme(views_theme_functions('views_slideshow_controls_text_next', $vars['view'], $vars['view']->display[$vars['view']->current_display]), array('vss_id' => $vars['vss_id'], 'view' => $vars['view'], 'settings' => $vars['settings']));
+  $vars['rendered_control_next'] = theme('views_slideshow_controls_text_next', array('vss_id' => $vars['vss_id'], 'view' => $vars['view'], 'settings' => $vars['settings']));
 }
 
 /**
@@ -318,7 +321,7 @@ function _views_slideshow_preprocess_views_slideshow_controls_text_previous(&$va
  * @ingroup themeable
  */
 function _views_slideshow_preprocess_views_slideshow_controls_text_pause(&$vars) {
-  $vars['classes_array'][]  = 'views_slideshow_controls_text_pause  views-slideshow-controls-text-status-play';
+  $vars['classes_array'][]  = 'views_slideshow_controls_text_pause';
   $vars['start_text'] = t('Pause');
 }
 
@@ -337,7 +340,7 @@ function _views_slideshow_preprocess_views_slideshow_controls_text_next(&$vars) 
  * @inggroup themeable
  */
 function theme_views_slideshow_slide_counter_widget_render($vars) {
-  return theme(views_theme_functions('views_slideshow_slide_counter', $vars['view'], $vars['view']->display[$vars['view']->current_display]), array('vss_id' => $vars['vss_id'], 'view' => $vars['view'], 'settings' => $vars['settings'], 'location' => $vars['location'], 'rows' => $vars['rows']));
+  return theme('views_slideshow_slide_counter', array('vss_id' => $vars['vss_id'], 'view' => $vars['view'], 'settings' => $vars['settings'], 'location' => $vars['location'], 'rows' => $vars['rows']));
 }
 
 /**

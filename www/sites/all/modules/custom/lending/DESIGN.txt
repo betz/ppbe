@@ -1,0 +1,49 @@
+There are two classes of users, lenders and librarians.
+
+Lenders can
+ * Request an item to lend
+ * Delete an unfulfilled request
+ * See who has requested an item, and who currently has the item
+
+Librarians can
+ * Check out an item that has been requested by a user - if it is not
+ already checked out
+ * Check out an item that has not been requested by a user - if it is
+ not already checked out
+ * Delete any request
+ * Check in an item (i.e. it has been returned)
+
+Librarians have access to a number of additional views:
+ * All checked out items with the current owner.
+ * All outstanding requests, grouped by item.
+ * Past lending history.
+
+A lender may have only one open request for an item.
+
+Requests are sorted by creation time, those towards the top should
+have priority.
+
+Checkouts will be tracked, but only active ones displayed, this makes
+undo or audit history easier.
+
+Request:
+ - rid - some id value
+ - uid - the user
+ - nid - the node
+ - created_at - timestamp for creation
+ - proccessed_at - timestamp for converting to checkout
+ - deleted_at - timestamp for when this was deleted by the user
+ - cid - the checkout id this was converted to
+
+Checkouts
+ - cid - some id value
+ - uid - the user
+ - nid - the node
+ - created_at - timestamp for creation
+ - created_lid - librarian that created the checkout
+ - returned_at - timestamp for return
+ - returned_lid - librarian that created the return
+
+
+
+

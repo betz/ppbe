@@ -1,0 +1,10 @@
+name = Lending Library
+description = Allows for reservation and lending of drupal nodes by content type
+core = 6.x
+php = 5.2
+; Information added by drupal.org packaging script on 2011-04-04
+version = "6.x-1.0"
+core = "6.x"
+project = "lending"
+datestamp = "1301919670"
+
