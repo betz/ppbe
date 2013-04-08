@@ -27,6 +27,7 @@ function _og_mailinglist_send_email($headers, $recipients, $body, $html = NULL) 
         // Even if array in 'from' contains more values we use only the first.
         $mailer->From = key($value);
         $mailer->FromName = _og_mailinglist_encode(reset($value));
+        $mailer->Sender = key($value);  
         break;
       case 'to':
         foreach ($value as $email => $name) {
