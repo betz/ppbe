@@ -96,68 +96,82 @@ function bot_log_irc_msg_channel($data) {
  * Log a user joining a channel.
  */
 function bot_log_irc_msg_join($data) {
-  global $_bot_log_users; // keep track of users per channel. see...
-  $_bot_log_users[$data->nick][$data->channel] = 1; // bot_log_irc_msg_quit().
-  bot_log_insert($data->type, $data->channel, $data->nick, $data->message);
+  if(variable_get('bot_log_join', TRUE)) {
+    global $_bot_log_users; // keep track of users per channel. see...
+    $_bot_log_users[$data->nick][$data->channel] = 1; // bot_log_irc_msg_quit().
+    bot_log_insert($data->type, $data->channel, $data->nick, $data->message);
+  }
 }
 
 /**
  * Log a user leaving a channel.
  */
 function bot_log_irc_msg_part($data) {
-  global $_bot_log_users; // keep track of users per channel. see...
-  unset($_bot_log_users[$data->nick][$data->channel]); // bot_log_irc_msg_quit().
-  bot_log_insert($data->type, $data->channel, $data->nick, $data->message);
+  if(variable_get('bot_log_part', TRUE)) {
+    global $_bot_log_users; // keep track of users per channel. see...
+    unset($_bot_log_users[$data->nick][$data->channel]); // bot_log_irc_msg_quit().
+    bot_log_insert($data->type, $data->channel, $data->nick, $data->message);
+  }
 }
 
 /**
  * Log a user leaving the server.
  */
 function bot_log_irc_msg_quit($data) {
-  // while Net_SmartIRC does provide us a list of users per channel, it
-  // updates this list BEFORE we get QUIT messages, so we have no idea
-  // which channels a user has QUIT out of. we maintain our own list in
-  // $_bot_log_users and store this list of channels in the logs on
-  // QUIT so we know which channels to show this QUIT message in. whew.
-  global $_bot_log_users; // space splice the list in the database.
-  $channel = implode(' ', array_keys($_bot_log_users[$data->nick]));
-  bot_log_insert($data->type, $channel, $data->nick, $data->message);
-  unset($_bot_log_users[$data->nick]);
+  if(variable_get('bot_log_quit', TRUE)) {
+    // while Net_SmartIRC does provide us a list of users per channel, it
+    // updates this list BEFORE we get QUIT messages, so we have no idea
+    // which channels a user has QUIT out of. we maintain our own list in
+    // $_bot_log_users and store this list of channels in the logs on
+    // QUIT so we know which channels to show this QUIT message in. whew.
+    global $_bot_log_users; // space splice the list in the database.
+    $channel = implode(' ', array_keys($_bot_log_users[$data->nick]));
+    bot_log_insert($data->type, $channel, $data->nick, $data->message);
+    unset($_bot_log_users[$data->nick]);
+  }
 }
 
 /**
  * Log a user performing an action.
  */
 function bot_log_irc_msg_action($data) {
-  bot_log_insert($data->type, $data->channel, $data->nick, $data->message);
+  if(variable_get('bot_log_action', TRUE)) {
+    bot_log_insert($data->type, $data->channel, $data->nick, $data->message);
+  }
 }
 
 /**
  * Log a user changing their nick.
  */
 function bot_log_irc_msg_nickchange($data) {
-  global $_bot_log_users; // keep track of users per channel. see...
-  $_bot_log_users[$data->message] = $_bot_log_users[$data->nick];
-  $channel = implode(' ', array_keys($_bot_log_users[$data->nick]));
-  unset($_bot_log_users[$data->nick]); // bot_log_irc_msg_quit().
-  bot_log_insert($data->type, $channel, $data->nick, $data->message);
+  if(variable_get('bot_log_nickchange', TRUE)) {
+    global $_bot_log_users; // keep track of users per channel. see...
+    $_bot_log_users[$data->message] = $_bot_log_users[$data->nick];
+    $channel = implode(' ', array_keys($_bot_log_users[$data->nick]));
+    unset($_bot_log_users[$data->nick]); // bot_log_irc_msg_quit().
+    bot_log_insert($data->type, $channel, $data->nick, $data->message);
+  }
 }
 
 /**
  * Log the channel topic changing.
  */
 function bot_log_irc_msg_topicchange($data) {
-  // Net_SmartIRC doesn't put the channel in, so parse it from the raw message.
-  bot_log_insert($data->type, $data->rawmessageex[2], $data->nick, $data->message);
+  if(variable_get('bot_log_topicchange', TRUE)) {
+    // Net_SmartIRC doesn't put the channel in, so parse it from the raw message.
+    bot_log_insert($data->type, $data->rawmessageex[2], $data->nick, $data->message);
+  }
 }
 
 /**
  * Log bot replies (as normal channel messages).
  */
 function bot_log_irc_bot_reply_message($to, $message) {
-  if (drupal_substr($to, 0, 1) == '#') { // but, naturally, only for channel messages.
-    require_once 'Net/SmartIRC/defines.php'; // load the whole thingy in for one constant. bah!
-    bot_log_insert(SMARTIRC_TYPE_CHANNEL, $to, variable_get('bot_nickname', 'bot_module'), $message);
+  if(variable_get('bot_log_reply_message', TRUE)) {
+    if (drupal_substr($to, 0, 1) == '#') { // but, naturally, only for channel messages.
+      require_once 'Net/SmartIRC/defines.php'; // load the whole thingy in for one constant. bah!
+      bot_log_insert(SMARTIRC_TYPE_CHANNEL, $to, variable_get('bot_nickname', 'bot_module'), $message);
+    }
   }
 }
 
@@ -165,9 +179,11 @@ function bot_log_irc_bot_reply_message($to, $message) {
  * Log bot actions (as normal channel messages).
  */
 function bot_log_irc_bot_reply_action($to, $message) {
-  if (drupal_substr($to, 0, 1) == '#') { // but, naturally, only for channel messages.
-    require_once 'Net/SmartIRC/defines.php'; // load the whole thingy in for one constant. bah!
-    bot_log_insert(SMARTIRC_TYPE_ACTION, $to, variable_get('bot_nickname', 'bot_module'), $message);
+  if(variable_get('bot_log_reply_action', TRUE)) {
+    if (drupal_substr($to, 0, 1) == '#') { // but, naturally, only for channel messages.
+      require_once 'Net/SmartIRC/defines.php'; // load the whole thingy in for one constant. bah!
+      bot_log_insert(SMARTIRC_TYPE_ACTION, $to, variable_get('bot_nickname', 'bot_module'), $message);
+    }
   }
 }
 
@@ -420,6 +436,61 @@ function bot_log_settings(){
     '#size'           => 10,
     '#type'           => 'select',
     '#title'          => t('IRC channels'),
+  );
+
+  $form['bot_log_messages'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Log different type of messages.'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['bot_log_messages']['bot_log_join'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Log a user joining a channel.'),
+    '#default_value' => variable_get('bot_log_join', TRUE),
+  );
+
+  $form['bot_log_messages']['bot_log_part'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Log a user leaving a channel.'),
+    '#default_value' => variable_get('bot_log_part', TRUE),
+  );
+
+  $form['bot_log_messages']['bot_log_quit'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Log a user leaving the server.'),
+    '#default_value' => variable_get('bot_log_quit', TRUE),
+  );
+
+  $form['bot_log_messages']['bot_log_action'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Log a user performing an action.'),
+    '#default_value' => variable_get('bot_log_action', TRUE),
+  );
+
+  $form['bot_log_messages']['bot_log_nickchange'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Log a user changing their nick.'),
+    '#default_value' => variable_get('bot_log_nickchange', TRUE),
+  );
+
+  $form['bot_log_messages']['bot_log_topicchange'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Log the channel topic changing.'),
+    '#default_value' => variable_get('bot_log_topicchange', TRUE),
+  );
+
+  $form['bot_log_messages']['bot_log_reply_messages'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Log bot replies (as normal channel messages).'),
+    '#default_value' => variable_get('bot_log_reply_messages', TRUE),
+  );
+
+  $form['bot_log_messages']['bot_log_reply_actions'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Log bot actions (as normal channel messages).'),
+    '#default_value' => variable_get('bot_log_reply_actions', TRUE),
   );
 
   // @todo if we've been logging a channel, but no longer join it, the logs
