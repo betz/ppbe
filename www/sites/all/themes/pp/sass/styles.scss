@@ -367,7 +367,7 @@ ul.tabs,
 }
 
 .node-type-workgroup ul.tabs {
-  display: none;
+  //display: none;
 }
 
 
@@ -1416,6 +1416,10 @@ table.diff {
       margin-top: 10px;
     }
   }
+}
+
+#block-system-help {
+  margin: 0 0 20px;
 }
 
 html.js input.form-autocomplete {
