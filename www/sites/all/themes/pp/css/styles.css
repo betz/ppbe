@@ -1770,6 +1770,11 @@ ul.tabs li.first, ul.tabs li.first a,
   text-indent: 0;
 }
 
+/* line 369, ../sass/styles.scss */
+.node-type-workgroup ul.tabs {
+  display: none;
+}
+
 /* line 375, ../sass/styles.scss */
 .view-pirateparty-workgroups h3 {
   margin-bottom: 7px;
