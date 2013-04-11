@@ -948,6 +948,11 @@ form {
       width: 100%;
     }
   }
+  .form-type-checkbox {
+    input, label {
+      display: inline-block;
+    }
+  }
   .description,
   .fieldset-description {
     font-size: 13px;
