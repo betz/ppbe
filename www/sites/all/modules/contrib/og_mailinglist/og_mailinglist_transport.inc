@@ -286,11 +286,9 @@ function og_mailinglist_save_comment(&$email, $group_nodes, $node, $new_gids, $a
       $access = TRUE;
     }
   }
-
   if(!$access) {
     unset($group_nodes);
   }
-
 
   if (empty($group_nodes)) {
     throw new Exception(t("You do not have rights to post comments to any of the group nodes you were trying to. Please contact the site administrator."));
