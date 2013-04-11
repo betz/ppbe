@@ -64,9 +64,8 @@ function pirateparty_workgroup_menu_alter(&$items) {
   $items['user/register']['modal'] = TRUE;
   $items['node/%node/view']['title callback'] = 'pirateparty_workgroup_viewnode_title';
   $items['node/%node/view']['title arguments'] = array(1);
-  $items['node/%node/translate']['type'] = MENU_CALLBACK;
   //$items['node/%node/edit']['type'] = MENU_CALLBACK;
-  $items['node/%node/group']['type'] = MENU_CALLBACK;
+  //$items['node/%node/group']['type'] = MENU_CALLBACK;
   //$items['node/%node/translate']['type'] = MENU_CALLBACK;
   unset($items['node']);
 }
