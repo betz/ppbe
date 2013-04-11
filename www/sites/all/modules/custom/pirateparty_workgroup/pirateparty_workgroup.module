@@ -64,6 +64,10 @@ function pirateparty_workgroup_menu_alter(&$items) {
   $items['user/register']['modal'] = TRUE;
   $items['node/%node/view']['title callback'] = 'pirateparty_workgroup_viewnode_title';
   $items['node/%node/view']['title arguments'] = array(1);
+  $items['node/%node/translate']['type'] = MENU_CALLBACK;
+  //$items['node/%node/edit']['type'] = MENU_CALLBACK;
+  $items['node/%node/group']['type'] = MENU_CALLBACK;
+  //$items['node/%node/translate']['type'] = MENU_CALLBACK;
   unset($items['node']);
 }
 
@@ -317,7 +321,7 @@ function pirateparty_workgroup_help($path, $arg) {
     case 'discussion':
     case 'discussions':
       $output = '<div>' . t("This is the overview of all discussions from all groups.") . '</div>';
-      $output .= '<div>' . t("A discussion can be made and replied by mail, or from this website..") . '</div>';
+      $output .= '<div>' . t("A discussion can be started & replied by mail, or from this website..") . '</div>';
       $output .= '<div>' . l(t('Start a new discussion'), 'node/add/discussion-list-topic') . '</div>';
       return $output;
       break;
@@ -326,14 +330,16 @@ function pirateparty_workgroup_help($path, $arg) {
     case 'node/%/discussions':
       $nid = arg(1);
       $workgroup = node_load($nid);
-      $output = '<div>' . t("These are all discussions of '!workgroup'.", array('!workgroup' => $workgroup->title)) . '</div>';
-      $output .= '<div>' . t("A discussion can be made and replied by mail; or from this website..") . '</div>';
+      $output = '<div>' . t("These are all discussions posted in the '!workgroup' group.", array('!workgroup' => $workgroup->title)) . '</div>';
+      $output .= '<div>' . t("A discussion can be started & replied by mail, or from this website.") . '</div>';
 
       if (og_user_access('node', $gid, 'create ' . $node_type . ' content', $author, FALSE, TRUE)) {
         $output .= '<div>' . l(t('Start a new discussion'), 'node/add/discussion-list-topic', array('query' => array('og_group_ref' => $nid))) . '</div>';
       }
       else {
-        $output .= '<div>' . t("You are not allowed to start a new discussion within '!workgroup', because you are not subscribed to this group.", array('!workgroup' => $workgroup->title)) . '</div>';
+        $output .= '<div>' . t("You are not allowed to start a new discussion within this group, because you are not subscribed to it.", array('!workgroup' => $workgroup->title)) . '</div>';
+        $output .= '<div>' . t("To be able to start a new discussion in this group, subscribe to this group on the '!aboutus' page.", array('!aboutus' => l(t('about us'), 'node/' . $nid))) . '</div>';
+        $output .= '<div>' . t("Subscribing to a group means you will be notified of all activity within this group by email.") . '</div>';
       }
 
       return $output;
