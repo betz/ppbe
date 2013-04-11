@@ -58,14 +58,17 @@ function pirateparty_peer_review_settings() {
 function pirateparty_peer_review_flag($action, $flag, $content_id, $account) {
   if ($flag->name == 'backup') {
 
+    $node = node_load($content_id);
+
     if(variable_get('pirateparty_peer_review_blog_enabled', 1)) {
       $moderators = db_query("SELECT COUNT(*) FROM {flag_content} fg 
         INNER JOIN {users_roles} ur 
         ON fg.uid = ur.uid 
         WHERE fg.fid = 6 
         AND ur.rid = 3 
+        AND fg.uid != :uid 
         AND fg.content_id = :nid 
-        AND fg.content_type = 'node'", array(':nid' => $content_id))->fetchField();
+        AND fg.content_type = 'node'", array(':uid' => $node->uid, ':nid' => $content_id))->fetchField();
 
       $members = db_query("SELECT COUNT(*) FROM {flag_content} fg 
         WHERE fg.fid = 6 
@@ -113,8 +116,9 @@ function pirateparty_peer_review_preprocess_node(&$variables) {
           ON fg.uid = ur.uid 
           WHERE fg.fid = 6 
           AND ur.rid = 3 
+          AND fg.uid != :uid 
           AND fg.content_id = :nid 
-          AND fg.content_type = 'node'", array(':nid' => $variables['node']->nid));
+          AND fg.content_type = 'node'", array(':uid' => $node->uid, ':nid' => $variables['node']->nid));
 
       $moderators = array();
       foreach($results as $moderator) {
