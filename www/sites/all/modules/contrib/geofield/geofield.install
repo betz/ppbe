@@ -46,10 +46,9 @@ function geofield_field_schema($field) {
         'not null' => FALSE,
       ),
       'srid' => array(
-        'type' => 'int',
-        'unsigned' => TRUE,
+        'type' => 'text',
         'not null' => FALSE,
-        'default' => 4326,
+        'default' => 'EPSG:4326',
       ),
       'accuracy' => array(
         'type' => 'int',

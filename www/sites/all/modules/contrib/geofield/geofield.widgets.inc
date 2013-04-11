@@ -343,7 +343,7 @@ function geofield_element_validate($element, &$form_state) {
   // @TODO: This could be expanded to cover WKT as well.
   $geo_process = "PROCESS";
 
-  if ($element['input_format']['#value'] == 'geojson') {
+  if ($element['input_format']['#value'] == 'geojson' && $values['wkt']) {
     // For geojson input, we've hijacked the wkt value.
     geophp_load();
     try {
