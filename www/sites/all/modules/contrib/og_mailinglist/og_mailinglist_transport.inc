@@ -279,13 +279,19 @@ function og_mailinglist_save_comment(&$email, $group_nodes, $node, $new_gids, $a
     return;
   }
 
+  $access = FALSE;
   // Check that this user has rights to post comments.
   foreach ($group_nodes as $gid => $group_node) {
-    // Note: don't skip alter, but ignore admin (see og_user_access()).
-    if (!og_user_access('node', $gid, 'post comments by mail', $author, FALSE, TRUE)) {
-      unset($group_nodes);
+    if (og_user_access('node', $gid, 'post comments by mail', $author, FALSE, TRUE)) {
+      $access = TRUE;
     }
   }
+
+  if(!$access) {
+    unset($group_nodes);
+  }
+
+
   if (empty($group_nodes)) {
     throw new Exception(t("You do not have rights to post comments to any of the group nodes you were trying to. Please contact the site administrator."));
   }
