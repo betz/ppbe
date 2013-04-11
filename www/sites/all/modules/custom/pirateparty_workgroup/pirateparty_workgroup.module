@@ -326,14 +326,14 @@ function pirateparty_workgroup_help($path, $arg) {
     case 'node/%/discussions':
       $nid = arg(1);
       $workgroup = node_load($nid);
-      $output = '<div>' . t("These are all discussions of '!workgroup'.") . '</div>';
+      $output = '<div>' . t("These are all discussions of '!workgroup'.", array('!workgroup' => $workgroup->title)) . '</div>';
       $output .= '<div>' . t("A discussion can be made and replied by mail; or from this website..") . '</div>';
 
       if (og_user_access('node', $gid, 'create ' . $node_type . ' content', $author, FALSE, TRUE)) {
         $output .= '<div>' . l(t('Start a new discussion'), 'node/add/discussion-list-topic', array('query' => array('og_group_ref' => $nid))) . '</div>';
       }
       else {
-        $output .= '<div>' . t("You are not allowed to start a new discussion within '!workgroup', because you are not subscribed to this group.") . '</div>';
+        $output .= '<div>' . t("You are not allowed to start a new discussion within '!workgroup', because you are not subscribed to this group.", array('!workgroup' => $workgroup->title)) . '</div>';
       }
 
       return $output;
