@@ -207,7 +207,8 @@ thead tr th {
 
 
 #block-system-main-menu,
-#tabs {
+#tabs,
+.pane-menu-menu-group-tabs {
   li {
     list-style: none outside none;
     a {
@@ -215,6 +216,7 @@ thead tr th {
     }
   }
   & > ul.menu,
+  & > .pane-content > ul.menu,
   & > ul.tabs.primary {
     border-radius: 3px 3px 0 0;
     float: left;
@@ -340,7 +342,8 @@ thead tr th {
   }
 }
 
-ul.tabs {
+ul.tabs,
+.pane-menu-menu-group-tabs > .pane-content > ul.menu, {
   border-bottom: 5px solid #000;
   margin-bottom: 15px !important;
   display: inline-block;
@@ -355,7 +358,16 @@ ul.tabs {
       &:last-child {
       margin-right: 0 !important;
     }
+    &.first,
+    &.first a {
+      background-image: none !important;
+      text-indent: 0;
+    }
   }
+}
+
+.node-type-workgroup ul.tabs {
+  display: none;
 }
 
 
