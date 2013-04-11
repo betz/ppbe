@@ -45,13 +45,6 @@ function pirateparty_workgroup_menu() {
     'access arguments' => array(1),
     'weight' => 2,
   );
-  /*$items['node/%node/events_past'] = array(
-    'title' => t('Past Events'),
-    'type' => MENU_LOCAL_TASK,
-    'access callback' => 'pirateparty_workgroup_blogmenu_access',
-    'access arguments' => array(1),
-    'weight' => 2,
-  );*/
   $items['node/%node/discussion'] = array(
     'title' => t('Discussion list'),
     'type' => MENU_LOCAL_TASK,
@@ -59,30 +52,6 @@ function pirateparty_workgroup_menu() {
     'access arguments' => array(1),
     'weight' => 2,
   );
-  /*$items['group/%/%/admin/blog_posts'] = array(
-    'page callback' => 'views_embed_view',
-    'title' => 'Workgroup blog posts',
-    'page arguments' => array('og_nodes', 'panel_pane_6', 2),
-    'type' => MENU_CALLBACK,
-    'access callback' => 'og_ui_user_access_group',
-    'access arguments' => array('update any blog_post content', 1, 2),
-  );
-  $items['group/%/%/admin/events'] = array(
-    'page callback' => 'views_embed_view',
-    'title' => 'Workgroup events',
-    'page arguments' => array('og_nodes', 'panel_pane_7', 2),
-    'type' => MENU_CALLBACK,
-    'access callback' => 'og_ui_user_access_group',
-    'access arguments' => array('update any event content', 1, 2),
-  );
-  $items['group/%/%/admin/blog_post_importers'] = array(
-    'page callback' => 'views_embed_view',
-    'title' => 'Workgroup events',
-    'page arguments' => array('og_nodes', 'panel_pane_8', 2),
-    'type' => MENU_CALLBACK,
-    'access callback' => 'og_ui_user_access_group',
-    'access arguments' => array('update any event content', 1, 2),
-  );*/
 
   return $items;
 }
@@ -95,13 +64,13 @@ function pirateparty_workgroup_menu_alter(&$items) {
   $items['user/register']['modal'] = TRUE;
   $items['node/%node/view']['title callback'] = 'pirateparty_workgroup_viewnode_title';
   $items['node/%node/view']['title arguments'] = array(1);
-  //$items['node/%node/group']['access callback'] = 'pirateparty_workgroup_group_access';
-  //$items['node/%node/group']['access arguments'] = array(1);
   unset($items['node']);
 }
 
+/**
+ * Custom menu access callback.
+ */
 function pirateparty_workgroup_group_access($node) {
-  dd('he');
   return TRUE;
   if($node->type == 'workgroup') {
     return TRUE;
@@ -168,6 +137,9 @@ function pirateparty_workgroup_og_mailinglist_new_node_alter(&$data) {
   }
 }
 
+/**
+ * Implements hook_og_mailinglist_new_email_node_alter().
+ */
 function pirateparty_workgroup_og_mailinglist_new_email_node_alter(&$data) {
   $node = node_load($data['nid']);
   $bundles = node_type_get_names();
@@ -260,10 +232,6 @@ function pirateparty_workgroup_form_alter(&$form, &$form_state, $form_id) {
       drupal_set_title(t('Request a new password'));
       break;
 
-    case 'event_node_form':
-      
-      break;
-
     case 'user_register_form':
     case 'user_profile_form':
 
@@ -322,66 +290,6 @@ function pirateparty_workgroup_viewnode_title($node) {
 }
 
 /**
- * Implements hook_og_ui_get_group_admin()
- */
-function BACKUP_pirateparty_workgroup_og_ui_get_group_admin($group_type, $gid) {
-  $items = array();
-  $default_access = og_is_group_default_access($group_type, $gid);
-
-    $items['blog_posts'] = array(
-      'title' => t('Blog posts'),
-      'description' => t('Administer workgroup blog posts.'),
-      // The final URL will be "group/$group_type/$gid/admin/people/add-user".
-      // @see og_ui_group_admin_overview().
-      'href' => 'admin/blog_posts',
-    );
-    /*$items['blog_posts_new'] = array(
-      'title' => t('Add blog post'),
-      'description' => t('Add a new blog post.'),
-      // The final URL will be "group/$group_type/$gid/admin/people/add-user".
-      // @see og_ui_group_admin_overview().
-      'href' => 'admin/blog_posts',
-      'localized_options' => array('query' => array('og_group_ref' => $gid)),
-    );*/
-
-    $items['events'] = array(
-      'title' => t('Events'),
-      'description' => t('Administer workgroup events.'),
-      // The final URL will be "group/$group_type/$gid/admin/people/add-user".
-      // @see og_ui_group_admin_overview().
-      'href' => 'admin/events',
-    );
-    /*$items['events_new'] = array(
-      'title' => t('Add event'),
-      'description' => t('Add a new event.'),
-      // The final URL will be "group/$group_type/$gid/admin/people/add-user".
-      // @see og_ui_group_admin_overview().
-      'href' => 'node/add/event',
-      'localized_options' => array('query' => array('og_group_ref' => $gid)),
-    );*/
-
-    $items['blog_post_importers'] = array(
-      'title' => t('Blog posts importers'),
-      'description' => t('Administer workgroup blog post importers.'),
-      // The final URL will be "group/$group_type/$gid/admin/people/add-user".
-      // @see og_ui_group_admin_overview().
-      'href' => 'admin/blog_post_importers',
-    );
-    /*$items['blog_post_importers_new'] = array(
-      'title' => t('Add blog post importer'),
-      'description' => t('Add a new blog post importer.'),
-      // The final URL will be "group/$group_type/$gid/admin/people/add-user".
-      // @see og_ui_group_admin_overview().
-      'href' => 'node/add/blog_post_importers',
-      'localized_options' => array('query' => array('og_group_ref' => $gid)),
-    );*/
-
-  return $items;
-}
-
-
-
-/**
  * Implements hook_help().
  */
 function pirateparty_workgroup_help($path, $arg) {
@@ -417,30 +325,8 @@ function pirateparty_workgroup_help($path, $arg) {
 }
 
 /**
- * Implements hook_feeds_processor_targets_alter().
+ * Implements hook_block_info().
  */
-function pirateparty_workgroup_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
-  if ($entity_type == 'node') {
-    $targets['discussion_list'] = array(
-      'name' => t('Discussion list by to email address'),
-      'description' => t('Description of what my second custom node field does.'),
-      'callback' => 'discussion_list_by_to_email_callback',
-    );
-  }
-}
-
-/**
- * custom feeds target for the discussion lists.
- */
-function discussion_list_by_to_email_callback($source, $entity, $target, $value, $mapping) {
-  $term = array_shift(taxonomy_get_term_by_name($value));
-  $entity->field_discussion_list[$entity->language][0]['tid'] = 0;
-  if($term->tid) {
-    $entity->field_discussion_list[$entity->language][0]['tid'] = $term->tid;
-  }
-}
-
-
 function pirateparty_workgroup_block_info() {
   $blocks['workgroup_stats'] = array(
     'info' => t('Workgroup stats'),
@@ -448,6 +334,9 @@ function pirateparty_workgroup_block_info() {
   return $blocks;
 }
 
+/**
+ * Implements hook_block_view().
+ */
 function pirateparty_workgroup_block_view($delta) {
   $arg0 = arg(0);
   $arg1 = arg(1);
