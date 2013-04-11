@@ -118,7 +118,7 @@ function pirateparty_peer_review_preprocess_node(&$variables) {
           AND ur.rid = 3 
           AND fg.uid != :uid 
           AND fg.content_id = :nid 
-          AND fg.content_type = 'node'", array(':uid' => $node->uid, ':nid' => $variables['node']->nid));
+          AND fg.content_type = 'node'", array(':uid' => $variables['node']->uid, ':nid' => $variables['node']->nid));
 
       $moderators = array();
       foreach($results as $moderator) {
