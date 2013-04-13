@@ -311,12 +311,12 @@ function og_mailinglist_save_comment(&$email, $group_nodes, $node, $new_gids, $a
   $mailbody = $email['text'];
 
   $emailfilters = array(
-    '/^On .*\r?\n?.*> wrote:$/', // On 12 Apr 2013, at 00:20, Foo bar <example@gmail.com> wrote:
-    '/^Op .*\r?\n?.*> het$/', // Op 13 april 2013 01:02 heeft Foo bar <example@gmail.com> het
-    '/^[0-9\/]{8,10} .*<.*@.*>$/', // 2013/4/11 Foo Bar <example@pirateparty.be>
-    '/^Op .*schreef.*\) het volgende:$/', // Op donderdag 11 april 2013 schreef Foo Bar (example@gmail.com) het volgende:
-    '/^Envoyé de mon iPhone$/', // Envoyé de mon iPhone
-    '/^On .*[0-9],.* wrote:$/', // On 25-Mar-13 16:45, Foo Bar wrote:
+    '/\r?\nOn .*\r?\n?.*> wrote:\r?\n/', // On 12 Apr 2013, at 00:20, Foo bar <example@gmail.com> wrote:
+    '/\r?\nOp .*\r?\n?.*> het\r?\n/', // Op 13 april 2013 01:02 heeft Foo bar <example@gmail.com> het
+    '/\r?\n[0-9\/]{8,10} .*<.*@.*>\r?\n/', // 2013/4/11 Foo Bar <example@pirateparty.be>
+    '/\r?\nOp .*schreef.*\) het volgende:\r?\n/', // Op donderdag 11 april 2013 schreef Foo Bar (example@gmail.com) het volgende:
+    '/\r?\nEnvoyé de mon iPhone\r?\n/', // Envoyé de mon iPhone
+    '/\r?\nOn .*[0-9],.* wrote:\r?\n/', // On 25-Mar-13 16:45, Foo Bar wrote:
   );
 
   foreach($emailfilters as $regex) {
