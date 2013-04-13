@@ -310,6 +310,19 @@ function og_mailinglist_save_comment(&$email, $group_nodes, $node, $new_gids, $a
   $email['text'] = preg_replace('#(^\w.+:\n)?(^>.*(\n|$))+#mi', "", $email['text']);
   $mailbody = $email['text'];
 
+  $emailfilters = array(
+    '/^On .*\r?\n?.*> wrote:$/', // On 12 Apr 2013, at 00:20, Foo bar <example@gmail.com> wrote:
+    '/^Op .*\r?\n?.*> het$/', // Op 13 april 2013 01:02 heeft Foo bar <example@gmail.com> het
+    '/^[0-9\/]{8,10} .*<.*@.*>$/', // 2013/4/11 Foo Bar <example@pirateparty.be>
+    '/^Op .*schreef.*\) het volgende:$/', // Op donderdag 11 april 2013 schreef Foo Bar (example@gmail.com) het volgende:
+    '/^Envoyé de mon iPhone$/', // Envoyé de mon iPhone
+    '/^On .*[0-9],.* wrote:$/', // On 25-Mar-13 16:45, Foo Bar wrote:
+  );
+
+  foreach($emailfilters as $regex) {
+    $mailbody = preg_replace($regex, '', $mailbody);
+  }
+
   // Create an object representing the comment.
   $comment = new stdClass();
   $comment->cid = 0;
