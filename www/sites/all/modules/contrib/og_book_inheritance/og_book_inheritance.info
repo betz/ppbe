@@ -1,0 +1,14 @@
+name = OG book inheritance
+description = Adds group inheritance functionality for book content
+package = Organic groups
+core = 7.x
+files[] = og_book_inheritance.module
+dependencies[] = og
+dependencies[] = book
+
+; Information added by drupal.org packaging script on 2011-08-16
+version = "7.x-1.0-alpha1"
+core = "7.x"
+project = "og_book_inheritance"
+datestamp = "1313515319"
+

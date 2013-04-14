@@ -317,6 +317,11 @@ function og_mailinglist_save_comment(&$email, $group_nodes, $node, $new_gids, $a
     '/\r?\nOp .*schreef.*\) het volgende:\r?\n/', // Op donderdag 11 april 2013 schreef Foo Bar (example@gmail.com) het volgende:
     '/\r?\nEnvoyé de mon iPhone\r?\n/', // Envoyé de mon iPhone
     '/\r?\nOn .*[0-9],.* wrote:\r?\n/', // On 25-Mar-13 16:45, Foo Bar wrote:
+    '/\r?\nFull post: http:\/\/pirateparty.be\/.*\r?\n/', // Full post: http://pirateparty.be/het-logo
+    '/\r?\nManage my subscriptions: http:\/\/pirateparty.be\/.*\r?\n/', // Manage my subscriptions: http://pirateparty.be/mailinglist
+    '/\r?\nStop emails for this post: http:\/\/pirateparty.be\/.*\r?\n/', // Stop emails for this post: http://pirateparty.be/mailinglist/unsubscribe/1100
+    '/From: .*\r?\nSent: .*\r?\nTo: .*\r?\n/',
+    '/\r?\n-+ ?[Oo]riginal [Mm]essage ?-+\r?\n/',
   );
 
   foreach($emailfilters as $regex) {

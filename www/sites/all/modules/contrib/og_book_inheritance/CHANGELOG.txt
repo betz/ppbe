@@ -1,0 +1,7 @@
+OG Book Inheritance 7.x-1.x, 2011-8-16
+---------------------------------
+
+- Fixed bugs caused by changes in $node from 6.x upgrade
+- Fixed bugs caused by multiple content types supported
+- Fixed issue with .info and .install files, worked on menu
+- Began port to 7.x-1.x
