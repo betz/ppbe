@@ -2607,7 +2607,7 @@ form fieldset {
 }
 /* line 1142, ../sass/styles.scss */
 .pane-node-content .node .field-name-body {
-  font-family: "Tienne";
+  /*font-family: "Tienne";*/
 }
 
 /* line 1147, ../sass/styles.scss */
@@ -2724,7 +2724,7 @@ form fieldset {
 }
 /* line 1256, ../sass/styles.scss */
 .view-agenda table .views-field-title {
-  width: 390px;
+  width: 320px;
 }
 /* line 1259, ../sass/styles.scss */
 .view-agenda table .views-field-field-event-type {

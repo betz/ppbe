@@ -326,15 +326,16 @@ function pirateparty_workgroup_help($path, $arg) {
     case 'node/%/discussion':
     case 'node/%/discussions':
       $nid = arg(1);
+      global $user;
       $workgroup = node_load($nid);
       $output = '<div>' . t("These are all discussions posted in the '!workgroup' group.", array('!workgroup' => $workgroup->title)) . '</div>';
       $output .= '<div>' . t("A discussion can be started & replied by mail, or from this website.") . '</div>';
 
-      if (og_user_access('node', $gid, 'create ' . $node_type . ' content', $author, FALSE, TRUE)) {
+      if ($user->uid) {
         $output .= '<div>' . l(t('Start a new discussion'), 'node/add/discussion-list-topic', array('query' => array('og_group_ref' => $nid))) . '</div>';
       }
       else {
-        $output .= '<div>' . t("To be able to start a new discussion in this group, subscribe to this group on the '!aboutus' page.", array('!aboutus' => l(t('about us'), 'node/' . $nid))) . '</div>';
+        $output .= '<div>' . t("To be able to start a new discussion in this group, you need to be registered on this website.", array('!aboutus' => l(t('about us'), 'node/' . $nid))) . '</div>';
       }
 
       return $output;
