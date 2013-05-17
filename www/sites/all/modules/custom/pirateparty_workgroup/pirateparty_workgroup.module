@@ -162,7 +162,7 @@ function pirateparty_workgroup_theme() {
 }
 
 /**
- * Implements hook_node_update().
+ * Implements hook_node_insert().
  */
 function pirateparty_workgroup_node_insert($node) {
   switch($node->type) {
@@ -196,7 +196,7 @@ function pirateparty_workgroup_node_update($node) {
 }
 
 /**
- * Implements hook_node_update().
+ * Implements hook_node_delete().
  */
 function pirateparty_workgroup_node_delete($node) {
   switch($node->type) {
