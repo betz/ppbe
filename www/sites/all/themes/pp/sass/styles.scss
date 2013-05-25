@@ -51,8 +51,11 @@ a {
   text-decoration: none;
   color: #551A8B;
 }
-#main a {
-  text-decoration: underline;
+
+.field-name-body {
+  a {
+    text-decoration: underline;
+  }
 }
 
 p {
@@ -62,7 +65,7 @@ h2 {
   margin-top: 0;
 }
 
-
+field-name-body
 
 
 
