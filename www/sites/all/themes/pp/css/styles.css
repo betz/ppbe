@@ -24,7 +24,7 @@
 /*
  * Corrects block display not defined in IE6/7/8/9 & FF3
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\0000335}}
+/* line 35, ../sass/normalize.scss */
 article,
 aside,
 details,
@@ -43,7 +43,7 @@ summary {
 /*
  * Corrects inline-block display not defined in IE6/7/8/9 & FF3
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\0000345}}
+/* line 45, ../sass/normalize.scss */
 audio,
 canvas,
 video {
@@ -54,7 +54,7 @@ video {
  * Prevents modern browsers from displaying 'audio' without controls
  * Remove excess height in iOS5 devices
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\0000358}}
+/* line 58, ../sass/normalize.scss */
 audio:not([controls]) {
   display: none;
   height: 0;
@@ -64,7 +64,7 @@ audio:not([controls]) {
  * Addresses styling for 'hidden' attribute not present in IE7/8/9, FF3, S4
  * Known issue: no IE6 support
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\0000368}}
+/* line 68, ../sass/normalize.scss */
 [hidden] {
   display: none;
 }
@@ -111,7 +111,7 @@ audio:not([controls]) {
  * 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
  *    www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003119}}
+/* line 119, ../sass/normalize.scss */
 html {
   font-size: 100%;
   /* 1 */
@@ -126,7 +126,7 @@ html {
 /*
  * Addresses font-family inconsistency between 'textarea' and other form elements.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003135}}
+/* line 135, ../sass/normalize.scss */
 html,
 button,
 input,
@@ -138,7 +138,7 @@ textarea {
 /*
  * Addresses margins handled incorrectly in IE6/7
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003143}}
+/* line 143, ../sass/normalize.scss */
 body {
   margin: 0;
   padding: 0;
@@ -154,7 +154,7 @@ body {
 /*
  * Addresses outline displayed oddly in Chrome
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003175}}
+/* line 175, ../sass/normalize.scss */
 a:focus {
   outline: thin dotted;
 }
@@ -163,7 +163,7 @@ a:focus {
  * Improves readability when focused and also mouse hovered in all browsers
  * people.opera.com/patrickl/experiments/keyboard/test
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003185}}
+/* line 185, ../sass/normalize.scss */
 a:hover,
 a:active {
   outline: 0;
@@ -182,7 +182,7 @@ a:active {
  * Addresses font sizes and margins set differently in IE6/7
  * Addresses font sizes within 'section' and 'article' in FF4+, Chrome, S5
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003205}}
+/* line 205, ../sass/normalize.scss */
 h1 {
   /* Sets the font-size and line-height while keeping a proper vertical rhythm. */
   font-size: 2em;
@@ -192,7 +192,7 @@ h1 {
   margin-bottom: 0.75em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003214}}
+/* line 214, ../sass/normalize.scss */
 h2 {
   font-size: 1.5em;
   line-height: 2em;
@@ -200,7 +200,7 @@ h2 {
   margin-bottom: 1em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003220}}
+/* line 220, ../sass/normalize.scss */
 h3 {
   font-size: 1.17em;
   line-height: 1.28205em;
@@ -208,7 +208,7 @@ h3 {
   margin-bottom: 1.28205em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003226}}
+/* line 226, ../sass/normalize.scss */
 h4 {
   font-size: 1em;
   line-height: 1.5em;
@@ -216,7 +216,7 @@ h4 {
   margin-bottom: 1.5em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003232}}
+/* line 232, ../sass/normalize.scss */
 h5 {
   font-size: 0.83em;
   line-height: 1.80723em;
@@ -224,7 +224,7 @@ h5 {
   margin-bottom: 1.80723em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003238}}
+/* line 238, ../sass/normalize.scss */
 h6 {
   font-size: 0.75em;
   line-height: 2em;
@@ -233,7 +233,7 @@ h6 {
 }
 
 /* Thematic break */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003245}}
+/* line 245, ../sass/normalize.scss */
 hr {
   height: 1px;
   border: 1px solid #666;
@@ -244,7 +244,7 @@ hr {
 /*
  * Addresses styling not present in IE7/8/9, S5, Chrome
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003256}}
+/* line 256, ../sass/normalize.scss */
 abbr[title] {
   border-bottom: 1px dotted;
   cursor: help;
@@ -254,13 +254,13 @@ abbr[title] {
 /*
  * Addresses style set to 'bolder' in FF3+, S4/5, Chrome
 */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003267}}
+/* line 267, ../sass/normalize.scss */
 b,
 strong {
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003271}}
+/* line 271, ../sass/normalize.scss */
 blockquote {
   /* Sets 1 unit of vertical rhythm on the top and bottom margin. */
   margin: 1.5em 30px;
@@ -269,7 +269,7 @@ blockquote {
 /*
  * Addresses styling not present in S5, Chrome
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003280}}
+/* line 280, ../sass/normalize.scss */
 dfn {
   font-style: italic;
 }
@@ -277,7 +277,7 @@ dfn {
 /*
  * Addresses styling not present in IE6/7/8/9
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003288}}
+/* line 288, ../sass/normalize.scss */
 mark {
   background: #ff0;
   color: #000;
@@ -286,7 +286,7 @@ mark {
 /*
  * Addresses margins set differently in IE6/7
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003298}}
+/* line 298, ../sass/normalize.scss */
 p,
 pre {
   /* Sets 1 unit of vertical rhythm on the top and bottom margin. */
@@ -297,7 +297,7 @@ pre {
  * Corrects font family set oddly in IE6, S4/5, Chrome
  * en.wikipedia.org/wiki/User:Davidgothberg/Test59
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003313}}
+/* line 313, ../sass/normalize.scss */
 pre,
 code,
 kbd,
@@ -313,7 +313,7 @@ var {
 /*
  * Improves readability of pre-formatted text in all browsers
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003325}}
+/* line 325, ../sass/normalize.scss */
 pre {
   white-space: pre;
   white-space: pre-wrap;
@@ -325,13 +325,13 @@ pre {
  * 2. Addresses quote property not supported in S4
  */
 /* 1 */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003338}}
+/* line 338, ../sass/normalize.scss */
 q {
   quotes: none;
 }
 
 /* 2 */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003345}}
+/* line 345, ../sass/normalize.scss */
 q:before,
 q:after {
   content: '';
@@ -339,7 +339,7 @@ q:after {
 }
 
 /* @todo Determine how big element affects vertical rhythm. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003351}}
+/* line 351, ../sass/normalize.scss */
 small {
   font-size: 75%;
 }
@@ -348,7 +348,7 @@ small {
  * Prevents sub and sup affecting line-height in all browsers
  * gist.github.com/413930
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003361}}
+/* line 361, ../sass/normalize.scss */
 sub,
 sup {
   font-size: 75%;
@@ -357,12 +357,12 @@ sup {
   vertical-align: baseline;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003368}}
+/* line 368, ../sass/normalize.scss */
 sup {
   top: -0.5em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003372}}
+/* line 372, ../sass/normalize.scss */
 sub {
   bottom: -0.25em;
 }
@@ -373,7 +373,7 @@ sub {
 /*
  * Addresses margins set differently in IE6/7
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003388}}
+/* line 388, ../sass/normalize.scss */
 dl,
 menu,
 ol,
@@ -382,13 +382,13 @@ ul {
   margin: 1.5em 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003393}}
+/* line 393, ../sass/normalize.scss */
 dd {
   margin: 0 0 0 30px;
   /* LTR */
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003398}}
+/* line 398, ../sass/normalize.scss */
 ul ul, ul ol, ol ul, ol ol {
   margin: 0;
   /* Turn off margins on nested lists. */
@@ -397,7 +397,7 @@ ul ul, ul ol, ol ul, ol ol {
 /*
  * Addresses paddings set differently in IE6/7
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003409}}
+/* line 409, ../sass/normalize.scss */
 menu,
 ol,
 ul {
@@ -408,7 +408,7 @@ ul {
 /*
  * Corrects list images handled incorrectly in IE7
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003418}}
+/* line 418, ../sass/normalize.scss */
 nav ul,
 nav ol {
   list-style: none;
@@ -423,7 +423,7 @@ nav ol {
  * 2. Improves image quality when scaled in IE7
  *    code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003434}}
+/* line 434, ../sass/normalize.scss */
 img {
   border: 0;
   /* 1 */
@@ -440,7 +440,7 @@ img {
 /*
  * Corrects overflow displayed oddly in IE9
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003450}}
+/* line 450, ../sass/normalize.scss */
 svg:not(:root) {
   overflow: hidden;
 }
@@ -451,7 +451,7 @@ svg:not(:root) {
 /*
  * Addresses margin not present in IE6/7/8/9, S5, O11
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003463}}
+/* line 463, ../sass/normalize.scss */
 figure {
   margin: 0;
 }
@@ -462,7 +462,7 @@ figure {
 /*
  * Corrects margin displayed oddly in IE6/7
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003476}}
+/* line 476, ../sass/normalize.scss */
 form {
   margin: 0;
 }
@@ -470,7 +470,7 @@ form {
 /*
  * Define consistent border, margin, and padding
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003484}}
+/* line 484, ../sass/normalize.scss */
 fieldset {
   border-color: #c0c0c0;
   margin: 0 2px;
@@ -494,7 +494,7 @@ fieldset {
  * 2. Corrects text not wrapping in FF3
  * 3. Corrects alignment displayed oddly in IE6/7
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003500}}
+/* line 500, ../sass/normalize.scss */
 legend {
   border: 0;
   /* 1 */
@@ -508,7 +508,7 @@ legend {
  * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome
  * 3. Improves appearance and consistency in all browsers
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003518}}
+/* line 518, ../sass/normalize.scss */
 button,
 input,
 select,
@@ -524,7 +524,7 @@ textarea {
 /*
  * Addresses FF3/4 setting line-height on 'input' using !important in the UA stylesheet
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003532}}
+/* line 532, ../sass/normalize.scss */
 button,
 input {
   line-height: normal;
@@ -537,7 +537,7 @@ input {
  * 3. Removes inner spacing in IE7 without affecting normal text inputs
  *    Known issue: inner spacing remains in IE6
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003546}}
+/* line 546, ../sass/normalize.scss */
 button,
 input[type="button"],
 input[type="reset"],
@@ -551,7 +551,7 @@ input[type="submit"] {
 /*
  * Re-set default cursor for disabled elements
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003559}}
+/* line 559, ../sass/normalize.scss */
 button[disabled],
 input[disabled] {
   cursor: default;
@@ -563,7 +563,7 @@ input[disabled] {
  * 3. Removes excess padding in IE7
       Known issue: excess padding remains in IE6
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003571}}
+/* line 571, ../sass/normalize.scss */
 input[type="checkbox"],
 input[type="radio"] {
   -webkit-box-sizing: border-box;
@@ -578,7 +578,7 @@ input[type="radio"] {
  * 1. Addresses appearance set to searchfield in S5, Chrome
  * 2. Addresses box-sizing set to border-box in S5, Chrome (include -moz to future-proof)
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003585}}
+/* line 585, ../sass/normalize.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -591,7 +591,7 @@ input[type="search"] {
 /*
  * Removes inner padding and search cancel button in S5, Chrome on OS X
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003595}}
+/* line 595, ../sass/normalize.scss */
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
@@ -601,7 +601,7 @@ input[type="search"]::-webkit-search-cancel-button {
  * Removes inner padding and border in FF3+
  * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003605}}
+/* line 605, ../sass/normalize.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
@@ -612,7 +612,7 @@ input::-moz-focus-inner {
  * 1. Removes default vertical scrollbar in IE6/7/8/9
  * 2. Improves readability and alignment in all browsers
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003615}}
+/* line 615, ../sass/normalize.scss */
 textarea {
   overflow: auto;
   /* 1 */
@@ -620,7 +620,7 @@ textarea {
   /* 2 */
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003620}}
+/* line 620, ../sass/normalize.scss */
 label {
   display: block;
   font-weight: bold;
@@ -632,7 +632,7 @@ label {
 /*
  * Remove most spacing between table cells
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize\.scss}line{font-family:\00003634}}
+/* line 634, ../sass/normalize.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -657,7 +657,7 @@ table {
 /*
  * Center the page.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000344}}
+/* line 44, ../sass/layouts/responsive-sidebars.scss */
 #page,
 .region-bottom {
   /* For screen sizes larger than 1200px, prevent excessively long lines of text
@@ -667,7 +667,7 @@ table {
 /*
  * Apply the shared properties of grid items in a single, efficient ruleset.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000360}}
+/* line 60, ../sass/layouts/responsive-sidebars.scss */
 #header,
 #content,
 #navigation,
@@ -686,7 +686,7 @@ table {
 /*
  * Containers for grid items and flow items.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000371}}
+/* line 71, ../sass/layouts/responsive-sidebars.scss */
 #header .inner,
 #main,
 #footer,
@@ -695,7 +695,7 @@ table {
   margin-right: auto;
   max-width: 1200px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass-extensions\/zen-grids\/stylesheets\/zen\/_grids\.scss}line{font-family:\0000352}}
+/* line 52, ../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
 #header .inner:before, #header .inner:after,
 #main:before,
 #main:after,
@@ -706,7 +706,7 @@ table {
   content: "";
   display: table;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass-extensions\/zen-grids\/stylesheets\/zen\/_grids\.scss}line{font-family:\0000356}}
+/* line 56, ../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
 #header .inner:after,
 #main:after,
 #footer:after,
@@ -718,14 +718,14 @@ table {
  * Navigation bar
  */
 @media all and (min-width: 480px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000383}}
+  /* line 83, ../sass/layouts/responsive-sidebars.scss */
   #main {
     padding-top: 3em;
     /* Move all the children of #main down to make room. */
     position: relative;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000387}}
+  /* line 87, ../sass/layouts/responsive-sidebars.scss */
   #navigation {
     position: absolute;
     top: 0;
@@ -741,7 +741,7 @@ table {
   /*
    * The layout when there is only one sidebar, the left one.
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003107}}
+  /* line 107, ../sass/layouts/responsive-sidebars.scss */
   .sidebar-first #content {
     /* Span 4 columns, starting in 2nd column from left. */
     float: left;
@@ -749,7 +749,7 @@ table {
     margin-left: 25%;
     margin-right: -100%;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003111}}
+  /* line 111, ../sass/layouts/responsive-sidebars.scss */
   .sidebar-first .region-sidebar-first {
     /* Span 1 column, starting in 1st column from left. */
     float: left;
@@ -761,7 +761,7 @@ table {
   /*
    * The layout when there is only one sidebar, the right one.
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003121}}
+  /* line 121, ../sass/layouts/responsive-sidebars.scss */
   .sidebar-second #content {
     /* Span 4 columns, starting in 1st column from left. */
     float: left;
@@ -769,7 +769,7 @@ table {
     margin-left: 0%;
     margin-right: -75%;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003125}}
+  /* line 125, ../sass/layouts/responsive-sidebars.scss */
   .sidebar-second .region-sidebar-second {
     /* Span 1 column, starting in 5th column from left. */
     float: left;
@@ -781,7 +781,7 @@ table {
   /*
    * The layout when there are two sidebars.
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003135}}
+  /* line 135, ../sass/layouts/responsive-sidebars.scss */
   .two-sidebars #content {
     /* Span 3 columns, starting in 2nd column from left. */
     float: left;
@@ -789,7 +789,7 @@ table {
     margin-left: 25%;
     margin-right: -75%;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003139}}
+  /* line 139, ../sass/layouts/responsive-sidebars.scss */
   .two-sidebars .region-sidebar-first {
     /* Span 1 column, starting in 1st column from left. */
     float: left;
@@ -797,7 +797,7 @@ table {
     margin-left: 0%;
     margin-right: -25%;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003143}}
+  /* line 143, ../sass/layouts/responsive-sidebars.scss */
   .two-sidebars .region-sidebar-second {
     /* Span 1 column, starting in 5th column from left. */
     float: left;
@@ -808,18 +808,18 @@ table {
 }
 /* Formalize */
 /* UI Consistency */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\000032}}
+/* line 2, ../sass/formalize.scss */
 ::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\000037}}
+/* line 7, ../sass/formalize.scss */
 input[type="search"]::-webkit-search-decoration {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\0000314}}
+/* line 14, ../sass/formalize.scss */
 input,
 button,
 select,
@@ -828,7 +828,7 @@ textarea {
   vertical-align: middle;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\0000322}}
+/* line 22, ../sass/formalize.scss */
 button,
 input[type="reset"],
 input[type="submit"],
@@ -859,7 +859,7 @@ input[type="button"] {
   /* IE7 */
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\0000347}}
+/* line 47, ../sass/formalize.scss */
 button {
   *padding-top: 1px;
   /* IE7 */
@@ -867,7 +867,7 @@ button {
   /* IE7 */
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\0000366}}
+/* line 66, ../sass/formalize.scss */
 textarea,
 select,
 input[type="date"],
@@ -911,7 +911,7 @@ input[type="week"] {
 }
 
 /* Separate rule for Firefox. Cannot stack with WebKit's. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\0000395}}
+/* line 95, ../sass/formalize.scss */
 input.placeholder_text,
 textarea.placeholder_text,
 input:-moz-placeholder,
@@ -919,12 +919,12 @@ textarea:-moz-placeholder {
   color: #888;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\0000399}}
+/* line 99, ../sass/formalize.scss */
 ::-webkit-input-placeholder {
   color: #888;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003110}}
+/* line 110, ../sass/formalize.scss */
 button:focus,
 button:active,
 input:focus,
@@ -940,7 +940,7 @@ textarea:active {
   /* For Opera */
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003122}}
+/* line 122, ../sass/formalize.scss */
 input[type="file"]:focus,
 input[type="file"]:active,
 input[type="radio"]:focus,
@@ -952,7 +952,7 @@ input[type="checkbox"]:active {
   box-shadow: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003142}}
+/* line 142, ../sass/formalize.scss */
 select[disabled],
 textarea[disabled],
 input[type="date"][disabled],
@@ -971,7 +971,7 @@ input[type="week"][disabled] {
   background-color: #eee;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003151}}
+/* line 151, ../sass/formalize.scss */
 button[disabled],
 input[disabled],
 select[disabled],
@@ -988,7 +988,7 @@ textarea[disabled] {
   cursor: default;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003164}}
+/* line 164, ../sass/formalize.scss */
 textarea,
 select[size],
 select[multiple] {
@@ -997,7 +997,7 @@ select[multiple] {
 
 /* Tweaks for Safari + Chrome. */
 @media (-webkit-min-device-pixel-ratio: 0) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003170}}
+  /* line 170, ../sass/formalize.scss */
   select {
     background-image: url(../images/select-arrow.gif);
     background-repeat: no-repeat;
@@ -1005,14 +1005,14 @@ select[multiple] {
     padding-right: 20px;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003178}}
+  /* line 178, ../sass/formalize.scss */
   select[size],
   select[multiple] {
     background-image: none;
     padding: 0;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003184}}
+/* line 184, ../sass/formalize.scss */
 textarea {
   min-height: 40px;
   overflow: auto;
@@ -1020,7 +1020,7 @@ textarea {
   width: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003191}}
+/* line 191, ../sass/formalize.scss */
 optgroup {
   color: #000;
   font-style: normal;
@@ -1028,7 +1028,7 @@ optgroup {
 }
 
 /* IE6 */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003199}}
+/* line 199, ../sass/formalize.scss */
 .ie6-button,
 * html button {
   background: #dddddd url(../images/button.png) repeat-x;
@@ -1042,13 +1042,13 @@ optgroup {
   width: auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003211}}
+/* line 211, ../sass/formalize.scss */
 * html button {
   padding-top: 1px;
   padding-bottom: 1px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003218}}
+/* line 218, ../sass/formalize.scss */
 .ie6-input,
 * html textarea,
 * html select {
@@ -1062,19 +1062,19 @@ optgroup {
   vertical-align: top;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003229}}
+/* line 229, ../sass/formalize.scss */
 * html select {
   margin-top: 1px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003235}}
+/* line 235, ../sass/formalize.scss */
 .placeholder_text,
 .ie6-input-disabled,
 .ie6-button-disabled {
   color: #888;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/formalize\.scss}line{font-family:\00003239}}
+/* line 239, ../sass/formalize.scss */
 .ie6-input-disabled {
   background: #eee;
 }
@@ -1086,38 +1086,38 @@ optgroup {
  * We provide some sane print styling for Drupal using Zen's layout method.
  */
 @media print {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/print\.scss}line{font-family:\0000314}}
+  /* line 14, ../sass/print.scss */
   a:link,
   a:visited {
     /* underline all links */
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/print\.scss}line{font-family:\0000316}}
+  /* line 16, ../sass/print.scss */
   #site-name a:link, #site-name
   a:visited {
     /* Don't underline header */
     text-decoration: none !important;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/print\.scss}line{font-family:\0000322}}
+  /* line 22, ../sass/print.scss */
   #content a[href]:after {
     /* Add visible URL after links. */
     content: " (" attr(href) ")";
     font-weight: normal;
     font-size: 16px;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/print\.scss}line{font-family:\0000329}}
+  /* line 29, ../sass/print.scss */
   #content a[href^="javascript:"]:after,
   #content a[href^="#"]:after {
     /* Only display useful links. */
     content: "";
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/print\.scss}line{font-family:\0000333}}
+  /* line 33, ../sass/print.scss */
   #content abbr[title]:after {
     /* Add visible title after abbreviations. */
     content: " (" attr(title) ")";
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/print\.scss}line{font-family:\0000338}}
+  /* line 38, ../sass/print.scss */
   #content {
     /* Un-float the content */
     float: none !important;
@@ -1126,7 +1126,7 @@ optgroup {
     padding: 0 !important;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/print\.scss}line{font-family:\0000348}}
+  /* line 48, ../sass/print.scss */
   body,
   #page,
   #main,
@@ -1137,7 +1137,7 @@ optgroup {
     background-image: none !important;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/print\.scss}line{font-family:\0000367}}
+  /* line 67, ../sass/print.scss */
   #skip-link,
   #toolbar,
   #navigation,
@@ -1175,7 +1175,7 @@ optgroup {
  *
  * @see autocomplete.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states\.scss}line{font-family:\0000323}}
+/* line 23, ../sass/global-states.scss */
 #autocomplete .selected {
   /* Suggestion list */
   background: #0072b9;
@@ -1187,7 +1187,7 @@ optgroup {
  *
  * @see collapse.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states\.scss}line{font-family:\0000335}}
+/* line 35, ../sass/global-states.scss */
 html.js .collapsible .fieldset-legend {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABJJREFUeJxj+MdQw2DBIMAABgAUsAHD3c3BpwAAAABJRU5ErkJggg==');
   background-position: 5px 65%;
@@ -1196,14 +1196,14 @@ html.js .collapsible .fieldset-legend {
   padding-left: 15px;
   /* LTR */
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states\.scss}line{font-family:\0000344}}
+/* line 44, ../sass/global-states.scss */
 html.js .collapsed .fieldset-legend {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABFJREFUCB1jVmCGQClmEWYOAAZ8AMy3HPLXAAAAAElFTkSuQmCC');
   /* LTR */
   background-position: 5px 50%;
   /* LTR */
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states\.scss}line{font-family:\0000352}}
+/* line 52, ../sass/global-states.scss */
 .fieldset-legend .summary {
   color: #999;
   font-size: 0.9em;
@@ -1215,17 +1215,17 @@ html.js .collapsed .fieldset-legend {
  *
  * @see tabledrag.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states\.scss}line{font-family:\0000365}}
+/* line 65, ../sass/global-states.scss */
 tr.drag {
   background-color: #fffff0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states\.scss}line{font-family:\0000369}}
+/* line 69, ../sass/global-states.scss */
 tr.drag-previous {
   background-color: #ffd;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states\.scss}line{font-family:\0000373}}
+/* line 73, ../sass/global-states.scss */
 .tabledrag-toggle-weight {
   font-size: 0.9em;
 }
@@ -1235,7 +1235,7 @@ tr.drag-previous {
  *
  * @see tableselect.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states\.scss}line{font-family:\0000383}}
+/* line 83, ../sass/global-states.scss */
 tr.selected td {
   background: #ffc;
 }
@@ -1245,11 +1245,11 @@ tr.selected td {
  *
  * @see progress.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states\.scss}line{font-family:\0000393}}
+/* line 93, ../sass/global-states.scss */
 .progress {
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states\.scss}line{font-family:\0000396}}
+/* line 96, ../sass/global-states.scss */
 .progress .bar {
   background: #ccc;
   border-color: #666;
@@ -1260,7 +1260,7 @@ tr.selected td {
   -o-border-radius: 3px;
   border-radius: 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states\.scss}line{font-family:\00003103}}
+/* line 103, ../sass/global-states.scss */
 .progress .filled {
   background-color: #0072b9;
   background-image: url('data:image/gif;base64,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');
@@ -1269,50 +1269,50 @@ tr.selected td {
 /* Theme rules */
 /* @import "theme-A"; */
 /* @import "theme-B"; */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000332}}
+/* line 32, ../sass/styles.scss */
 h2 {
   margin-bottom: 10px;
   line-height: 1.5em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000336}}
+/* line 36, ../sass/styles.scss */
 h3 {
   margin: 10px 0 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000341}}
+/* line 41, ../sass/styles.scss */
 html {
   overflow-y: scroll;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000345}}
+/* line 45, ../sass/styles.scss */
 body {
   font-size: 15px;
   line-height: 1.5em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000350}}
+/* line 50, ../sass/styles.scss */
 a {
   text-decoration: none;
   color: #551A8B;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000356}}
+/* line 56, ../sass/styles.scss */
 .field-name-body a {
   text-decoration: underline;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000361}}
+/* line 61, ../sass/styles.scss */
 p {
   margin: 0 0 1.1em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000364}}
+/* line 64, ../sass/styles.scss */
 h2 {
   margin-top: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000368}}
+/* line 68, ../sass/styles.scss */
 table {
   width: 100%;
   margin: 10p 0 20pxx;
@@ -1320,17 +1320,17 @@ table {
   border: 1px solid #000000;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000374}}
+/* line 74, ../sass/styles.scss */
 tbody tr:nth-child(even) {
   background-color: #EEE;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000377}}
+/* line 77, ../sass/styles.scss */
 tbody tr:nth-child(odd) {
   background-color: #ffffff;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000380}}
+/* line 80, ../sass/styles.scss */
 td {
   vertical-align: middle;
   border: 1px solid #000000;
@@ -1341,7 +1341,7 @@ td {
   color: #000000;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000389}}
+/* line 89, ../sass/styles.scss */
 thead tr th {
   background-color: #522E91;
   border: 0px solid #000000;
@@ -1351,21 +1351,21 @@ thead tr th {
   padding: 7px;
   color: #ffffff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000397}}
+/* line 97, ../sass/styles.scss */
 thead tr th a {
   color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\0000399}}
+/* line 99, ../sass/styles.scss */
 thead tr th a.active img {
   padding-left: 5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003114}}
+/* line 114, ../sass/styles.scss */
 #main {
   padding-top: 0;
   padding-bottom: 50px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003117}}
+/* line 117, ../sass/styles.scss */
 #main #page-title {
   font-size: 28px;
   letter-spacing: -1px;
@@ -1373,7 +1373,7 @@ thead tr th a.active img {
   margin-bottom: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003126}}
+/* line 126, ../sass/styles.scss */
 #header {
   background: #EEE;
   background-image: url("../images/darkwave.png"), url("../images/boat.png");
@@ -1382,30 +1382,30 @@ thead tr th a.active img {
   border-bottom: 8px solid #000;
   min-height: 150px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003133}}
+/* line 133, ../sass/styles.scss */
 #header .inner {
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003136}}
+/* line 136, ../sass/styles.scss */
 #header #logo_name_slogan {
   margin: 30px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003138}}
+/* line 138, ../sass/styles.scss */
 #header #logo_name_slogan #logo {
   float: left;
   margin-right: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003144}}
+/* line 144, ../sass/styles.scss */
 #header #logo_name_slogan #name-and-slogan h1,
 #header #logo_name_slogan #name-and-slogan h2 {
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003148}}
+/* line 148, ../sass/styles.scss */
 #header #logo_name_slogan #site-name {
   line-height: 48px;
   font-family: Arial;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003151}}
+/* line 151, ../sass/styles.scss */
 #header #logo_name_slogan #site-name a {
   font-family: Arial;
   font-size: 35px;
@@ -1414,11 +1414,11 @@ thead tr th a.active img {
   text-transform: uppercase;
   color: #551A8B;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003158}}
+/* line 158, ../sass/styles.scss */
 #header #logo_name_slogan #site-name a span {
   font-family: Arial;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003163}}
+/* line 163, ../sass/styles.scss */
 #header #logo_name_slogan #site-slogan {
   font-weight: normal;
   color: #551A8B;
@@ -1426,45 +1426,45 @@ thead tr th a.active img {
   line-height: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003172}}
+/* line 172, ../sass/styles.scss */
 .region-header {
   position: absolute;
   top: 15px;
   right: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003179}}
+/* line 179, ../sass/styles.scss */
 #bottom {
   background: #522e91 url(../images/pirate_party_flag.png) no-repeat bottom right;
   min-height: 250px;
   color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003183}}
+/* line 183, ../sass/styles.scss */
 #bottom .region-bottom {
   padding: 0 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003186}}
+/* line 186, ../sass/styles.scss */
 #bottom ul {
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003189}}
+/* line 189, ../sass/styles.scss */
 #bottom a {
   color: #fff;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003198}}
+/* line 198, ../sass/styles.scss */
 #block-system-main-menu li,
 #tabs li,
 .pane-menu-menu-group-tabs li {
   list-style: none outside none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003200}}
+/* line 200, ../sass/styles.scss */
 #block-system-main-menu li a,
 #tabs li a,
 .pane-menu-menu-group-tabs li a {
   text-decoration: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003206}}
+/* line 206, ../sass/styles.scss */
 #block-system-main-menu > ul.menu, #block-system-main-menu > .pane-content > ul.menu, #block-system-main-menu > ul.tabs.primary,
 #tabs > ul.menu,
 #tabs > .pane-content > ul.menu,
@@ -1478,7 +1478,7 @@ thead tr th a.active img {
   padding: 0;
   background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003212}}
+/* line 212, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li, #block-system-main-menu > .pane-content > ul.menu > li, #block-system-main-menu > ul.tabs.primary > li,
 #tabs > ul.menu > li,
 #tabs > .pane-content > ul.menu > li,
@@ -1490,7 +1490,7 @@ thead tr th a.active img {
   margin: 0;
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003216}}
+/* line 216, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li a, #block-system-main-menu > .pane-content > ul.menu > li a, #block-system-main-menu > ul.tabs.primary > li a,
 #tabs > ul.menu > li a,
 #tabs > .pane-content > ul.menu > li a,
@@ -1511,7 +1511,7 @@ thead tr th a.active img {
   line-height: 18px;
   border-width: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003229}}
+/* line 229, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li a:hover, #block-system-main-menu > .pane-content > ul.menu > li a:hover, #block-system-main-menu > ul.tabs.primary > li a:hover,
 #tabs > ul.menu > li a:hover,
 #tabs > .pane-content > ul.menu > li a:hover,
@@ -1521,7 +1521,7 @@ thead tr th a.active img {
 .pane-menu-menu-group-tabs > ul.tabs.primary > li a:hover {
   color: #FF8800;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003233}}
+/* line 233, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li li a, #block-system-main-menu > .pane-content > ul.menu > li li a, #block-system-main-menu > ul.tabs.primary > li li a,
 #tabs > ul.menu > li li a,
 #tabs > .pane-content > ul.menu > li li a,
@@ -1531,7 +1531,7 @@ thead tr th a.active img {
 .pane-menu-menu-group-tabs > ul.tabs.primary > li li a {
   font-family: Gudea !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003236}}
+/* line 236, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li.first, #block-system-main-menu > .pane-content > ul.menu > li.first, #block-system-main-menu > ul.tabs.primary > li.first,
 #tabs > ul.menu > li.first,
 #tabs > .pane-content > ul.menu > li.first,
@@ -1542,7 +1542,7 @@ thead tr th a.active img {
   background: url("../images/home.gif") no-repeat scroll center 10px transparent !important;
   text-indent: -999em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003239}}
+/* line 239, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li.first a, #block-system-main-menu > .pane-content > ul.menu > li.first a, #block-system-main-menu > ul.tabs.primary > li.first a,
 #tabs > ul.menu > li.first a,
 #tabs > .pane-content > ul.menu > li.first a,
@@ -1553,7 +1553,7 @@ thead tr th a.active img {
   padding-left: 25px;
   padding-right: 25px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003243}}
+/* line 243, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li.first:hover, #block-system-main-menu > .pane-content > ul.menu > li.first:hover, #block-system-main-menu > ul.tabs.primary > li.first:hover,
 #tabs > ul.menu > li.first:hover,
 #tabs > .pane-content > ul.menu > li.first:hover,
@@ -1563,7 +1563,7 @@ thead tr th a.active img {
 .pane-menu-menu-group-tabs > ul.tabs.primary > li.first:hover {
   background: url("../images/home.gif") no-repeat scroll center 10px white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003246}}
+/* line 246, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li.first a.active, #block-system-main-menu > .pane-content > ul.menu > li.first a.active, #block-system-main-menu > ul.tabs.primary > li.first a.active,
 #tabs > ul.menu > li.first a.active,
 #tabs > .pane-content > ul.menu > li.first a.active,
@@ -1573,7 +1573,7 @@ thead tr th a.active img {
 .pane-menu-menu-group-tabs > ul.tabs.primary > li.first a.active {
   background: url("../images/home.gif") no-repeat scroll center -107px #111111;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003248}}
+/* line 248, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li.first a.active:hover, #block-system-main-menu > .pane-content > ul.menu > li.first a.active:hover, #block-system-main-menu > ul.tabs.primary > li.first a.active:hover,
 #tabs > ul.menu > li.first a.active:hover,
 #tabs > .pane-content > ul.menu > li.first a.active:hover,
@@ -1583,7 +1583,7 @@ thead tr th a.active img {
 .pane-menu-menu-group-tabs > ul.tabs.primary > li.first a.active:hover {
   background: url("../images/home.gif") no-repeat scroll center 10px #111111;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003255}}
+/* line 255, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li.expanded ul.menu, #block-system-main-menu > ul.menu > li.collapsed ul.menu, #block-system-main-menu > .pane-content > ul.menu > li.expanded ul.menu, #block-system-main-menu > .pane-content > ul.menu > li.collapsed ul.menu, #block-system-main-menu > ul.tabs.primary > li.expanded ul.menu, #block-system-main-menu > ul.tabs.primary > li.collapsed ul.menu,
 #tabs > ul.menu > li.expanded ul.menu,
 #tabs > ul.menu > li.collapsed ul.menu,
@@ -1601,7 +1601,7 @@ thead tr th a.active img {
   top: -999em;
   z-index: 999;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003260}}
+/* line 260, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li.expanded ul.menu li a, #block-system-main-menu > ul.menu > li.collapsed ul.menu li a, #block-system-main-menu > .pane-content > ul.menu > li.expanded ul.menu li a, #block-system-main-menu > .pane-content > ul.menu > li.collapsed ul.menu li a, #block-system-main-menu > ul.tabs.primary > li.expanded ul.menu li a, #block-system-main-menu > ul.tabs.primary > li.collapsed ul.menu li a,
 #tabs > ul.menu > li.expanded ul.menu li a,
 #tabs > ul.menu > li.collapsed ul.menu li a,
@@ -1620,7 +1620,7 @@ thead tr th a.active img {
   font-weight: normal;
   text-transform: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003268}}
+/* line 268, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li.expanded:hover, #block-system-main-menu > ul.menu > li.collapsed:hover, #block-system-main-menu > .pane-content > ul.menu > li.expanded:hover, #block-system-main-menu > .pane-content > ul.menu > li.collapsed:hover, #block-system-main-menu > ul.tabs.primary > li.expanded:hover, #block-system-main-menu > ul.tabs.primary > li.collapsed:hover,
 #tabs > ul.menu > li.expanded:hover,
 #tabs > ul.menu > li.collapsed:hover,
@@ -1638,7 +1638,7 @@ thead tr th a.active img {
   top: 0;
   background: none repeat scroll 0 0 white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003272}}
+/* line 272, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li.expanded:hover ul.menu, #block-system-main-menu > ul.menu > li.collapsed:hover ul.menu, #block-system-main-menu > .pane-content > ul.menu > li.expanded:hover ul.menu, #block-system-main-menu > .pane-content > ul.menu > li.collapsed:hover ul.menu, #block-system-main-menu > ul.tabs.primary > li.expanded:hover ul.menu, #block-system-main-menu > ul.tabs.primary > li.collapsed:hover ul.menu,
 #tabs > ul.menu > li.expanded:hover ul.menu,
 #tabs > ul.menu > li.collapsed:hover ul.menu,
@@ -1659,7 +1659,7 @@ thead tr th a.active img {
   top: 40px;
   width: 200px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003280}}
+/* line 280, ../sass/styles.scss */
 #block-system-main-menu > ul.menu > li.expanded:hover ul.menu li > a.active, #block-system-main-menu > ul.menu > li.collapsed:hover ul.menu li > a.active, #block-system-main-menu > .pane-content > ul.menu > li.expanded:hover ul.menu li > a.active, #block-system-main-menu > .pane-content > ul.menu > li.collapsed:hover ul.menu li > a.active, #block-system-main-menu > ul.tabs.primary > li.expanded:hover ul.menu li > a.active, #block-system-main-menu > ul.tabs.primary > li.collapsed:hover ul.menu li > a.active,
 #tabs > ul.menu > li.expanded:hover ul.menu li > a.active,
 #tabs > ul.menu > li.collapsed:hover ul.menu li > a.active,
@@ -1676,7 +1676,7 @@ thead tr th a.active img {
   background: none repeat scroll 0 0 white;
   color: black;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003289}}
+/* line 289, ../sass/styles.scss */
 #block-system-main-menu > ul.menu li > a.active, #block-system-main-menu > .pane-content > ul.menu li > a.active, #block-system-main-menu > ul.tabs.primary li > a.active,
 #tabs > ul.menu li > a.active,
 #tabs > .pane-content > ul.menu li > a.active,
@@ -1687,7 +1687,7 @@ thead tr th a.active img {
   background: none repeat scroll 0 0 black;
   color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003292}}
+/* line 292, ../sass/styles.scss */
 #block-system-main-menu > ul.menu li > a.active:hover, #block-system-main-menu > .pane-content > ul.menu li > a.active:hover, #block-system-main-menu > ul.tabs.primary li > a.active:hover,
 #tabs > ul.menu li > a.active:hover,
 #tabs > .pane-content > ul.menu li > a.active:hover,
@@ -1697,7 +1697,7 @@ thead tr th a.active img {
 .pane-menu-menu-group-tabs > ul.tabs.primary li > a.active:hover {
   color: #FF8800;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003297}}
+/* line 297, ../sass/styles.scss */
 #block-system-main-menu > ul.tabs.secondary,
 #tabs > ul.tabs.secondary,
 .pane-menu-menu-group-tabs > ul.tabs.secondary {
@@ -1706,7 +1706,7 @@ thead tr th a.active img {
   margin: 0;
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003302}}
+/* line 302, ../sass/styles.scss */
 #block-system-main-menu > ul.tabs.secondary li,
 #tabs > ul.tabs.secondary li,
 .pane-menu-menu-group-tabs > ul.tabs.secondary li {
@@ -1715,7 +1715,7 @@ thead tr th a.active img {
   margin: 0;
   margin-right: 0 !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003307}}
+/* line 307, ../sass/styles.scss */
 #block-system-main-menu > ul.tabs.secondary li a,
 #tabs > ul.tabs.secondary li a,
 .pane-menu-menu-group-tabs > ul.tabs.secondary li a {
@@ -1728,20 +1728,20 @@ thead tr th a.active img {
   color: #838383;
   border-right: 1px solid #ccc;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003319}}
+/* line 319, ../sass/styles.scss */
 #block-system-main-menu > ul.tabs.secondary li:first-child a,
 #tabs > ul.tabs.secondary li:first-child a,
 .pane-menu-menu-group-tabs > ul.tabs.secondary li:first-child a {
   padding-left: 0 !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003324}}
+/* line 324, ../sass/styles.scss */
 #block-system-main-menu > ul.tabs.secondary li:last-child a,
 #tabs > ul.tabs.secondary li:last-child a,
 .pane-menu-menu-group-tabs > ul.tabs.secondary li:last-child a {
   border-right: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003332}}
+/* line 332, ../sass/styles.scss */
 ul.tabs,
 .pane-menu-menu-group-tabs > .pane-content > ul.menu {
   border-bottom: 5px solid #000;
@@ -1749,24 +1749,24 @@ ul.tabs,
   display: inline-block;
   float: none !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003337}}
+/* line 337, ../sass/styles.scss */
 ul.tabs a,
 .pane-menu-menu-group-tabs > .pane-content > ul.menu a {
   font-size: 15px !important;
   padding: 3px 6px 3px !important;
   background: #eee;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003342}}
+/* line 342, ../sass/styles.scss */
 ul.tabs li,
 .pane-menu-menu-group-tabs > .pane-content > ul.menu li {
   margin-right: 7px !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003344}}
+/* line 344, ../sass/styles.scss */
 ul.tabs li:last-child,
 .pane-menu-menu-group-tabs > .pane-content > ul.menu li:last-child {
   margin-right: 0 !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003348}}
+/* line 348, ../sass/styles.scss */
 ul.tabs li.first, ul.tabs li.first a,
 .pane-menu-menu-group-tabs > .pane-content > ul.menu li.first,
 .pane-menu-menu-group-tabs > .pane-content > ul.menu li.first a {
@@ -1774,12 +1774,12 @@ ul.tabs li.first, ul.tabs li.first a,
   text-indent: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003355}}
+/* line 355, ../sass/styles.scss */
 .node-type-workgroup ul.tabs {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003361}}
+/* line 361, ../sass/styles.scss */
 .view-pirateparty-workgroups h3 {
   margin-bottom: 7px;
   background: #522E90;
@@ -1788,38 +1788,38 @@ ul.tabs li.first, ul.tabs li.first a,
   font-size: 15px;
   display: inline-block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003369}}
+/* line 369, ../sass/styles.scss */
 .view-pirateparty-workgroups .item-list {
   width: 170px;
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003372}}
+/* line 372, ../sass/styles.scss */
 .view-pirateparty-workgroups .item-list ul {
   margin: 0;
 }
 
 @media all and (min-width: 480px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003380}}
+  /* line 380, ../sass/styles.scss */
   .view-pirateparty-workgroups .item-list {
     width: 170px;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003388}}
+/* line 388, ../sass/styles.scss */
 #gazette .panel-separator {
   margin-bottom: 9px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003391}}
+/* line 391, ../sass/styles.scss */
 #gazette.panel-3col-stacked .panel-col-last .inside {
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003395}}
+/* line 395, ../sass/styles.scss */
 #gazette .pane-views-panes,
 #gazette .pane-views {
   background: #FAF8F8;
   padding: 0 9px 9px;
   border: 1px solid #ccc;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003399}}
+/* line 399, ../sass/styles.scss */
 #gazette .pane-views-panes .pane-title,
 #gazette .pane-views .pane-title {
   background: #551A8B;
@@ -1830,57 +1830,57 @@ ul.tabs li.first, ul.tabs li.first a,
   margin: 10px 0 0;
   line-height: 25px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003408}}
+/* line 408, ../sass/styles.scss */
 #gazette .pane-views-panes ul,
 #gazette .pane-views ul {
   margin: 10px 0;
   padding: 0 0 0 25px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003411}}
+/* line 411, ../sass/styles.scss */
 #gazette .pane-views-panes ul li,
 #gazette .pane-views ul li {
   margin: 0 0 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003416}}
+/* line 416, ../sass/styles.scss */
 #gazette .pane-views-panes .view-gazette-category li,
 #gazette .pane-views .view-gazette-category li {
   list-style: initial;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003420}}
+/* line 420, ../sass/styles.scss */
 #gazette .pane-views-panes .view-gazette-category.view-display-id-panel_pane_3 .view-content,
 #gazette .pane-views .view-gazette-category.view-display-id-panel_pane_3 .view-content {
   overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003423}}
+/* line 423, ../sass/styles.scss */
 #gazette .pane-views-panes .view-gazette-category.view-display-id-panel_pane_3 .views-row,
 #gazette .pane-views .view-gazette-category.view-display-id-panel_pane_3 .views-row {
   display: inline-block;
   margin: 5px 4px 5px 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003433}}
+/* line 433, ../sass/styles.scss */
 .region-bottom .block {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0.2);
   min-height: 160px;
   padding: 30px 20px;
   display: inline-block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003438}}
+/* line 438, ../sass/styles.scss */
 .region-bottom .block h2 {
   margin-top: 0;
   text-transform: uppercase;
   font-size: 16px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003443}}
+/* line 443, ../sass/styles.scss */
 .region-bottom .block .other-pirate-parties-links {
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003445}}
+/* line 445, ../sass/styles.scss */
 .region-bottom .block .other-pirate-parties-links li {
   float: left;
   list-style-type: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003448}}
+/* line 448, ../sass/styles.scss */
 .region-bottom .block .other-pirate-parties-links li a {
   text-decoration: none;
   vertical-align: baseline;
@@ -1891,13 +1891,13 @@ ul.tabs li.first, ul.tabs li.first a,
   margin: 0 2px 2px 0;
   padding: 0 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003457}}
+/* line 457, ../sass/styles.scss */
 .region-bottom .block .other-pirate-parties-links li a:hover {
   -moz-transition: all 0.2s ease-in-out 0s;
   background: none repeat scroll 0 0 #2D7DC5;
   color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003464}}
+/* line 464, ../sass/styles.scss */
 .region-bottom .block .other-pirate-parties-links:after {
   content: ".";
   display: block;
@@ -1906,26 +1906,26 @@ ul.tabs li.first, ul.tabs li.first a,
   line-height: 0;
   height: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003473}}
+/* line 473, ../sass/styles.scss */
 .region-bottom .block#block-block-2 {
   max-width: 600px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003477}}
+/* line 477, ../sass/styles.scss */
 .region-bottom .block#block-views-pirateparty-workgroups-block-1 .item-list {
   width: 200px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003479}}
+/* line 479, ../sass/styles.scss */
 .region-bottom .block#block-views-pirateparty-workgroups-block-1 .item-list h3 {
   background: #000;
   margin-top: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003483}}
+/* line 483, ../sass/styles.scss */
 .region-bottom .block#block-views-pirateparty-workgroups-block-1 .item-list ul {
   list-style: none;
   padding-left: 13px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003495}}
+/* line 495, ../sass/styles.scss */
 .node-blog-post .field-name-title.flagged {
   margin: 0;
   line-height: 16px;
@@ -1933,148 +1933,148 @@ ul.tabs li.first, ul.tabs li.first a,
   margin-right: 6px;
   font-size: 16px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003501}}
+/* line 501, ../sass/styles.scss */
 .node-blog-post .field-name-title.flagged a, .node-blog-post .field-name-title.flagged h2 {
   font-size: 16px;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003505}}
+/* line 505, ../sass/styles.scss */
 .node-blog-post .field-name-title.flagged h2 {
   line-height: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003509}}
+/* line 509, ../sass/styles.scss */
 .node-blog-post .field-name-title.flagged .title,
 .node-blog-post .field-name-title.flagged .author {
   display: inline-block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003513}}
+/* line 513, ../sass/styles.scss */
 .node-blog-post .field-name-title.flagged .author,
 .node-blog-post .field-name-title.flagged .author a {
   font-size: 12px;
   color: #888 !important;
   font-style: italic;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003519}}
+/* line 519, ../sass/styles.scss */
 .node-blog-post .flags {
   margin-left: 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003521}}
+/* line 521, ../sass/styles.scss */
 .node-blog-post .flags.label {
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003524}}
+/* line 524, ../sass/styles.scss */
 .node-blog-post .flags img {
   width: 20px;
   height: 13px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003529}}
+/* line 529, ../sass/styles.scss */
 .node-blog-post .language-icon {
   display: inline-block;
   margin-right: 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003533}}
+/* line 533, ../sass/styles.scss */
 .node-blog-post .peer_review_backers {
   font-size: 14px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003535}}
+/* line 535, ../sass/styles.scss */
 .node-blog-post .peer_review_backers a {
   font-size: 14px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003539}}
+/* line 539, ../sass/styles.scss */
 .node-blog-post .label {
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003542}}
+/* line 542, ../sass/styles.scss */
 .node-blog-post .field-name-ds-flag-backup {
   margin: 5px 0;
   background: #551A8B;
   color: #fff;
   display: inline-block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003547}}
+/* line 547, ../sass/styles.scss */
 .node-blog-post .field-name-ds-flag-backup a {
   color: #fff;
   padding: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003554}}
+/* line 554, ../sass/styles.scss */
 .node-blog-post.view-mode-title .field-name-title.flagged a, .node-blog-post.view-mode-title .field-name-title.flagged h2 {
   font-weight: normal;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003561}}
+/* line 561, ../sass/styles.scss */
 .node-blog-post.view-mode-full .group-left,
 .node-blog-post.view-mode-full .group-right {
   margin-bottom: 20px;
   font-size: 14px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003564}}
+/* line 564, ../sass/styles.scss */
 .node-blog-post.view-mode-full .group-left a,
 .node-blog-post.view-mode-full .group-right a {
   font-size: 14px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003572}}
+/* line 572, ../sass/styles.scss */
 #user-cancel-confirm-form .form-item-mollom-feedback {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003578}}
+/* line 578, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser {
   margin: 10px 0 0 !important;
   height: 90px;
   overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003582}}
+/* line 582, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-ds-user-picture {
   float: left;
   width: 40px;
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003587}}
+/* line 587, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-node_author_name {
   float: left;
   width: 85%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003591}}
+/* line 591, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-ds-user-picture img {
   padding: 3px 10px 5px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003594}}
+/* line 594, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-field-blog-post-images {
   float: left;
   margin-right: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003598}}
+/* line 598, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-body {
   padding-top: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003601}}
+/* line 601, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-title {
   margin-right: 6px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003604}}
+/* line 604, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-node_author_name h2 {
   margin: 0;
   line-height: 16px;
   margin-bottom: 1px;
   font-size: 16px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003609}}
+/* line 609, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-node_author_name h2 a {
   font-size: 16px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003613}}
+/* line 613, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-node_author_name h2 .title,
 .node-blog-post.view-mode-teaser .field-name-node_author_name h2 .author {
   display: inline-block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003617}}
+/* line 617, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser .field-name-node_author_name h2 .author,
 .node-blog-post.view-mode-teaser .field-name-node_author_name h2 .author a {
   font-size: 12px;
   color: #888 !important;
   font-style: italic;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003625}}
+/* line 625, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser_2 .field-name-title {
   position: absolute;
   bottom: 10px;
@@ -2082,7 +2082,7 @@ ul.tabs li.first, ul.tabs li.first a,
   background: #522E91;
   padding: 15px 15px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003631}}
+/* line 631, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser_2 .field-name-title h2 {
   margin: 0;
   color: #fff;
@@ -2091,32 +2091,32 @@ ul.tabs li.first, ul.tabs li.first a,
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003639}}
+/* line 639, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser_2 .field-name-title a {
   color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003643}}
+/* line 643, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser_2 .group-left {
   width: 30%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003646}}
+/* line 646, ../sass/styles.scss */
 .node-blog-post.view-mode-teaser_2 .group-right {
   width: 30%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003651}}
+/* line 651, ../sass/styles.scss */
 .node-blog-post.view-mode-full .group-left {
   width: 25%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003654}}
+/* line 654, ../sass/styles.scss */
 .node-blog-post.view-mode-full .group-right {
   width: 73%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003657}}
+/* line 657, ../sass/styles.scss */
 .node-blog-post.view-mode-full .field-name-field-blog-post-images {
   margin-bottom: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003667}}
+/* line 667, ../sass/styles.scss */
 .region-sidebar-first,
 .region-sidebar-second {
   background: #000;
@@ -2132,85 +2132,85 @@ ul.tabs li.first, ul.tabs li.first a,
   color: #fff;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003684}}
+/* line 684, ../sass/styles.scss */
 .forum-details {
   padding: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003686}}
+/* line 686, ../sass/styles.scss */
 .forum-details .forum-description {
   font-style: italic;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003699}}
+/* line 699, ../sass/styles.scss */
 .node-meeting-report.view-mode-full .group-right > .field,
 .node-meeting-report.view-mode-full .group-left > .field {
   margin-bottom: 15px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003703}}
+/* line 703, ../sass/styles.scss */
 .node-meeting-report.view-mode-full .group-right {
   width: 52%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003705}}
+/* line 705, ../sass/styles.scss */
 .node-meeting-report.view-mode-full .group-right h2, .node-meeting-report.view-mode-full .group-right h3 {
   margin-top: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003709}}
+/* line 709, ../sass/styles.scss */
 .node-meeting-report.view-mode-full .group-left {
   width: 45%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003712}}
+/* line 712, ../sass/styles.scss */
 .node-meeting-report.view-mode-full table {
   margin: 5px 0 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003722}}
+/* line 722, ../sass/styles.scss */
 #event .panel-col-first > .field,
 #event .panel-col-last > .field {
   margin-bottom: 15px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003726}}
+/* line 726, ../sass/styles.scss */
 #event .panel-col-last {
   width: 52%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003728}}
+/* line 728, ../sass/styles.scss */
 #event .panel-col-last h2, #event .panel-col-last h3 {
   margin-top: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003732}}
+/* line 732, ../sass/styles.scss */
 #event .panel-col-first {
   width: 45%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003735}}
+/* line 735, ../sass/styles.scss */
 #event table {
   margin: 5px 0 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003739}}
+/* line 739, ../sass/styles.scss */
 #event .pane-node-field-event-dates .pane-title {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003745}}
+/* line 745, ../sass/styles.scss */
 ul.pager {
   list-style: none;
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003748}}
+/* line 748, ../sass/styles.scss */
 ul.pager li {
   display: inline-block;
   background: #522e91;
   padding: 2px 5px;
   color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003753}}
+/* line 753, ../sass/styles.scss */
 ul.pager li.pager-current {
   background: #000;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003756}}
+/* line 756, ../sass/styles.scss */
 ul.pager li a {
   color: #fff;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003764}}
+/* line 764, ../sass/styles.scss */
 .info-crews,
 .info-squads {
   width: 45%;
@@ -2219,18 +2219,18 @@ ul.pager li a {
   margin-bottom: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003770}}
+/* line 770, ../sass/styles.scss */
 .info-crews {
   border-right: 1px solid #ccc;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003778}}
+/* line 778, ../sass/styles.scss */
 .view-gazette-media-large .video-embed-description {
   font-size: 13px;
   font-style: italic;
   color: #838383;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003783}}
+/* line 783, ../sass/styles.scss */
 .view-gazette-media-large .views-field-title a {
   background: #551A8B;
   padding: 5px;
@@ -2241,25 +2241,25 @@ ul.pager li a {
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003795}}
+/* line 795, ../sass/styles.scss */
 .sidebars .block {
   margin-bottom: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003797}}
+/* line 797, ../sass/styles.scss */
 .sidebars .block h2 {
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003799}}
+/* line 799, ../sass/styles.scss */
 .sidebars .block h2 a {
   color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003803}}
+/* line 803, ../sass/styles.scss */
 .sidebars .block ul {
   padding: 0;
   list-style: none;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003808}}
+/* line 808, ../sass/styles.scss */
 .sidebars .block ul li a {
   background: #551A8B;
   padding: 5px 10px;
@@ -2269,22 +2269,22 @@ ul.pager li a {
   text-transform: lowercase;
   margin: 0 0 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003819}}
+/* line 819, ../sass/styles.scss */
 .sidebars .block.last {
   margin: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003825}}
+/* line 825, ../sass/styles.scss */
 .sidebars .block-menu h2 {
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003828}}
+/* line 828, ../sass/styles.scss */
 .sidebars .block-menu ul {
   padding: 0;
   list-style: none;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003833}}
+/* line 833, ../sass/styles.scss */
 .sidebars .block-menu ul li a {
   background: #551A8B;
   padding: 5px 10px;
@@ -2298,45 +2298,45 @@ ul.pager li a {
   border-radius: 5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003849}}
+/* line 849, ../sass/styles.scss */
 #block-user-login {
   background: #522e91;
   padding: 5px 10px 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003852}}
+/* line 852, ../sass/styles.scss */
 #block-user-login .form-item {
   margin: 8px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003855}}
+/* line 855, ../sass/styles.scss */
 #block-user-login .form-actions {
   margin-top: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003858}}
+/* line 858, ../sass/styles.scss */
 #block-user-login h2 {
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003861}}
+/* line 861, ../sass/styles.scss */
 #block-user-login a {
   color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003864}}
+/* line 864, ../sass/styles.scss */
 #block-user-login input {
   width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003867}}
+/* line 867, ../sass/styles.scss */
 #block-user-login ul {
   list-style: none;
   padding: 0;
   margin: 10px 0 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003871}}
+/* line 871, ../sass/styles.scss */
 #block-user-login ul li {
   background: #000;
   display: inline-block;
   margin-top: 10px;
   padding: 3px 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003877}}
+/* line 877, ../sass/styles.scss */
 #block-user-login ul li.first a {
   font-size: 20px;
   font-weight: bold;
@@ -2344,7 +2344,7 @@ ul.pager li a {
   background: none;
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003886}}
+/* line 886, ../sass/styles.scss */
 #block-user-login ul li.last a {
   font-size: 13px;
   font-weight: bold;
@@ -2353,168 +2353,168 @@ ul.pager li a {
   padding: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003898}}
+/* line 898, ../sass/styles.scss */
 #block-og-extras-group-info {
   background: #F80;
   padding: 10px;
   color: #000;
   font-size: 0.9em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003903}}
+/* line 903, ../sass/styles.scss */
 #block-og-extras-group-info a {
   color: #000;
   font-size: 17px;
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003914}}
+/* line 914, ../sass/styles.scss */
 form .form-item {
   margin: 10px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003918}}
+/* line 918, ../sass/styles.scss */
 form .form-type-radio.form-item {
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003922}}
+/* line 922, ../sass/styles.scss */
 form .form-type-radio input,
 form .form-type-radio label {
   display: inline-block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003925}}
+/* line 925, ../sass/styles.scss */
 form .form-type-radio input {
   margin-right: 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003928}}
+/* line 928, ../sass/styles.scss */
 form .form-type-radio label {
   font-weight: normal;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003933}}
+/* line 933, ../sass/styles.scss */
 form .form-type-textfield input {
   width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003938}}
+/* line 938, ../sass/styles.scss */
 form .form-type-checkbox input, form .form-type-checkbox label {
   display: inline-block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003943}}
+/* line 943, ../sass/styles.scss */
 form .description,
 form .fieldset-description {
   font-size: 13px;
   font-style: italic;
   color: #838383;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003948}}
+/* line 948, ../sass/styles.scss */
 form .form-actions {
   margin-top: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003951}}
+/* line 951, ../sass/styles.scss */
 form fieldset {
   border: 1px solid #838383;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003959}}
+/* line 959, ../sass/styles.scss */
 #user-register-form .group-left > fieldset,
 #user-register-form .group-right > fieldset {
   margin: 0 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003963}}
+/* line 963, ../sass/styles.scss */
 #user-register-form .group-left fielset {
   border: 1px solid #838383;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003966}}
+/* line 966, ../sass/styles.scss */
 #user-register-form .group-right fielset {
   width: 48%;
   background: #ccc;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003970}}
+/* line 970, ../sass/styles.scss */
 #user-register-form #edit-field-profile-first-name {
   width: 49%;
   margin-right: 2%;
   display: inline-block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003975}}
+/* line 975, ../sass/styles.scss */
 #user-register-form #edit-field-profile-last-name {
   display: inline-block;
   width: 49%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003980}}
+/* line 980, ../sass/styles.scss */
 #user-register-form .form-item-pass .password-strength {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003984}}
+/* line 984, ../sass/styles.scss */
 #user-register-form .form-item-pass .confirm-parent,
 #user-register-form .form-item-pass .password-parent {
   width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003986}}
+/* line 986, ../sass/styles.scss */
 #user-register-form .form-item-pass .confirm-parent input,
 #user-register-form .form-item-pass .password-parent input {
   width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003990}}
+/* line 990, ../sass/styles.scss */
 #user-register-form .form-item-pass .password-suggestions {
   width: auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\00003998}}
+/* line 998, ../sass/styles.scss */
 #comments .comment {
   border: 1px solid #ccc;
   padding: 15px;
   margin-bottom: 15px;
   margin-top: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031003}}
+/* line 1003, ../sass/styles.scss */
 #comments .comment .group-left {
   width: 30%;
   font-size: 13px;
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031007}}
+/* line 1007, ../sass/styles.scss */
 #comments .comment .group-left a {
   font-size: 13px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031011}}
+/* line 1011, ../sass/styles.scss */
 #comments .comment .group-right {
   width: 70%;
   float: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031016}}
+/* line 1016, ../sass/styles.scss */
 #comments .permalink {
   font-size: 14px;
   text-transform: lowercase;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031020}}
+/* line 1020, ../sass/styles.scss */
 #comments ul.links {
   list-style: none;
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031023}}
+/* line 1023, ../sass/styles.scss */
 #comments ul.links li {
   display: inline-block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031025}}
+/* line 1025, ../sass/styles.scss */
 #comments ul.links li a {
   background: #522E91;
   color: #fff;
   padding: 2px 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031032}}
+/* line 1032, ../sass/styles.scss */
 #comments .comment-thread-expand {
   font-size: 13px;
   background: #F80;
   color: #fff;
   padding: 2px 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031038}}
+/* line 1038, ../sass/styles.scss */
 #comments .comment_forbidden {
   display: none !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031041}}
+/* line 1041, ../sass/styles.scss */
 #comments #edit-author--2 {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031049}}
+/* line 1049, ../sass/styles.scss */
 #discussion-list-topic .comment.view-mode-full,
 #discussion-list-topic .node-discussion-list-topic.view-mode-full {
   border: 1px solid #ccc;
@@ -2522,36 +2522,36 @@ form fieldset {
   margin-bottom: 15px;
   margin-top: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031054}}
+/* line 1054, ../sass/styles.scss */
 #discussion-list-topic .comment.view-mode-full .group-left,
 #discussion-list-topic .node-discussion-list-topic.view-mode-full .group-left {
   width: 30%;
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031058}}
+/* line 1058, ../sass/styles.scss */
 #discussion-list-topic .comment.view-mode-full .group-right,
 #discussion-list-topic .node-discussion-list-topic.view-mode-full .group-right {
   width: 70%;
   float: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031063}}
+/* line 1063, ../sass/styles.scss */
 #discussion-list-topic .comment .permalink,
 #discussion-list-topic .node-discussion-list-topic .permalink {
   font-size: 14px;
   text-transform: lowercase;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031067}}
+/* line 1067, ../sass/styles.scss */
 #discussion-list-topic .comment ul.links,
 #discussion-list-topic .node-discussion-list-topic ul.links {
   list-style: none;
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031070}}
+/* line 1070, ../sass/styles.scss */
 #discussion-list-topic .comment ul.links li,
 #discussion-list-topic .node-discussion-list-topic ul.links li {
   display: inline-block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031072}}
+/* line 1072, ../sass/styles.scss */
 #discussion-list-topic .comment ul.links li a,
 #discussion-list-topic .node-discussion-list-topic ul.links li a {
   background: #522E91;
@@ -2559,19 +2559,19 @@ form fieldset {
   padding: 2px 5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031084}}
+/* line 1084, ../sass/styles.scss */
 #workgroupfront .panel-2col-bricks .panel-col-first {
   width: 50%;
   float: left;
   margin-right: 3%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031089}}
+/* line 1089, ../sass/styles.scss */
 #workgroupfront .panel-2col-bricks .panel-col-last {
   width: 47%;
   float: left;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031096}}
+/* line 1096, ../sass/styles.scss */
 #toc {
   width: 48%;
   float: right;
@@ -2579,168 +2579,168 @@ form fieldset {
   margin-bottom: 2%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031104}}
+/* line 1104, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full {
   margin-bottom: 15px;
   margin-top: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031107}}
+/* line 1107, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full .group-left {
   width: 35%;
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031111}}
+/* line 1111, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full .group-right {
   width: 62%;
   float: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031115}}
+/* line 1115, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full ul.links {
   list-style: none;
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031118}}
+/* line 1118, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full ul.links li {
   display: inline-block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031120}}
+/* line 1120, ../sass/styles.scss */
 .pane-node-content .node.view-mode-full ul.links li a {
   background: #522E91;
   color: #fff;
   padding: 2px 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031128}}
+/* line 1128, ../sass/styles.scss */
 .pane-node-content .node .field-name-body {
   /*font-family: "Tienne";*/
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031133}}
+/* line 1133, ../sass/styles.scss */
 #sliding-popup {
   background: #F80;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031136}}
+/* line 1136, ../sass/styles.scss */
 #sliding-popup .popup-content #popup-buttons {
   margin-top: 25px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031143}}
+/* line 1143, ../sass/styles.scss */
 #block-search-form {
   text-align: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031146}}
+/* line 1146, ../sass/styles.scss */
 #block-search-form .form-type-textfield input {
   width: 230px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031153}}
+/* line 1153, ../sass/styles.scss */
 #block-locale-language {
   margin-bottom: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031155}}
+/* line 1155, ../sass/styles.scss */
 #block-locale-language ul {
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031157}}
+/* line 1157, ../sass/styles.scss */
 #block-locale-language ul li {
   display: inline-block;
   margin-left: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031160}}
+/* line 1160, ../sass/styles.scss */
 #block-locale-language ul li.active {
   font-weight: bold;
   font-size: 1.1em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031170}}
+/* line 1170, ../sass/styles.scss */
 .user-profile.view-mode-teaser {
   background: #e2e2e2;
   padding: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031173}}
+/* line 1173, ../sass/styles.scss */
 .user-profile.view-mode-teaser .group-right {
   width: 68% !important;
   margin-left: 2%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031177}}
+/* line 1177, ../sass/styles.scss */
 .user-profile.view-mode-teaser .field-name-field-profile-first-name {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031184}}
+/* line 1184, ../sass/styles.scss */
 .user-profile.view-mode-full .group-left {
   width: 50%;
   float: left;
   margin-right: 1%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031188}}
+/* line 1188, ../sass/styles.scss */
 .user-profile.view-mode-full .group-left .field {
   margin-bottom: 12px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031192}}
+/* line 1192, ../sass/styles.scss */
 .user-profile.view-mode-full .group-right {
   text-align: right;
   width: 49%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031201}}
+/* line 1201, ../sass/styles.scss */
 .panel-2col-bricks .panel-col-first .inside {
   margin: 0 0 .5em 0;
 }
 
 @media screen and (max-width: 800px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031208}}
+  /* line 1208, ../sass/styles.scss */
   .class {
     background: #ccc;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031211}}
+  /* line 1211, ../sass/styles.scss */
   .region-header {
     position: inherit;
     margin: 0 0 50px;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031215}}
+  /* line 1215, ../sass/styles.scss */
   #header #logo_name_slogan {
     margin: 10px 0 10px;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031223}}
+  /* line 1223, ../sass/styles.scss */
   .region-header {
     left: 0;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031226}}
+  /* line 1226, ../sass/styles.scss */
   #block-search-form {
     text-align: left;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031232}}
+/* line 1232, ../sass/styles.scss */
 .view-agenda caption {
   text-align: left;
   font-size: 24px;
   font-weight: bold;
   margin: 10px 10px 10px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031239}}
+/* line 1239, ../sass/styles.scss */
 .view-agenda table .views-field-field-event-dates {
   width: 140px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031242}}
+/* line 1242, ../sass/styles.scss */
 .view-agenda table .views-field-title {
   width: 320px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031245}}
+/* line 1245, ../sass/styles.scss */
 .view-agenda table .views-field-field-event-type {
   width: 110px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031252}}
+/* line 1252, ../sass/styles.scss */
 table.diff td.diff-links {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031259}}
+/* line 1259, ../sass/styles.scss */
 .node-issue.view-mode-full .group-left {
   width: 24% !important;
   font-size: 13px;
@@ -2750,129 +2750,129 @@ table.diff td.diff-links {
   padding: 15px;
   text-transform: uppercase;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031267}}
+/* line 1267, ../sass/styles.scss */
 .node-issue.view-mode-full .group-left a {
   font-size: 13px;
   color: #fff;
   text-decoration: underline;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031273}}
+/* line 1273, ../sass/styles.scss */
 .node-issue.view-mode-full .group-left .field-name-og-group-ref .field-items {
   margin-left: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031278}}
+/* line 1278, ../sass/styles.scss */
 .node-issue.view-mode-full .group-right {
   width: 70% !important;
   margin: 0 0 30px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031283}}
+/* line 1283, ../sass/styles.scss */
 .node-issue.view-mode-teaser {
   padding: 10px !important;
   margin-bottom: 10px !important;
   background: #F9F9F9;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031289}}
+/* line 1289, ../sass/styles.scss */
 .node-issue.view-mode-teaser.issue_status_34, .node-issue.view-mode-teaser.issue_status_35, .node-issue.view-mode-teaser.issue_status_38 {
   background: #ffe7dd;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031292}}
+/* line 1292, ../sass/styles.scss */
 .node-issue.view-mode-teaser.issue_status_36 {
   background: #ffd;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031295}}
+/* line 1295, ../sass/styles.scss */
 .node-issue.view-mode-teaser.issue_status_37 {
   background: #e7ffdd;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031298}}
+/* line 1298, ../sass/styles.scss */
 .node-issue.view-mode-teaser.issue_status_39 {
   background: #ffc9c9;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031302}}
+/* line 1302, ../sass/styles.scss */
 .node-issue .field-name-submitted-by {
   font-size: 13px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031308}}
+/* line 1308, ../sass/styles.scss */
 #issue_comment .issue_form {
   width: 28%;
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031312}}
+/* line 1312, ../sass/styles.scss */
 #issue_comment .comment_form {
   width: 68%;
   margin-left: 2%;
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031316}}
+/* line 1316, ../sass/styles.scss */
 #issue_comment .comment_form #edit-author--4 {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031321}}
+/* line 1321, ../sass/styles.scss */
 #issue_comment .form-item-language,
 #issue_comment .redirect-list {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031327}}
+/* line 1327, ../sass/styles.scss */
 .page-node-add-issue .group-left {
   width: 28%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031330}}
+/* line 1330, ../sass/styles.scss */
 .page-node-add-issue .group-right {
   width: 68%;
   margin-left: 2%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031334}}
+/* line 1334, ../sass/styles.scss */
 .page-node-add-issue #edit-og-group-ref-und {
   width: 100%;
   height: 150px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031338}}
+/* line 1338, ../sass/styles.scss */
 .page-node-add-issue .form-item-language {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031343}}
+/* line 1343, ../sass/styles.scss */
 .filter-wrapper .form-item {
   margin: 0 15px;
   padding: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031351}}
+/* line 1351, ../sass/styles.scss */
 .comment .group-right .item-list h3 {
   font-size: 14px;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031356}}
+/* line 1356, ../sass/styles.scss */
 .comment .group-right .item-list ul,
 .comment .group-right .item-list a {
   font-size: 12px;
   color: #333;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031360}}
+/* line 1360, ../sass/styles.scss */
 .comment .group-right .item-list ul {
   margin: 5px 0;
   padding-bottom: 10px;
   border-bottom: 1px dashed #ccc;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031370}}
+/* line 1370, ../sass/styles.scss */
 .filter-wrapper,
 .wysiwyg-toggle-wrapper {
   font-size: 13px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031372}}
+/* line 1372, ../sass/styles.scss */
 .filter-wrapper a,
 .wysiwyg-toggle-wrapper a {
   font-size: 13px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031378}}
+/* line 1378, ../sass/styles.scss */
 #become_member ul {
   list-style: none;
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031381}}
+/* line 1381, ../sass/styles.scss */
 #become_member ul li {
   float: left;
   margin-right: 20px;
@@ -2880,36 +2880,36 @@ table.diff td.diff-links {
   color: #fff;
   background: #551A8B;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031387}}
+/* line 1387, ../sass/styles.scss */
 #become_member ul li a {
   color: #fff;
   text-decoration: underline;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031396}}
+/* line 1396, ../sass/styles.scss */
 .webform-client-form .form-textarea-wrapper {
   width: 400px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031404}}
+/* line 1404, ../sass/styles.scss */
 .confirmation .form-actions a {
   font-size: 13px;
   display: block;
   margin-top: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031412}}
+/* line 1412, ../sass/styles.scss */
 #block-system-help {
   margin: 0 0 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031416}}
+/* line 1416, ../sass/styles.scss */
 html.js input.form-autocomplete {
   background-position: 99% 4px;
 }
 
 @media screen and (max-width: 300px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/styles\.scss}line{font-family:\000031422}}
+  /* line 1422, ../sass/styles.scss */
   .region-header {
     top: 80px;
   }

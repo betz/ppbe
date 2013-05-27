@@ -5,13 +5,13 @@
 /* =============================================================================
    Drupal form widgets
    ========================================================================== */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states-rtl\.scss}line{font-family:\0000314}}
+/* line 14, ../sass/global-states-rtl.scss */
 html.js .collapsible .fieldset-legend {
   background-position: 98% 75%;
   padding-left: 0;
   padding-right: 15px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/global-states-rtl\.scss}line{font-family:\0000319}}
+/* line 19, ../sass/global-states-rtl.scss */
 html.js .collapsed .fieldset-legend {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABNJREFUCB1j4GASYFJgcmD+A4IADUIDfIUMT4wAAAAASUVORK5CYII=');
   background-position: 98% 50%;

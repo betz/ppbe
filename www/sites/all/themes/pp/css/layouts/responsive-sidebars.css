@@ -11,7 +11,7 @@
 /*
  * Center the page.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000344}}
+/* line 44, ../../sass/layouts/responsive-sidebars.scss */
 #page,
 .region-bottom {
   /* For screen sizes larger than 1200px, prevent excessively long lines of text
@@ -21,7 +21,7 @@
 /*
  * Apply the shared properties of grid items in a single, efficient ruleset.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000360}}
+/* line 60, ../../sass/layouts/responsive-sidebars.scss */
 #header,
 #content,
 #navigation,
@@ -40,7 +40,7 @@
 /*
  * Containers for grid items and flow items.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000371}}
+/* line 71, ../../sass/layouts/responsive-sidebars.scss */
 #header .inner,
 #main,
 #footer,
@@ -49,7 +49,7 @@
   margin-right: auto;
   max-width: 1200px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass-extensions\/zen-grids\/stylesheets\/zen\/_grids\.scss}line{font-family:\0000352}}
+/* line 52, ../../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
 #header .inner:before, #header .inner:after,
 #main:before,
 #main:after,
@@ -60,7 +60,7 @@
   content: "";
   display: table;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass-extensions\/zen-grids\/stylesheets\/zen\/_grids\.scss}line{font-family:\0000356}}
+/* line 56, ../../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
 #header .inner:after,
 #main:after,
 #footer:after,
@@ -72,14 +72,14 @@
  * Navigation bar
  */
 @media all and (min-width: 480px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000383}}
+  /* line 83, ../../sass/layouts/responsive-sidebars.scss */
   #main {
     padding-top: 3em;
     /* Move all the children of #main down to make room. */
     position: relative;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000387}}
+  /* line 87, ../../sass/layouts/responsive-sidebars.scss */
   #navigation {
     position: absolute;
     top: 0;
@@ -95,7 +95,7 @@
   /*
    * The layout when there is only one sidebar, the left one.
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003107}}
+  /* line 107, ../../sass/layouts/responsive-sidebars.scss */
   .sidebar-first #content {
     /* Span 4 columns, starting in 2nd column from left. */
     float: left;
@@ -103,7 +103,7 @@
     margin-left: 25%;
     margin-right: -100%;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003111}}
+  /* line 111, ../../sass/layouts/responsive-sidebars.scss */
   .sidebar-first .region-sidebar-first {
     /* Span 1 column, starting in 1st column from left. */
     float: left;
@@ -115,7 +115,7 @@
   /*
    * The layout when there is only one sidebar, the right one.
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003121}}
+  /* line 121, ../../sass/layouts/responsive-sidebars.scss */
   .sidebar-second #content {
     /* Span 4 columns, starting in 1st column from left. */
     float: left;
@@ -123,7 +123,7 @@
     margin-left: 0%;
     margin-right: -75%;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003125}}
+  /* line 125, ../../sass/layouts/responsive-sidebars.scss */
   .sidebar-second .region-sidebar-second {
     /* Span 1 column, starting in 5th column from left. */
     float: left;
@@ -135,7 +135,7 @@
   /*
    * The layout when there are two sidebars.
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003135}}
+  /* line 135, ../../sass/layouts/responsive-sidebars.scss */
   .two-sidebars #content {
     /* Span 3 columns, starting in 2nd column from left. */
     float: left;
@@ -143,7 +143,7 @@
     margin-left: 25%;
     margin-right: -75%;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003139}}
+  /* line 139, ../../sass/layouts/responsive-sidebars.scss */
   .two-sidebars .region-sidebar-first {
     /* Span 1 column, starting in 1st column from left. */
     float: left;
@@ -151,7 +151,7 @@
     margin-left: 0%;
     margin-right: -25%;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003143}}
+  /* line 143, ../../sass/layouts/responsive-sidebars.scss */
   .two-sidebars .region-sidebar-second {
     /* Span 1 column, starting in 5th column from left. */
     float: left;

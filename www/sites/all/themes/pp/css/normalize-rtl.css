@@ -5,7 +5,7 @@
 /*
  * Addresses margins set differently in IE6/7
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize-rtl\.scss}line{font-family:\0000314}}
+/* line 14, ../sass/normalize-rtl.scss */
 dd {
   margin: 0 30px 0 0;
 }
@@ -13,7 +13,7 @@ dd {
 /*
  * Addresses paddings set differently in IE6/7
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/normalize-rtl\.scss}line{font-family:\0000324}}
+/* line 24, ../sass/normalize-rtl.scss */
 menu,
 ol,
 ul {
