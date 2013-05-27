@@ -1,67 +1,166 @@
+/**
+ * @file
+ * RTL companion for the responsive-sidebars.css file.
+ */
+/**
+ * @file
+ * Positioning for responsive layout .
+ *
+ * Define CSS classes to create a table-free, 3-column, 2-column, or single
+ * column layout depending on whether blocks are enabled in the left or right
+ * columns.
+ *
+ * This layout uses the Zen Grids plugin for Compass: http://zengrids.com
+ */
 /*
-Syntax error: File to import not found or unreadable: compass/support.
-              Load paths:
-                /home/jonas/workspace/ppbe/www/sites/all/themes/pp
-                /home/jonas/workspace/ppbe/www/sites/all/themes/pp/sass
-        on line 97 of /home/jonas/workspace/ppbe/www/sites/all/themes/pp/sass/_base.scss
-        from line 12 of ./sass/layouts/responsive-sidebars.scss
-        from line 11 of ./sass/layouts/responsive-sidebars-rtl.scss
+ * Center the page.
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000344}}
+#page,
+.region-bottom {
+  /* For screen sizes larger than 1200px, prevent excessively long lines of text
+     by setting a max-width. */
+}
 
-Backtrace:
-/home/jonas/workspace/ppbe/www/sites/all/themes/pp/sass/_base.scss:97
-./sass/layouts/responsive-sidebars.scss:12
-./sass/layouts/responsive-sidebars-rtl.scss:11
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/import_node.rb:67:in `import'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/import_node.rb:28:in `imported_file'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/import_node.rb:37:in `css_import?'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:217:in `visit_import'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:227:in `visit_import'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:227:in `map'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:227:in `visit_import'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:227:in `visit_import'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:227:in `map'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:227:in `visit_import'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:109:in `visit_children'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:121:in `with_environment'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:108:in `visit_children'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:128:in `visit_root'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/tree/root_node.rb:20:in `render'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/engine.rb:315:in `_render'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/engine.rb:262:in `render'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/plugin/compiler.rb:362:in `update_stylesheet'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/plugin/compiler.rb:203:in `update_stylesheets'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/plugin/compiler.rb:201:in `each'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/plugin/compiler.rb:201:in `update_stylesheets'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/plugin/compiler.rb:235:in `watch'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/plugin.rb:107:in `send'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/plugin.rb:107:in `method_missing'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/exec.rb:452:in `watch_or_update'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/exec.rb:315:in `process_result'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/exec.rb:41:in `parse'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/../lib/sass/../sass/exec.rb:21:in `parse!'
-/var/lib/gems/1.8/gems/sass-3.2.9/bin/sass:9
-/usr/local/bin/sass:19:in `load'
-/usr/local/bin/sass:19
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: compass/support.\A               Load paths:\A                 /home/jonas/workspace/ppbe/www/sites/all/themes/pp\A                 /home/jonas/workspace/ppbe/www/sites/all/themes/pp/sass\A         on line 97 of /home/jonas/workspace/ppbe/www/sites/all/themes/pp/sass/_base.scss\A         from line 12 of ./sass/layouts/responsive-sidebars.scss\A         from line 11 of ./sass/layouts/responsive-sidebars-rtl.scss"; }
+/*
+ * Apply the shared properties of grid items in a single, efficient ruleset.
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000360}}
+#header,
+#content,
+#navigation,
+.region-sidebar-first,
+.region-sidebar-second,
+#footer {
+  padding-left: 10px;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+/*
+ * Containers for grid items and flow items.
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000371}}
+#header .inner,
+#main,
+#footer,
+.region-bottom {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass-extensions\/zen-grids\/stylesheets\/zen\/_grids\.scss}line{font-family:\0000352}}
+#header .inner:before, #header .inner:after,
+#main:before,
+#main:after,
+#footer:before,
+#footer:after,
+.region-bottom:before,
+.region-bottom:after {
+  content: "";
+  display: table;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass-extensions\/zen-grids\/stylesheets\/zen\/_grids\.scss}line{font-family:\0000356}}
+#header .inner:after,
+#main:after,
+#footer:after,
+.region-bottom:after {
+  clear: both;
+}
+
+/*
+ * Navigation bar
+ */
+@media all and (min-width: 480px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000383}}
+  #main {
+    padding-top: 3em;
+    /* Move all the children of #main down to make room. */
+    position: relative;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\0000387}}
+  #navigation {
+    position: absolute;
+    top: 0;
+    /* Move the navbar up inside #main's padding. */
+    height: 3em;
+    width: 100%;
+  }
+}
+@media all and (min-width: 960px) {
+  /*
+   * Use 5 grid columns for larger screens.
+   */
+  /*
+   * The layout when there is only one sidebar, the left one.
+   */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003107}}
+  .sidebar-first #content {
+    /* Span 4 columns, starting in 2nd column from left. */
+    float: right;
+    width: 75%;
+    margin-right: 25%;
+    margin-left: -100%;
+  }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003111}}
+  .sidebar-first .region-sidebar-first {
+    /* Span 1 column, starting in 1st column from left. */
+    float: right;
+    width: 25%;
+    margin-right: 0%;
+    margin-left: -25%;
+  }
+
+  /*
+   * The layout when there is only one sidebar, the right one.
+   */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003121}}
+  .sidebar-second #content {
+    /* Span 4 columns, starting in 1st column from left. */
+    float: right;
+    width: 75%;
+    margin-right: 0%;
+    margin-left: -75%;
+  }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003125}}
+  .sidebar-second .region-sidebar-second {
+    /* Span 1 column, starting in 5th column from left. */
+    float: right;
+    width: 25%;
+    margin-right: 75%;
+    margin-left: -100%;
+  }
+
+  /*
+   * The layout when there are two sidebars.
+   */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003135}}
+  .two-sidebars #content {
+    /* Span 3 columns, starting in 2nd column from left. */
+    float: right;
+    width: 50%;
+    margin-right: 25%;
+    margin-left: -75%;
+  }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003139}}
+  .two-sidebars .region-sidebar-first {
+    /* Span 1 column, starting in 1st column from left. */
+    float: right;
+    width: 25%;
+    margin-right: 0%;
+    margin-left: -25%;
+  }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/jonas\/workspace\/ppbe\/www\/sites\/all\/themes\/pp\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003143}}
+  .two-sidebars .region-sidebar-second {
+    /* Span 1 column, starting in 5th column from left. */
+    float: right;
+    width: 25%;
+    margin-right: 75%;
+    margin-left: -100%;
+  }
+}
