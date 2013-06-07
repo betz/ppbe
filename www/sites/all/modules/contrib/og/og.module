@@ -1975,27 +1975,48 @@ function og_group($group_type, $gid, $values = array()) {
  * @param $entity_type
  *   The entity type (e.g. "node" or "user").
  * @param $entity
- *   The entity object or ID, to ungroup.
+ *   The entity to set the association.
+ * @param $save
+ *   Optioanl; TRUE if fields value shoudl be saved. Defaults to TRUE.
  *
  * @return
  *   The entity with the fields updated.
  */
-function og_ungroup($group_type, $gid, $entity_type = 'user', $etid = NULL) {
-  if (is_object($gid)) {
-    list($gid) = entity_extract_ids($group_type, $gid);
-  }
+function og_ungroup($gid, $entity_type, $entity, $save = TRUE) {
+  $entity = og_load_entity($entity_type, $entity);
+  $property = OG_AUDIENCE_FIELD;
 
-  if ($entity_type == 'user' && empty($etid)) {
-    global $user;
-    $etid = $user->uid;
-  }
-  elseif (is_object($etid)) {
-    list($etid) = entity_extract_ids($entity_type, $etid);
-  }
+  if (!empty($entity->{$property})) {
+    $wrapper = &$entity->{$property}[LANGUAGE_NONE];
 
-  if ($og_membership = og_get_membership($group_type, $gid, $entity_type, $etid)) {
-    $og_membership->delete();
+    $existing_key = FALSE;
+    if (!empty($wrapper)) {
+      foreach ($wrapper as $key => $value) {
+        if ($gid == $value['gid']) {
+          $existing_key = $key;
+          break;
+        }
+      }
+    }
+    if ($existing_key !== FALSE) {
+      unset($wrapper[$existing_key]);
+
+      if ($save) {
+        entity_save($entity_type, $entity);
+        og_invalidate_cache();
+
+        // Group might be deleted, so don't try to remove roles that don't
+        // exist.
+        $group = og_load($gid);
+        if ($entity_type == 'user' && $group) {
+          foreach (og_get_user_roles($gid, $entity->uid) as $rid) {
+            og_role_revoke($gid, $entity->uid, $rid);
+          }
+        }
+      }
+    }
   }
+  return $entity;
 }
 
 /**
