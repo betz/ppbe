@@ -1996,6 +1996,8 @@ function og_ungroup($group_type, $gid, $entity_type = 'user', $etid = NULL) {
   if ($og_membership = og_get_membership($group_type, $gid, $entity_type, $etid)) {
     $og_membership->delete();
   }
+  
+  return $etid;
 }
 
 /**
