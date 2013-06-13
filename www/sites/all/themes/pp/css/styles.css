@@ -1299,7 +1299,7 @@ a {
 }
 
 /* line 54, ../sass/styles.scss */
-#main a {
+#main .field-name-body a {
   text-decoration: underline;
 }
 
