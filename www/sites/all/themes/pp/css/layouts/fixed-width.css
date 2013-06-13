@@ -8,12 +8,10 @@
  *
  * This layout uses the Zen Grids plugin for Compass: http://zengrids.com
  */
-
-
 /*
  * Center the page.
  */
-
+/* line 43, ../../sass/layouts/fixed-width.scss */
 #page,
 .region-bottom {
   /* If you want to make the page a fixed width and centered in the viewport,
@@ -26,7 +24,7 @@
 /*
  * Apply the shared properties of grid items in a single, efficient ruleset.
  */
-
+/* line 61, ../../sass/layouts/fixed-width.scss */
 #header,
 #content,
 #navigation,
@@ -37,27 +35,21 @@
   padding-right: 10px;
   border: 0 !important;
   word-wrap: break-word;
-  _display: inline;
-  _overflow: hidden;
-  _overflow-y: visible;
 }
 
 /*
  * Containers for grid items and flow items.
  */
-
-#header,
-#main,
-#footer {
-  *position: relative;
-  *zoom: 1;
-}
+/* line 52, ../../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
 #header:before, #header:after,
-#main:before, #main:after,
-#footer:before, #footer:after {
+#main:before,
+#main:after,
+#footer:before,
+#footer:after {
   content: "";
   display: table;
 }
+/* line 56, ../../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
 #header:after,
 #main:after,
 #footer:after {
@@ -67,15 +59,18 @@
 /*
  * Navigation bar
  */
-
+/* line 79, ../../sass/layouts/fixed-width.scss */
 #main {
-  padding-top: 3em; /* Move all the children of #main down to make room. */
+  padding-top: 3em;
+  /* Move all the children of #main down to make room. */
   position: relative;
 }
 
+/* line 83, ../../sass/layouts/fixed-width.scss */
 #navigation {
   position: absolute;
-  top: 0; /* Move the navbar up inside #main's padding. */
+  top: 0;
+  /* Move the navbar up inside #main's padding. */
   height: 3em;
   width: 960px;
 }
@@ -83,7 +78,7 @@
 /*
  * The layout when there is only one sidebar, the left one.
  */
-
+/* line 95, ../../sass/layouts/fixed-width.scss */
 .sidebar-first #content {
   /* Span 4 columns, starting in 2nd column from left. */
   float: left;
@@ -91,7 +86,7 @@
   margin-left: 196px;
   margin-right: -980px;
 }
-
+/* line 99, ../../sass/layouts/fixed-width.scss */
 .sidebar-first .region-sidebar-first {
   /* Span 1 column, starting in 1st column from left. */
   float: left;
@@ -103,7 +98,7 @@
 /*
  * The layout when there is only one sidebar, the right one.
  */
-
+/* line 109, ../../sass/layouts/fixed-width.scss */
 .sidebar-second #content {
   /* Span 4 columns, starting in 1st column from left. */
   float: left;
@@ -111,7 +106,7 @@
   margin-left: 0px;
   margin-right: -784px;
 }
-
+/* line 113, ../../sass/layouts/fixed-width.scss */
 .sidebar-second .region-sidebar-second {
   /* Span 1 column, starting in 5th column from left. */
   float: left;
@@ -123,7 +118,7 @@
 /*
  * The layout when there are two sidebars.
  */
-
+/* line 123, ../../sass/layouts/fixed-width.scss */
 .two-sidebars #content {
   /* Span 3 columns, starting in 2nd column from left. */
   float: left;
@@ -131,7 +126,7 @@
   margin-left: 196px;
   margin-right: -784px;
 }
-
+/* line 127, ../../sass/layouts/fixed-width.scss */
 .two-sidebars .region-sidebar-first {
   /* Span 1 column, starting in 1st column from left. */
   float: left;
@@ -139,7 +134,7 @@
   margin-left: 0px;
   margin-right: -196px;
 }
-
+/* line 131, ../../sass/layouts/fixed-width.scss */
 .two-sidebars .region-sidebar-second {
   /* Span 1 column, starting in 5th column from left. */
   float: left;

@@ -12,7 +12,6 @@
 
   a:link,
   a:visited { /* underline all links */
-    text-decoration: underline !important;
 
     #site-name & { /* Don't underline header */
       text-decoration: none !important;
