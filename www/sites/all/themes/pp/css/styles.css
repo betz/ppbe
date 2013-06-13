@@ -236,7 +236,7 @@ h6 {
 /* line 245, ../sass/normalize.scss */
 hr {
   height: 1px;
-  border: 1px solid #666666;
+  border: 1px solid #666;
   padding-bottom: -1px;
   margin: 1.5em 0;
 }
@@ -844,14 +844,14 @@ input[type="button"] {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #dddddd));
   background: -moz-linear-gradient(top center, white 0%, #dddddd 100%);
   border: 1px solid;
-  border-color: #dddddd #bbbbbb #999999;
+  border-color: #ddd #bbb #999;
   cursor: pointer;
   color: #333;
   font: bold 12px/1.2 Arial, sans-serif;
   outline: 0;
   overflow: visible;
   padding: 3px 10px 4px;
-  text-shadow: white 0 1px 1px;
+  text-shadow: #fff 0 1px 1px;
   width: auto;
   *padding-top: 2px;
   /* IE7 */
@@ -933,9 +933,9 @@ select:focus,
 select:active,
 textarea:focus,
 textarea:active {
-  -moz-box-shadow: #0066ff 0 0 7px;
-  -webkit-box-shadow: #0066ff 0 0 7px;
-  box-shadow: #0066ff 0 0 7px;
+  -moz-box-shadow: #06f 0 0 7px;
+  -webkit-box-shadow: #06f 0 0 7px;
+  box-shadow: #06f 0 0 7px;
   z-index: 1;
   /* For Opera */
 }
@@ -1033,7 +1033,7 @@ optgroup {
 * html button {
   background: #dddddd url(../images/button.png) repeat-x;
   border: 1px solid;
-  border-color: #dddddd #bbbbbb #999999;
+  border-color: #ddd #bbb #999;
   cursor: pointer;
   color: #333;
   font: bold 12px/1.2 Arial, sans-serif;
@@ -1318,7 +1318,7 @@ table {
   width: 100%;
   margin: 10p 0 20pxx;
   padding: 0px;
-  border: 1px solid black;
+  border: 1px solid #000000;
 }
 
 /* line 76, ../sass/styles.scss */
@@ -1334,7 +1334,7 @@ tbody tr:nth-child(odd) {
 /* line 82, ../sass/styles.scss */
 td {
   vertical-align: middle;
-  border: 1px solid black;
+  border: 1px solid #000000;
   border-width: 0px 1px 1px 0px;
   text-align: left;
   padding: 7px;
@@ -1345,7 +1345,7 @@ td {
 /* line 91, ../sass/styles.scss */
 thead tr th {
   background-color: #522E91;
-  border: 0px solid black;
+  border: 0px solid #000000;
   text-align: left;
   border-width: 0px 0px 1px 1px;
   font-weight: bold;
@@ -1380,7 +1380,7 @@ thead tr th a.active img {
   background-image: url("../images/darkwave.png"), url("../images/boat.png");
   background-position: -20% bottom, 56% bottom;
   background-repeat: repeat-x, no-repeat;
-  border-bottom: 8px solid black;
+  border-bottom: 8px solid #000;
   min-height: 150px;
 }
 /* line 150, ../sass/styles.scss */
@@ -1727,7 +1727,7 @@ thead tr th a.active img {
   text-transform: lowercase;
   padding: 0 10px !important;
   color: #838383;
-  border-right: 1px solid #cccccc;
+  border-right: 1px solid #ccc;
 }
 /* line 336, ../sass/styles.scss */
 #block-system-main-menu > ul.tabs.secondary li:first-child a,
@@ -1745,7 +1745,7 @@ thead tr th a.active img {
 /* line 349, ../sass/styles.scss */
 ul.tabs,
 .pane-menu-menu-group-tabs > .pane-content > ul.menu {
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid #000;
   margin-bottom: 15px !important;
   display: inline-block;
   float: none !important;
@@ -1818,7 +1818,7 @@ ul.tabs li.first, ul.tabs li.first a,
 #gazette .pane-views {
   background: #FAF8F8;
   padding: 0 9px 9px;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
 }
 /* line 416, ../sass/styles.scss */
 #gazette .pane-views-panes .pane-title,
@@ -1895,7 +1895,7 @@ ul.tabs li.first, ul.tabs li.first a,
 /* line 474, ../sass/styles.scss */
 .region-bottom .block .other-pirate-parties-links li a:hover {
   -moz-transition: all 0.2s ease-in-out 0s;
-  background: none repeat scroll 0 0 #2d7dc5;
+  background: none repeat scroll 0 0 #2D7DC5;
   color: white;
 }
 /* line 481, ../sass/styles.scss */
@@ -1952,7 +1952,7 @@ ul.tabs li.first, ul.tabs li.first a,
 .node-blog-post .field-name-title.flagged .author,
 .node-blog-post .field-name-title.flagged .author a {
   font-size: 12px;
-  color: #888888 !important;
+  color: #888 !important;
   font-style: italic;
 }
 /* line 536, ../sass/styles.scss */
@@ -2072,7 +2072,7 @@ ul.tabs li.first, ul.tabs li.first a,
 .node-blog-post.view-mode-teaser .field-name-node_author_name h2 .author,
 .node-blog-post.view-mode-teaser .field-name-node_author_name h2 .author a {
   font-size: 12px;
-  color: #888888 !important;
+  color: #888 !important;
   font-style: italic;
 }
 /* line 642, ../sass/styles.scss */
@@ -2222,7 +2222,7 @@ ul.pager li a {
 
 /* line 787, ../sass/styles.scss */
 .info-crews {
-  border-right: 1px solid #cccccc;
+  border-right: 1px solid #ccc;
 }
 
 /* line 795, ../sass/styles.scss */
@@ -2459,7 +2459,7 @@ form fieldset {
 
 /* line 1015, ../sass/styles.scss */
 #comments .comment {
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   padding: 15px;
   margin-bottom: 15px;
   margin-top: 5px;
@@ -2518,7 +2518,7 @@ form fieldset {
 /* line 1066, ../sass/styles.scss */
 #discussion-list-topic .comment.view-mode-full,
 #discussion-list-topic .node-discussion-list-topic.view-mode-full {
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   padding: 15px;
   margin-bottom: 15px;
   margin-top: 5px;
@@ -2686,7 +2686,7 @@ form fieldset {
 
 /* line 1218, ../sass/styles.scss */
 .panel-2col-bricks .panel-col-first .inside {
-  margin: 0 0 0.5em 0;
+  margin: 0 0 .5em 0;
 }
 
 @media screen and (max-width: 800px) {
@@ -2854,7 +2854,7 @@ table.diff td.diff-links {
 .comment .group-right .item-list ul {
   margin: 5px 0;
   padding-bottom: 10px;
-  border-bottom: 1px dashed #cccccc;
+  border-bottom: 1px dashed #ccc;
 }
 
 /* line 1387, ../sass/styles.scss */
