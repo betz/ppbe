@@ -35,6 +35,36 @@
     <script src="<?php print $base_path . $path_to_zen; ?>/js/html5.js"></script>
     <![endif]-->
   <?php endif; ?>
+
+  <script type="text/javascript" src="http://chat.pirateparty.be/php/get.php?l=en&t=js&g=mini.xml"></script>
+
+  <script type="text/javascript">
+   jQuery(document).ready(function() {
+   // Define groupchats here
+   MINI_GROUPCHATS = ['parley'];
+   MINI_PASSWORDS = [];
+
+   // Define chats here
+   MINI_CHATS = [];
+
+   // Add an animation
+   MINI_ANIMATE = true;
+
+   // Define the user nickname
+   MINI_NICKNAME = "Nickname098";
+
+   // Random user nickname (if no nickname)
+   MINI_RANDNICK = true;
+
+   // Override the default session resource
+   MINI_RESOURCE = "Mini";
+
+   // Connect the user (autoconnect, show_pane, domain, username, password)
+   // Notice: put true/false to autoconnect and show_pane
+   launchMini(false, true, "chat.pirateparty.be");
+   });
+  </script>
+
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <?php print $page_top; ?>
